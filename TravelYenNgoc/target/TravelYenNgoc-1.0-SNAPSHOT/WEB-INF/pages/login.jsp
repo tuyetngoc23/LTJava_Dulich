@@ -5,13 +5,24 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<section>
+    <h1 class="text-center text-info">LOGIN</h1>
+    <form modelAttribute="login" action="#">
+        <div class="form-group">
+            <label for="username">
+                <spring:message code="user.username"/>
+            </label>
+            <input type="text" name="username" class="form-control" id="username"/>
+        </div>
+        <div class="form-group">
+            <label for="password">
+                <spring:message code="user.password"/>
+            </label>
+            <input type="text" name="password"  id="password" class="form-control"/>
+        </div>
+    </form>
+</section>
+

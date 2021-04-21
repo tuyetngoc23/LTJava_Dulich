@@ -23,6 +23,8 @@ public class HomeController {
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("user", this.userService.getUser());
-        return "index";
+        return "login";
     }
+    
+    
 }
