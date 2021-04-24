@@ -22,7 +22,12 @@ public class HomeController {
     
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("user", this.userService.getUser());
+       model.addAttribute("user", this.userService.getUser());
         return "index";
+    }
+    @RequestMapping("/admin")
+    public String adindex(Model model){
+       //model.addAttribute("user", this.userService.getUser());
+        return "admin";
     }
 }
