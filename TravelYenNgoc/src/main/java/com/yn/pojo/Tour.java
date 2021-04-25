@@ -5,8 +5,10 @@
  */
 package com.yn.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name="tour")
-public class Tour {
+public class Tour implements Serializable{
 
     /**
      * @return the id
@@ -84,28 +86,28 @@ public class Tour {
     /**
      * @return the diemDi_id
      */
-    public int getDiemDi_id() {
+    public TinhThanh getDiemDi_id() {
         return diemDi_id;
     }
 
     /**
      * @param diemDi_id the diemDi_id to set
      */
-    public void setDiemDi_id(int diemDi_id) {
+    public void setDiemDi_id(TinhThanh diemDi_id) {
         this.diemDi_id = diemDi_id;
     }
 
     /**
      * @return the gioiHanNDi
      */
-    public int getGioiHanNDi() {
+    public TinhThanh getGioiHanNDi() {
         return gioiHanNDi;
     }
 
     /**
      * @param gioiHanNDi the gioiHanNDi to set
      */
-    public void setGioiHanNDi(int gioiHanNDi) {
+    public void setGioiHanNDi(TinhThanh gioiHanNDi) {
         this.gioiHanNDi = gioiHanNDi;
     }
 
@@ -140,14 +142,14 @@ public class Tour {
     /**
      * @return the loaiTour_id
      */
-    public int getLoaiTour_id() {
+    public LoaiTour getLoaiTour_id() {
         return loaiTour_id;
     }
 
     /**
      * @param loaiTour_id the loaiTour_id to set
      */
-    public void setLoaiTour_id(int loaiTour_id) {
+    public void setLoaiTour_id(LoaiTour loaiTour_id) {
         this.loaiTour_id = loaiTour_id;
     }
 
@@ -188,17 +190,17 @@ public class Tour {
     private int diemDen_id;
     @ManyToOne
     @JoinColumn(name = "diemDi_id")
-    private int diemDi_id;
-    private int gioiHanNDi;
+    private TinhThanh diemDi_id;
+    private TinhThanh gioiHanNDi;
     @Column(name = "ngayKetThuc")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayKetThuc;
-    @Column(name = "ngayKetThuc")
+    @Column(name = "ngayKhoiHanh")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayKhoiHanh;
     @ManyToOne
     @JoinColumn(name = "loaiTour_id")
-    private int loaiTour_id;
+    private LoaiTour loaiTour_id;
     private String mota;
     private String image;
 }

@@ -11,6 +11,7 @@ com\yn\service\impl\TourServiceImpl.class
 com\yn\service\UserService.class
 com\yn\service\TourSevice.class
 com\yn\config\HibernateConfig.class
+com\yn\pojo\TinhThanh.class
 com\yn\controller\QuanlyTourController.class
 com\yn\repository\impl\TourReponsitoryImpl.class
 com\yn\repository\TourRepository.class
