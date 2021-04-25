@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,6 +23,19 @@ public class HomeController {
     public String index(Model model){
         return "index";
     }
-    
+     @RequestMapping("/admin")
+    public String adindex(Model model){
+       //model.addAttribute("user", this.userService.getUser());
+        return "admin";
+    }
     
 }
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+    
+

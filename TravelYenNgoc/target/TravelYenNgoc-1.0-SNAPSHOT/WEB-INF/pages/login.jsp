@@ -1,6 +1,14 @@
 <%-- 
     Document   : login
+<<<<<<< HEAD
     Created on : Apr 23, 2021, 12:17:51 PM
+=======
+<<<<<<< HEAD
+    Created on : Apr 21, 2021, 6:31:50 PM
+=======
+    Created on : Apr 21, 2021, 6:42:30 PM
+>>>>>>> ngoc
+>>>>>>> master
     Author     : Huynh Thi Tuyet Ngoc
 --%>
 
