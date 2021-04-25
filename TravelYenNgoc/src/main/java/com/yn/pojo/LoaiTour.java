@@ -5,6 +5,7 @@
  */
 package com.yn.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "loaitour")
-public class LoaiTour {
+public class LoaiTour implements Serializable{
 
     /**
      * @return the id
@@ -53,6 +54,6 @@ public class LoaiTour {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String content;
-    @OneToMany(mappedBy = "toaitour", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "loaitour", fetch = FetchType.EAGER)
     private List<Tour> tours;
 }

@@ -72,14 +72,14 @@ public class Tour implements Serializable{
     /**
      * @return the diemDen_id
      */
-    public int getDiemDen_id() {
+    public TinhThanh getDiemDen_id() {
         return diemDen_id;
     }
 
     /**
      * @param diemDen_id the diemDen_id to set
      */
-    public void setDiemDen_id(int diemDen_id) {
+    public void setDiemDen_id(TinhThanh diemDen_id) {
         this.diemDen_id = diemDen_id;
     }
 
@@ -100,14 +100,14 @@ public class Tour implements Serializable{
     /**
      * @return the gioiHanNDi
      */
-    public TinhThanh getGioiHanNDi() {
+    public int getGioiHanNDi() {
         return gioiHanNDi;
     }
 
     /**
      * @param gioiHanNDi the gioiHanNDi to set
      */
-    public void setGioiHanNDi(TinhThanh gioiHanNDi) {
+    public void setGioiHanNDi(int gioiHanNDi) {
         this.gioiHanNDi = gioiHanNDi;
     }
 
@@ -187,11 +187,11 @@ public class Tour implements Serializable{
     private BigDecimal gia;
     @ManyToOne
     @JoinColumn(name = "diemDen_id")
-    private int diemDen_id;
+    private TinhThanh diemDen_id;
     @ManyToOne
     @JoinColumn(name = "diemDi_id")
     private TinhThanh diemDi_id;
-    private TinhThanh gioiHanNDi;
+    private int gioiHanNDi;
     @Column(name = "ngayKetThuc")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayKetThuc;
