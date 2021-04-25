@@ -31,7 +31,7 @@
             <div class="container">
                 <h1>LOGIN</h1>
                 <c:url value="/login" var="action"/>
-                <form:form class="form" modelAttribute="user" action="${action}" method="post">
+                <form:form class="form" action="${action}" method="post">
                     <form:errors path="*" element="div" /> 
                     <input type="text" placeholder="Username" name="username">
                     <form:errors path="username" cssClass="text-danger" />
