@@ -5,25 +5,24 @@
  */
 package com.yn.service.impl;
 
-import com.yn.pojo.User;
-import com.yn.repository.UserRepository;
-import com.yn.service.UserService;
+import com.yn.pojo.Tour;
+import com.yn.repository.TourRepository;
+import com.yn.service.TourSevice;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Huynh Thi Tuyet Ngoc
+ * @author ASUS
  */
 @Service
-public class UserServiceImpl implements  UserService{
+public class TourServiceImpl implements TourSevice{
     @Autowired
-    private UserRepository userRepository;
-
+    private TourRepository tourRepository;
     @Override
-    public List<User> getUser() {
-        return this.userRepository.getUser();
+    public List<Tour> getTour() {
+         return this.tourRepository.getTour();
     }
     
 }

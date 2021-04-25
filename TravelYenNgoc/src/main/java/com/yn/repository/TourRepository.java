@@ -5,13 +5,13 @@
  */
 package com.yn.repository;
 
-import com.yn.pojo.User;
+import com.yn.pojo.Tour;
 import java.util.List;
 
 /**
  *
- * @author Huynh Thi Tuyet Ngoc
+ * @author ASUS
  */
-public interface UserRepository {
-    List<User> getUser();
+public interface TourRepository {
+     List<Tour> getTour();
 }

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.yn.repository;
+package com.yn.service;
 
-import com.yn.pojo.User;
+import com.yn.pojo.Tour;
 import java.util.List;
 
 /**
  *
- * @author Huynh Thi Tuyet Ngoc
+ * @author ASUS
  */
-public interface UserRepository {
-    List<User> getUser();
+public interface TourSevice {
+    List<Tour> getTour();
 }
