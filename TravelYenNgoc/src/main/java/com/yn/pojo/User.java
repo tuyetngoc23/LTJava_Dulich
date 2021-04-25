@@ -6,6 +6,7 @@
 package com.yn.pojo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name="user")
 public class User implements Serializable{
+    public static final String ROLE_USER = "ROLE_USER";
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String hoTen;
     private String username;
     private String passWord;
+    @Column(name = "user_role")
+    private String userRole;
+    @Column(name="is_active")
+    private boolean active;
+    
 
     /**
      * @return the id
@@ -80,6 +88,34 @@ public class User implements Serializable{
      */
     public void setPassWord(String passWord) {
         this.passWord = passWord;
+    }
+
+    /**
+     * @return the userRole
+     */
+    public String getUserRole() {
+        return userRole;
+    }
+
+    /**
+     * @param userRole the userRole to set
+     */
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
+    /**
+     * @return the active
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * @param active the active to set
+     */
+    public void setActive(boolean active) {
+        this.active = active;
     }
     
     

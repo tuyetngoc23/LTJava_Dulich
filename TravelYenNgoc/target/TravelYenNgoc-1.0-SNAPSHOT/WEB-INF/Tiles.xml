@@ -20,7 +20,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Danh muc"/>
         <put-attribute name="content" value="/WEB-INF/pages/index.jsp"/>
     </definition>
-    <definition name="login" extends="baseLayout">
+    <definition name="login" template="/WEB-INF/pages/login.jsp">
         <put-attribute name="title" value="Login"/>
         <put-attribute name="content" value="/WEB-INF/pages/login.jsp"/>
     </definition>

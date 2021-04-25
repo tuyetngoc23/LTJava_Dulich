@@ -7,11 +7,13 @@ package com.yn.service;
 
 import com.yn.pojo.User;
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author Huynh Thi Tuyet Ngoc
  */
-public interface UserService {
-    List<User> getUser();
+public interface UserService extends UserDetailsService{
+    boolean addUser(User user);
+    List<User> getUsers(String username);
 }

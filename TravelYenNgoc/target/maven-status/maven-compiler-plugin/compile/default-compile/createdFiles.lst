@@ -8,4 +8,5 @@ com\yn\pojo\User.class
 com\yn\repository\impl\UserRepositoryImpl.class
 com\yn\service\UserService.class
 com\yn\config\HibernateConfig.class
+com\yn\config\SecurityConfig.class
 com\yn\repository\UserRepository.class

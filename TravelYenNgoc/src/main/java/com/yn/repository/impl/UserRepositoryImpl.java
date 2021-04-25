@@ -11,10 +11,16 @@ import com.yn.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,14 +32,40 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserRepositoryImpl implements UserRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    @Transactional
-    public List<User> getUser() {
+    public List<User> getUsers(String username) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("From User");
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root root = query.from(User.class);
+        query.select(root);
         
+        Predicate p = builder.equal(root.get("username").as(String.class), username.trim());
+        query = query.where(p);
+        
+        Query q = session.createQuery(query);
         return q.getResultList();
     }
-    
+
+    @Override
+    public boolean addUser(User user) {
+        user.setPassWord(this.passwordEncoder.encode(user.getPassWord()));
+        user.setUserRole(User.ROLE_USER);
+        user.setActive(true);
+        
+        Session s = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            s.save(user);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+        
+        return false;
+    }
 }
+
+    

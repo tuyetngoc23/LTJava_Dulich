@@ -30,7 +30,24 @@
                     <li><a href="#">Hotel</a></li>
                     <li><a href="#">Car</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li class="active"><a href="<c:url value="/login"/>">Login</a></li>
+                        <c:choose>
+                            <c:when test="${pageContext.request.userPrincipal.name == null}">
+                            <li>
+                                <a href="<c:url value="/register" />">Register</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value="/login" />">Login</a>
+                            </li>
+                        </c:when>
+                        <c:when test="${pageContext.request.userPrincipal.name != null}">
+                            <li>
+                                <a href="#">${pageContext.request.userPrincipal.name}</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value="/logout" />">Logout</a>
+                            </li>
+                        </c:when>
+                    </c:choose>
                 </ul>
             </nav>
         </div>
