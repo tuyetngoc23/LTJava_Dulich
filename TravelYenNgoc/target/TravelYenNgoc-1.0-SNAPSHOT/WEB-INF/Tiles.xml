@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -21,18 +20,28 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Danh muc"/>
         <put-attribute name="content" value="/WEB-INF/pages/index.jsp"/>
     </definition>
+    <definition name="admin" template="/WEB-INF/Admin/layout/adindex.jsp">
+         <put-attribute name="title" value="Trang chủ Admin"/>
+        <put-attribute name="header" value="/WEB-INF/Admin/layout/adheader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/trangchu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/Admin/layout/adfooter.jsp"/>
+    </definition>
+    <definition name="quanlytour" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
+    </definition>
     <definition name="login" template="/WEB-INF/pages/login.jsp">
         <put-attribute name="title" value="Login"/>
         <put-attribute name="content" value="/WEB-INF/pages/login.jsp"/>
     </definition>
 </tiles-definitions>
-=======
+<!--=======
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
+
 
 
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache
@@ -45,12 +54,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="Welcome to our Website!!!"/>
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
     </definition>
-    <definition name="admin" template="/WEB-INF/Admin/layout/adindex.jsp">
-         <put-attribute name="title" value="Trang chủ Admin"/>
-        <put-attribute name="header" value="/WEB-INF/Admin/layout/adheader.jsp"/>
-        <put-attribute name="content" value="/WEB-INF/Admin/pages/trangchu.jsp"/>
-        <put-attribute name="footer" value="/WEB-INF/Admin/layout/adfooter.jsp"/>
-    </definition>
+    
    
     <definition name="index" extends="baseLayout">
         <put-attribute name="title" value="Danh muc"/>
@@ -60,9 +64,6 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Danh muc"/>
         <put-attribute name="content" value="/WEB-INF/pages/login.jsp"/>
     </definition>
-    <definition name="quanlytour" extends="admin">
-         <put-attribute name="title" value="Quản lý tour du lịch"/>
-        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
-    </definition>
+    
 </tiles-definitions>
->>>>>>> master
+>>>>>>> master-->

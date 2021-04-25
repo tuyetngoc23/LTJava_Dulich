@@ -39,7 +39,7 @@
             <div class="container">
                 <h1>LOGIN</h1>
                 <c:url value="/login" var="action"/>
-                <form:form class="form" action="${action}" method="post">
+                <form:form class="form" action="${action}" method="post" modelAttribute="user">
                     <form:errors path="*" element="div" /> 
                     <input type="text" placeholder="Username" name="username">
                     <form:errors path="username" cssClass="text-danger" />
@@ -61,7 +61,7 @@
                 <li></li>
             </ul>
         </div>
-        <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--        <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
     </body>
 </html>
