@@ -25,9 +25,4 @@ public class HomeController {
        model.addAttribute("user", this.userService.getUser());
         return "index";
     }
-    @RequestMapping("/admin")
-    public String adindex(Model model){
-       //model.addAttribute("user", this.userService.getUser());
-        return "admin";
-    }
 }

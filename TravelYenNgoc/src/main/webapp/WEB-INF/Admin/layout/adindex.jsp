@@ -27,7 +27,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="<c:url value="/admin/img/apple-icon.png"/>" >
+  <link rel="apple-touch-icon" sizes="76x76" href="<c:url value="/admin/demo/tour1.jpg"/>" >
   <link rel="icon" type="image/png" href="<c:url value="/admin/img/favicon.png/>"/>">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
    
