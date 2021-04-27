@@ -35,8 +35,8 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
          <put-attribute name="title" value="Quản lý tour du lịch"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
     </definition>
-    <definition name="quanlytour" extends="admin">
+    <definition name="themtour" extends="admin">
          <put-attribute name="title" value="Quản lý tour du lịch"/>
-        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/themtour.jsp"/>
     </definition>
 </tiles-definitions>
