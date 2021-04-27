@@ -25,43 +25,66 @@ import javax.persistence.Table;
 public class TinhThanh implements Serializable{
 
     /**
-     * @return the tours
+     * @return the ten
      */
-    public List<Tour> getTours() {
-        return tours;
+    public String getTen() {
+        return ten;
     }
 
     /**
-     * @param tours the tours to set
+     * @param ten the ten to set
      */
-    public void setTours(List<Tour> tours) {
-        this.tours = tours;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
+    
     /**
      * @return the name
      */
-    public String getName() {
-        return name;
-    }
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    @OneToMany(mappedBy = "tinhthanh", fetch = FetchType.EAGER)
-    private List<Tour> tours;
+    private String ten; 
+    @OneToMany(mappedBy = "diemDenID",fetch = FetchType.EAGER)
+    private List<Tour> toursDen;
+    @OneToMany(mappedBy = "diemDiID",fetch = FetchType.EAGER)
+    private List<Tour> toursDi;
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the tours_di
+     */
+    public List<Tour> getTours_di() {
+        return toursDi;
+    }
+
+    /**
+     * @param tours_di the tours_di to set
+     */
+    public void setTours_di(List<Tour> tours_di) {
+        this.toursDi = tours_di;
+    }
+
+    /**
+     * @return the tours_den
+     */
+    public List<Tour> getTours_den() {
+        return toursDen;
+    }
+
+    /**
+     * @param tours_den the tours_den to set
+     */
+    public void setTours_den(List<Tour> tours_den) {
+        this.toursDi = tours_den;
     }
 }

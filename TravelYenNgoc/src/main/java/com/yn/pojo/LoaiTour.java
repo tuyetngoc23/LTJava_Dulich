@@ -7,6 +7,7 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,22 +22,30 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "loaitour")
-public class LoaiTour implements Serializable{
+public class LoaiTour implements Serializable {
+
+    /**
+     * @return the products
+     */
+    public List<Tour> getProducts() {
+        return products;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(List<Tour> products) {
+        this.products = products;
+    }
+
+    /**
+     * @return the tours
+     */
+
 
     /**
      * @return the id
      */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
     /**
      * @return the content
      */
@@ -54,6 +63,17 @@ public class LoaiTour implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String content;
-    @OneToMany(mappedBy = "loaitour", fetch = FetchType.EAGER)
-    private List<Tour> tours;
+    @OneToMany(mappedBy = "loaiTourID", fetch = FetchType.EAGER)
+    private List<Tour> products;
+
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 }

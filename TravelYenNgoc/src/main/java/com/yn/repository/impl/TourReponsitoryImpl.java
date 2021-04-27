@@ -1,6 +1,7 @@
 package com.yn.repository.impl;
 
 import com.yn.pojo.Tour;
+import com.yn.pojo.User;
 import com.yn.repository.TourRepository;
 import java.util.List;
 import javax.persistence.Query;
@@ -11,6 +12,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,6 +29,7 @@ public class TourReponsitoryImpl implements TourRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
     @Override
+    @Transactional
     public List<Tour> getTour() {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();

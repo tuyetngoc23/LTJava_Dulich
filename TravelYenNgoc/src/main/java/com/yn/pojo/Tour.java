@@ -11,6 +11,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,6 +27,34 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name="tour")
 public class Tour implements Serializable{
+
+    /**
+     * @return the diemDenID
+     */
+    public TinhThanh getDiemDenID() {
+        return diemDenID;
+    }
+
+    /**
+     * @param diemDenID the diemDenID to set
+     */
+    public void setDiemDenID(TinhThanh diemDenID) {
+        this.diemDenID = diemDenID;
+    }
+
+    /**
+     * @return the diemDiID
+     */
+    public TinhThanh getDiemDiID() {
+        return diemDiID;
+    }
+
+    /**
+     * @param diemDiID the diemDiID to set
+     */
+    public void setDiemDiID(TinhThanh diemDiID) {
+        this.diemDiID = diemDiID;
+    }
 
     /**
      * @return the id
@@ -72,30 +101,6 @@ public class Tour implements Serializable{
     /**
      * @return the diemDen_id
      */
-    public TinhThanh getDiemDen_id() {
-        return diemDen_id;
-    }
-
-    /**
-     * @param diemDen_id the diemDen_id to set
-     */
-    public void setDiemDen_id(TinhThanh diemDen_id) {
-        this.diemDen_id = diemDen_id;
-    }
-
-    /**
-     * @return the diemDi_id
-     */
-    public TinhThanh getDiemDi_id() {
-        return diemDi_id;
-    }
-
-    /**
-     * @param diemDi_id the diemDi_id to set
-     */
-    public void setDiemDi_id(TinhThanh diemDi_id) {
-        this.diemDi_id = diemDi_id;
-    }
 
     /**
      * @return the gioiHanNDi
@@ -142,15 +147,15 @@ public class Tour implements Serializable{
     /**
      * @return the loaiTour_id
      */
-    public LoaiTour getLoaiTour_id() {
-        return loaiTour_id;
+    public LoaiTour getLoaiTourID() {
+        return loaiTourID;
     }
 
     /**
      * @param loaiTour_id the loaiTour_id to set
      */
-    public void setLoaiTour_id(LoaiTour loaiTour_id) {
-        this.loaiTour_id = loaiTour_id;
+    public void setLoaiTourID(LoaiTour loaiTour_id) {
+        this.loaiTourID = loaiTour_id;
     }
 
     /**
@@ -187,10 +192,10 @@ public class Tour implements Serializable{
     private BigDecimal gia;
     @ManyToOne
     @JoinColumn(name = "diemDen_id")
-    private TinhThanh diemDen_id;
+    private TinhThanh diemDenID;
     @ManyToOne
     @JoinColumn(name = "diemDi_id")
-    private TinhThanh diemDi_id;
+    private TinhThanh diemDiID;//à
     private int gioiHanNDi;
     @Column(name = "ngayKetThuc")
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -199,8 +204,8 @@ public class Tour implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayKhoiHanh;
     @ManyToOne
-    @JoinColumn(name = "loaiTour_id")
-    private LoaiTour loaiTour_id;
+    @JoinColumn(name = "loaiTour_id")//chỗ này nè , ko có mấy cái này nó ko có mappBy dc á
+    public LoaiTour loaiTourID;//tên mappBy là cái này nè
     private String mota;
     private String image;
 }
