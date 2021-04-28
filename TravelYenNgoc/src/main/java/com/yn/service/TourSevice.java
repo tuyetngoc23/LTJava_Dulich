@@ -5,6 +5,7 @@
  */
 package com.yn.service;
 
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import java.util.List;
 
@@ -14,4 +15,5 @@ import java.util.List;
  */
 public interface TourSevice {
     List<Tour> getTour();
+    List<TinhThanh> getTinhThanh();
 }

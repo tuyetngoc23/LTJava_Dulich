@@ -1,5 +1,6 @@
 package com.yn.repository.impl;
 
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.TourRepository;
@@ -39,6 +40,14 @@ public class TourReponsitoryImpl implements TourRepository{
          Query q = session.createQuery("From Tour");
         return q.getResultList();
 
+    }
+
+    @Override
+    @Transactional
+    public List<TinhThanh> getTinhThanh() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("From TinhThanh");
+        return q.getResultList();
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package com.yn.service.impl;
 
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.TourRepository;
 import com.yn.service.TourSevice;
@@ -23,6 +24,11 @@ public class TourServiceImpl implements TourSevice{
     @Override
     public List<Tour> getTour() {
          return this.tourRepository.getTour();
+    }
+
+    @Override
+    public List<TinhThanh> getTinhThanh() {
+        return this.tourRepository.getTinhThanh();
     }
     
 }
