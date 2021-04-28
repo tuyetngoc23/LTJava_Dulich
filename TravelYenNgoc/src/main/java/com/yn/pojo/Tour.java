@@ -204,7 +204,7 @@ public class Tour implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayKhoiHanh;
     @ManyToOne
-    @JoinColumn(name = "loaiTour_id")//chỗ này nè , ko có mấy cái này nó ko có mappBy dc á
+    @JoinColumn(name = "loaiTour_id")
     public LoaiTour loaiTourID;//tên mappBy là cái này nè
     private String mota;
     private String image;

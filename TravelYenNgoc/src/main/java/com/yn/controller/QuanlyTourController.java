@@ -5,7 +5,6 @@
  */
 package com.yn.controller;
 
-import com.yn.repository.UserRepository;
 import com.yn.service.TourSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class QuanlyTourController {
     @Autowired
     private TourSevice tourService;
+    
     @RequestMapping("/admin")
     public String adindex(Model model){
        //model.addAttribute("user", this.userService.getUser());

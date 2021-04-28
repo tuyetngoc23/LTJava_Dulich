@@ -23,6 +23,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tinhthanh")
 public class TinhThanh implements Serializable{
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String ten; 
+    @OneToMany(mappedBy = "diemDenID",fetch = FetchType.EAGER)
+    private List<Tour> toursDen;
+    @OneToMany(mappedBy = "diemDiID",fetch = FetchType.EAGER)
+    private List<Tour> toursDi;
 
     /**
      * @return the ten
@@ -43,14 +51,7 @@ public class TinhThanh implements Serializable{
      * @return the name
      */
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String ten; 
-    @OneToMany(mappedBy = "diemDenID",fetch = FetchType.EAGER)
-    private List<Tour> toursDen;
-    @OneToMany(mappedBy = "diemDiID",fetch = FetchType.EAGER)
-    private List<Tour> toursDi;
+   
 
     public int getId() {
         return id;
