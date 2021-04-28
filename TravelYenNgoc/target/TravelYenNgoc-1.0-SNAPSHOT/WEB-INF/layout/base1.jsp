@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>TRANG CHỦ</title>
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
 
         <link rel="stylesheet" href="<c:url value="/assets_ui/css/bootstrap/bootstrap.css"/>">
