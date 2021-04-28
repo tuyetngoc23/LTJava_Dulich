@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -67,3 +68,47 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     
 </tiles-definitions>
 >>>>>>> master-->
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache
+Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
+        <put-attribute name="title" value="Trang chủ"/>
+        <put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
+        <put-attribute name="content" value="Welcome to our Website!!!"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+    </definition>
+    <definition name="admin" template="/WEB-INF/Admin/layout/adindex.jsp">
+         <put-attribute name="title" value="Trang chủ Admin"/>
+        <put-attribute name="header" value="/WEB-INF/Admin/layout/adheader.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/trangchu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/Admin/layout/adfooter.jsp"/>
+    </definition>
+   
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Danh muc"/>
+        <put-attribute name="content" value="/WEB-INF/pages/index.jsp"/>
+    </definition>
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Danh muc"/>
+        <put-attribute name="content" value="/WEB-INF/pages/login.jsp"/>
+    </definition>
+    <definition name="quanlytour" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
+    </definition>
+    <definition name="themtour" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/themtour.jsp"/>
+    </definition>
+</tiles-definitions>
+>>>>>>> 4c5e558626ea145526fbee05c40b24e14123b559
