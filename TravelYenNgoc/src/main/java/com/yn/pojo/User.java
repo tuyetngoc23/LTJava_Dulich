@@ -6,11 +6,14 @@
 package com.yn.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -32,6 +35,10 @@ public class User implements Serializable{
     private String userRole;
     @Column(name="is_active")
     private boolean active;
+    @OneToMany(mappedBy = "user")
+    private List<Customer> customer;
+    @OneToMany(mappedBy = "user")
+    private List<Employee> employees;
     
 
     /**
@@ -116,6 +123,34 @@ public class User implements Serializable{
      */
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    /**
+     * @return the customer
+     */
+    public List<Customer> getCustomer() {
+        return customer;
+    }
+
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(List<Customer> customer) {
+        this.customer = customer;
+    }
+
+    /**
+     * @return the employees
+     */
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    /**
+     * @param employees the employees to set
+     */
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
     
     

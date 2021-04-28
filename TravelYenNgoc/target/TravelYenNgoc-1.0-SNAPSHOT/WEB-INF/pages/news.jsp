@@ -1,24 +1,23 @@
 <%-- 
-    Document   : tourdetails
-    Created on : Apr 28, 2021, 7:51:36 PM
+    Document   : news
+    Created on : Apr 28, 2021, 9:31:48 PM
     Author     : Huynh Thi Tuyet Ngoc
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
-<form:form modelAttribute="tour">
 <section class="probootstrap_section bg-light">
     <div class="container">
         <div class="row text-center mb-5 probootstrap-animate">
             <div class="col-md-12">
-                <h2 class="display-4 border-bottom probootstrap-section-heading"><spring:message code="tour.title"/></h2>
+                <h2 class="display-4 border-bottom probootstrap-section-heading">News</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
+
                 <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
                     <div class="probootstrap-media-image" style="background-image: url(assets_ui/images/img_1.jpg)">
                     </div>
@@ -65,9 +64,9 @@
                         <p><a href="#">Read More</a></p>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </section>
-</form:form>
 <!-- END section -->

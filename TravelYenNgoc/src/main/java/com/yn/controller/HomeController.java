@@ -25,6 +25,21 @@ public class HomeController {
         model.addAttribute("tinhthanh", this.tourSevice.getTinhThanh());
         return "index";
     }
+    @RequestMapping("/tourdetails")
+    public String tourDetails(Model model){
+        model.addAttribute("tour", this.tourSevice.getTour());
+        return "tourdetails";
+    }
+    
+    @RequestMapping("/booking")
+    public String booking(Model model){
+        return "booking";
+    }
+    @RequestMapping("/news")
+    public String news(Model model){
+        return "news";
+    }
+    
 //     @RequestMapping("/admin")
 //    public String adindex(Model model){
 //       //model.addAttribute("user", this.userService.getUser());

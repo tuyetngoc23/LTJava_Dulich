@@ -9,6 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
+<form:form modelAttribute="tour">
 <section class="probootstrap_section bg-light">
     <div class="container">
         <div class="row text-center mb-5 probootstrap-animate">
@@ -18,7 +19,6 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-
                 <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
                     <div class="probootstrap-media-image" style="background-image: url(assets_ui/images/img_1.jpg)">
                     </div>
@@ -65,9 +65,9 @@
                         <p><a href="#">Read More</a></p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
+</form:form>
 <!-- END section -->
