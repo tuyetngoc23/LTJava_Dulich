@@ -27,7 +27,7 @@ public class Employee implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="user_id")
     private User user;
     @OneToMany(mappedBy = "employee")
     private List<TinTuc> tintuc;
