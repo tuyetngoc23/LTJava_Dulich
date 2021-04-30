@@ -5,12 +5,18 @@
  */
 package com.yn.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -37,9 +43,26 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/resource/css/");
-        registry.addResourceHandler("/image/**").addResourceLocations("/resource/image/");
+        registry.addResourceHandler("/images/**").addResourceLocations("/resource/images/");
         registry.addResourceHandler("/js/**").addResourceLocations("/resource/js/");
+        registry.addResourceHandler("/fonts/**").addResourceLocations("/resource/fonts/");
         registry.addResourceHandler("/admin/**").addResourceLocations("/resource/assets/");
+        registry.addResourceHandler("/assets_ui/**").addResourceLocations("/resource/assets_ui/");
+    }
+
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource resource
+                = new ResourceBundleMessageSource();
+        resource.setBasename("messagetour");
+        return resource;
+    }
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+        bean.setValidationMessageSource(messageSource());
+        
+        return bean;
     }
 
 //    @Bean

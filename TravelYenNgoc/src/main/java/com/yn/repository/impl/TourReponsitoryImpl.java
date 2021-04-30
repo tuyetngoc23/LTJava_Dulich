@@ -5,6 +5,7 @@
  */
 package com.yn.repository.impl;
 
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.TourRepository;
@@ -25,15 +26,16 @@ import org.springframework.transaction.annotation.Transactional;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ASUS
  */
 @Repository
-public class TourReponsitoryImpl implements TourRepository{
+public class TourReponsitoryImpl implements TourRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
+
     @Override
     @Transactional
     public List<Tour> getTour() {
@@ -42,28 +44,27 @@ public class TourReponsitoryImpl implements TourRepository{
         CriteriaQuery<Tour> query = builder.createQuery(Tour.class);
         Root root = query.from(Tour.class);
         query.select(root);
-         Query q = session.createQuery("From Tour");
+        Query q = session.createQuery("From Tour");
         return q.getResultList();
 
     }
-
     @Override
     @Transactional
     public boolean addOrUpdateTour(Tour tour) {
-                Session s = this.sessionFactory.getObject().getCurrentSession();
+        Session s = this.sessionFactory.getObject().getCurrentSession();
         try {
-            if (tour.getId() > 0)
+            if (tour.getId() > 0) {
                 s.update(tour);
-            else
+            } else {
                 s.save(tour);
-            
+            }
+
             return true;
         } catch (HibernateException ex) {
             ex.printStackTrace();
         }
-        
+
         return false;
     }
-
 
 }

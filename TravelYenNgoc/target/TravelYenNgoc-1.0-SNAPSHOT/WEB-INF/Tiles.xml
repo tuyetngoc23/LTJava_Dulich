@@ -1,20 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache
 Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
+    <definition name="baseLayout" template="/WEB-INF/layout/base1.jsp">
         <put-attribute name="title" value="Trang chủ"/>
-        <put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
+        <put-attribute name="header" value="/WEB-INF/layout/header1.jsp"/>
         <put-attribute name="content" value="Welcome to our Website!!!"/>
-        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/footer1.jsp"/>
+    </definition>
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Danh muc"/>
+        <put-attribute name="content" value="/WEB-INF/pages/index1.jsp"/>
+    </definition>
+    <definition name="tourdetails" extends="baseLayout">
+        <put-attribute name="title" value="Chi tiết tour"/>
+        <put-attribute name="content" value="/WEB-INF/pages/tourdetails.jsp"/>
+    </definition>
+    <definition name="booking" extends="baseLayout">
+        <put-attribute name="title" value="Booking Tour"/>
+        <put-attribute name="content" value="/WEB-INF/pages/booking.jsp"/>
+    </definition>
+    <definition name="news" extends="baseLayout">
+        <put-attribute name="title" value="News"/>
+        <put-attribute name="content" value="/WEB-INF/pages/news.jsp"/>
     </definition>
     <definition name="admin" template="/WEB-INF/Admin/layout/adindex.jsp">
          <put-attribute name="title" value="Trang chủ Admin"/>
@@ -22,13 +30,16 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/Admin/pages/trangchu.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/Admin/layout/adfooter.jsp"/>
     </definition>
-   
-    <definition name="index" extends="baseLayout">
-        <put-attribute name="title" value="Danh muc"/>
-        <put-attribute name="content" value="/WEB-INF/pages/index.jsp"/>
+    <definition name="quanlytour" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
     </definition>
-    <definition name="login" extends="baseLayout">
-        <put-attribute name="title" value="Danh muc"/>
+    <definition name="themtour" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/themtour.jsp"/>
+    </definition>
+    <definition name="login" template="/WEB-INF/pages/login.jsp">
+        <put-attribute name="title" value="Login"/>
         <put-attribute name="content" value="/WEB-INF/pages/login.jsp"/>
     </definition>
     <definition name="quanlytour" extends="admin">
@@ -44,3 +55,4 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/Admin/pages/upanh.jsp"/>
     </definition>
 </tiles-definitions>
+

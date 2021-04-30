@@ -27,6 +27,29 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name="tour")
 public class Tour implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String ten;
+    private BigDecimal gia;
+    @ManyToOne
+    @JoinColumn(name = "diemDen_id")
+    private TinhThanh diemDenID;
+    @ManyToOne
+    @JoinColumn(name = "diemDi_id")
+    private TinhThanh diemDiID;//à
+    private int gioiHanNDi;
+    @Column(name = "ngayKetThuc")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date ngayKetThuc;
+    @Column(name = "ngayKhoiHanh")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date ngayKhoiHanh;
+    @ManyToOne
+    @JoinColumn(name = "loaiTour_id")
+    public LoaiTour loaiTourID;//tên mappBy là cái này nè
+    private String mota;
+    private String image;
 
     /**
      * @return the diemDenID
@@ -185,27 +208,5 @@ public class Tour implements Serializable{
     public void setImage(String image) {
         this.image = image;
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String ten;
-    private BigDecimal gia;
-    @ManyToOne
-    @JoinColumn(name = "diemDen_id")
-    private TinhThanh diemDenID;
-    @ManyToOne
-    @JoinColumn(name = "diemDi_id")
-    private TinhThanh diemDiID;//à
-    private int gioiHanNDi;
-    @Column(name = "ngayKetThuc")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date ngayKetThuc;
-    @Column(name = "ngayKhoiHanh")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date ngayKhoiHanh;
-    @ManyToOne
-    @JoinColumn(name = "loaiTour_id")//chỗ này nè , ko có mấy cái này nó ko có mappBy dc á
-    public LoaiTour loaiTourID;//tên mappBy là cái này nè
-    private String mota;
-    private String image;
+    
 }

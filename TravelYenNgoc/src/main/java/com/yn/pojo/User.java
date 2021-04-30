@@ -5,9 +5,15 @@
  */
 package com.yn.pojo;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -16,12 +22,24 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Serializable{
+    public static final String ROLE_USER = "ROLE_USER";
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String hoTen;
     private String username;
     private String passWord;
+    @Column(name = "user_role")
+    private String userRole;
+    @Column(name="is_active")
+    private boolean active;
+    @OneToMany(mappedBy = "user")
+    private List<Customer> customer;
+    @OneToMany(mappedBy = "user")
+    private List<Employee> employees;
+    
 
     /**
      * @return the id
@@ -78,6 +96,63 @@ public class User {
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
+
+    /**
+     * @return the userRole
+     */
+    public String getUserRole() {
+        return userRole;
+    }
+
+    /**
+     * @param userRole the userRole to set
+     */
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
+    /**
+     * @return the active
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * @param active the active to set
+     */
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    /**
+     * @return the customer
+     */
+    public List<Customer> getCustomer() {
+        return customer;
+    }
+
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(List<Customer> customer) {
+        this.customer = customer;
+    }
+
+    /**
+     * @return the employees
+     */
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    /**
+     * @param employees the employees to set
+     */
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
     
     
 }
+

@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.yn.service;
-
 import com.yn.pojo.Tour;
 import java.util.List;
 
@@ -14,5 +13,6 @@ import java.util.List;
  */
 public interface TourSevice {
     List<Tour> getTour();
-     boolean addOrUpdateTour(Tour tour);
+    boolean addOrUpdateTour(Tour tour);
+  
 }

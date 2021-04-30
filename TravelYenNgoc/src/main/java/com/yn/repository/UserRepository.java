@@ -13,5 +13,7 @@ import java.util.List;
  * @author Huynh Thi Tuyet Ngoc
  */
 public interface UserRepository {
-    List<User> getUser();
+    List<User> getUsers(String username);
+    boolean addUser(User user);
 }
+

@@ -5,6 +5,7 @@
  */
 package com.yn.repository;
 
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import java.util.List;
 
@@ -14,5 +15,7 @@ import java.util.List;
  */
 public interface TourRepository {
      List<Tour> getTour();
+
      boolean addOrUpdateTour(Tour tour);
+
 }
