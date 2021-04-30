@@ -5,11 +5,22 @@
  */
 package com.yn.controller;
 
+import com.yn.pojo.MyFile;
+import com.yn.repository.UserRepository;
+import com.yn.service.LoaiTourService;
+import com.yn.service.TinhThanhService;
+
 import com.yn.service.TourSevice;
+import java.io.File;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -17,23 +28,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class QuanlyTourController {
+
     @Autowired
     private TourSevice tourService;
-    
+    @Autowired
+    private TinhThanhService tinhThanhService;
+    @Autowired
+    private LoaiTourService loaiTourService;
+
     @RequestMapping("/admin")
-    public String adindex(Model model){
-       //model.addAttribute("user", this.userService.getUser());
+    public String adindex(Model model) {
+        //model.addAttribute("user", this.userService.getUser());
         return "admin";
     }
-    
+
     @RequestMapping("/admin/quanlytour")
-    public String quanLyTour(Model model){
+    public String quanLyTour(Model model) {
         model.addAttribute("tours", this.tourService.getTour());
         return "quanlytour";
     }
+
     @RequestMapping("/admin/themtour")
-    public String themtour(Model model){
-        model.addAttribute("tours", this.tourService.getTour());
+    public String index(Model model) {
+        model.addAttribute("myFile", new MyFile());
+        model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
+        model.addAttribute("loaitour", this.loaiTourService.getLoaiTour());
         return "themtour";
     }
+
+    @RequestMapping(value = "/admin/themtour/upload", method = RequestMethod.POST)
+    public String themtour(Model model, MyFile myFile, HttpServletRequest request) {
+        System.out.println("heloo");
+        try {
+            MultipartFile multipartFile = myFile.getMultipartFile();
+            String s1 = request.getSession().getServletContext().getRealPath("/");
+            int index1 = s1.indexOf("\\target\\SpringMVCUploadFile-0.0.1-SNAPSHOT");
+            String current = s1.substring(0, index1) + "\\src\\main\\webapp\\resources\\update\\";
+            File upload = new File(current, multipartFile.getOriginalFilename());
+            multipartFile.transferTo(upload);
+            System.out.println(current);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "themtour";
+        }
+        return "themtour";
+    }
+
 }

@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package com.yn.service;
+
+import com.yn.pojo.LoaiTour;
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import java.util.List;
 
@@ -11,8 +14,6 @@ import java.util.List;
  *
  * @author ASUS
  */
-public interface TourSevice {
-    List<Tour> getTour();
-    boolean addOrUpdateTour(Tour tour);
-  
+public interface LoaiTourService {
+    List<LoaiTour> getLoaiTour();
 }

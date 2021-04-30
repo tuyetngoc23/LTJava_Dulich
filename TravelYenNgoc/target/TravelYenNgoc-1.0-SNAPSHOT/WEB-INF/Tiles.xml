@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache
 Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
@@ -50,4 +42,17 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Login"/>
         <put-attribute name="content" value="/WEB-INF/pages/login.jsp"/>
     </definition>
+    <definition name="quanlytour" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
+    </definition>
+    <definition name="themtour" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/themtour.jsp"/>
+    </definition>
+    <definition name="upanh" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/upanh.jsp"/>
+    </definition>
 </tiles-definitions>
+

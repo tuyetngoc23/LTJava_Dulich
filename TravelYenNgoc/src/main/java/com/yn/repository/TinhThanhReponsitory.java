@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.yn.service;
-import com.yn.pojo.Tour;
+package com.yn.repository;
+
+import com.yn.pojo.TinhThanh;
+import com.yn.pojo.User;
 import java.util.List;
 
 /**
  *
- * @author ASUS
+ * @author Huynh Thi Tuyet Ngoc
  */
-public interface TourSevice {
-    List<Tour> getTour();
-    boolean addOrUpdateTour(Tour tour);
-  
+public interface TinhThanhReponsitory {
+    List<TinhThanh> getTinhThanh();
 }

@@ -15,5 +15,7 @@ import java.util.List;
  */
 public interface TourRepository {
      List<Tour> getTour();
-     List<TinhThanh> getTinhThanh();
+
+     boolean addOrUpdateTour(Tour tour);
+
 }

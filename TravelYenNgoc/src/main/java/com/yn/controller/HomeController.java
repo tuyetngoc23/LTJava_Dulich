@@ -5,6 +5,7 @@
  */
 package com.yn.controller;
 
+import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @Autowired
     private TourSevice tourSevice;
-    
+    @Autowired
+    private TinhThanhService tinhThanhService;
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("tinhthanh", this.tourSevice.getTinhThanh());
+        model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
         return "index";
     }
     @RequestMapping("/tourdetails")
@@ -39,11 +41,6 @@ public class HomeController {
     public String news(Model model){
         return "news";
     }
-    
-//     @RequestMapping("/admin")
-//    public String adindex(Model model){
-//       //model.addAttribute("user", this.userService.getUser());
-//        return "admin";
-//    }
+
     
 }
