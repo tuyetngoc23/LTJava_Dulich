@@ -5,14 +5,14 @@
  */
 package com.yn.repository;
 
-import com.yn.pojo.Tour;
+import com.yn.pojo.TinhThanh;
+import com.yn.pojo.User;
 import java.util.List;
 
 /**
  *
- * @author ASUS
+ * @author Huynh Thi Tuyet Ngoc
  */
-public interface TourRepository {
-     List<Tour> getTour();
-     boolean addOrUpdateTour(Tour tour);
+public interface TinhThanhReponsitory {
+    List<TinhThanh> getTinhThanh();
 }

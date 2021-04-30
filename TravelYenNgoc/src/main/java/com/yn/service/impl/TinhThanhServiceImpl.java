@@ -5,8 +5,11 @@
  */
 package com.yn.service.impl;
 
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
+import com.yn.repository.TinhThanhReponsitory;
 import com.yn.repository.TourRepository;
+import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +20,12 @@ import org.springframework.stereotype.Service;
  * @author ASUS
  */
 @Service
-public class TourServiceImpl implements TourSevice{
+public class TinhThanhServiceImpl implements TinhThanhService{
     @Autowired
-    private TourRepository tourRepository;
+    private TinhThanhReponsitory tinhThanhReponsitory;
     @Override
-    public List<Tour> getTour() {
-         return this.tourRepository.getTour();
-    }
-
-    @Override
-    public boolean addOrUpdateTour(Tour tour) {
-         return this.tourRepository.addOrUpdateTour(tour);
+    public List<TinhThanh> getTinhThanh() {
+         return this.tinhThanhReponsitory.getTinhThanh();
     }
     
 }

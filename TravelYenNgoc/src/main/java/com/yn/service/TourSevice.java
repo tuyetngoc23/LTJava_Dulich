@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface TourSevice {
     List<Tour> getTour();
+     boolean addOrUpdateTour(Tour tour);
 }

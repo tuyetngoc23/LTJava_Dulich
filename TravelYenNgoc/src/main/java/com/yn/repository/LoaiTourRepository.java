@@ -5,6 +5,7 @@
  */
 package com.yn.repository;
 
+import com.yn.pojo.LoaiTour;
 import com.yn.pojo.Tour;
 import java.util.List;
 
@@ -12,7 +13,6 @@ import java.util.List;
  *
  * @author ASUS
  */
-public interface TourRepository {
-     List<Tour> getTour();
-     boolean addOrUpdateTour(Tour tour);
+public interface LoaiTourRepository {
+     List<LoaiTour> getLoaiTour();
 }
