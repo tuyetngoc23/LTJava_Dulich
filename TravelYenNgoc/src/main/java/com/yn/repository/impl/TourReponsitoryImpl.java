@@ -48,6 +48,7 @@ public class TourReponsitoryImpl implements TourRepository {
         return q.getResultList();
 
     }
+
     @Override
     @Transactional
     public boolean addOrUpdateTour(Tour tour) {
@@ -64,6 +65,27 @@ public class TourReponsitoryImpl implements TourRepository {
             ex.printStackTrace();
         }
 
+        return false;
+    }
+
+    @Override
+    @Transactional
+    public Tour getTourById(int tourId) {
+        return this.sessionFactory.getObject().getCurrentSession().get(Tour.class, tourId);
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteTour(int tourId) {
+        try {
+            Session session = this.sessionFactory.getObject().getCurrentSession();
+            Tour p = session.get(Tour.class, tourId);
+            session.delete(p);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+        
         return false;
     }
 

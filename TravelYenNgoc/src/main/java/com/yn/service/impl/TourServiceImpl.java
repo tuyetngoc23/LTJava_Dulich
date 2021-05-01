@@ -28,4 +28,14 @@ public class TourServiceImpl implements TourSevice{
     public boolean addOrUpdateTour(Tour tour) {
          return this.tourRepository.addOrUpdateTour(tour);
     }
+
+    @Override
+    public Tour getTourById(int i) {
+        return  this.tourRepository.getTourById(i);
+    }
+
+    @Override
+    public boolean deleteTour(int i) {
+        return  this.tourRepository.deleteTour(i);
+    }
 }
