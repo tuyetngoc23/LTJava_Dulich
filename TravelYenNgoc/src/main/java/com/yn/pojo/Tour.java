@@ -19,6 +19,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+
 
 /**
  *
@@ -27,6 +31,8 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name="tour")
 public class Tour implements Serializable{
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -40,9 +46,11 @@ public class Tour implements Serializable{
     private TinhThanh diemDiID;//à
     private int gioiHanNDi;
     @Column(name = "ngayKetThuc")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayKetThuc;
     @Column(name = "ngayKhoiHanh")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayKhoiHanh;
     @ManyToOne
@@ -50,6 +58,15 @@ public class Tour implements Serializable{
     public LoaiTour loaiTourID;//tên mappBy là cái này nè
     private String mota;
     private String image;
+    @Transient
+    private MultipartFile imgUploadFile;
+
+    public MultipartFile getImgUploadFile(){
+        return imgUploadFile;
+    }
+    public void setImgUploadFile(MultipartFile imgUploadFile){
+       this.imgUploadFile = imgUploadFile;
+    }
 
     /**
      * @return the diemDenID

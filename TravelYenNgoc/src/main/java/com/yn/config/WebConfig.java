@@ -48,6 +48,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/fonts/**").addResourceLocations("/resource/fonts/");
         registry.addResourceHandler("/admin/**").addResourceLocations("/resource/assets/");
         registry.addResourceHandler("/assets_ui/**").addResourceLocations("/resource/assets_ui/");
+       // registry.addResourceHandler("/assets/**").addResourceLocations("/resource/assets_admin/");
     }
 
     @Bean
@@ -75,5 +76,12 @@ public class WebConfig implements WebMvcConfigurer {
 //        resolver.setSuffix(".jsp");
 //        return resolver;
 //    }
+    
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+     CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+     resolver.setDefaultEncoding("UTF-8");
+     return resolver;
+}
 
 }

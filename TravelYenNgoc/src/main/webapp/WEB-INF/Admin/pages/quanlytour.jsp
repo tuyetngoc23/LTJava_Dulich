@@ -19,8 +19,8 @@
                     <div class="row" style="padding: 30px">
                         <c:forEach items="${tours}" var="u">
                             <div class="col-sm-4">
-                                <div class="card sm-4 box-shadow" >
-                                    <img class="card-img-top" src="http://localhost:8080${pageContext.request.contextPath}${u.image}" alt="abc">
+                                <div class="card sm-4 box-shadow" > 
+                                    <img class="card-img-top" src="<c:url value="${u.image}"/> " alt="abc">
                                     <div class="card-body">
                                         <h4> Mã:${u.id} - ${u.ten}</h4>
                                         <p>Địa điểm đi:  
