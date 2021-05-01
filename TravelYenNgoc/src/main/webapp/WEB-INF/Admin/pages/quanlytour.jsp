@@ -39,7 +39,8 @@
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-sm btn-outline-secondary">Xem</button>
                                                 <button type="button" class="btn btn-sm btn-outline-secondary">Sửa</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Xóa</button>
+<!--                                                <button type="button" class="btn btn-sm btn-outline-secondary">Xóa</button>-->
+                                                   <a href="javascript:;" class="btn btn-danger" onclick="deleteTour(${u.id})">Xóa</a>
                                             </div>
                                             <small class="text-muted">9 mins</small>
                                         </div>
@@ -51,7 +52,7 @@
                 </div>
             </div>
         </div>
-
+<script src="<c:url value="/admin/jsadmin/tour.js" />"></script>
 
 
 
