@@ -20,23 +20,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
-
 
 /**
  *
  * @author ASUS
  */
 @Entity
-@Table(name="tour")
-public class Tour implements Serializable{
-
+@Table(name = "tour")
+public class Tour implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotEmpty(message = "{tour.err.ten}")
     private String ten;
+    @Min(value = 1000000, message = "{tour.err.gia}")
+     @Max(value = 10000000, message = "{tour.err.gia}")
     private BigDecimal gia;
     @ManyToOne
     @JoinColumn(name = "diemDen_id")
@@ -44,6 +49,8 @@ public class Tour implements Serializable{
     @ManyToOne
     @JoinColumn(name = "diemDi_id")
     private TinhThanh diemDiID;//à
+    @Min(value = 10, message = "{tour.err.gioihansoluong}")
+    @Max(value = 100, message = "{tour.err.gioihansoluong}")
     private int gioiHanNDi;
     @Column(name = "ngayKetThuc")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -56,16 +63,18 @@ public class Tour implements Serializable{
     @ManyToOne
     @JoinColumn(name = "loaiTour_id")
     public LoaiTour loaiTourID;//tên mappBy là cái này nè
+    @NotEmpty(message = "{tour.err.mota}")
     private String mota;
     private String image;
     @Transient
     private MultipartFile imgUploadFile;
 
-    public MultipartFile getImgUploadFile(){
+    public MultipartFile getImgUploadFile() {
         return imgUploadFile;
     }
-    public void setImgUploadFile(MultipartFile imgUploadFile){
-       this.imgUploadFile = imgUploadFile;
+
+    public void setImgUploadFile(MultipartFile imgUploadFile) {
+        this.imgUploadFile = imgUploadFile;
     }
 
     /**
@@ -141,7 +150,6 @@ public class Tour implements Serializable{
     /**
      * @return the diemDen_id
      */
-
     /**
      * @return the gioiHanNDi
      */
@@ -225,5 +233,5 @@ public class Tour implements Serializable{
     public void setImage(String image) {
         this.image = image;
     }
-    
+
 }

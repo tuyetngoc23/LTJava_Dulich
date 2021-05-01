@@ -10,7 +10,6 @@
 <!DOCTYPE html>
 <div class="content">
     <form:form method="post" modelAttribute="tour" enctype="multipart/form-data" >
-        <form:errors path="*" element="div" cssClass="alert alert-danger" />
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
@@ -22,16 +21,29 @@
                         <div class="card-body">
                             <form>
                                 <div class="row">
+                                    <c:if test="${tour.id}==0">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating" >Mã tour</label>
+                                            <form:input id="id" cssClass="form-control" path="id" readonly="true" style ="  background-color: #202940;
+  opacity: 1;"/>
+                                            <form:errors path="id" cssClass="text-danger" />
+                                        </div>
+                                    </div>
+                                    </c:if>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Tên Tour</label>
+
                                             <form:input id="ten" cssClass="form-control" path="ten" />
+                                            <form:errors path="ten" cssClass="text-danger" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Giá</label>
                                             <form:input id="gia" type="number" cssClass="form-control" path="gia" />
+                                            <form:errors path="gia" cssClass="text-danger" />
                                         </div>
                                     </div>
                                 </div>
@@ -72,6 +84,7 @@
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Số người tối đa</label>
                                             <form:input id="gioiHanNDi" type="number" cssClass="form-control" path="gioiHanNDi" />
+                                            <form:errors path="gioiHanNDi" cssClass="text-danger" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -103,23 +116,17 @@
                                             <form:input type="date" value="2011-08-19" cssClass="form-control" id="ngayKetThuc" path="ngayKetThuc"/>
                                         </div>
                                     </div>
-                       <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="custom-file">
-
-                                            <form:input  path="imgUploadFile" type="file" class="custom-file-input" id="multipartFile"/>
-                                              
-                                            <label class="custom-file-label" for="multipartFile">Chọn hình ảnh cho tour</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                            <!--                                    <div class="col-md-6">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="custom-file">
-                                                <label class="custom-file-label" for="customFile">Chọn hình ảnh cho tour</label>
+
+                                                <form:input  path="imgUploadFile" type="file" class="custom-file-input" id="multipartFile"/>
+
+                                                <label class="custom-file-label" for="multipartFile">Chọn hình ảnh cho tour</label>
                                             </div>
                                         </div>
-                                    </div>-->
+                                    </div>
+
                                 </div>
 
                                 <div class="row">
@@ -129,11 +136,12 @@
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Thông tin tour du lịch</label>
                                                 <form:textarea class="form-control" path="mota" id ="mota" rows="5" /> 
+                                                <form:errors path="mota" cssClass="text-danger" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" value="Submit" />
+                                <button type="submit" class="btn btn-primary pull-right">Thêm tour</button>
                                 <div class="clearfix"></div>
                             </form>
                         </form:form>

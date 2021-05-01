@@ -14,8 +14,9 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Quản Lý tour du lịch</h4>
-                        <p class="card-category"> wwww.travelyenngoc.com</p>
+                        <a href="<c:url value="/admin/quanlytour/themtour" />" > <button type="button"  class="btn btn-primary" >Thêm tour mới</button></a>
                     </div>
+                   
                     <div class="row" style="padding: 30px">
                         <c:forEach items="${tours}" var="u">
                             <div class="col-sm-4">
@@ -37,8 +38,10 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-sm btn-outline-secondary">Xem</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Sửa</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Xóa</button>
+<!--                                                <button type="button" class="btn btn-sm btn-outline-secondary">Sửa</button>-->
+<!--                                                <button type="button" class="btn btn-sm btn-outline-secondary">Xóa</button>-->
+                                                     <a href="<c:url value="quanlytour/themtour/?tourId=${u.id}" />" class="btn btn-info">Cập nhật</a>
+                                                   <a href="javascript:;" class="btn btn-danger" onclick="deleteTour(${u.id})">Xóa</a>
                                             </div>
                                             <small class="text-muted">9 mins</small>
                                         </div>
@@ -50,7 +53,7 @@
                 </div>
             </div>
         </div>
-
+<script src="<c:url value="/admin/jsadmin/tour.js" />"></script>
 
 
 
