@@ -38,8 +38,9 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-sm btn-outline-secondary">Xem</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Sửa</button>
+<!--                                                <button type="button" class="btn btn-sm btn-outline-secondary">Sửa</button>-->
 <!--                                                <button type="button" class="btn btn-sm btn-outline-secondary">Xóa</button>-->
+                                                     <a href="<c:url value="quanlytour/themtour/?tourId=${u.id}" />" class="btn btn-info">Cập nhật</a>
                                                    <a href="javascript:;" class="btn btn-danger" onclick="deleteTour(${u.id})">Xóa</a>
                                             </div>
                                             <small class="text-muted">9 mins</small>

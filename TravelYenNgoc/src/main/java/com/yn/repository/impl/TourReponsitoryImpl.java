@@ -54,6 +54,7 @@ public class TourReponsitoryImpl implements TourRepository {
     public boolean addOrUpdateTour(Tour tour) {
         Session s = this.sessionFactory.getObject().getCurrentSession();
         try {
+            System.out.println(tour.getId());
             if (tour.getId() > 0) {
                 s.update(tour);
             } else {

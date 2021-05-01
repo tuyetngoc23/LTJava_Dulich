@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 function deleteTour(tourId) {
-    
     if (confirm("Bạn chắc chắn xóa không?") == true) { 
         fetch(`/TravelYenNgoc/api/admin/quanlytour/${tourId}`, {
             method: "delete",
