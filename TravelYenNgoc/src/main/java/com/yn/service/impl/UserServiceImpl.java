@@ -5,7 +5,9 @@
  */
 package com.yn.service.impl;
 
+import com.yn.pojo.Customer;
 import com.yn.pojo.User;
+import com.yn.repository.TourRepository;
 import com.yn.repository.UserRepository;
 import com.yn.service.UserService;
 import java.util.HashSet;
@@ -24,41 +26,52 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Huynh Thi Tuyet Ngoc
  */
-@Service("userDetailsService")
+@Service
 public class UserServiceImpl implements UserService {
-
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
     @Override
-    @Transactional
-    public boolean addUser(User user) {
-        user.setPassWord(this.passwordEncoder.encode(user.getPassWord()));
-        return userRepository.addUser(user);
+    public List<Customer> getCustormer() {
+       return userRepository.getCustormer();
     }
 
-    @Override
-    @Transactional
-    public List<User> getUsers(String username) {
-        return userRepository.getUsers(username);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<User> users = this.getUsers(username);
-        if (users.isEmpty()) {
-            throw new UsernameNotFoundException("KhÃ´ng tÃ¬m tháº¥y user");
-        }
-        User u = users.get(0);
-
-        Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(u.getUserRole()));
-        
-        return new org.springframework.security.core.userdetails.User(
-                u.getUsername(), u.getPassWord(), authorities);
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Autowired
+//    private UserRepository userRepository;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
+//
+//    @Override
+//    @Transactional
+//    public boolean addUser(User user) {
+//        user.setPassWord(this.passwordEncoder.encode(user.getPassWord()));
+//        return userRepository.addUser(user);
+//    }
+//
+//    @Override
+//    @Transactional
+//    public List<User> getUsers(String username) {
+//        return userRepository.getUsers(username);
+//    }
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        List<User> users = this.getUsers(username);
+//        if (users.isEmpty()) {
+//            throw new UsernameNotFoundException("KhÃ´ng tÃ¬m tháº¥y user");
+//        }
+//        User u = users.get(0);
+//
+//        Set<GrantedAuthority> authorities = new HashSet<>();
+//        authorities.add(new SimpleGrantedAuthority(u.getUserRole()));
+//        
+//        return new org.springframework.security.core.userdetails.User(
+//                u.getUsername(), u.getPassWord(), authorities);
+//    }
 
 }
 

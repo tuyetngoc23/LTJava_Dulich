@@ -50,6 +50,7 @@ public class TourReponsitoryImpl implements TourRepository {
                     String.format("%%%s%%", kw));
         query = query.where(p);
         Query q = session.createQuery(query);
+        
         return q.getResultList();
         
     }

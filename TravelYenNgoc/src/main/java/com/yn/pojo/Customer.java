@@ -6,13 +6,15 @@
 package com.yn.pojo;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -20,69 +22,25 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "customer")
-public class Customer implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String binhLuan;
-    private int soLuotThich;
-    @ManyToOne
-    @JoinColumn(name="userid")
-    private User user;
+@DiscriminatorValue("C")
+public class Customer extends User implements Serializable{
 
     /**
-     * @return the id
+     * @return the idCus
      */
-    public int getId() {
-        return id;
+    public User getIdCus() {
+        return idCus;
     }
 
     /**
-     * @param id the id to set
+     * @param idCus the idCus to set
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCus(User idCus) {
+        this.idCus = idCus;
     }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    @MapsId
+    private User idCus;
 
-    /**
-     * @return the binhLuan
-     */
-    public String getBinhLuan() {
-        return binhLuan;
-    }
-
-    /**
-     * @param binhLuan the binhLuan to set
-     */
-    public void setBinhLuan(String binhLuan) {
-        this.binhLuan = binhLuan;
-    }
-
-    /**
-     * @return the soLuotThich
-     */
-    public int getSoLuotThich() {
-        return soLuotThich;
-    }
-
-    /**
-     * @param soLuotThich the soLuotThich to set
-     */
-    public void setSoLuotThich(int soLuotThich) {
-        this.soLuotThich = soLuotThich;
-    }
-
-    /**
-     * @return the user
-     */
-    public User getUser() {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

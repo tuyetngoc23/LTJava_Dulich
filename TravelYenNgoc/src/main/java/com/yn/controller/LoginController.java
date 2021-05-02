@@ -33,9 +33,9 @@ public class LoginController {
     @PostMapping("/login")
     public String login(Model model, @ModelAttribute(name = "user") @Valid User user,
             BindingResult result){
-        if(result.hasErrors())
-            return "login";
-        userService.loadUserByUsername(user.getUsername());
-        return "redirect:/admin";
+//        if(result.hasErrors())
+//            return "login";
+//        userService.loadUserByUsername(user.getUsername());
+       return "redirect:/admin";
     }
 }
