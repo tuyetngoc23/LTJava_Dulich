@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -28,8 +29,8 @@ public class HomeController {
         return "index";
     }
     @RequestMapping("/tourdetails")
-    public String tourDetails(Model model){
-        model.addAttribute("tour", this.tourSevice.getTour());
+    public String tourDetails(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw){
+        model.addAttribute("tour", this.tourSevice.getTour(kw));
         return "tourdetails";
     }
     

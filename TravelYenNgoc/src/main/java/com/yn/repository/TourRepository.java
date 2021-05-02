@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface TourRepository {
 
-    List<Tour> getTour();
+    List<Tour> getTour(String kw);
 
     boolean addOrUpdateTour(Tour tour);
 

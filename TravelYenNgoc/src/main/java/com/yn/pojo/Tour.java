@@ -40,8 +40,8 @@ public class Tour implements Serializable {
     private int id;
     @NotEmpty(message = "{tour.err.ten}")
     private String ten;
-    @Min(value = 1000000, message = "{tour.err.gia}")
-     @Max(value = 10000000, message = "{tour.err.gia}")
+    @Min(value = 1999999, message = "{tour.err.gia}")
+    @Max(value = 10000000, message = "{tour.err.gia}")
     private BigDecimal gia;
     @ManyToOne
     @JoinColumn(name = "diemDen_id")

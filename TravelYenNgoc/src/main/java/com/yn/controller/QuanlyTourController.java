@@ -46,8 +46,9 @@ public class QuanlyTourController {
     }
 
     @RequestMapping("/admin/quanlytour")
-    public String quanLyTour(Model model) {
-        model.addAttribute("tours", this.tourService.getTour());
+    public String quanLyTour(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
+       
+        model.addAttribute("tours", this.tourService.getTour(kw));
         return "quanlytour";
     }
 
