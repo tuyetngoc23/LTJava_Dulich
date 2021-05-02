@@ -7,14 +7,19 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -23,6 +28,20 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name="tintuc")
 public class TinTuc implements Serializable{
+
+    /**
+     * @return the soLuotThich
+     */
+    public int getSoLuotThich() {
+        return soLuotThich;
+    }
+
+    /**
+     * @param soLuotThich the soLuotThich to set
+     */
+    public void setSoLuotThich(int soLuotThich) {
+        this.soLuotThich = soLuotThich;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,11 +51,18 @@ public class TinTuc implements Serializable{
     private Date ngayDang;
     private boolean trangThai;
     private String anh;
-    private int viewer;
+    private int soLuotThich;
     @ManyToOne
     @JoinColumn(name="emloyee_id")
     private Employee employee;
-
+    
+    @OneToMany(mappedBy = "customerId")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<BinhLuan> binhLuans;
+    
+    @OneToMany(mappedBy = "tintucIdThich")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Thich> thichs;
     /**
      * @return the id
      */
@@ -119,20 +145,6 @@ public class TinTuc implements Serializable{
      */
     public void setAnh(String anh) {
         this.anh = anh;
-    }
-
-    /**
-     * @return the viewer
-     */
-    public int getViewer() {
-        return viewer;
-    }
-
-    /**
-     * @param viewer the viewer to set
-     */
-    public void setViewer(int viewer) {
-        this.viewer = viewer;
     }
 
     /**
