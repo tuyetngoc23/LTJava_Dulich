@@ -7,13 +7,17 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,55 +26,24 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="employee")
-public class Employee implements Serializable{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
-    @OneToMany(mappedBy = "employee")
-    private List<TinTuc> tintuc;
+@DiscriminatorValue("E")
+public class Employee extends User implements Serializable{
 
     /**
-     * @return the id
+     * @return the idStaff
      */
-    public int getId() {
-        return id;
+    public User getIdStaff() {
+        return idStaff;
     }
 
     /**
-     * @param id the id to set
+     * @param idStaff the idStaff to set
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setIdStaff(User idStaff) {
+        this.idStaff = idStaff;
     }
-
-    /**
-     * @return the user
-     */
-    public User getUser() {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    /**
-     * @return the tintuc
-     */
-    public List<TinTuc> getTintuc() {
-        return tintuc;
-    }
-
-    /**
-     * @param tintuc the tintuc to set
-     */
-    public void setTintuc(List<TinTuc> tintuc) {
-        this.tintuc = tintuc;
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    @MapsId
+    private User idStaff;
 }

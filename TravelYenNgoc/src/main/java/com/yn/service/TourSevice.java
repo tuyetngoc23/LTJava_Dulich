@@ -12,7 +12,7 @@ import java.util.List;
  * @author ASUS
  */
 public interface TourSevice {
-    List<Tour> getTour();
+    List<Tour> getTour(String kw);
     boolean addOrUpdateTour(Tour tour);
     Tour getTourById(int tourId);
    boolean deleteTour(int tourId);

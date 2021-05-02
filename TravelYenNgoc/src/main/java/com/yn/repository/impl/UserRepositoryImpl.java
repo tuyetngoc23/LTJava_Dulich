@@ -6,6 +6,9 @@
 package com.yn.repository.impl;
 
 
+import com.yn.pojo.Customer;
+import com.yn.pojo.TinhThanh;
+import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.UserRepository;
 import java.util.List;
@@ -20,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -29,39 +33,47 @@ import org.springframework.stereotype.Repository;
 public class UserRepositoryImpl implements UserRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+
+
+//    @Override
+//    public List<User> getUsers(String username) {
+//        Session session = this.sessionFactory.getObject().getCurrentSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<User> query = builder.createQuery(User.class);
+//        Root root = query.from(User.class);
+//        query.select(root);
+//        
+//        Predicate p = builder.equal(root.get("username").as(String.class), username.trim());
+//        query = query.where(p);
+//        
+//        Query q = session.createQuery(query);
+//        return q.getResultList();
+//    }
+//
+//    @Override
+//    public boolean addUser(User user) {
+//        user.setPassWord(this.passwordEncoder.encode(user.getPassWord()));
+//        user.setUserRole(User.ROLE_USER);
+//        user.setActive(true);
+//        
+//        Session s = this.sessionFactory.getObject().getCurrentSession();
+//        try {
+//            s.save(user);
+//            return true;
+//        } catch (HibernateException ex) {
+//            ex.printStackTrace();
+//        }
+//        
+//        return false;
+//    }
 
     @Override
-    public List<User> getUsers(String username) {
+    @Transactional
+    public List<Customer> getCustormer() {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<User> query = builder.createQuery(User.class);
-        Root root = query.from(User.class);
-        query.select(root);
-        
-        Predicate p = builder.equal(root.get("username").as(String.class), username.trim());
-        query = query.where(p);
-        
-        Query q = session.createQuery(query);
-        return q.getResultList();
-    }
-
-    @Override
-    public boolean addUser(User user) {
-        user.setPassWord(this.passwordEncoder.encode(user.getPassWord()));
-        user.setUserRole(User.ROLE_USER);
-        user.setActive(true);
-        
-        Session s = this.sessionFactory.getObject().getCurrentSession();
-        try {
-            s.save(user);
-            return true;
-        } catch (HibernateException ex) {
-            ex.printStackTrace();
-        }
-        
-        return false;
+        Query query = session.createQuery("From User");
+        //System.out.println(query.getResultList());
+        return query.getResultList();
     }
 }
 

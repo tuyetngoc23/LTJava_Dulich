@@ -3,7 +3,7 @@
     Created on : Apr 24, 2021, 1:11:10 PM
     Author     : ASUS
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -19,13 +19,13 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active  ">
-                <a class="nav-link" href="#">
+                <a href="<c:url value="/admin" />" class="nav-link">
                     <i class="material-icons">dashboard</i>
                     <p>Trang chủ</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+               <a href="<c:url value="/admin" />" class="nav-link">
                     <i class="material-icons">person</i>
                     <p>Trang cá nhân</p>
                 </a>
@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                 <a href="<c:url value="/admin/quanlytour" />" class="nav-link">
                     <i class="material-icons">content_paste</i>
                     <p>Quản lý Tour</p>
                 </a>
@@ -84,7 +84,7 @@
             <div class="collapse navbar-collapse justify-content-end">
                 <form class="navbar-form">
                     <div class="input-group no-border">
-                        <input type="text" value="" class="form-control" placeholder="Search...">
+                        <input type="text" name="kw" class="form-control" placeholder="Search...">
                         <button type="submit" class="btn btn-default btn-round btn-just-icon">
                             <i class="material-icons">search</i>
                             <div class="ripple-container"></div>

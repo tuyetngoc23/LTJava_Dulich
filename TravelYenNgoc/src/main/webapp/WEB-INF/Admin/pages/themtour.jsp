@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <form>
                                 <div class="row">
-                                    <c:if test="${tour.id}==0">
+                                     <c:if test="${tour.id>0}">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating" >Mã tour</label>
@@ -30,7 +30,7 @@
                                             <form:errors path="id" cssClass="text-danger" />
                                         </div>
                                     </div>
-                                    </c:if>
+                                     </c:if>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Tên Tour</label>
@@ -107,13 +107,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Ngày bắt đầu</label>
-                                            <form:input type="date" value="2011-08-19" cssClass="form-control" id="ngayKhoiHanh" path="ngayKhoiHanh"/>
+                                            <form:input type="date" value="${tour.ngayKhoiHanh}" cssClass="form-control" id="ngayKhoiHanh" path="ngayKhoiHanh"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Ngày kết thúc</label>
-                                            <form:input type="date" value="2011-08-19" cssClass="form-control" id="ngayKetThuc" path="ngayKetThuc"/>
+                                            <form:input type="date" value="${tour.ngayKetThuc}" cssClass="form-control" id="ngayKetThuc" path="ngayKetThuc"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

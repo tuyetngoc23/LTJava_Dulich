@@ -5,6 +5,7 @@
  */
 package com.yn.repository.impl;
 
+import static com.sun.tools.javac.tree.TreeInfo.args;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -35,18 +37,22 @@ public class TourReponsitoryImpl implements TourRepository {
 
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-
+    
     @Override
     @Transactional
-    public List<Tour> getTour() {
+    public List<Tour> getTour(String kw) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Tour> query = builder.createQuery(Tour.class);
         Root root = query.from(Tour.class);
         query.select(root);
-        Query q = session.createQuery("From Tour");
+        Predicate p = builder.like(root.get("ten").as(String.class),
+                    String.format("%%%s%%", kw));
+        query = query.where(p);
+        Query q = session.createQuery(query);
+        
         return q.getResultList();
-
+        
     }
 
     @Override
@@ -86,7 +92,7 @@ public class TourReponsitoryImpl implements TourRepository {
         } catch (HibernateException ex) {
             ex.printStackTrace();
         }
-        
+
         return false;
     }
 

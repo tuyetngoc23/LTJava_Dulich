@@ -27,6 +27,5 @@ com\yn\service\impl\TourServiceImpl.class
 com\yn\pojo\Employee.class
 com\yn\service\impl\LoaiTourServiceImpl.class
 com\yn\config\HibernateConfig.class
-com\yn\config\SecurityConfig.class
 com\yn\pojo\TinhThanh.class
 com\yn\repository\TourRepository.class

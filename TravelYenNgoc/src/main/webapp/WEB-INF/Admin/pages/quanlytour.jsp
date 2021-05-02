@@ -8,7 +8,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <div class="content">
-    <div class="container-fluid">
+<div class="row">
+<!--    <form >
+    <div class="col-md-10 form-group">
+        <input type="text" name="kw" class="form-control" placeholder="Nhập từ khóa để tìm..." />
+    </div>
+    <div class="col-md-2 form-group">
+        <input type="submit" class="btn btn-info" value="Tìm kiếm" />
+    </div>
+    </div>
+    </form>-->
+ <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -21,10 +31,11 @@
                         <c:forEach items="${tours}" var="u">
                             <div class="col-sm-4">
                                 <div class="card sm-4 box-shadow" > 
-                                    <img class="card-img-top" src="<c:url value="${u.image}"/> " alt="abc">
+                                    <img class="card-img-top" src="<c:url value="${u.image}"/> " alt="abc" width="200" height="200">
                                     <div class="card-body">
                                         <h4> Mã:${u.id} - ${u.ten}</h4>
-                                        <p>Địa điểm đi:  
+                                        <p>Giá ${u.gia} <br>
+                                            Địa điểm đi:  
                                             ${u.diemDiID.ten} - địa điểm đến: ${u.diemDenID.ten} 
                                             <br>
                                             giới hạn:

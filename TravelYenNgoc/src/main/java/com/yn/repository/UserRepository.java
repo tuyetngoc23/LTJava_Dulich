@@ -5,6 +5,7 @@
  */
 package com.yn.repository;
 
+import com.yn.pojo.Customer;
 import com.yn.pojo.User;
 import java.util.List;
 
@@ -13,8 +14,8 @@ import java.util.List;
  * @author Huynh Thi Tuyet Ngoc
  */
 public interface UserRepository {
-    List<User> getUsers(String username);
-    boolean addUser(User user);
-    
+//    List<User> getUsers(String username);
+//    boolean addUser(User user);
+    List<Customer> getCustormer();
 }
 

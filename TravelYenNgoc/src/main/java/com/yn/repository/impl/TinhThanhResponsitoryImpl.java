@@ -40,7 +40,6 @@ public class TinhThanhResponsitoryImpl implements TinhThanhReponsitory{
         query.select(root);
          Query q = session.createQuery("From TinhThanh");
         return q.getResultList();
-
     }
     
 }

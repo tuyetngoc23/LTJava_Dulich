@@ -21,42 +21,42 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  *
  * @author Huynh Thi Tuyet Ngoc
  */
-@Configuration
-@EnableWebSecurity
-@EnableTransactionManagement
-@ComponentScan(basePackages = {
-    "com.yn.repository",
-    "com.yn.service"
-})
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-    
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("passWord");
-        
-        http.formLogin().defaultSuccessUrl("/")
-                .failureUrl("/login?error");
-        http.logout().logoutSuccessUrl("/login");
-        http.exceptionHandling()
-                .accessDeniedPage("/login?accessDenied");
-        http.authorizeRequests().antMatchers("/").permitAll()
-                .antMatchers("/**/admin")
-                .access("hasRole('ROLE_ADMIN')").
-        antMatchers("/**/pay").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
-        http.csrf().disable();
-    }
-}
+//@Configuration
+//@EnableWebSecurity
+//@EnableTransactionManagement
+//@ComponentScan(basePackages = {
+//    "com.yn.repository",
+//    "com.yn.service"
+//})
+//public class SecurityConfig extends WebSecurityConfigurerAdapter{
+//    @Autowired
+//    private UserDetailsService userDetailsService;
+//
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+//    
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.formLogin().loginPage("/login")
+//                .usernameParameter("username")
+//                .passwordParameter("passWord");
+//        
+//        http.formLogin().defaultSuccessUrl("/")
+//                .failureUrl("/login?error");
+//        http.logout().logoutSuccessUrl("/login");
+//        http.exceptionHandling()
+//                .accessDeniedPage("/login?accessDenied");
+//        http.authorizeRequests().antMatchers("/").permitAll()
+//                .antMatchers("/**/admin")
+//                .access("hasRole('ROLE_ADMIN')").
+//        antMatchers("/**/pay").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+//        http.csrf().disable();
+//    }
+//}

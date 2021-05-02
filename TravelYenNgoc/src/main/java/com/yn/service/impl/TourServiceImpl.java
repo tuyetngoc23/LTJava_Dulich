@@ -22,8 +22,8 @@ public class TourServiceImpl implements TourSevice{
     @Autowired
     private TourRepository tourRepository;
     @Override
-    public List<Tour> getTour() {
-         return this.tourRepository.getTour();
+    public List<Tour> getTour(String kw) {
+         return this.tourRepository.getTour(kw);
     }
     public boolean addOrUpdateTour(Tour tour) {
          return this.tourRepository.addOrUpdateTour(tour);

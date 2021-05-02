@@ -46,8 +46,10 @@ public class QuanlyTourController {
     }
 
     @RequestMapping("/admin/quanlytour")
-    public String quanLyTour(Model model) {
-        model.addAttribute("tours", this.tourService.getTour());
+    public String quanLyTour(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
+        model.addAttribute("", this.tourService.getTour(kw));
+        model.addAttribute("sosanh", 0);
+        model.addAttribute("tours", this.tourService.getTour(kw));
         return "quanlytour";
     }
 
@@ -84,8 +86,13 @@ public class QuanlyTourController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
-            tour.setImage(img);
+            System.out.println(multipartFile.getOriginalFilename());
+            if(multipartFile.getOriginalFilename()!=null){
+                String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
+                tour.setImage(img);
+            } else {
+                tour.setImage(this.tourService.getTourById(tour.getId()).getImage());
+            }
         if (!this.tourService.addOrUpdateTour(tour)) {
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
             return "themtour";
