@@ -26,14 +26,14 @@ CREATE TABLE `binhluan` (
   `id` int NOT NULL AUTO_INCREMENT,
   `ngayBinhLuan` date DEFAULT NULL,
   `noiDung` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `customerId` int DEFAULT NULL,
   `tintuc_id` int DEFAULT NULL,
+  `customer_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `customerId` (`customerId`),
   KEY `tintuc_id` (`tintuc_id`),
-  CONSTRAINT `binhluan_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`),
-  CONSTRAINT `binhluan_ibfk_2` FOREIGN KEY (`tintuc_id`) REFERENCES `tintuc` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  KEY `cs_idx` (`customer_id`),
+  CONSTRAINT `binhluan_ibfk_2` FOREIGN KEY (`tintuc_id`) REFERENCES `tintuc` (`id`),
+  CONSTRAINT `cs` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `binhluan` (
 
 LOCK TABLES `binhluan` WRITE;
 /*!40000 ALTER TABLE `binhluan` DISABLE KEYS */;
+INSERT INTO `binhluan` VALUES (1,'2000-01-01','yen',2,1),(2,'2000-01-01','thanh',2,1);
 /*!40000 ALTER TABLE `binhluan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,11 +64,7 @@ CREATE TABLE `booking` (
   `soNguoiNhoDi` int DEFAULT NULL,
   `tour_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `customer_id` (`customer_id`),
-  KEY `employee_id` (`employee_id`),
   KEY `thongTinLienLac_id` (`thongTinLienLac_id`),
-  CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
-  CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`),
   CONSTRAINT `booking_ibfk_3` FOREIGN KEY (`thongTinLienLac_id`) REFERENCES `thongtinlienlac` (`id`),
   CONSTRAINT `tour_id` FOREIGN KEY (`id`) REFERENCES `tour` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -90,10 +87,10 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fj_user_cus` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  CONSTRAINT `fk_user_kh` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +99,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1);
+INSERT INTO `customer` VALUES (1),(3);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,10 +111,10 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `employee` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_user_staff` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  CONSTRAINT `h+fk` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,6 +123,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
+INSERT INTO `employee` VALUES (2),(4);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,11 +164,11 @@ CREATE TABLE `thich` (
   `customerId` int DEFAULT NULL,
   `tintuc_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `customerId` (`customerId`),
   KEY `tintuc_id` (`tintuc_id`),
-  CONSTRAINT `thich_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`),
+  KEY `kh_ik_2_idx` (`customerId`),
+  CONSTRAINT `kh_ik_2` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `thich_ibfk_2` FOREIGN KEY (`tintuc_id`) REFERENCES `tintuc` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,6 +177,7 @@ CREATE TABLE `thich` (
 
 LOCK TABLES `thich` WRITE;
 /*!40000 ALTER TABLE `thich` DISABLE KEYS */;
+INSERT INTO `thich` VALUES (8,0,1,2),(9,0,3,3);
 /*!40000 ALTER TABLE `thich` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,12 +244,12 @@ CREATE TABLE `tintuc` (
   `ngayDang` date DEFAULT NULL,
   `trangThai` tinyint(1) DEFAULT NULL,
   `anh` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `viewer` int DEFAULT NULL,
   `emloyee_id` int DEFAULT NULL,
+  `soLuotThich` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `emloyee_id` (`emloyee_id`),
-  CONSTRAINT `tintuc_ibfk_1` FOREIGN KEY (`emloyee_id`) REFERENCES `employee` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+  KEY `Kg_nv_tintuc_idx` (`emloyee_id`),
+  CONSTRAINT `kg_nv` FOREIGN KEY (`id`) REFERENCES `employee` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,6 +258,7 @@ CREATE TABLE `tintuc` (
 
 LOCK TABLES `tintuc` WRITE;
 /*!40000 ALTER TABLE `tintuc` DISABLE KEYS */;
+INSERT INTO `tintuc` VALUES (2,'Du lịch vui vẻ','Bao giờ code xong ',NULL,0,'/admin/anhtintuc/LR-29-scaled.jpg',NULL,0),(3,'Con ngoan trò giỏi đi du lịch','ủa',NULL,0,'/admin/anhtintuc/anime-girl-happy-face-twintails-aqua-hair-wallpaper-preview.png',2,0),(4,'Con ngoan trò giỏi đi du lịch','nooo',NULL,0,'/admin/anhtintuc/giai nhat thuyen hoa.jpg',NULL,0);
 /*!40000 ALTER TABLE `tintuc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,7 +297,7 @@ CREATE TABLE `tour` (
 
 LOCK TABLES `tour` WRITE;
 /*!40000 ALTER TABLE `tour` DISABLE KEYS */;
-INSERT INTO `tour` VALUES (1,'PHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CÁT',2490000,1,1,100,'2021-05-07','2020-02-05',1,'TP. HỒ CHÍ MINH – TP. PHAN THIẾT - ĐẢO PHÚ QUÝ\r\n\r\n19h00: HDV đón quý khách tại điểm hẹn, khởi hành đi Phan Thiết.\r\n\r\n\r\nTrên đường đi Phan Thiết, xe dừng tại điểm dừng chân để quý khách nghỉ ngơi, vệ sinh cá nhân, ăn khuya ( chi phí tự túc)\r\n\r\n23h00: Đoàn nhận phòng khách sạn tại Phan Thiết nghỉ ngơi, ngủ 1 giấc thật ngon để chuẩn bị cho hành trình khám phá Đảo Phú Quý ngày hôm sau.\r\n\r\nNGÀY 2\r\n\r\nKHÁM PHÁ ĐẢO PHÚ QUÝ – BBQ HẢI SẢN – NGẮM HOÀNG HÔN (Ăn sáng,trưa,tối)\r\n\r\n06h00: Đoàn dùng điểm tâm sáng, do lịch tàu sớm nên quý Khách sẽ được phát 1 combo bao gồm 1 phần ăn và 1 suất nước. Sau đó di chuyển ra cảng Phan Thiết để lên tàu và khởi hành di chuyển sang đảo Phú Quý. Ước tính thời  gian di chuyển khoảng 2 giờ 30 phút.\r\n\r\n10h00: Quý khách bắt đầu đặt trên lên đảo, quý khách nhận xe máy 2 người một chiếc xe :\r\n\r\nHDV đưa quý khách đi tham quan Vạn An Thạnh nơi có bộ xương cá voi (Cá Ông) lớn thứ 2 tại tỉnh Bình Thuận.\r\n\r\n11h30: Quý khách về nhận phòng khách sạn, nghỉ ngơi\r\n\r\n13h00: HDV cùng quý Khách lên xe máy tiếp tục hành trinh khám phá Phú Quý\r\n\r\nCột Cờ Chủ Quyền Biển Đảo: Đến đây du khách sẽ được tham quan, tìm hiểu về sự thiêng liêng cũng như sự khó khăn của người dân trong việc bảo vệ chủ quyền biển đảo của Việt Nam. “Nhìn cột cờ cao, hướng thẳng đứng lên trời, lá cờ bay “phần phật”, kiêu hãnh giữa biển trời Tổ quốc, khiến chúng ta thật tự hào”\r\n\r\nMũi Dinh Thầy hay Mộ Doi Thầy: Đối với người dân là một nơi vô cùng thiêng liêng và kính trọng. Đây là doi đất nhô ra biển, điểm ngắm bình minh đẹp nhất của đảo. Mộ Thầy Nại được người dân địa phương tôn thờ như là vị thần bảo trợ cho hòn đảo. Nằm dưới chân núi Cao Cát. Nơi đây là nơi giao thoa văn hóa giữa người Việt và người Hoa. Du khách có thể tham quan, ngắm cảnh thư giãn. Bởi bên cạnh Đền thờ là một vùng biển lộng gió, cùng không gian kiến trúc cổ kính ở đây sẽ làm bạn không khỏi ấn tượng.\r\n\r\n16h00: Đoàn về khách sạn nghỉ ngơi. Sao đó đoàn di chuyển đến Bãi Doi hoặc Vịnh Triều Dương để ngắm hoàng hôn về trên Phú Quý. Ăn tối tại nhà hàng, trải nghiệm ẩm thực địa phương, tự do khám phá Phú Quý về đêm.\r\n\r\nNGÀY 3\r\n\r\nPHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CẢT - PHAN THIẾT – TP. HỒ CHÍ MINH ( Ăn sáng, trưa )\r\n\r\n05h00: Đoàn dậy sớm, di chuyến đến Núi Cao Cát để ngắm bình minh.\r\n\r\nChùa Linh Sơn tọa lạc trên đỉnh núi Cao Cát, đây được xem là “nóc nhà của Phú Quý”. Ngôi chùa nổi tiếng linh thiêng khắp đảo với tượng Phật Bà uy nghi. Ngoài chùa Linh Sơn, bạn còn được trải nghiệm cảm giác nhìn cả hòn đảo xinh đẹp đang ẩn mình dưới những tán cây xanh ngát nữa đấy.\r\n\r\nNgọn Hải Đăng : Quý khách chinh phục ngon hải đăng ở đảo Phú Quý, đến đây quý khách có thể nhìn toàn bộ phong cảnh ở đảo Phú Quý từ trên cao, quý khách có thể chụp hình check in với phong cảnh siêu đẹp từ trên cao.\r\n\r\nTrên đường về, đoàn chụp ảnh “Phong Điện” với những chong chóng điện gió khổng lồ, đây là nguồn cung cấp điện chính cho hòn đảo này.\r\n\r\nSau đó quý khách trở về khách sạn dùng bữa sáng và trả phòng.\r\n\r\n11h00: Đoàn dung buổi trưa tại đảo Phú Quý hoặc Phan Thiết (do phụ thuộc vào giờ tàu chạy)\r\n\r\nĐoàn lên tàu về lại Phan Thiết.\r\n\r\nXe đưa đoàn di chuyển về Tp. Hồ Chí Minh dừng chân tham quan mua sắm đặc sản địa phương về làm quà. \r\n\r\n18h30: Về điểm đón ban đầu. Kết thúc chuyến tham quan. Chia tay Quý khách và hẹn ngày gặp lại.\r\n\r\n***Chú ý: Giờ khởi hành của tàu ra đảo và chương trình có thể thay đổi phụ thuộc vào thời tiết, nhưng vẫn đảm bảo đầy đủ điểm tham quan cho du khách','/admin/anhadmin/'),(3,'PHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CÁT',2490000,1,1,100,'2021-05-07','2020-02-05',1,'TP. HỒ CHÍ MINH – TP. PHAN THIẾT - ĐẢO PHÚ QUÝ\r\n\r\n19h00: HDV đón quý khách tại điểm hẹn, khởi hành đi Phan Thiết.\r\n\r\n\r\nTrên đường đi Phan Thiết, xe dừng tại điểm dừng chân để quý khách nghỉ ngơi, vệ sinh cá nhân, ăn khuya ( chi phí tự túc)\r\n\r\n23h00: Đoàn nhận phòng khách sạn tại Phan Thiết nghỉ ngơi, ngủ 1 giấc thật ngon để chuẩn bị cho hành trình khám phá Đảo Phú Quý ngày hôm sau.\r\n\r\nNGÀY 2\r\n\r\nKHÁM PHÁ ĐẢO PHÚ QUÝ – BBQ HẢI SẢN – NGẮM HOÀNG HÔN (Ăn sáng,trưa,tối)\r\n\r\n06h00: Đoàn dùng điểm tâm sáng, do lịch tàu sớm nên quý Khách sẽ được phát 1 combo bao gồm 1 phần ăn và 1 suất nước. Sau đó di chuyển ra cảng Phan Thiết để lên tàu và khởi hành di chuyển sang đảo Phú Quý. Ước tính thời  gian di chuyển khoảng 2 giờ 30 phút.\r\n\r\n10h00: Quý khách bắt đầu đặt trên lên đảo, quý khách nhận xe máy 2 người một chiếc xe :\r\n\r\nHDV đưa quý khách đi tham quan Vạn An Thạnh nơi có bộ xương cá voi (Cá Ông) lớn thứ 2 tại tỉnh Bình Thuận.\r\n\r\n11h30: Quý khách về nhận phòng khách sạn, nghỉ ngơi\r\n\r\n13h00: HDV cùng quý Khách lên xe máy tiếp tục hành trinh khám phá Phú Quý\r\n\r\nCột Cờ Chủ Quyền Biển Đảo: Đến đây du khách sẽ được tham quan, tìm hiểu về sự thiêng liêng cũng như sự khó khăn của người dân trong việc bảo vệ chủ quyền biển đảo của Việt Nam. “Nhìn cột cờ cao, hướng thẳng đứng lên trời, lá cờ bay “phần phật”, kiêu hãnh giữa biển trời Tổ quốc, khiến chúng ta thật tự hào”\r\n\r\nMũi Dinh Thầy hay Mộ Doi Thầy: Đối với người dân là một nơi vô cùng thiêng liêng và kính trọng. Đây là doi đất nhô ra biển, điểm ngắm bình minh đẹp nhất của đảo. Mộ Thầy Nại được người dân địa phương tôn thờ như là vị thần bảo trợ cho hòn đảo. Nằm dưới chân núi Cao Cát. Nơi đây là nơi giao thoa văn hóa giữa người Việt và người Hoa. Du khách có thể tham quan, ngắm cảnh thư giãn. Bởi bên cạnh Đền thờ là một vùng biển lộng gió, cùng không gian kiến trúc cổ kính ở đây sẽ làm bạn không khỏi ấn tượng.\r\n\r\n16h00: Đoàn về khách sạn nghỉ ngơi. Sao đó đoàn di chuyển đến Bãi Doi hoặc Vịnh Triều Dương để ngắm hoàng hôn về trên Phú Quý. Ăn tối tại nhà hàng, trải nghiệm ẩm thực địa phương, tự do khám phá Phú Quý về đêm.\r\n\r\nNGÀY 3\r\n\r\nPHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CẢT - PHAN THIẾT – TP. HỒ CHÍ MINH ( Ăn sáng, trưa )\r\n\r\n05h00: Đoàn dậy sớm, di chuyến đến Núi Cao Cát để ngắm bình minh.\r\n\r\nChùa Linh Sơn tọa lạc trên đỉnh núi Cao Cát, đây được xem là “nóc nhà của Phú Quý”. Ngôi chùa nổi tiếng linh thiêng khắp đảo với tượng Phật Bà uy nghi. Ngoài chùa Linh Sơn, bạn còn được trải nghiệm cảm giác nhìn cả hòn đảo xinh đẹp đang ẩn mình dưới những tán cây xanh ngát nữa đấy.\r\n\r\nNgọn Hải Đăng : Quý khách chinh phục ngon hải đăng ở đảo Phú Quý, đến đây quý khách có thể nhìn toàn bộ phong cảnh ở đảo Phú Quý từ trên cao, quý khách có thể chụp hình check in với phong cảnh siêu đẹp từ trên cao.\r\n\r\nTrên đường về, đoàn chụp ảnh “Phong Điện” với những chong chóng điện gió khổng lồ, đây là nguồn cung cấp điện chính cho hòn đảo này.\r\n\r\nSau đó quý khách trở về khách sạn dùng bữa sáng và trả phòng.\r\n\r\n11h00: Đoàn dung buổi trưa tại đảo Phú Quý hoặc Phan Thiết (do phụ thuộc vào giờ tàu chạy)\r\n\r\nĐoàn lên tàu về lại Phan Thiết.\r\n\r\nXe đưa đoàn di chuyển về Tp. Hồ Chí Minh dừng chân tham quan mua sắm đặc sản địa phương về làm quà. \r\n\r\n18h30: Về điểm đón ban đầu. Kết thúc chuyến tham quan. Chia tay Quý khách và hẹn ngày gặp lại.\r\n\r\n***Chú ý: Giờ khởi hành của tàu ra đảo và chương trình có thể thay đổi phụ thuộc vào thời tiết, nhưng vẫn đảm bảo đầy đủ điểm tham quan cho du khách','/admin/anhadmin/');
+INSERT INTO `tour` VALUES (1,'PHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CÁT',2490000,1,1,100,'2021-05-07','2020-02-05',1,'TP. HỒ CHÍ MINH – TP. PHAN THIẾT - ĐẢO PHÚ QUÝ\r\n\r\n19h00: HDV đón quý khách tại điểm hẹn, khởi hành đi Phan Thiết.\r\n\r\n\r\nTrên đường đi Phan Thiết, xe dừng tại điểm dừng chân để quý khách nghỉ ngơi, vệ sinh cá nhân, ăn khuya ( chi phí tự túc)\r\n\r\n23h00: Đoàn nhận phòng khách sạn tại Phan Thiết nghỉ ngơi, ngủ 1 giấc thật ngon để chuẩn bị cho hành trình khám phá Đảo Phú Quý ngày hôm sau.\r\n\r\nNGÀY 2\r\n\r\nKHÁM PHÁ ĐẢO PHÚ QUÝ – BBQ HẢI SẢN – NGẮM HOÀNG HÔN (Ăn sáng,trưa,tối)\r\n\r\n06h00: Đoàn dùng điểm tâm sáng, do lịch tàu sớm nên quý Khách sẽ được phát 1 combo bao gồm 1 phần ăn và 1 suất nước. Sau đó di chuyển ra cảng Phan Thiết để lên tàu và khởi hành di chuyển sang đảo Phú Quý. Ước tính thời  gian di chuyển khoảng 2 giờ 30 phút.\r\n\r\n10h00: Quý khách bắt đầu đặt trên lên đảo, quý khách nhận xe máy 2 người một chiếc xe :\r\n\r\nHDV đưa quý khách đi tham quan Vạn An Thạnh nơi có bộ xương cá voi (Cá Ông) lớn thứ 2 tại tỉnh Bình Thuận.\r\n\r\n11h30: Quý khách về nhận phòng khách sạn, nghỉ ngơi\r\n\r\n13h00: HDV cùng quý Khách lên xe máy tiếp tục hành trinh khám phá Phú Quý\r\n\r\nCột Cờ Chủ Quyền Biển Đảo: Đến đây du khách sẽ được tham quan, tìm hiểu về sự thiêng liêng cũng như sự khó khăn của người dân trong việc bảo vệ chủ quyền biển đảo của Việt Nam. “Nhìn cột cờ cao, hướng thẳng đứng lên trời, lá cờ bay “phần phật”, kiêu hãnh giữa biển trời Tổ quốc, khiến chúng ta thật tự hào”\r\n\r\nMũi Dinh Thầy hay Mộ Doi Thầy: Đối với người dân là một nơi vô cùng thiêng liêng và kính trọng. Đây là doi đất nhô ra biển, điểm ngắm bình minh đẹp nhất của đảo. Mộ Thầy Nại được người dân địa phương tôn thờ như là vị thần bảo trợ cho hòn đảo. Nằm dưới chân núi Cao Cát. Nơi đây là nơi giao thoa văn hóa giữa người Việt và người Hoa. Du khách có thể tham quan, ngắm cảnh thư giãn. Bởi bên cạnh Đền thờ là một vùng biển lộng gió, cùng không gian kiến trúc cổ kính ở đây sẽ làm bạn không khỏi ấn tượng.\r\n\r\n16h00: Đoàn về khách sạn nghỉ ngơi. Sao đó đoàn di chuyển đến Bãi Doi hoặc Vịnh Triều Dương để ngắm hoàng hôn về trên Phú Quý. Ăn tối tại nhà hàng, trải nghiệm ẩm thực địa phương, tự do khám phá Phú Quý về đêm.\r\n\r\nNGÀY 3\r\n\r\nPHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CẢT - PHAN THIẾT – TP. HỒ CHÍ MINH ( Ăn sáng, trưa )\r\n\r\n05h00: Đoàn dậy sớm, di chuyến đến Núi Cao Cát để ngắm bình minh.\r\n\r\nChùa Linh Sơn tọa lạc trên đỉnh núi Cao Cát, đây được xem là “nóc nhà của Phú Quý”. Ngôi chùa nổi tiếng linh thiêng khắp đảo với tượng Phật Bà uy nghi. Ngoài chùa Linh Sơn, bạn còn được trải nghiệm cảm giác nhìn cả hòn đảo xinh đẹp đang ẩn mình dưới những tán cây xanh ngát nữa đấy.\r\n\r\nNgọn Hải Đăng : Quý khách chinh phục ngon hải đăng ở đảo Phú Quý, đến đây quý khách có thể nhìn toàn bộ phong cảnh ở đảo Phú Quý từ trên cao, quý khách có thể chụp hình check in với phong cảnh siêu đẹp từ trên cao.\r\n\r\nTrên đường về, đoàn chụp ảnh “Phong Điện” với những chong chóng điện gió khổng lồ, đây là nguồn cung cấp điện chính cho hòn đảo này.\r\n\r\nSau đó quý khách trở về khách sạn dùng bữa sáng và trả phòng.\r\n\r\n11h00: Đoàn dung buổi trưa tại đảo Phú Quý hoặc Phan Thiết (do phụ thuộc vào giờ tàu chạy)\r\n\r\nĐoàn lên tàu về lại Phan Thiết.\r\n\r\nXe đưa đoàn di chuyển về Tp. Hồ Chí Minh dừng chân tham quan mua sắm đặc sản địa phương về làm quà. \r\n\r\n18h30: Về điểm đón ban đầu. Kết thúc chuyến tham quan. Chia tay Quý khách và hẹn ngày gặp lại.\r\n\r\n***Chú ý: Giờ khởi hành của tàu ra đảo và chương trình có thể thay đổi phụ thuộc vào thời tiết, nhưng vẫn đảm bảo đầy đủ điểm tham quan cho du khách','/admin/anhadmin/hòn-khô-1.jpg'),(3,'PHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CÁT',2490000,1,1,100,'2021-05-07','2020-02-05',1,'TP. HỒ CHÍ MINH – TP. PHAN THIẾT - ĐẢO PHÚ QUÝ\r\n\r\n19h00: HDV đón quý khách tại điểm hẹn, khởi hành đi Phan Thiết.\r\n\r\n\r\nTrên đường đi Phan Thiết, xe dừng tại điểm dừng chân để quý khách nghỉ ngơi, vệ sinh cá nhân, ăn khuya ( chi phí tự túc)\r\n\r\n23h00: Đoàn nhận phòng khách sạn tại Phan Thiết nghỉ ngơi, ngủ 1 giấc thật ngon để chuẩn bị cho hành trình khám phá Đảo Phú Quý ngày hôm sau.\r\n\r\nNGÀY 2\r\n\r\nKHÁM PHÁ ĐẢO PHÚ QUÝ – BBQ HẢI SẢN – NGẮM HOÀNG HÔN (Ăn sáng,trưa,tối)\r\n\r\n06h00: Đoàn dùng điểm tâm sáng, do lịch tàu sớm nên quý Khách sẽ được phát 1 combo bao gồm 1 phần ăn và 1 suất nước. Sau đó di chuyển ra cảng Phan Thiết để lên tàu và khởi hành di chuyển sang đảo Phú Quý. Ước tính thời  gian di chuyển khoảng 2 giờ 30 phút.\r\n\r\n10h00: Quý khách bắt đầu đặt trên lên đảo, quý khách nhận xe máy 2 người một chiếc xe :\r\n\r\nHDV đưa quý khách đi tham quan Vạn An Thạnh nơi có bộ xương cá voi (Cá Ông) lớn thứ 2 tại tỉnh Bình Thuận.\r\n\r\n11h30: Quý khách về nhận phòng khách sạn, nghỉ ngơi\r\n\r\n13h00: HDV cùng quý Khách lên xe máy tiếp tục hành trinh khám phá Phú Quý\r\n\r\nCột Cờ Chủ Quyền Biển Đảo: Đến đây du khách sẽ được tham quan, tìm hiểu về sự thiêng liêng cũng như sự khó khăn của người dân trong việc bảo vệ chủ quyền biển đảo của Việt Nam. “Nhìn cột cờ cao, hướng thẳng đứng lên trời, lá cờ bay “phần phật”, kiêu hãnh giữa biển trời Tổ quốc, khiến chúng ta thật tự hào”\r\n\r\nMũi Dinh Thầy hay Mộ Doi Thầy: Đối với người dân là một nơi vô cùng thiêng liêng và kính trọng. Đây là doi đất nhô ra biển, điểm ngắm bình minh đẹp nhất của đảo. Mộ Thầy Nại được người dân địa phương tôn thờ như là vị thần bảo trợ cho hòn đảo. Nằm dưới chân núi Cao Cát. Nơi đây là nơi giao thoa văn hóa giữa người Việt và người Hoa. Du khách có thể tham quan, ngắm cảnh thư giãn. Bởi bên cạnh Đền thờ là một vùng biển lộng gió, cùng không gian kiến trúc cổ kính ở đây sẽ làm bạn không khỏi ấn tượng.\r\n\r\n16h00: Đoàn về khách sạn nghỉ ngơi. Sao đó đoàn di chuyển đến Bãi Doi hoặc Vịnh Triều Dương để ngắm hoàng hôn về trên Phú Quý. Ăn tối tại nhà hàng, trải nghiệm ẩm thực địa phương, tự do khám phá Phú Quý về đêm.\r\n\r\nNGÀY 3\r\n\r\nPHÚ QUÝ - NGẮM BÌNH MINH NÚI CAO CẢT - PHAN THIẾT – TP. HỒ CHÍ MINH ( Ăn sáng, trưa )\r\n\r\n05h00: Đoàn dậy sớm, di chuyến đến Núi Cao Cát để ngắm bình minh.\r\n\r\nChùa Linh Sơn tọa lạc trên đỉnh núi Cao Cát, đây được xem là “nóc nhà của Phú Quý”. Ngôi chùa nổi tiếng linh thiêng khắp đảo với tượng Phật Bà uy nghi. Ngoài chùa Linh Sơn, bạn còn được trải nghiệm cảm giác nhìn cả hòn đảo xinh đẹp đang ẩn mình dưới những tán cây xanh ngát nữa đấy.\r\n\r\nNgọn Hải Đăng : Quý khách chinh phục ngon hải đăng ở đảo Phú Quý, đến đây quý khách có thể nhìn toàn bộ phong cảnh ở đảo Phú Quý từ trên cao, quý khách có thể chụp hình check in với phong cảnh siêu đẹp từ trên cao.\r\n\r\nTrên đường về, đoàn chụp ảnh “Phong Điện” với những chong chóng điện gió khổng lồ, đây là nguồn cung cấp điện chính cho hòn đảo này.\r\n\r\nSau đó quý khách trở về khách sạn dùng bữa sáng và trả phòng.\r\n\r\n11h00: Đoàn dung buổi trưa tại đảo Phú Quý hoặc Phan Thiết (do phụ thuộc vào giờ tàu chạy)\r\n\r\nĐoàn lên tàu về lại Phan Thiết.\r\n\r\nXe đưa đoàn di chuyển về Tp. Hồ Chí Minh dừng chân tham quan mua sắm đặc sản địa phương về làm quà. \r\n\r\n18h30: Về điểm đón ban đầu. Kết thúc chuyến tham quan. Chia tay Quý khách và hẹn ngày gặp lại.\r\n\r\n***Chú ý: Giờ khởi hành của tàu ra đảo và chương trình có thể thay đổi phụ thuộc vào thời tiết, nhưng vẫn đảm bảo đầy đủ điểm tham quan cho du khách','/admin/anhadmin/doan-van-noi-ve-mua-he-tu-3-den-5-cau-1.jpg');
 /*!40000 ALTER TABLE `tour` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,9 +321,8 @@ CREATE TABLE `user` (
   `hoTen` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `gioiTinh` tinyint(1) DEFAULT NULL,
   `userrole` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `discriminator` varchar(45) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +331,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,0,'abc','2000-01-01','056430117','2000-01-01','doremon','abc','dak lak','Doremon',1,'Customer','C'),(2,0,'$2a$10$RL0rTJd2ThLmCzYHMhz9aOBBZfA8ybYpa3Ugl9ds.Pkb8AjtSHWua',NULL,NULL,NULL,'Duong',NULL,NULL,'Duong',NULL,NULL,'E'),(3,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'C');
+INSERT INTO `user` VALUES (1,0,'abc','2000-01-01','056430117','2000-01-01','doremon','abc','dak lak','Doremon',1,'Customer'),(2,0,NULL,NULL,NULL,NULL,'Duong',NULL,NULL,'Duong',NULL,'Employee'),(3,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Customer'),(4,0,'acb',NULL,'1222',NULL,'yen','abc','dlak alk','yen',1,'Employee');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -345,4 +344,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-02 19:32:28
+-- Dump completed on 2021-05-03 23:23:32

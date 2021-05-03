@@ -5,7 +5,10 @@
  */
 package com.yn.repository;
 
+import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
+import com.yn.pojo.TinTuc;
+import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import java.util.List;
 
@@ -13,10 +16,13 @@ import java.util.List;
  *
  * @author Huynh Thi Tuyet Ngoc
  */
-public interface UserRepository {
+public interface TinTucRepository {
 //    List<User> getUsers(String username);
 //    boolean addUser(User user);
-    List<Customer> getCustormer();
-
+    List<TinTuc> getTinTucs(String kw);
+    boolean addOrUpdateTour(TinTuc tinTuc);
+    TinTuc getTinTucById(int tourId);
+    boolean deleteTinTuc(int tourId);
+    List<BinhLuan> getBinhLuans(int tinTucID);
 }
 

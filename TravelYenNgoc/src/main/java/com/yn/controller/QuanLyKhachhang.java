@@ -5,26 +5,13 @@
  */
 package com.yn.controller;
 
-import com.yn.pojo.Tour;
-import com.yn.service.LoaiTourService;
-import com.yn.service.TinhThanhService;
 
-import com.yn.service.TourSevice;
 import com.yn.service.UserService;
-import java.io.File;
-import java.io.IOException;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+
 
 /**
  *

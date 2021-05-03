@@ -34,46 +34,13 @@ public class UserRepositoryImpl implements UserRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
 
-
-//    @Override
-//    public List<User> getUsers(String username) {
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//        CriteriaQuery<User> query = builder.createQuery(User.class);
-//        Root root = query.from(User.class);
-//        query.select(root);
-//        
-//        Predicate p = builder.equal(root.get("username").as(String.class), username.trim());
-//        query = query.where(p);
-//        
-//        Query q = session.createQuery(query);
-//        return q.getResultList();
-//    }
-//
-//    @Override
-//    public boolean addUser(User user) {
-//        user.setPassWord(this.passwordEncoder.encode(user.getPassWord()));
-//        user.setUserRole(User.ROLE_USER);
-//        user.setActive(true);
-//        
-//        Session s = this.sessionFactory.getObject().getCurrentSession();
-//        try {
-//            s.save(user);
-//            return true;
-//        } catch (HibernateException ex) {
-//            ex.printStackTrace();
-//        }
-//        
-//        return false;
-//    }
-
     @Override
     @Transactional
     public List<Customer> getCustormer() {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query query = session.createQuery("From User");
-        //System.out.println(query.getResultList());
-        return query.getResultList();
+//        Session session = this.sessionFactory.getObject().getCurrentSession();
+//        Query query = session.createQuery("From User where userrole = 'Customer'");
+//        //System.out.println(query.getResultList());
+        return null;
     }
 }
 

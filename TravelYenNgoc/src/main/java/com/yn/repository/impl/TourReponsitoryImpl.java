@@ -6,6 +6,7 @@
 package com.yn.repository.impl;
 
 import static com.sun.tools.javac.tree.TreeInfo.args;
+import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
@@ -92,8 +93,8 @@ public class TourReponsitoryImpl implements TourRepository {
         } catch (HibernateException ex) {
             ex.printStackTrace();
         }
-
         return false;
     }
+
 
 }
