@@ -5,6 +5,7 @@
  */
 package com.yn.controller;
 
+import com.yn.pojo.TinhThanh;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,17 @@ public class HomeController {
     private TourSevice tourSevice;
     @Autowired
     private TinhThanhService tinhThanhService;
+    
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
+//        model.addAttribute("tinhthanh", this.tourSevice.getTour(t));
+        model.addAttribute("tour", this.tourSevice.getTour());
         return "index";
     }
     @RequestMapping("/tourdetails")
-    public String tourDetails(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw){
+    public String tourDetails(Model model,
+            @RequestParam(name = "kw", required = false, defaultValue = "") String kw){
         model.addAttribute("tour", this.tourSevice.getTour(kw));
         return "tourdetails";
     }

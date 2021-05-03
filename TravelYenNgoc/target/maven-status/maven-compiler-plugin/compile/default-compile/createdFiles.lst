@@ -13,6 +13,7 @@ com\yn\pojo\TinTuc.class
 com\yn\controller\QuanlyTourController.class
 com\yn\repository\impl\TourReponsitoryImpl.class
 com\yn\repository\UserRepository.class
+com\yn\controller\QuanLyKhachhang.class
 com\yn\service\impl\TinhThanhServiceImpl.class
 com\yn\controller\HomeController.class
 com\yn\config\DispatcherInit.class
@@ -20,12 +21,14 @@ com\yn\repository\impl\LoaiTourResponsitoryImpl.class
 com\yn\service\LoaiTourService.class
 com\yn\service\TinhThanhService.class
 com\yn\service\impl\UserServiceImpl.class
+com\yn\controller\ApiTourController.class
 com\yn\repository\TinhThanhReponsitory.class
 com\yn\pojo\Customer.class
 com\yn\pojo\LoaiTour.class
 com\yn\service\impl\TourServiceImpl.class
 com\yn\pojo\Employee.class
 com\yn\service\impl\LoaiTourServiceImpl.class
+com\yn\pojo\User$Role.class
 com\yn\config\HibernateConfig.class
 com\yn\pojo\TinhThanh.class
 com\yn\repository\TourRepository.class

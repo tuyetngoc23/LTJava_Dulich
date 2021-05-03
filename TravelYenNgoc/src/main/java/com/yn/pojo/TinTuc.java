@@ -32,7 +32,7 @@ public class TinTuc implements Serializable{
     private Date ngayDang;
     private boolean trangThai;
     private String anh;
-    private int viewer;
+    private int soLuotThich;
     @ManyToOne
     @JoinColumn(name="emloyee_id")
     private Employee employee;
@@ -121,19 +121,6 @@ public class TinTuc implements Serializable{
         this.anh = anh;
     }
 
-    /**
-     * @return the viewer
-     */
-    public int getViewer() {
-        return viewer;
-    }
-
-    /**
-     * @param viewer the viewer to set
-     */
-    public void setViewer(int viewer) {
-        this.viewer = viewer;
-    }
 
     /**
      * @return the employee
@@ -147,5 +134,19 @@ public class TinTuc implements Serializable{
      */
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    /**
+     * @return the soLuotThich
+     */
+    public int getSoLuotThich() {
+        return soLuotThich;
+    }
+
+    /**
+     * @param soLuotThich the soLuotThich to set
+     */
+    public void setSoLuotThich(int soLuotThich) {
+        this.soLuotThich = soLuotThich;
     }
 }

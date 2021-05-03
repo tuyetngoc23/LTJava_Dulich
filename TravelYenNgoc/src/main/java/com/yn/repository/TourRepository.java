@@ -14,13 +14,15 @@ import java.util.List;
  * @author ASUS
  */
 public interface TourRepository {
-
+    List<Tour> getTour();
     List<Tour> getTour(String kw);
+    List<Tour> getTour(TinhThanh t);
 
     boolean addOrUpdateTour(Tour tour);
 
     Tour getTourById(int tourId);
 
     boolean deleteTour(int tourId);
+    
 
 }

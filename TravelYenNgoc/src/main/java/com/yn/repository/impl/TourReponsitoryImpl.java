@@ -37,7 +37,7 @@ public class TourReponsitoryImpl implements TourRepository {
 
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-    
+
     @Override
     @Transactional
     public List<Tour> getTour(String kw) {
@@ -47,12 +47,12 @@ public class TourReponsitoryImpl implements TourRepository {
         Root root = query.from(Tour.class);
         query.select(root);
         Predicate p = builder.like(root.get("ten").as(String.class),
-                    String.format("%%%s%%", kw));
+                String.format("%%%s%%", kw));
         query = query.where(p);
         Query q = session.createQuery(query);
-        
+
         return q.getResultList();
-        
+
     }
 
     @Override
@@ -96,4 +96,26 @@ public class TourReponsitoryImpl implements TourRepository {
         return false;
     }
 
+    @Override
+    @Transactional
+    public List<Tour> getTour() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        Query q = session.createQuery("From Tour");
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Tour> getTour(TinhThanh tt) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Tour> query = builder.createQuery(Tour.class);
+        Root root = query.from(Tour.class);
+        query.select(root);
+        Predicate p = builder.equal(root.get("diemDiID").as(TinhThanh.class), tt);
+        query = query.where(p);
+        Query q = session.createQuery(query);
+
+        return q.getResultList();
+    }
 }

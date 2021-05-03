@@ -6,6 +6,7 @@
 package com.yn.service.impl;
 
 
+import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.TourRepository;
 import com.yn.service.TourSevice;
@@ -37,5 +38,15 @@ public class TourServiceImpl implements TourSevice{
     @Override
     public boolean deleteTour(int i) {
         return  this.tourRepository.deleteTour(i);
+    }
+
+    @Override
+    public List<Tour> getTour() {
+        return this.tourRepository.getTour();
+    }
+
+    @Override
+    public List<Tour> getTour(TinhThanh tt) {
+        return this.tourRepository.getTour(tt);
     }
 }
