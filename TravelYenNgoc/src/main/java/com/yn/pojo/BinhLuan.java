@@ -97,11 +97,13 @@ public class BinhLuan {
     private Date ngayBinhLuan;
     private String noiDung;
     
-    @ManyToOne
-    @JoinColumn(name = "customerId")
-    private Customer customerId;
+
     
     @ManyToOne
     @JoinColumn(name = "tintuc_id")
     private TinTuc tintucId;
+    
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customerId;
 }

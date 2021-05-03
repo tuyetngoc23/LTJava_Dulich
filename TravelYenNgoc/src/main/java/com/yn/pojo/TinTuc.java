@@ -18,8 +18,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -49,6 +52,7 @@ public class TinTuc implements Serializable{
     private String moTaDai;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayDang;
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean trangThai;
     private String anh;
     private int soLuotThich;
@@ -63,6 +67,19 @@ public class TinTuc implements Serializable{
     @OneToMany(mappedBy = "tintucIdThich")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Thich> thichs;
+    
+    
+    @Transient
+    private MultipartFile imgUploadFile;
+
+    public MultipartFile getImgUploadFile() {
+        return imgUploadFile;
+    }
+
+    public void setImgUploadFile(MultipartFile imgUploadFile) {
+        this.imgUploadFile = imgUploadFile;
+    }
+    
     /**
      * @return the id
      */

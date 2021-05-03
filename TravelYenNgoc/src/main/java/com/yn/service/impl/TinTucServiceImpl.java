@@ -27,9 +27,27 @@ public class TinTucServiceImpl implements TinTucService {
     private TinTucRepository tintTucRepository;
 
     @Override
-    public List<TinTuc> getTinTucs() {
-       return this.tintTucRepository.getTinTucs();
+    public List<TinTuc> getTinTucs(String kw) {
+       return this.tintTucRepository.getTinTucs(kw);
     }
+
+    @Override
+    public boolean addOrUpdateTour(TinTuc tinTuc) {
+        return  this.tintTucRepository.addOrUpdateTour(tinTuc);
+    }
+
+    @Override
+    public TinTuc getTinTucById(int i) {
+        return this.tintTucRepository.getTinTucById(i);
+    }
+
+    @Override
+    public boolean deleteTinTuc(int i) {
+       return this.tintTucRepository.deleteTinTuc(i);
+    }
+
+    
+
 
 }
 

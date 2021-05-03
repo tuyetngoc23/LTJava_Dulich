@@ -58,5 +58,9 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
          <put-attribute name="title" value="Quản lý tour du lịch"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytintuc.jsp"/>
     </definition>
+    <definition name="themtintuc" extends="admin">
+         <put-attribute name="title" value="Quản lý tour du lịch"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/themtintuc.jsp"/>
+    </definition>
 </tiles-definitions>
 

@@ -17,7 +17,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  */
 public interface TinTucService {
 
+    List<TinTuc> getTinTucs(String kw);
     
-    List<TinTuc> getTinTucs();
+    boolean addOrUpdateTour(TinTuc tinTuc);
+    
+    TinTuc getTinTucById(int tourId);
+    boolean deleteTinTuc(int tourId);
 }
 

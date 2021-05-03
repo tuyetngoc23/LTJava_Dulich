@@ -11,6 +11,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
@@ -26,33 +29,57 @@ import org.hibernate.annotations.LazyCollectionOption;
  * @author Huynh Thi Tuyet Ngoc
  */
 @Entity
-@Table(name = "customer")
-@DiscriminatorValue("C")
-public class Customer extends User implements Serializable{
+@Table(name = "Customer")
+public class Customer  implements Serializable{
 
     /**
-     * @return the idCus
+     * @return the binhLuans
      */
-    public User getIdCus() {
-        return idCus;
+    public List<BinhLuan> getBinhLuans() {
+        return binhLuans;
     }
 
     /**
-     * @param idCus the idCus to set
+     * @param binhLuans the binhLuans to set
      */
-    public void setIdCus(User idCus) {
-        this.idCus = idCus;
+    public void setBinhLuans(List<BinhLuan> binhLuans) {
+        this.binhLuans = binhLuans;
     }
-    @OneToOne(cascade = CascadeType.ALL)
+
+    /**
+     * @return the thichs
+     */
+    public List<Thich> getThichs() {
+        return thichs;
+    }
+
+    /**
+     * @param thichs the thichs to set
+     */
+    public void setThichs(List<Thich> thichs) {
+        this.thichs = thichs;
+    }
+
+
+
+    
+    @OneToMany(mappedBy = "customerId")
+    private List<BinhLuan> binhLuans;
+    
+    @OneToMany(mappedBy = "customerIdThich")
+    private List<Thich> thichs;
+
+    @Id
+    private int id;
+    @OneToOne
     @JoinColumn(name = "id")
     @MapsId
     private User idCus;
     
-    @OneToMany(mappedBy = "tintucId")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<BinhLuan> binhLuans;
     
-    @OneToMany(mappedBy = "customerIdThich")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Thich> thichs;
+//    @OneToOne(mappedBy = "idCus")
+//    @PrimaryKeyJoinColumn
+//    private User user;
+     
+
 }

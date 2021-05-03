@@ -20,4 +20,21 @@ function deleteTour(tourId) {
         })
     }
 }
+function deleteTinTuc(tintucId) {
+    if (confirm("Bạn chắc chắn xóa không?") == true) { 
+        fetch(`/TravelYenNgoc/api/admin/quanlytintuc/${tintucId}`, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            if (res.status == 200) {
+                location.reload();
+                let d = document.getElementById(`tourId${tourId}`);
+                d.style.display = "none";
+            } else 
+                alert("Something wrong!!!");
+        })
+    }
+}
 

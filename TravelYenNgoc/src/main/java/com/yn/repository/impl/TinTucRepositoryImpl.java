@@ -38,11 +38,63 @@ public class TinTucRepositoryImpl implements TinTucRepository{
 
     @Override
     @Transactional
-    public List<TinTuc> getTinTucs() {
+    public List<TinTuc> getTinTucs(String kw) {
+//        Session session = this.sessionFactory.getObject().getCurrentSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<TinTuc> query = builder.createQuery(TinTuc.class);
+//        Root root = query.from(TinTuc.class);
+//        query.select(root);
+//        Predicate p = builder.like(root.get("moTaNgan").as(String.class),
+//                    String.format("%%%s%%", kw));
+//        query = query.where(p);
+//        Query q = session.createQuery(query);
+//        
+
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query query = session.createQuery("From TinTuc");
-        //System.out.println(query.getResultList());
+        Query query = session.createQuery("From TinTuc where trangThai = 'false'");
+        System.out.println(query.getResultList());
         return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public boolean addOrUpdateTour(TinTuc tinTuc) {
+       Session s = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            System.out.println(tinTuc.getId());
+            if (tinTuc.getId() > 0) {
+                s.update(tinTuc);
+            } else {
+                s.save(tinTuc);
+            }
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+    @Override
+    @Transactional
+    public TinTuc getTinTucById(int i) {
+        return this.sessionFactory.getObject().getCurrentSession().get(TinTuc.class, i);
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteTinTuc(int tintucId) {
+        System.out.println("sao vậy");
+        try {
+            Session session = this.sessionFactory.getObject().getCurrentSession();
+            TinTuc p = session.get(TinTuc.class, tintucId);
+            p.setTrangThai(true);
+            session.update(p);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }
 

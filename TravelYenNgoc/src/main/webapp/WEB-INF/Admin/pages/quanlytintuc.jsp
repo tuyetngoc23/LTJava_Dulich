@@ -29,23 +29,25 @@
                    
                     <div class="row" style="padding: 30px">
                         <c:forEach items="${tintuc}" var="u">
-                            <div class="col-sm-4">
+                             <div class="col-sm-4">
                                 <div class="card sm-4 box-shadow" > 
                                     <img class="card-img-top" src="<c:url value="${u.anh}"/> " alt="abc" width="200" height="200">
                                     <div class="card-body">
                                         <h4> Mã bài :${u.id} - ${u.moTaNgan} </h4>
-                                        <p> Người đăng: ${u.employee.hoTen}
+                                        <p> Người đăng: ${u.employee.idStaff.hoTen}
                                             <br>${u.moTaDai} </p>
                                             <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-sm btn-outline-secondary">Xem</button>
+                                                 <a href="<c:url value="quanlytintuc/themtintuc/?tintucId=${u.id}" />" class="btn btn-info">Cập nhật</a>
+                                                <a href="javascript:;" class="btn btn-danger" onclick="deleteTinTuc(${u.id})">Xóa</a>
                                             </div>
                                             <small class="text-muted">9 mins</small>
                                         </div>
                                     </div> 
                                 </div>
                             </div>
-                        </c:forEach>
+                         </c:forEach>
                     </div>
                 </div>
             </div>

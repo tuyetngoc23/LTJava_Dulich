@@ -27,10 +27,11 @@
                         <div class="row mb-3">
                             <div class="col-md">
                                 <div class="form-group">
+                                    <form>
                                     <label for="id_label_single">From</label>
 
                                     <label for="id_label_single" style="width: 100%;">
-                                        <select class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
+                                        <select class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;" name ="tinthanh">
                                             <c:forEach items="${tinhthanh}" var="t">
                                                 <option value="${t.id}">${t.ten}</option>
                                             </c:forEach>
@@ -79,6 +80,7 @@
                             <div class="col-md">
                                 <input type="submit" value="Tìm kiếm" class="btn btn-primary btn-block">
                             </div>
+               
                         </div>
                     </div>
                 </form:form>
