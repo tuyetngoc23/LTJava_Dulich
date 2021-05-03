@@ -5,7 +5,7 @@
  */
 package com.yn.repository.impl;
 
-
+import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
@@ -32,34 +32,30 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Huynh Thi Tuyet Ngoc
  */
 @Repository
-public class TinTucRepositoryImpl implements TinTucRepository{
+public class TinTucRepositoryImpl implements TinTucRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
     @Transactional
     public List<TinTuc> getTinTucs(String kw) {
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//        CriteriaQuery<TinTuc> query = builder.createQuery(TinTuc.class);
-//        Root root = query.from(TinTuc.class);
-//        query.select(root);
-//        Predicate p = builder.like(root.get("moTaNgan").as(String.class),
-//                    String.format("%%%s%%", kw));
-//        query = query.where(p);
-//        Query q = session.createQuery(query);
-//        
-
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query query = session.createQuery("From TinTuc where trangThai = 'false'");
-        System.out.println(query.getResultList());
-        return query.getResultList();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<TinTuc> query = builder.createQuery(TinTuc.class);
+        Root root = query.from(TinTuc.class);
+        query.select(root);
+        Predicate p = builder.like(root.get("moTaNgan").as(String.class),
+                String.format("%%%s%%", kw));
+        query = query.where(p);
+        Query q = session.createQuery(query);
+        return q.getResultList();
     }
 
     @Override
     @Transactional
     public boolean addOrUpdateTour(TinTuc tinTuc) {
-       Session s = this.sessionFactory.getObject().getCurrentSession();
+        Session s = this.sessionFactory.getObject().getCurrentSession();
         try {
             System.out.println(tinTuc.getId());
             if (tinTuc.getId() > 0) {
@@ -84,11 +80,11 @@ public class TinTucRepositoryImpl implements TinTucRepository{
     @Override
     @Transactional
     public boolean deleteTinTuc(int tintucId) {
-        System.out.println("sao vậy");
+
         try {
             Session session = this.sessionFactory.getObject().getCurrentSession();
             TinTuc p = session.get(TinTuc.class, tintucId);
-            p.setTrangThai(true);
+            p.setTrangThai(false);
             session.update(p);
             return true;
         } catch (HibernateException ex) {
@@ -96,5 +92,20 @@ public class TinTucRepositoryImpl implements TinTucRepository{
         }
         return false;
     }
-}
 
+    @Override
+    @Transactional
+    public List<BinhLuan> getBinhLuans(int i) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<BinhLuan> query = builder.createQuery(BinhLuan.class);
+//        Root root = query.from(BinhLuan.class);
+//        query.select(root);
+//        //Predicate p = builder.equal(root.get("tintucId").as(Integer.class),
+//             //  i);
+//        //query = query.where(p);
+//        Query q = session.createQuery(query);
+        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
+        return q.getResultList();
+    }
+}

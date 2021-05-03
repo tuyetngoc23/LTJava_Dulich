@@ -33,6 +33,34 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class Customer  implements Serializable{
 
     /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the idCus
+     */
+    public User getIdCus() {
+        return idCus;
+    }
+
+    /**
+     * @param idCus the idCus to set
+     */
+    public void setIdCus(User idCus) {
+        this.idCus = idCus;
+    }
+
+    /**
      * @return the binhLuans
      */
     public List<BinhLuan> getBinhLuans() {

@@ -5,6 +5,7 @@
  */
 package com.yn.service.impl;
 
+import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.User;
@@ -44,6 +45,11 @@ public class TinTucServiceImpl implements TinTucService {
     @Override
     public boolean deleteTinTuc(int i) {
        return this.tintTucRepository.deleteTinTuc(i);
+    }
+
+    @Override
+    public List<BinhLuan> getBinhLuans(int tinTucID) {
+       return this.tintTucRepository.getBinhLuans(tinTucID);
     }
 
     

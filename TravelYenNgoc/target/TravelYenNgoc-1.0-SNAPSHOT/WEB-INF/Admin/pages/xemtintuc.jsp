@@ -20,36 +20,25 @@
     </form>-->
  <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="w-100 p-3">
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Quản Lý Tin Tức</h4>
                         <a href="<c:url value="/admin/quanlytour/themtour" />" > <button type="button"  class="btn btn-primary" >Đăng bài</button></a>
                     </div>
-                   
                     <div class="row" style="padding: 30px">
-                        <c:forEach items="${tintuc}" var="u">
-                            <c:if test = "${u.trangThai== 'false'}">
-                             <div class="col-sm-4">
-                                <div class="card sm-4 box-shadow" > 
+                        <c:if test = "${tintuc.trangThai== 'false'}">
+                             <div class="col">
+                                <div class="card box-shadow" > 
                                     <img class="card-img-top" src="<c:url value="${u.anh}"/> " alt="abc" width="200" height="200">
                                     <div class="card-body">
-                                        <h4> Mã bài :${u.id} - ${u.moTaNgan} </h4>
-                                        <p> Người đăng: ${u.employee.idStaff.hoTen}
-                                            <br>${u.moTaDai} </p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Xem</button>
-                                                 <a href="<c:url value="quanlytintuc/themtintuc/?tintucId=${u.id}" />" class="btn btn-info">Cập nhật</a>
-                                                <a href="javascript:;" class="btn btn-danger" onclick="deleteTinTuc(${u.id})">Xóa</a>
-                                            </div>
-                                            <small class="text-muted">9 mins</small>
-                                        </div>
+                                        <h4> Mã bài :${tintucid} - ${tintuc.moTaNgan} </h4>
+                                        <p> Người đăng: ${tintuc.employee.idStaff.hoTen}
+                                            <br>${tintuc.moTaDai} </p>
                                     </div> 
                                 </div>
                             </div>
                          </c:if>
-                         </c:forEach>
                     </div>
                 </div>
             </div>

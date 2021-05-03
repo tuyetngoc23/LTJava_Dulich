@@ -5,6 +5,7 @@
  */
 package com.yn.service;
 
+import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.User;
@@ -23,5 +24,6 @@ public interface TinTucService {
     
     TinTuc getTinTucById(int tourId);
     boolean deleteTinTuc(int tourId);
+     List<BinhLuan> getBinhLuans(int tinTucID);
 }
 

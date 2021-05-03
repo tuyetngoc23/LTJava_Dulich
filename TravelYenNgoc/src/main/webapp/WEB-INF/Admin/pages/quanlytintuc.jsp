@@ -29,6 +29,7 @@
                    
                     <div class="row" style="padding: 30px">
                         <c:forEach items="${tintuc}" var="u">
+                            <c:if test = "${u.trangThai== 'false'}">
                              <div class="col-sm-4">
                                 <div class="card sm-4 box-shadow" > 
                                     <img class="card-img-top" src="<c:url value="${u.anh}"/> " alt="abc" width="200" height="200">
@@ -47,6 +48,7 @@
                                     </div> 
                                 </div>
                             </div>
+                         </c:if>
                          </c:forEach>
                     </div>
                 </div>

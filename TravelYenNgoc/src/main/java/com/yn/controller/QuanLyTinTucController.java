@@ -81,5 +81,17 @@ public class QuanLyTinTucController {
         }
         return "redirect:/admin/quanlytintuc";
     }
+    @GetMapping("/admin/quanlytintuc/xemtintuc")
+    public String xemtintuc(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
+        if (tintucId > 0) // cập nhật
+        {
+            model.addAttribute("tintuc", this.tinhTinTucService.getTinTucById(tintucId));
+            model.addAttribute("binhluan", this.tinhTinTucService.getBinhLuans(tintucId));
+        } else // thêm
+        {
+            model.addAttribute("tintuc", new TinTuc());
+        }
 
+        return "xemtintuc";
+    }
 }
