@@ -10,6 +10,7 @@ import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.TourRepository;
 import com.yn.service.TourSevice;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,11 @@ public class TourServiceImpl implements TourSevice{
     @Override
     public List<Tour> findTour(int i) {
         return this.tourRepository.findTour(i);
+    }
+
+    @Override
+    public List<Tour> findTourForDate(String date) {
+        return this.tourRepository.findTourForDate(date);
     }
 
 }

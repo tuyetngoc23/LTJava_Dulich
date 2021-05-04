@@ -6,6 +6,7 @@
 package com.yn.service;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public interface TourSevice {
     List<Tour> getTour(String kw);
     List<Tour> getTour();
     List<Tour> findTour(int id);
+    List<Tour> findTourForDate(String date);
     boolean addOrUpdateTour(Tour tour);
     Tour getTourById(int tourId);
    boolean deleteTour(int tourId);

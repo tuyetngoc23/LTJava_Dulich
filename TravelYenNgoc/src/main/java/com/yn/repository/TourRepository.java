@@ -8,6 +8,7 @@ package com.yn.repository;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public interface TourRepository {
     List<Tour> getTour(String kw);
     
     List<Tour> findTour(int id);
+    List<Tour> findTourForDate(String d);
 
     boolean addOrUpdateTour(Tour tour);
 
