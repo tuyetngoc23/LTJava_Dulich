@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Quản Lý Tin Tức</h4>
-                        <a href="<c:url value="/admin/quanlytour/themtour" />" > <button type="button"  class="btn btn-primary" >Đăng bài</button></a>
+                        <a href="<c:url value="/admin/quanlytintuc/themtintuc" />" > <button type="button"  class="btn btn-primary" >Đăng bài</button></a>
                     </div>
                    
                     <div class="row" style="padding: 30px">
@@ -39,11 +39,10 @@
                                             <br>${u.moTaDai} </p>
                                             <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Xem</button>
+                                                 <a href="<c:url value="quanlytintuc/xemtintuc/?tintucId=${u.id}" />" class="btn btn-info">Xem thêm</a>
                                                  <a href="<c:url value="quanlytintuc/themtintuc/?tintucId=${u.id}" />" class="btn btn-info">Cập nhật</a>
                                                 <a href="javascript:;" class="btn btn-danger" onclick="deleteTinTuc(${u.id})">Xóa</a>
                                             </div>
-                                            <small class="text-muted">9 mins</small>
                                         </div>
                                     </div> 
                                 </div>
