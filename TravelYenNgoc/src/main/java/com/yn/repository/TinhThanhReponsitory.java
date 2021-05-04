@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface TinhThanhReponsitory {
     List<TinhThanh> getTinhThanh();
+    TinhThanh getbyId(int id);
 }

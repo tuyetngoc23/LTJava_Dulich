@@ -41,5 +41,13 @@ public class TinhThanhResponsitoryImpl implements TinhThanhReponsitory{
          Query q = session.createQuery("From TinhThanh");
         return q.getResultList();
     }
+
+    @Override
+    @Transactional
+    public TinhThanh getbyId(int id) {
+        return sessionFactory.getObject().getCurrentSession().get(TinhThanh.class,id);
+    }
+    
+   
     
 }

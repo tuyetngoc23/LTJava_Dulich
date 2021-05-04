@@ -31,14 +31,12 @@ public class HomeController {
     //vẫn ở trang chủ á ok
     
     @RequestMapping("/")
-    public String index(Model model, @RequestParam(name = "tinhthanh") TinhThanh t){
+    public String index(Model model, @RequestParam(name = "tt",required = false) String t){
         List<Tour> tours;
-//        tours = t == null || t.getId() == 0 ? tourSevice.getTour():tourSevice.findTour(t.getId()));
-     
-        model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
-        model.addAttribute("tinhthanh", this.tourSevice.findTour(t.getId()));
-        model.addAttribute("tour",tourSevice.getTour());
-//        model.addAttribute("tour", tours);//chỗ này get all hả alo
+        tours = t == null || t.length() == 0 ? tourSevice.getTour():tourSevice.findTour(Integer.parseInt(t));
+        System.out.println("kw: " + t);
+        model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
+        model.addAttribute("tour", tours);//chỗ này get all hả alo
         return "index";
     }
     @RequestMapping("/tourdetails") 

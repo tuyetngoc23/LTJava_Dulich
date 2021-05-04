@@ -53,6 +53,8 @@ public class HibernateConfig {
         
         props.setProperty(AvailableSettings.DIALECT, env.getProperty("hibernate.dialect"));
         props.setProperty(AvailableSettings.SHOW_SQL, env.getProperty("hibernate.showSql"));
+        props.setProperty(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS, "true");//này tác dụng là khi cần load lazy nó không cần dùng tới trans...
+        
         
         return props;
     }
