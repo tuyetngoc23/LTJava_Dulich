@@ -14,7 +14,7 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="col-md probootstrap-animate">
-            <form:form action="#" class="probootstrap-form" modelAttribute="tinhthanh">
+            <form action="" class="probootstrap-form" >
                 <div class="form-group">
                     <div class="row mb-3">
                         <div class="col-md">
@@ -22,7 +22,7 @@
                                 <label for="id_label_single">From</label>
 
                                 <label for="id_label_single" style="width: 100%;">
-                                    <select class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
+                                    <select name="tinhthanh" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
                                         <c:forEach items="${tinhthanh}" var="t">
                                             <option value="${t.id}">${t.ten}</option>
                                         </c:forEach>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-            </form:form>
+            </form>
         </div>
     </div>
 </div>

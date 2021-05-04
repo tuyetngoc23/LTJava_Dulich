@@ -6,8 +6,10 @@
 package com.yn.controller;
 
 import com.yn.pojo.TinhThanh;
+import com.yn.pojo.Tour;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,14 +27,21 @@ public class HomeController {
     @Autowired
     private TinhThanhService tinhThanhService;
     
+    //nọc lúc tìm kiếm có chuyể trang khoong hay vaanx dung ow trang chu
+    //vẫn ở trang chủ á ok
+    
     @RequestMapping("/")
-    public String index(Model model){
+    public String index(Model model, @RequestParam(name = "tinhthanh", required = false) TinhThanh t){
+        List<Tour> tours;
+//        tours = t == null || t.getId() == 0 ? tourSevice.getTour():tourSevice.findTour(t.getId()));
+     
         model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
-//        model.addAttribute("tinhthanh", this.tourSevice.getTour(t));
-        model.addAttribute("tour", this.tourSevice.getTour());
+        //model.addAttribute("tour", this.tourSevice.findTour(t.getId()));
+        model.addAttribute("tour",tourSevice.getTour());
+//        model.addAttribute("tour", tours);//chỗ này get all hả alo
         return "index";
     }
-    @RequestMapping("/tourdetails")
+    @RequestMapping("/tourdetails") 
     public String tourDetails(Model model,
             @RequestParam(name = "kw", required = false, defaultValue = "") String kw){
         model.addAttribute("tour", this.tourSevice.getTour(kw));

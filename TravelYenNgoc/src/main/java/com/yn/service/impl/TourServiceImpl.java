@@ -46,7 +46,8 @@ public class TourServiceImpl implements TourSevice{
     }
 
     @Override
-    public List<Tour> getTour(TinhThanh tt) {
-        return this.tourRepository.getTour(tt);
+    public List<Tour> findTour(int i) {
+        return this.tourRepository.findTour(i);
     }
+
 }

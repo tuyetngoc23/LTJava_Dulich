@@ -106,16 +106,19 @@ public class TourReponsitoryImpl implements TourRepository {
     }
 
     @Override
-    public List<Tour> getTour(TinhThanh tt) {
+    @Transactional
+    public List<Tour> findTour(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Tour> query = builder.createQuery(Tour.class);
         Root root = query.from(Tour.class);
         query.select(root);
-        Predicate p = builder.equal(root.get("diemDiID").as(TinhThanh.class), tt);
+        Predicate p = builder.equal(root.get("diemDenID").as(Integer.class), id);
         query = query.where(p);
         Query q = session.createQuery(query);
 
         return q.getResultList();
     }
+
+    
 }
