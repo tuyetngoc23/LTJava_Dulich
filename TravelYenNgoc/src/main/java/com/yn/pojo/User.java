@@ -7,7 +7,6 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -22,8 +21,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -39,39 +37,25 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="user")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
-    name="discriminator",
+    name="userrole",
     discriminatorType=DiscriminatorType.STRING
 )
-@DiscriminatorValue(value="P")
 public class User implements Serializable{
 
     /**
-     * @return the employee
+     * @return the userrole
      */
-    public Employee getEmployee() {
-        return employee;
+    public Role getUserrole() {
+        return userrole;
     }
 
     /**
-     * @param employee the employee to set
+     * @param userrole the userrole to set
      */
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setUserrole(Role userrole) {
+        this.userrole = userrole;
     }
 
-    /**
-     * @return the custormer
-     */
-    public Customer getCustormer() {
-        return custormer;
-    }
-
-    /**
-     * @param custormer the custormer to set
-     */
-    public void setCustormer(Customer custormer) {
-        this.custormer = custormer;
-    }
 
     /**
      * @return the id
@@ -213,19 +197,19 @@ public class User implements Serializable{
         this.hoTen = hoTen;
     }
 
-    /**
-     * @return the userrole
-     */
-    public Role getUserrole() {
-        return userrole;
-    }
-
-    /**
-     * @param userrole the userrole to set
-     */
-    public void setUserrole(Role userrole) {
-        this.userrole = userrole;
-    }
+//    /**
+//     * @return the userrole
+//     */
+//    public Role getUserrole() {
+//        return userrole;
+//    }
+//
+//    /**
+//     * @param userrole the userrole to set
+//     */
+//    public void setUserrole(Role userrole) {
+//        this.userrole = userrole;
+//    }
 
     /**
      * @return the gioiTinh
@@ -241,7 +225,7 @@ public class User implements Serializable{
         this.gioiTinh = gioiTinh;
     }
     public static enum Role {
-        Staff,
+        Employee,
         Customer,
         Admin,
     }
@@ -266,11 +250,14 @@ public class User implements Serializable{
     @Enumerated(EnumType.STRING)
     private Role userrole;
     private Boolean gioiTinh;
-    @OneToOne(mappedBy = "idCus")
-    @PrimaryKeyJoinColumn 
-    private Customer custormer;
-    @OneToOne(mappedBy = "idStaff")
-    @PrimaryKeyJoinColumn 
+    
+
+    @OneToOne(mappedBy = "idCus",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Customer customer;
+    
+    @OneToOne(mappedBy = "idStaff",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private Employee employee;
 }
 

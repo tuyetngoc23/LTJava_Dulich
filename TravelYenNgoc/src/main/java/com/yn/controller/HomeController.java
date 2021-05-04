@@ -31,12 +31,12 @@ public class HomeController {
     //vẫn ở trang chủ á ok
     
     @RequestMapping("/")
-    public String index(Model model, @RequestParam(name = "tinhthanh", required = false) TinhThanh t){
+    public String index(Model model, @RequestParam(name = "tinhthanh") TinhThanh t){
         List<Tour> tours;
 //        tours = t == null || t.getId() == 0 ? tourSevice.getTour():tourSevice.findTour(t.getId()));
      
         model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
-        //model.addAttribute("tour", this.tourSevice.findTour(t.getId()));
+        model.addAttribute("tinhthanh", this.tourSevice.findTour(t.getId()));
         model.addAttribute("tour",tourSevice.getTour());
 //        model.addAttribute("tour", tours);//chỗ này get all hả alo
         return "index";

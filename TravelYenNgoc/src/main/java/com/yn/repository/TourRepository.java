@@ -5,6 +5,7 @@
  */
 package com.yn.repository;
 
+import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import java.util.List;

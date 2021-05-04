@@ -7,14 +7,22 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -23,6 +31,20 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name="tintuc")
 public class TinTuc implements Serializable{
+
+    /**
+     * @return the soLuotThich
+     */
+    public int getSoLuotThich() {
+        return soLuotThich;
+    }
+
+    /**
+     * @param soLuotThich the soLuotThich to set
+     */
+    public void setSoLuotThich(int soLuotThich) {
+        this.soLuotThich = soLuotThich;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,13 +52,34 @@ public class TinTuc implements Serializable{
     private String moTaDai;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayDang;
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean trangThai;
     private String anh;
     private int soLuotThich;
     @ManyToOne
     @JoinColumn(name="emloyee_id")
     private Employee employee;
+    
+    @OneToMany(mappedBy = "customerId")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<BinhLuan> binhLuans;
+    
+    @OneToMany(mappedBy = "tintucIdThich")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Thich> thichs;
+    
+    
+    @Transient
+    private MultipartFile imgUploadFile;
 
+    public MultipartFile getImgUploadFile() {
+        return imgUploadFile;
+    }
+
+    public void setImgUploadFile(MultipartFile imgUploadFile) {
+        this.imgUploadFile = imgUploadFile;
+    }
+    
     /**
      * @return the id
      */
@@ -123,6 +166,7 @@ public class TinTuc implements Serializable{
 
 
     /**
+
      * @return the employee
      */
     public Employee getEmployee() {
@@ -136,17 +180,5 @@ public class TinTuc implements Serializable{
         this.employee = employee;
     }
 
-    /**
-     * @return the soLuotThich
-     */
-    public int getSoLuotThich() {
-        return soLuotThich;
-    }
 
-    /**
-     * @param soLuotThich the soLuotThich to set
-     */
-    public void setSoLuotThich(int soLuotThich) {
-        this.soLuotThich = soLuotThich;
-    }
 }

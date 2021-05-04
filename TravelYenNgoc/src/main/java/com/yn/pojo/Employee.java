@@ -10,15 +10,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -26,8 +26,21 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="employee")
-@DiscriminatorValue("E")
-public class Employee extends User implements Serializable{
+public class Employee implements Serializable{
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * @return the idStaff
@@ -42,8 +55,17 @@ public class Employee extends User implements Serializable{
     public void setIdStaff(User idStaff) {
         this.idStaff = idStaff;
     }
-    @OneToOne(cascade = CascadeType.ALL)
+ 
+
+    @Id
+    private int id;
+    @OneToOne
     @JoinColumn(name = "id")
     @MapsId
     private User idStaff;
+    
+    @OneToMany(mappedBy = "employee")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<TinTuc> tinTucs;
+    
 }
