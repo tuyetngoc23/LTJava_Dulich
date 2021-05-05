@@ -5,16 +5,21 @@
  */
 package com.yn.controller;
 
+import com.yn.pojo.Booking;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
+import com.yn.repository.BookingRepository;
+import com.yn.service.BookingService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,6 +33,8 @@ public class HomeController {
     private TourSevice tourSevice;
     @Autowired
     private TinhThanhService tinhThanhService;
+    @Autowired
+    private BookingService bookingService;
     
     @RequestMapping("/")
     public String index(Model model, @RequestParam(name = "tt",required = false) String t,
@@ -51,8 +58,9 @@ public class HomeController {
     }
     
     @RequestMapping("/booking")
-    public String booking(Model model){
+    public String booking(Model model, @ModelAttribute(value = "booking") @Valid Booking booking){
         model.addAttribute("tour", this.tourSevice.getTour());
+//        model.addAttribute("booking", this.bookingService.addBooking(booking));
         return "booking";
     }
     @RequestMapping("/news")
