@@ -106,6 +106,7 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 //        //query = query.where(p);
 //        Query q = session.createQuery(query);
         Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
+        
         return q.getResultList();
     }
 }
