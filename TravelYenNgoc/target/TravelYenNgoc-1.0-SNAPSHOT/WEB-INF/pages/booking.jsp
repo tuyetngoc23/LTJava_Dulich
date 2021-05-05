@@ -20,13 +20,14 @@
             </div> 
             <div class="col-md probootstrap-animate">
                 <form:form action="" class="probootstrap-form" modelAttribute="booking">
+                    <form:errors path="*" element="div" /> 
                     <div class="form-group">
                         <div class="row mb-3">
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="id_label_single">tour</label>
                                     <label for="id_label_single" style="width: 100%;">
-                                        <form:select path="tourId" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
+                                        <form:select path="tourId.id" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
                                             <c:forEach items="${tour}" var="t">
                                                 <option value="${t.id}">${t.ten}</option>
                                             </c:forEach>
@@ -86,7 +87,7 @@
                                 <div class="form-group">
                                     <label for="ten">Tên khách hàng</label>
                                     <div>
-                                        <form:input type="text" id="ten" path="ttlienlacId.tenNguoiDi"/>
+                                        <form:input type="text" id="ten" path="tenKH"/>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +95,7 @@
                                 <div class="form-group">
                                     <label for="sdt">Số điện thoại</label>
                                     <div>
-                                        <form:input type="text" id="sdt" path="ttlienlacId.sdt"/>
+                                        <form:input type="text" id="sdt" path="sdt"/>
                                     </div>
                                 </div>
                             </div>

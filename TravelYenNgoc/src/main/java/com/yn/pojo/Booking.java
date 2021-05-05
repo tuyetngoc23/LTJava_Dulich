@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -30,6 +32,10 @@ public class Booking implements Serializable{
     private BigDecimal totalMoney;
     private int soNguoiLonDi;
     private int soNguoiNhoDi;
+    private String tenKH;
+    @Pattern(regexp = "^[0-9]", message = "{booking.sdt.err}")
+    @Length(max = 10, message = "{booking.sdt.err}")
+    private String sdt;
     
     @ManyToOne
     @JoinColumn(name="customer_id")
@@ -38,10 +44,6 @@ public class Booking implements Serializable{
     @ManyToOne
     @JoinColumn(name="employee_id")
     private Employee employeeId;
-    
-    @ManyToOne
-    @JoinColumn(name="thongTinLienLac_id")
-    private ThongTinLienLac ttlienlacId;
     
     @ManyToOne
     @JoinColumn(name="tour_id")
@@ -146,20 +148,6 @@ public class Booking implements Serializable{
     }
 
     /**
-     * @return the ttlienlacId
-     */
-    public ThongTinLienLac getTtlienlacId() {
-        return ttlienlacId;
-    }
-
-    /**
-     * @param ttlienlacId the ttlienlacId to set
-     */
-    public void setTtlienlacId(ThongTinLienLac ttlienlacId) {
-        this.ttlienlacId = ttlienlacId;
-    }
-
-    /**
      * @return the tourId
      */
     public Tour getTourId() {
@@ -171,5 +159,33 @@ public class Booking implements Serializable{
      */
     public void setTourId(Tour tourId) {
         this.tourId = tourId;
+    }
+
+    /**
+     * @return the tenKH
+     */
+    public String getTenKH() {
+        return tenKH;
+    }
+
+    /**
+     * @param tenKH the tenKH to set
+     */
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
+    }
+
+    /**
+     * @return the sdt
+     */
+    public String getSdt() {
+        return sdt;
+    }
+
+    /**
+     * @param sdt the sdt to set
+     */
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 }

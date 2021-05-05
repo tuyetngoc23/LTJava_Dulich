@@ -7,6 +7,7 @@ package com.yn.repository.impl;
 
 import com.yn.pojo.Booking;
 import com.yn.repository.BookingRepository;
+import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

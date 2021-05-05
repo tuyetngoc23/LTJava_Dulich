@@ -14,7 +14,6 @@ com\yn\service\LoaiTourService.class
 com\yn\service\impl\TinTucServiceImpl.class
 com\yn\service\TinhThanhService.class
 com\yn\repository\TinhThanhReponsitory.class
-com\yn\pojo\ThongTinLienLac.class
 com\yn\pojo\Employee.class
 com\yn\service\impl\LoaiTourServiceImpl.class
 com\yn\controller\ChartController.class

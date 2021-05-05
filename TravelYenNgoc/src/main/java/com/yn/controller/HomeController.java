@@ -60,7 +60,7 @@ public class HomeController {
     @RequestMapping("/booking")
     public String booking(Model model, @ModelAttribute(value = "booking") @Valid Booking booking){
         model.addAttribute("tour", this.tourSevice.getTour());
-//        model.addAttribute("booking", this.bookingService.addBooking(booking));
+        bookingService.addBooking(booking);
         return "booking";
     }
     @RequestMapping("/news")

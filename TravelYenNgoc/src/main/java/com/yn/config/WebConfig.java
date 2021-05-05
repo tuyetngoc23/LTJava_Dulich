@@ -53,7 +53,7 @@ public class WebConfig implements WebMvcConfigurer {
     public MessageSource messageSource() {
         ResourceBundleMessageSource resource
                 = new ResourceBundleMessageSource();
-        resource.setBasename("messagetour");
+        resource.setBasenames("messagetour", "messbooking");
         return resource;
     }
     @Bean
