@@ -16,13 +16,17 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js">
 <script type="text/javascript">
   
 var ctx = document.getElementById("myChart");
+var chart =[];
+<c:forEach items="${doanhthu}" var="u">
+    chart.push(${u});
+</c:forEach>
 var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ["tháng 1", "tháng 2" , "tháng 3" , "tháng 5", "tháng 6", "tháng 7","tháng7","tháng 8","tháng 9","tháng 10","tháng 11","tháng 12"],
     datasets: [
       { label: '# doanh thu',
-        data: [105,124,78,91,62,56,86,24,12,23,21,12,60],
+        data: chart,
         backgroundColor :[
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

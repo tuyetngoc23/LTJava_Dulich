@@ -41,7 +41,8 @@ public class ChartController {
 
     @RequestMapping("/admin/chart")
     public String adchart(Model model) {
-        //model.addAttribute("user", this.userService.getUser());
+        int[] myNum = {105,124,78,91,62,56,86,24,12,23,21,12,60};
+        model.addAttribute("doanhthu", myNum);
         return "chart";
     }
 
