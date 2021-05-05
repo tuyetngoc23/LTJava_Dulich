@@ -7,7 +7,9 @@ package com.yn.repository.impl;
 
 import com.yn.pojo.Booking;
 import com.yn.repository.BookingRepository;
+import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,17 @@ public class BookingRepositoryImpl implements BookingRepository{
     public void addBooking(Booking b) {
         Session s = this.sessionFactory.getObject().getCurrentSession();
         s.save(b);
+    }
+
+    @Override
+    @Transactional
+    public BigDecimal getDoanhThu(int thang, int nam) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT sum(totalMoney) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
+        q.setParameter("thang", thang);
+        q.setParameter("nam", nam);
+        //(BigDecimal) q.getResultList().get(0)
+        return (BigDecimal) q.getResultList().get(0);
     }
     
 }
