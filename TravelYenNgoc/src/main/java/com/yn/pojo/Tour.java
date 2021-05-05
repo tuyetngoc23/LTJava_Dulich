@@ -8,6 +8,7 @@ package com.yn.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
@@ -69,6 +71,9 @@ public class Tour implements Serializable {
     private String image;
     @Transient
     private MultipartFile imgUploadFile;
+    
+    @OneToMany(mappedBy = "tourId")
+    private List<Booking> bookingT;
 
     public MultipartFile getImgUploadFile() {
         return imgUploadFile;
@@ -233,6 +238,20 @@ public class Tour implements Serializable {
      */
     public void setImage(String image) {
         this.image = image;
+    }
+
+    /**
+     * @return the bookingT
+     */
+    public List<Booking> getBookingT() {
+        return bookingT;
+    }
+
+    /**
+     * @param bookingT the bookingT to set
+     */
+    public void setBookingT(List<Booking> bookingT) {
+        this.bookingT = bookingT;
     }
 
 }

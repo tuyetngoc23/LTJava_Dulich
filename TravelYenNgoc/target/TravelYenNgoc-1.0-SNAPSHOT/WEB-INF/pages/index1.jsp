@@ -53,7 +53,7 @@
                                 <label for="probootstrap-date-departure">Ngày khởi hành</label>
                                 <div class="probootstrap-date-wrap">
                                     <span class="icon ion-calendar"></span> 
-                                    <input name="n" type="text" id="probootstrap-date-departure" class="form-control" placeholder="">
+                                    <input type="text" id="probootstrap-date-departure" class="form-control" placeholder="">
                                 </div>
                             </div>
                         </div>

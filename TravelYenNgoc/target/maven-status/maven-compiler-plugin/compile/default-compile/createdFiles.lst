@@ -22,6 +22,7 @@ com\yn\service\impl\TinhThanhServiceImpl.class
 com\yn\controller\HomeController.class
 com\yn\pojo\Thich.class
 com\yn\config\DispatcherInit.class
+com\yn\pojo\Booking.class
 com\yn\repository\impl\LoaiTourResponsitoryImpl.class
 com\yn\service\LoaiTourService.class
 com\yn\service\impl\TinTucServiceImpl.class
@@ -29,6 +30,7 @@ com\yn\service\TinhThanhService.class
 com\yn\service\impl\UserServiceImpl.class
 com\yn\controller\ApiTourController.class
 com\yn\repository\TinhThanhReponsitory.class
+com\yn\pojo\ThongTinLienLac.class
 com\yn\pojo\Customer.class
 com\yn\controller\QuanLyTinTucController.class
 com\yn\pojo\LoaiTour.class

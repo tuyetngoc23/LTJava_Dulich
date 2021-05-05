@@ -98,16 +98,34 @@ public class Customer  implements Serializable{
     private List<Thich> thichs;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne
     @JoinColumn(name = "id")
     @MapsId
     private User idCus;
     
+    @OneToMany(mappedBy = "customerId")
+    private List<Booking> booking;
+    
     
 //    @OneToOne(mappedBy = "idCus")
 //    @PrimaryKeyJoinColumn
 //    private User user;
+
+    /**
+     * @return the booking
+     */
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    /**
+     * @param booking the booking to set
+     */
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
+    }
      
 
 }

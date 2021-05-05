@@ -68,4 +68,21 @@ public class Employee implements Serializable{
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<TinTuc> tinTucs;
     
+    @OneToMany(mappedBy = "employeeId")
+    private List<Booking> bookingE;
+
+    /**
+     * @return the bookingE
+     */
+    public List<Booking> getBookingE() {
+        return bookingE;
+    }
+
+    /**
+     * @param bookingE the bookingE to set
+     */
+    public void setBookingE(List<Booking> bookingE) {
+        this.bookingE = bookingE;
+    }
+    
 }

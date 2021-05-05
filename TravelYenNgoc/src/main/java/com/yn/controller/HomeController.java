@@ -33,14 +33,14 @@ public class HomeController {
     public String index(Model model, @RequestParam(name = "tt",required = false) String t,
             @RequestParam(name = "n",required = false) String n){
         List<Tour> tours;
-        List<Tour> tours1;
+//        List<Tour> tours1;
         tours = t == null || t.length() == 0 ? tourSevice.getTour():tourSevice.findTour(Integer.parseInt(t));
-        tours1 = n == null || n.length() == 0 ? tourSevice.getTour():tourSevice.findTourForDate(n);
+//        tours1 = n == null || n.length() == 0 ? tourSevice.getTour():tourSevice.findTourForDate(n);
 
 //        System.out.println("kw: " + t);
         model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
         model.addAttribute("tour", tours);//chỗ này get all hả alo
-        model.addAttribute("tour", tours1);
+//        model.addAttribute("tour", tours1);
         return "index";
     }
     @RequestMapping("/tourdetails") 

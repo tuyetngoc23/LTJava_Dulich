@@ -15,6 +15,7 @@ D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\repository\impl\
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\service\impl\TinTucServiceImpl.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\config\TilesConfig.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\repository\impl\TourReponsitoryImpl.java
+D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\Booking.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\repository\impl\TinhThanhResponsitoryImpl.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\ApiTourController.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\BinhLuan.java
@@ -39,4 +40,5 @@ D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\Customer.ja
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\LoginController.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\repository\LoaiTourRepository.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\Thich.java
+D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\ThongTinLienLac.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\service\UserService.java
