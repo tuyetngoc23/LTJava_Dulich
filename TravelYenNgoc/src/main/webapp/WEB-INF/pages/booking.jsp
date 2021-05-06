@@ -19,8 +19,7 @@
                 </p>
             </div> 
             <div class="col-md probootstrap-animate">
-                <form:form action="" class="probootstrap-form" modelAttribute="booking">
-                    <form:errors path="*" element="div" /> 
+                <form:form action="" class="probootstrap-form" modelAttribute="booking" method="post">
                     <div class="form-group">
                         <div class="row mb-3">
                             <div class="col-md">
@@ -88,14 +87,16 @@
                                     <label for="ten">Tên khách hàng</label>
                                     <div>
                                         <form:input type="text" id="ten" path="tenKH"/>
+                                        <form:errors path="tenKH" cssClass="text-danger" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-group">
-                                    <label for="sdt">Số điện thoại</label>
+                                    <label for="sdt" style="width: 100%;">Số điện thoại</label>
                                     <div>
                                         <form:input type="text" id="sdt" path="sdt"/>
+                                        <form:errors path="sdt" cssClass="text-danger" />
                                     </div>
                                 </div>
                             </div>

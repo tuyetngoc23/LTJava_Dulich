@@ -33,8 +33,7 @@ public class Booking implements Serializable{
     private int soNguoiLonDi;
     private int soNguoiNhoDi;
     private String tenKH;
-    @Pattern(regexp = "^[0-9]", message = "{booking.sdt.err}")
-    @Length(max = 10, message = "{booking.sdt.err}")
+    @Pattern(regexp = "[0-9]{10}", message = "{booking.sdt.err}")
     private String sdt;
     
     @ManyToOne
