@@ -6,6 +6,7 @@
 package com.yn.repository.impl;
 
 import com.yn.pojo.Booking;
+import com.yn.pojo.Tour;
 import com.yn.repository.BookingRepository;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -43,6 +44,13 @@ public class BookingRepositoryImpl implements BookingRepository{
         q.setParameter("nam", nam);
         //(BigDecimal) q.getResultList().get(0)
         return (BigDecimal) q.getResultList().get(0);
+    }
+
+    @Override
+    @Transactional
+    public BigDecimal getGia(Tour t, Booking b) {
+        return t.getGia().multiply(new BigDecimal(b.getSoNguoiLonDi()))
+                .add(t.getGia().multiply(new BigDecimal(b.getSoNguoiNhoDi())).multiply(new BigDecimal(0.5)));
     }
     
 }

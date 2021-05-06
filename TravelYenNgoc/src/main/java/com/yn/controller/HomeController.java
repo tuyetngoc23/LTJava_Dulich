@@ -12,6 +12,7 @@ import com.yn.repository.BookingRepository;
 import com.yn.service.BookingService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
+import com.yn.utils.Utils;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -60,18 +61,21 @@ public class HomeController {
         return "tourdetails";
     }
     @GetMapping("/booking")
-    public String bookingView(Model model){
+    public String bookingView(Model model, @Valid Booking booking, @Valid Tour tour){
         model.addAttribute("tour", this.tourSevice.getTour());
         model.addAttribute("booking", new Booking());
+        
         return "booking";
     }
     
     @PostMapping("/booking")
     public String booking(Model model, @ModelAttribute(value = "booking")
-    @Valid Booking booking, BindingResult err){
+    @Valid Booking booking, @Valid Tour tour, BindingResult err){
+        model.addAttribute("getGia", this.bookingService.getGia(tour, booking));
         if(err.hasErrors()){
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
         }else{
+            
             bookingService.addBooking(booking);
         }
         return "booking";

@@ -106,7 +106,7 @@
                         <div class="row">
                             <div class="col-md">
                                 <label>Tổng tiền:</label>
-                                <span class="text-danger">0 VNĐ</span>
+                                <form:input type="text" path="totalMoney"/>
                             </div>
                             <div class="col-md">
                                 <input type="submit" value="Book" class="btn btn-primary btn-block">

@@ -6,6 +6,7 @@
 package com.yn.service.impl;
 
 import com.yn.pojo.Booking;
+import com.yn.pojo.Tour;
 import com.yn.repository.BookingRepository;
 import com.yn.repository.LoaiTourRepository;
 import com.yn.service.BookingService;
@@ -35,6 +36,12 @@ public class BookingServiceImpl implements BookingService{
     public BigDecimal getDoanhThu(int thang, int nam) {
         return this.bookingRepository.getDoanhThu(thang, nam);
         
+    }
+
+    @Override
+    @Transactional
+    public BigDecimal getGia(Tour tour, Booking bkng) {
+        return this.getGia(tour, bkng);
     }
     
 }
