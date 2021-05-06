@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,9 +59,13 @@ public class HomeController {
     }
     
     @RequestMapping("/booking")
-    public String booking(Model model, @ModelAttribute(value = "booking") @Valid Booking booking){
+    public String booking(Model model, @ModelAttribute(value = "booking")
+    @Valid Booking booking, BindingResult err){
         model.addAttribute("tour", this.tourSevice.getTour());
-        bookingService.addBooking(booking);
+        if(err.hasErrors())
+            return "booking";
+        else
+            bookingService.addBooking(booking);
         return "booking";
     }
     @RequestMapping("/news")
