@@ -6,6 +6,7 @@
 package com.yn.service;
 
 import com.yn.pojo.Booking;
+import java.math.BigDecimal;
 
 /**
  *
@@ -13,4 +14,5 @@ import com.yn.pojo.Booking;
  */
 public interface BookingService {
     void addBooking(Booking b);
+    BigDecimal getDoanhThu(int thang, int nam);
 }

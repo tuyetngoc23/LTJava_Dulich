@@ -9,6 +9,7 @@ import com.yn.pojo.Booking;
 import com.yn.repository.BookingRepository;
 import com.yn.repository.LoaiTourRepository;
 import com.yn.service.BookingService;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,13 @@ public class BookingServiceImpl implements BookingService{
     @Transactional
     public void addBooking(Booking b) {
         this.bookingRepository.addBooking(b);
+    }
+
+    @Override
+    @Transactional
+    public BigDecimal getDoanhThu(int thang, int nam) {
+        return this.bookingRepository.getDoanhThu(thang, nam);
+        
     }
     
 }

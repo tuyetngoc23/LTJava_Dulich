@@ -6,12 +6,14 @@
 package com.yn.controller;
 
 import com.yn.pojo.Tour;
+import com.yn.service.BookingService;
 import com.yn.service.LoaiTourService;
 import com.yn.service.TinhThanhService;
 
 import com.yn.service.TourSevice;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +39,15 @@ public class ChartController {
     @Autowired
     private TinhThanhService tinhThanhService;
     @Autowired
-    private LoaiTourService loaiTourService;
+    private BookingService bookingService;
 
     @RequestMapping("/admin/chart")
     public String adchart(Model model) {
-        int[] myNum = {105,124,78,91,62,56,86,24,12,23,21,12,60};
+        BigDecimal[] myNum = new BigDecimal[13];
+        int i;
+        for (i = 0; i < myNum.length; i++)
+            myNum[i] = this.bookingService.getDoanhThu(i, 2021);
+  
         model.addAttribute("doanhthu", myNum);
         return "chart";
     }
