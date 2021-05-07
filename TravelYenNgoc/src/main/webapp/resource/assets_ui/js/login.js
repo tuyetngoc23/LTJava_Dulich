@@ -4,4 +4,9 @@
  * and open the template in the editor.
  */
 
-
+$("#login-button").click(function(event){
+     event.preventDefault();
+   
+   $('form').fadeOut(500);
+   $('.wrapper').addClass('form-success');
+});

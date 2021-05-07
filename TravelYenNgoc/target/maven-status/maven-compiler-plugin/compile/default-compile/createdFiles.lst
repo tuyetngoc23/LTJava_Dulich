@@ -31,6 +31,7 @@ com\yn\config\WebConfig.class
 com\yn\pojo\User.class
 com\yn\service\UserService.class
 com\yn\repository\LoaiTourRepository.class
+com\yn\utils\Utils.class
 com\yn\pojo\TinTuc.class
 com\yn\service\BookingService.class
 com\yn\pojo\BinhLuan.class

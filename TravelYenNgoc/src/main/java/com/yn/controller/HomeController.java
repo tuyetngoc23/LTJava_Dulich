@@ -10,8 +10,10 @@ import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.BookingRepository;
 import com.yn.service.BookingService;
+import com.yn.service.TinTucService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
+import com.yn.utils.Utils;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +21,10 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,6 +40,8 @@ public class HomeController {
     private TinhThanhService tinhThanhService;
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private TinTucService tinTucService;
     
     @RequestMapping("/")
     public String index(Model model, @RequestParam(name = "tt",required = false) String t,
@@ -56,15 +63,29 @@ public class HomeController {
         model.addAttribute("tour", this.tourSevice.getTour(kw));
         return "tourdetails";
     }
-    
-    @RequestMapping("/booking")
-    public String booking(Model model, @ModelAttribute(value = "booking") @Valid Booking booking){
+    @GetMapping("/booking")
+    public String bookingView(Model model){
         model.addAttribute("tour", this.tourSevice.getTour());
-        bookingService.addBooking(booking);
+        model.addAttribute("booking", new Booking());
         return "booking";
     }
+   
+    @PostMapping("/booking")
+    public String booking(Model model, @ModelAttribute(value = "booking")
+    @Valid Booking booking, BindingResult err){
+        if(err.hasErrors()){
+            model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
+        }else{
+            
+            bookingService.addBooking(booking);
+        }
+        return "booking";
+    }
+    
+    
     @RequestMapping("/news")
     public String news(Model model){
+        model.addAttribute("news", this.tinTucService.getTinTucs());
         return "news";
     }
 

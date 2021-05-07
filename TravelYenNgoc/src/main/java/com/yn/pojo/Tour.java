@@ -254,4 +254,11 @@ public class Tour implements Serializable {
         this.bookingT = bookingT;
     }
 
+    @Override
+    public String toString() {
+        return "Tour{tourid: "+this.id+", ten: "+ten+", gia: "+gia+"}"; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
 }

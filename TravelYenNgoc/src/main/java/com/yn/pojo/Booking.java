@@ -7,6 +7,7 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,8 +34,7 @@ public class Booking implements Serializable{
     private int soNguoiLonDi;
     private int soNguoiNhoDi;
     private String tenKH;
-    @Pattern(regexp = "^[0-9]", message = "{booking.sdt.err}")
-    @Length(max = 10, message = "{booking.sdt.err}")
+    @Pattern(regexp = "[0-9]{10}", message = "{booking.sdt.err}")
     private String sdt;
     
     @ManyToOne
@@ -187,5 +187,9 @@ public class Booking implements Serializable{
      */
     public void setSdt(String sdt) {
         this.sdt = sdt;
+    }
+
+    public void setBookingDay(LocalDate d) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

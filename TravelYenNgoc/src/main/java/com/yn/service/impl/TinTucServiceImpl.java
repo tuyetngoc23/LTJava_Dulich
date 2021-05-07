@@ -17,6 +17,7 @@ import com.yn.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -50,6 +51,12 @@ public class TinTucServiceImpl implements TinTucService {
     @Override
     public List<BinhLuan> getBinhLuans(int tinTucID) {
        return this.tintTucRepository.getBinhLuans(tinTucID);
+    }
+
+    @Override
+    @Transactional
+    public List<TinTuc> getTinTucs() {
+        return this.tintTucRepository.getTinTucs();
     }
 
     

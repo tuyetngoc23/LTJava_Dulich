@@ -109,4 +109,12 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         
         return q.getResultList();
     }
+
+    @Override
+    public List<TinTuc> getTinTucs() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        Query q = session.createQuery("From TinTuc");
+        return q.getResultList();
+    }
 }

@@ -19,15 +19,14 @@
                 </p>
             </div> 
             <div class="col-md probootstrap-animate">
-                <form:form action="" class="probootstrap-form" modelAttribute="booking">
-                    <form:errors path="*" element="div" /> 
+                <form:form action="" class="probootstrap-form" modelAttribute="booking" method="post">
                     <div class="form-group">
                         <div class="row mb-3">
                             <div class="col-md">
                                 <div class="form-group">
                                     <label for="id_label_single">tour</label>
                                     <label for="id_label_single" style="width: 100%;">
-                                        <form:select path="tourId.id" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
+                                        <form:select path="tourId.id" onchange="getprice(this)" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
                                             <c:forEach items="${tour}" var="t">
                                                 <option value="${t.id}">${t.ten}</option>
                                             </c:forEach>
@@ -88,14 +87,16 @@
                                     <label for="ten">Tên khách hàng</label>
                                     <div>
                                         <form:input type="text" id="ten" path="tenKH"/>
+                                        <form:errors path="tenKH" cssClass="text-danger" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-group">
-                                    <label for="sdt">Số điện thoại</label>
+                                    <label for="sdt" style="width: 100%;">Số điện thoại</label>
                                     <div>
                                         <form:input type="text" id="sdt" path="sdt"/>
+                                        <form:errors path="sdt" cssClass="text-danger" />
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +106,7 @@
                         <div class="row">
                             <div class="col-md">
                                 <label>Tổng tiền:</label>
-                                <span class="text-danger">0 VNĐ</span>
+                                <form:input type="text" path="totalMoney" id="totalMoney"/>
                             </div>
                             <div class="col-md">
                                 <input type="submit" value="Book" class="btn btn-primary btn-block">

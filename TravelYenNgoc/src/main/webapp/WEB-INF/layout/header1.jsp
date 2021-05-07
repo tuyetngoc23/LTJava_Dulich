@@ -21,6 +21,24 @@
                 <li class="nav-item"><a class="nav-link" href="<c:url value="/booking"/>">Booking</a></li>
                 <li class="nav-item"><a class="nav-link" href="<c:url value="/news"/>">News</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                   <c:choose>
+                        <c:when test="${pageContext.request.userPrincipal.name == null}">
+                        <li  class="nav-item">
+                            <a class="nav-link" href="<c:url value="/register" />">Register</a>
+                        </li>
+                        <li  class="nav-item">
+                            <a class="nav-link" href="<c:url value="/login" />">Login</a>
+                        </li>
+                    </c:when>
+                    <c:when test="${pageContext.request.userPrincipal.name != null}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">${pageContext.request.userPrincipal.name}</a>
+                        </li >
+                        <li class="nav-item">
+                            <a class="nav-link" href="<c:url value="/logout" />">Logout</a>
+                        </li>
+                    </c:when>
+                </c:choose>
             </ul>
         </div>
     </div>
