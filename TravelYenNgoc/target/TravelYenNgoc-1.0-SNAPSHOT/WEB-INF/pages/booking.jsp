@@ -106,7 +106,7 @@
                         <div class="row">
                             <div class="col-md">
                                 <label>Tổng tiền:</label>
-                                <form:input type="text" path="totalMoney"/>
+                                <form:input type="text" path="totalMoney" id="totalMoney"/>
                             </div>
                             <div class="col-md">
                                 <input type="submit" value="Book" class="btn btn-primary btn-block">
@@ -119,4 +119,3 @@
     </div>
 </section>
 <!-- END section -->
-

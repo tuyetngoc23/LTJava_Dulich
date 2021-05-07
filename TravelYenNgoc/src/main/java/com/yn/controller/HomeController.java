@@ -10,6 +10,7 @@ import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.BookingRepository;
 import com.yn.service.BookingService;
+import com.yn.service.TinTucService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import com.yn.utils.Utils;
@@ -39,6 +40,8 @@ public class HomeController {
     private TinhThanhService tinhThanhService;
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private TinTucService tinTucService;
     
     @RequestMapping("/")
     public String index(Model model, @RequestParam(name = "tt",required = false) String t,
@@ -64,34 +67,12 @@ public class HomeController {
     public String bookingView(Model model){
         model.addAttribute("tour", this.tourSevice.getTour());
         model.addAttribute("booking", new Booking());
-        //ê, thui, nghỉ đi, mai làm tiếp, chứ mệt r :((( không hải mà nó bị lưu bản buid cũ á nó không chạy đc :(((
-        //tức ghê, mai chạy luôn// chắc mai chạy lại nó chạy đc kkkkk
-        //cái valida cũng v á :(((, qua chạy ko dc nhưng mới nãy chạy dc  :à à 
-        //à này dùng ajax lấy giá nha chuwsk hông lấy kiểu này đc
-        // khi chọn mỗi tour giá nó khác nha
-        //viết ajax gửi tourid lên rồi lấy viết bên api
-       // model.addAttribute("getGia", this.bookingService.getGia(, booking));
-        // lỗi render trang nè cái Booking booking, @Valid Tour tour chưa map nè
-        // ngọc muốn hiện các tour ra rồi mới booking đúng hông
-        //ừ, t hiện cái tour trong select á, mà cái này nó chạy đúng á cho tới khi thêm @Valid Booking booking, @Valid Tour tour
-        // đúng rồi nó chưa mapping với cái nào thì valid kiểu gì đc nên nó văng lỗi á 
-        // mà trang get dữ liệu đâu canaf hai cáo đó đâu
-        //tại nãy thêm cái hàm á, nên mới thêm, giờ bỏ nó qua post r á, mà hong xóa
         return "booking";
     }
-    //cho xem lỗi đi
+   
     @PostMapping("/booking")
     public String booking(Model model, @ModelAttribute(value = "booking")
     @Valid Booking booking, BindingResult err){
-        //t thêm cái này
-        //cái tour đó chưa mapping với trường nào nè
-        //t muốn nó mapp với cái này nè
-        //@Valid Booking booking, @Valid Tour tour hai ái này phải map nó mới đc nè
-        //booking thì có r á, còn tour thì hong biết map kiểu gì 
-        // hai đó đi chung không
-        //chung form á từ từ
-        //form đó có mỗi cái tourid thôi á, mà cái đó t khai báo Tour á
-        // vậy thì bỏ cái  @Valid Tour tour này đi nó không tác dụng vì cái booking có rồi nó lưu rồi
         if(err.hasErrors()){
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
         }else{
@@ -104,6 +85,7 @@ public class HomeController {
     
     @RequestMapping("/news")
     public String news(Model model){
+        model.addAttribute("news", this.tinTucService.getTinTucs());
         return "news";
     }
 

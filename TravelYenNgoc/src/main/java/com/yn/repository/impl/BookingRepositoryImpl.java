@@ -49,7 +49,7 @@ public class BookingRepositoryImpl implements BookingRepository{
 
     @Override
     @Transactional
-    public BigDecimal getGia(Tour t, Booking b) {
+    public BigDecimal getPrice(Tour t, Booking b) {
         return t.getGia().multiply(new BigDecimal(b.getSoNguoiLonDi()))
                 .add(t.getGia().multiply(new BigDecimal(b.getSoNguoiNhoDi())).multiply(new BigDecimal(0.5)));
     }

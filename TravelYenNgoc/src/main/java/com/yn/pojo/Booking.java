@@ -7,6 +7,7 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -186,5 +187,9 @@ public class Booking implements Serializable{
      */
     public void setSdt(String sdt) {
         this.sdt = sdt;
+    }
+
+    public void setBookingDay(LocalDate d) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
