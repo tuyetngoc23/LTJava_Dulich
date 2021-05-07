@@ -42,11 +42,11 @@ public class ChartController {
     private BookingService bookingService;
 
     @RequestMapping("/admin/chart")
-    public String adchart(Model model) {
+    public String adchart(Model model ,@RequestParam(name = "nam", required = false, defaultValue = "2020") int nam ){
         BigDecimal[] myNum = new BigDecimal[13];
         int i;
         for (i = 0; i < myNum.length; i++)
-            myNum[i] = this.bookingService.getDoanhThu(i, 2021);
+            myNum[i] = this.bookingService.getDoanhThu(i, nam);
   
         model.addAttribute("doanhthu", myNum);
         return "chart";
