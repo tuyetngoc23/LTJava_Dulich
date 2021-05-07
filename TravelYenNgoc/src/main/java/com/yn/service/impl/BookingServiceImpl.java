@@ -41,7 +41,9 @@ public class BookingServiceImpl implements BookingService{
     @Override
     @Transactional
     public BigDecimal getGia(Tour tour, Booking bkng) {
-        return this.getGia(tour, bkng);
+        return this.bookingRepository.getGia(tour, bkng); 
+//??? viết gì đây sao lạp gọi lặp lại;ok chưa//sorry, hơi ngáo
+//để chạy thử coi soakook
     }
     
 }

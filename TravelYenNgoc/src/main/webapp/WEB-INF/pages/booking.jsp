@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                     <label for="id_label_single">tour</label>
                                     <label for="id_label_single" style="width: 100%;">
-                                        <form:select path="tourId.id" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
+                                        <form:select path="tourId.id" onchange="getprice(this)" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
                                             <c:forEach items="${tour}" var="t">
                                                 <option value="${t.id}">${t.ten}</option>
                                             </c:forEach>
@@ -119,3 +119,4 @@
     </div>
 </section>
 <!-- END section -->
+

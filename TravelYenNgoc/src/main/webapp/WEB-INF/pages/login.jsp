@@ -20,8 +20,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="<c:url value="/css/login.css"/>">
-        <script src="<c:url value="/js/login.js"/>"></script>
+        <link rel="stylesheet" href="<c:url value="/assets_ui/css/login.css"/>">
+        <script src="<c:url value="/assets_ui/js/login.js"/>"></script>
         <title>Login</title>
     </head>
     <body>

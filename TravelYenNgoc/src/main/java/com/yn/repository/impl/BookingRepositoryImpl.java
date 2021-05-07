@@ -9,10 +9,9 @@ import com.yn.pojo.Booking;
 import com.yn.pojo.Tour;
 import com.yn.repository.BookingRepository;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -32,6 +31,8 @@ public class BookingRepositoryImpl implements BookingRepository{
     @Transactional
     public void addBooking(Booking b) {
         Session s = this.sessionFactory.getObject().getCurrentSession();
+        LocalDate d = LocalDate.now();
+        b.setBookingDay(d);
         s.save(b);
     }
 
