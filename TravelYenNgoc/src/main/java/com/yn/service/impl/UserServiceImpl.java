@@ -81,5 +81,10 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         userRepository.addUser(user);
     }
+
+    @Override
+    public User checklogin(String string, String string1) {
+        return userRepository.checklogin(string, string1);
+    }
 }
 

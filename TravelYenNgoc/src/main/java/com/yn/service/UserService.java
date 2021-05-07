@@ -21,5 +21,6 @@ public interface UserService {
      boolean checkUsername(String username);
     List<Customer> getCustormer();
     void addUser(User user);
+    User checklogin(String username,String password);
 }
 

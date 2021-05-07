@@ -7,6 +7,7 @@ package com.yn.controller;
 
 import com.yn.pojo.User;
 import com.yn.service.UserService;
+import java.io.IOException;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,16 +27,28 @@ public class LoginController {
     private UserService userService;
     
     @GetMapping("/login")
-    public String loginView(){
+    public String loginView(Model model){
+        model.addAttribute("user", new User());
         return "login";
     }
     
     @PostMapping("/login")
-    public String login(Model model, @ModelAttribute(name = "user") @Valid User user,
-            BindingResult result){
-//        if(result.hasErrors())
+    public String loginProcess(Model model,
+            @ModelAttribute(name = "user")User user
+            )throws IOException {
+//        if (result.hasErrors()) {
 //            return "login";
-//        userService.loadUserByUsername(user.getUsername());
-       return "redirect:/admin";
+//        }
+        User userLogin = userService.checklogin(user.getUsername(),user.getPassWord());
+        System.err.println("hello");
+        if(userLogin==null){
+            model.addAttribute("errlogin","Tên đăng nhập hoặc mật khẩu không đúng" );
+            return "login";
+        }
+        if(userLogin.getUserrole().equals(User.Role.Customer))
+            return "redirect:/";
+        else
+            return "redirect:/admin";
+       
     }
 }

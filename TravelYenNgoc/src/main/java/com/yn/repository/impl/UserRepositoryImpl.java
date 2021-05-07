@@ -72,4 +72,17 @@ public class UserRepositoryImpl implements UserRepository {
           session.getTransaction().rollback();
       }
     }
+
+    @Override
+    @Transactional
+    public User checklogin(String username, String password) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query query = session.createQuery("from User where username=:username and passWord=:password");
+        query.setParameter("username", username);
+        query.setParameter("password", DigestUtils.sha256Hex(password));
+        if(query.getResultList().size()==0)
+            return null;
+        User user = (User) query.getResultList().get(0);
+        return user;
+    }
 }
