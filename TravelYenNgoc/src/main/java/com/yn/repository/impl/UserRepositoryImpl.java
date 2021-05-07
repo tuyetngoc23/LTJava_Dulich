@@ -5,7 +5,6 @@
  */
 package com.yn.repository.impl;
 
-
 import com.yn.pojo.Customer;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
@@ -17,6 +16,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Huynh Thi Tuyet Ngoc
  */
 @Repository
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl implements UserRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
 
@@ -42,5 +43,33 @@ public class UserRepositoryImpl implements UserRepository{
 //        //System.out.println(query.getResultList());
         return null;
     }
-}
 
+    @Override
+    @Transactional
+    public boolean checkUsername(String username) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query query = session.createQuery("from User where username=:username");
+        query.setParameter("username", username);
+        if(query.getResultList().size()==0)
+            return false;
+        User user = (User) query.getResultList().get(0);
+        if (user == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    @Transactional
+    public void addUser(User user) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        user.setPassWord(DigestUtils.sha256Hex(user.getPassWord()));
+        user.setStatus(false);
+        long millis = System.currentTimeMillis();
+        java.sql.Date dateCreated = new java.sql.Date(millis);
+        user.setJoin_date(dateCreated);
+        user.setUserrole(User.Role.Customer);
+        session.save(user);
+    }
+}

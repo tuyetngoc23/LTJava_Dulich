@@ -73,5 +73,13 @@ public class UserServiceImpl implements UserService {
 //                u.getUsername(), u.getPassWord(), authorities);
 //    }
 
+    @Override
+    public boolean checkUsername(String string) {
+        return userRepository.checkUsername(string);
+    }
+    @Override
+    public void addUser(User user) {
+        userRepository.addUser(user);
+    }
 }
 
