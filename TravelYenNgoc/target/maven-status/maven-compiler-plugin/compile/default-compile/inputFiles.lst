@@ -14,6 +14,7 @@ D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\ApiTo
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\utils\Utils.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\Tour.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\service\impl\UserServiceImpl.java
+D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\validator\UserUserNameValidator.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\service\TinTucService.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\QuanLyKhachhang.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\QuanlyTourController.java
@@ -35,10 +36,14 @@ D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\repository\impl\
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\BinhLuan.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\repository\impl\TinTucRepositoryImpl.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\HomeController.java
+D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\DangKiController.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\service\BookingService.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\MyFile.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\Employee.java
+D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\validator\Jutil.java
+D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\validator\UserPassValidator.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\config\DispatcherInit.java
+D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\validator\WebAppValidator.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\controller\ApiTinTucController1.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\User.java
 D:\HK8\LT_JAVA\LTJava_Dulich\TravelYenNgoc\src\main\java\com\yn\pojo\LoaiTour.java

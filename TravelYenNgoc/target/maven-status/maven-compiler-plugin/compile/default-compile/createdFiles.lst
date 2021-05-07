@@ -1,10 +1,8 @@
 com\yn\repository\BookingRepository.class
 com\yn\repository\impl\TinhThanhResponsitoryImpl.class
-com\yn\repository\impl\UserRepositoryImpl.class
 com\yn\service\TinTucService.class
 com\yn\service\TourSevice.class
 com\yn\controller\QuanlyTourController.class
-com\yn\repository\impl\TourReponsitoryImpl.class
 com\yn\repository\UserRepository.class
 com\yn\controller\QuanLyKhachhang.class
 com\yn\service\impl\TinhThanhServiceImpl.class
@@ -14,6 +12,7 @@ com\yn\service\LoaiTourService.class
 com\yn\service\impl\TinTucServiceImpl.class
 com\yn\service\TinhThanhService.class
 com\yn\repository\TinhThanhReponsitory.class
+com\yn\validator\WebAppValidator.class
 com\yn\pojo\Employee.class
 com\yn\service\impl\LoaiTourServiceImpl.class
 com\yn\controller\ChartController.class
@@ -21,7 +20,9 @@ com\yn\pojo\TinhThanh.class
 com\yn\repository\TinTucRepository.class
 com\yn\repository\TourRepository.class
 com\yn\controller\ApiTinTucController1.class
+com\yn\controller\DangKiController.class
 com\yn\controller\LoginController.class
+com\yn\validator\UserUserNameValidator.class
 com\yn\pojo\MyFile.class
 com\yn\pojo\Tour.class
 com\yn\repository\impl\TinTucRepositoryImpl.class
@@ -29,6 +30,7 @@ com\yn\repository\impl\BookingRepositoryImpl.class
 com\yn\config\TilesConfig.class
 com\yn\config\WebConfig.class
 com\yn\pojo\User.class
+com\yn\validator\UserPassValidator.class
 com\yn\service\UserService.class
 com\yn\repository\LoaiTourRepository.class
 com\yn\utils\Utils.class
@@ -47,3 +49,4 @@ com\yn\service\impl\TourServiceImpl.class
 com\yn\pojo\User$Role.class
 com\yn\service\impl\BookingServiceImpl.class
 com\yn\config\HibernateConfig.class
+com\yn\validator\Jutil.class
