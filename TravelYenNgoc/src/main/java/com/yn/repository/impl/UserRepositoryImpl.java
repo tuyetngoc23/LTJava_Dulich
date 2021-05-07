@@ -64,12 +64,20 @@ public class UserRepositoryImpl implements UserRepository {
     @Transactional
     public void addUser(User user) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        user.setPassWord(DigestUtils.sha256Hex(user.getPassWord()));
-        user.setStatus(false);
-        long millis = System.currentTimeMillis();
-        java.sql.Date dateCreated = new java.sql.Date(millis);
-        user.setJoin_date(dateCreated);
-        user.setUserrole(User.Role.Customer);
-        session.save(user);
+          try {
+            user.setPassWord(DigestUtils.sha256Hex(user.getPassWord()));
+            user.setStatus(false);
+            long millis = System.currentTimeMillis();
+            java.sql.Date dateCreated = new java.sql.Date(millis);
+            user.setJoin_date(dateCreated);
+            user.setUserrole(User.Role.Customer);
+            session.save(user);
+          // Commit dữ liệu
+          session.getTransaction().commit();
+      } catch (Exception e) {
+          e.printStackTrace();
+          // Rollback trong trường hợp có lỗi xẩy ra.
+          session.getTransaction().rollback();
+      }
     }
 }
