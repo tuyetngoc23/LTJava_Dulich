@@ -27,6 +27,5 @@
                         </div>
                     </c:forEach>
             </div>
-        <%--</form:form>--%>
     </div>
 </section>

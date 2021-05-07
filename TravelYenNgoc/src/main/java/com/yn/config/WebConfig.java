@@ -51,7 +51,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/fonts/**").addResourceLocations("/resource/fonts/");
         registry.addResourceHandler("/admin/**").addResourceLocations("/resource/assets/");
         registry.addResourceHandler("/assets_ui/**").addResourceLocations("/resource/assets_ui/");
-        registry.addResourceHandler("/relogin/**").addResourceLocations("/resource/relogin/");
+         registry.addResourceHandler("/ui/**").addResourceLocations("/resource/assets_login/");
     }
 
     @Bean

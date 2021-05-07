@@ -11,24 +11,15 @@
         <title>Login</title>
     </head>
     <body>
-        <c:if test="${param.error != null}">
-            <div class="alert alert-danger">
-                Chương trình đang xảy ra lỗi! Vui lòng quay lại sau!
-            </div>
-        </c:if>
-        <c:if test="${param.accessDenied != null}">
-            <div class="alert alert-danger">
-                Bạn không có quyền truy cập trang web
-            </div>
-        </c:if>
         <div class="wrapper">
             <div class="container">
                 <h1>LOGIN</h1>
-                <c:url value="/login" var="action"/>
-                <form:form class="form" action="${action}" method="post" modelAttribute="user">
-                    <form:errors path="*" element="div" /> 
+                    <span class="login100-form-title p-b-41">
+                       ${errlogin} â
+                    </span>
+                   <form:form class="form" action="${action}" method="post" modelAttribute="user">
+                     <form:errors path="username" cssClass="text-danger" />
                     <input type="text" placeholder="Username" name="username">
-                    <form:errors path="username" cssClass="text-danger" />
                     <input type="password" placeholder="Password" name="passWord">
                     <form:errors path="passWord" cssClass="text-danger" />
                     <button type="submit" id="login-button">Login</button>
@@ -51,3 +42,4 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
     </body>
 </html>
+
