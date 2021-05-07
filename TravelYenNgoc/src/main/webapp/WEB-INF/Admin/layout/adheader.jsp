@@ -49,13 +49,13 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<c:url value="/admin/quanlytintuc" />">
                     <i class="material-icons">library_books</i>
                     <p>Quản lý trang tin tức</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<c:url value="/admin/chart" />">
                     <i class="material-icons">bubble_chart</i>
                     <p>Thống kê</p>
                 </a>

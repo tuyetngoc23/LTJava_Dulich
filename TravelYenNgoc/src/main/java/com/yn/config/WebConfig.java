@@ -5,6 +5,11 @@
  */
 package com.yn.config;
 
+import com.yn.validator.UserPassValidator;
+import com.yn.validator.UserUserNameValidator;
+import com.yn.validator.WebAppValidator;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -53,7 +58,7 @@ public class WebConfig implements WebMvcConfigurer {
     public MessageSource messageSource() {
         ResourceBundleMessageSource resource
                 = new ResourceBundleMessageSource();
-        resource.setBasenames("messagetour", "messbooking");
+        resource.setBasenames("messagetour", "messbooking","messageuser");
         return resource;
     }
     @Bean
@@ -85,5 +90,13 @@ public class WebConfig implements WebMvcConfigurer {
      resolver.setDefaultEncoding("UTF-8");
      return resolver;
 }
-
+    @Bean
+    public WebAppValidator userValidator() {
+        Set<Validator> myV = new HashSet<>();
+        myV.add(new UserPassValidator());
+       // myV.add(new UserUserNameValidator());
+        WebAppValidator v = new WebAppValidator();
+        v.setSpringValidators(myV);
+        return v;
+    }
 }

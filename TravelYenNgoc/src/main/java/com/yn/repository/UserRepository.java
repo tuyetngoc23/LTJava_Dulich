@@ -17,6 +17,7 @@ public interface UserRepository {
 //    List<User> getUsers(String username);
 //    boolean addUser(User user);
     List<Customer> getCustormer();
-
+    boolean checkUsername(String username);
+    void addUser(User user);
 }
 
