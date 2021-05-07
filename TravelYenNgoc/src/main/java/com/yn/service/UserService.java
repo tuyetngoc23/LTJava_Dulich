@@ -18,7 +18,8 @@ public interface UserService {
 //    boolean addUser(User user);
 //    List<User> getUsers(String username);
 //
-    
+     boolean checkUsername(String username);
     List<Customer> getCustormer();
+    void addUser(User user);
 }
 

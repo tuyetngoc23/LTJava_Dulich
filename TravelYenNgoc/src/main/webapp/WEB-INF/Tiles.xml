@@ -70,5 +70,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
          <put-attribute name="title" value="Quản lý tour du lịch"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/chart.jsp"/>
     </definition>
+    <definition name="dangki" template="/WEB-INF/pages/dangki.jsp">
+    </definition>
 </tiles-definitions>
 

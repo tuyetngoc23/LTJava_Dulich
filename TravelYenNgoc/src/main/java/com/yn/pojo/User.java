@@ -27,6 +27,9 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -35,12 +38,22 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name="user")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-    name="userrole",
-    discriminatorType=DiscriminatorType.STRING
-)
+
 public class User implements Serializable{
+
+     /**
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 
     /**
      * @return the userrole
@@ -89,14 +102,14 @@ public class User implements Serializable{
      * @return the passWord
      */
     public String getPassWord() {
-        return passWord;
+        return password;
     }
 
     /**
      * @param passWord the passWord to set
      */
     public void setPassWord(String passWord) {
-        this.passWord = passWord;
+        this.password = passWord;
     }
 
     /**
@@ -233,31 +246,37 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Boolean status;
-    private String passWord;
+    @Column(name = "passWord")
+    private String password;
     @Column(name = "join_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date join_date;
+    @Pattern(regexp = "\\d{10}",
+    message = "{user.phone.error.invalidMsg}")
     private String sdt;
     @Column(name = "ngaySinh")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngaySinh;
+    @Size(min = 1, max = 45, message = "{user.username.sizeMsg}")
     private String username;
     private String avatar;
+    @NotEmpty(message = "{user.diachi.err}")
     private String diaChi;
+    @NotEmpty(message = "{user.hoten.err}")
     private String hoTen;
     @Enumerated(EnumType.STRING)
     private Role userrole;
     private Boolean gioiTinh;
-    
+    @Transient
+    private String confirmPassword;
 
     @OneToOne(mappedBy = "idCus",cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Customer customer;
-    
+
     @OneToOne(mappedBy = "idStaff",cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Employee employee;
 }
-
