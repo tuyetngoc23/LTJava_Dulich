@@ -69,12 +69,12 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Nhập mật khẩu</label>
-                                <form:input id="passWord" cssClass="form-control" path="passWord" />
+                                <form:input id="passWord" cssClass="form-control" path="passWord" type="password"/>
                                 <form:errors path="passWord" cssClass="text-danger" />
                             </div> <!-- form-group end.// -->
                             <div class="form-group col-md-6">
                                 <label>Nhập lại mật khẩu</label>
-                                <form:input id="confirmPassword" cssClass="form-control" path="confirmPassword" />
+                                <form:input id="confirmPassword" cssClass="form-control" path="confirmPassword" type="password" />
                                 <form:errors path="confirmPassword" cssClass="text-danger" />
                             </div> <!-- form-group end.// -->
                         </div> <!-- form-row.// -->

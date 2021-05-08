@@ -18,6 +18,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.core.GrantedAuthority;
@@ -70,7 +71,6 @@ public class UserRepositoryImpl implements UserRepository {
     @Transactional
     public void addUser(User user) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        try {
             user.setPassWord(bCryptPasswordEncoder.encode(user.getPassWord()));
             user.setStatus(false);
             long millis = System.currentTimeMillis();
@@ -79,30 +79,11 @@ public class UserRepositoryImpl implements UserRepository {
             user.setUserrole(User.Role.ROLE_CUSTORMER);
             session.save(user);
             // Commit dữ liệu
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Rollback trong trường hợp có lỗi xẩy ra.
-            session.getTransaction().rollback();
-        }
+            Customer customer = new Customer();
+            customer.setIdCus(user);
+            session.save(customer);
     }
 
-//    @Override
-//    @Transactional
-//    public UserDetails checklogin(String username, String password) {
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//        Query query = session.createQuery("from User where username=:username and passWord=:password");
-//        query.setParameter("username", username);
-//        query.setParameter("password", DigestUtils.sha256Hex(password));
-//        if (query.getResultList().size() == 0) {
-//            return null;
-//        }
-//        User u = (User) query.getResultList().get(0);
-//        Set<GrantedAuthority> authorities = new HashSet<>();
-//        authorities.add(new SimpleGrantedAuthority(u.getUserrole().toString()));
-//        return new org.springframework.security.core.userdetails.User(
-//                u.getUsername(), u.getPassWord(), authorities);
-//    }
  
     @Override
     public List<User> getUsers(String username) {
