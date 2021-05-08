@@ -31,26 +31,5 @@ public class LoginController {
     public String loginView(){
 
         return "login";
-    }
-    
-//    @PostMapping("/login")
-//    public String loginProcess(Model model,
-//            @ModelAttribute(name = "user")User user
-//            ) {
-////        if (result.hasErrors()) {
-////            return "login";
-////        }
-////        UserDetails userLogin = userService.checklogin(user.getUsername(),user.getPassWord());
-////        System.err.println("hello");
-////        if(userLogin==null){
-////            model.addAttribute("errlogin","Tên đăng nhập hoặc mật khẩu không đúng" );
-////            return "login";
-////        }
-//////        if(userLogin.getUserrole().equals(User.Role.Customer))
-//////            return "redirect:/";
-//////        else
-//////            return "redirect:/admin";
-////       return null;
-//    //}
-//    }
+    } 
 }
