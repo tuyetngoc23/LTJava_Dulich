@@ -8,6 +8,7 @@ package com.yn.repository;
 import com.yn.pojo.Customer;
 import com.yn.pojo.User;
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  *
@@ -18,7 +19,8 @@ public interface UserRepository {
 //    boolean addUser(User user);
     List<Customer> getCustormer();
     boolean checkUsername(String username);
-    User checklogin(String username,String password);
+    // checklogin(String username,String password);
     void addUser(User user);
+    List<User> getUsers(String username);
 }
 
