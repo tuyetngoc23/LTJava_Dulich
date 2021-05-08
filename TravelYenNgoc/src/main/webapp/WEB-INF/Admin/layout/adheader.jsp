@@ -14,7 +14,7 @@
       Tip 2: you can also add an image using data-image tag
     -->
     <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            Creative Tim
+           Hi! ${pageContext.request.userPrincipal.name}
         </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
@@ -60,12 +60,12 @@
                     <p>Thống kê</p>
                 </a>
             </li>
-            <!-- <li class="nav-item active-pro ">
-                  <a class="nav-link" href="./upgrade.html">
-                      <i class="material-icons">unarchive</i>
-                      <p>Upgrade to PRO</p>
+         <li class="nav-item  ">
+                  <a class="nav-link" href="href="<c:url value="/logout" />">
+                      <i class="material-icons">logout</i>
+                      <p>Logout</p>   
                   </a>
-              </li> -->
+              </li> 
         </ul>
     </div>
 </div>

@@ -8,19 +8,21 @@ package com.yn.service;
 import com.yn.pojo.Customer;
 import com.yn.pojo.User;
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author Huynh Thi Tuyet Ngoc
  */
-public interface UserService {
+public interface UserService extends UserDetailsService {
 //    boolean addUser(User user);
 //    List<User> getUsers(String username);
 //
      boolean checkUsername(String username);
     List<Customer> getCustormer();
     void addUser(User user);
-    User checklogin(String username,String password);
+   // UserDetails checklogin(String username,String password);
+    List<User> getUsers(String username);
 }
 

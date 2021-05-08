@@ -79,7 +79,7 @@
                             </div> <!-- form-group end.// -->
                         </div> <!-- form-row.// -->
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                            <button type="submit" class="btn btn-primary btn-block"> Đăng Kí </button>
                         </div> <!-- form-group// -->      
                         <small class="text-muted">Bằng cách nhấp vào nút 'Đăng ký', bạn xác nhận rằng bạn chấp nhận <br> Điều khoản sử dụng và chính sách quyền riêng tư.</small>                                          
                         </form:form>

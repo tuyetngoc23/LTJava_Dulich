@@ -10,6 +10,7 @@ import com.yn.service.UserService;
 import java.io.IOException;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,28 +28,29 @@ public class LoginController {
     private UserService userService;
     
     @GetMapping("/login")
-    public String loginView(Model model){
-        model.addAttribute("user", new User());
+    public String loginView(){
+
         return "login";
     }
     
-    @PostMapping("/login")
-    public String loginProcess(Model model,
-            @ModelAttribute(name = "user")User user
-            )throws IOException {
-//        if (result.hasErrors()) {
-//            return "login";
-//        }
-        User userLogin = userService.checklogin(user.getUsername(),user.getPassWord());
-        System.err.println("hello");
-        if(userLogin==null){
-            model.addAttribute("errlogin","Tên đăng nhập hoặc mật khẩu không đúng" );
-            return "login";
-        }
-        if(userLogin.getUserrole().equals(User.Role.Customer))
-            return "redirect:/";
-        else
-            return "redirect:/admin";
-       
-    }
+//    @PostMapping("/login")
+//    public String loginProcess(Model model,
+//            @ModelAttribute(name = "user")User user
+//            ) {
+////        if (result.hasErrors()) {
+////            return "login";
+////        }
+////        UserDetails userLogin = userService.checklogin(user.getUsername(),user.getPassWord());
+////        System.err.println("hello");
+////        if(userLogin==null){
+////            model.addAttribute("errlogin","Tên đăng nhập hoặc mật khẩu không đúng" );
+////            return "login";
+////        }
+//////        if(userLogin.getUserrole().equals(User.Role.Customer))
+//////            return "redirect:/";
+//////        else
+//////            return "redirect:/admin";
+////       return null;
+//    //}
+//    }
 }

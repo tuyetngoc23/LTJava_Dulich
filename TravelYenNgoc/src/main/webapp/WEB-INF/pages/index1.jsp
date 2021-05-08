@@ -19,7 +19,7 @@
                     <div class="row mb-3">
                         <div class="col-md">
                             <div class="form-group">
-                                <label for="id_label_single">From</label>
+                                <label for="id_label_single">Đi từ</label>
                                   <div class="probootstrap_select-wrap">
                                 <label for="id_label_single" style="width: 100%;">
                                     <select name="tt" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md">
                             <div class="form-group">
-                                <label for="id_label_single2">To</label>
+                                <label for="id_label_single2">Đến</label>
                                 <div class="probootstrap_select-wrap">
                                     <label for="id_label_single2" style="width: 100%;">
                                         <select class="js-example-basic-single js-states form-control" id="id_label_single2" style="width: 100%;">
