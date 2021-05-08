@@ -24,10 +24,10 @@
                    <c:choose>
                         <c:when test="${pageContext.request.userPrincipal.name == null}">
                         <li  class="nav-item">
-                            <a class="nav-link" href="<c:url value="/register" />">Register</a>
+                            <a class="nav-link" href="<c:url value="/dangki" />">Đăng kí</a>
                         </li>
                         <li  class="nav-item">
-                            <a class="nav-link" href="<c:url value="/login" />">Login</a>
+                            <a class="nav-link" href="<c:url value="/login" />">Đăng nhập</a>
                         </li>
                     </c:when>
                     <c:when test="${pageContext.request.userPrincipal.name != null}">
@@ -35,7 +35,7 @@
                             <a class="nav-link" href="#">Hi! ${pageContext.request.userPrincipal.name}</a>
                         </li >
                         <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/logout" />">Logout</a>
+                            <a class="nav-link" href="<c:url value="/logout" />">Đăng xuất</a>
                         </li>
                     </c:when>
                 </c:choose>
