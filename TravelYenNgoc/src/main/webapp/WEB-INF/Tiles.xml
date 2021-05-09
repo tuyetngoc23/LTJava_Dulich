@@ -74,6 +74,10 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
          <put-attribute name="title" value="Quản lý nhân viên"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlynhanvien.jsp"/>
     </definition>
+    <definition name="themnhanvien" extends="admin">
+         <put-attribute name="title" value="Quản lý nhân viên"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/themnhanvien.jsp"/>
+    </definition>
     <definition name="dangki" template="/WEB-INF/pages/dangki.jsp">
     </definition>
 </tiles-definitions>
