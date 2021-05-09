@@ -17,7 +17,6 @@
                         <h4 class="card-title ">Quản Lý Tin Tức</h4>
                         <a href="<c:url value="/admin/quanlytintuc/themtintuc" />" > <button type="button"  class="btn btn-primary" >Đăng bài</button></a>
                     </div>
-                   
                     <div class="row" style="padding: 30px">
                         <c:forEach items="${tintuc}" var="u">
                             <c:if test = "${u.trangThai== 'false'}">
