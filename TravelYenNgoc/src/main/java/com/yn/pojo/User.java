@@ -30,6 +30,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -40,6 +41,34 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="user")
 
 public class User implements Serializable{
+
+    /**
+     * @return the customer
+     */
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    /**
+     * @return the employee
+     */
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    /**
+     * @param employee the employee to set
+     */
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
      /**
      * @return the confirmPassword
@@ -238,9 +267,9 @@ public class User implements Serializable{
         this.gioiTinh = gioiTinh;
     }
     public static enum Role {
-        Employee,
-        Customer,
-        Admin,
+        ROLE_EMPLOYEE,
+        ROLE_CUSTORMER,
+        ROLE_ADMIN,
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

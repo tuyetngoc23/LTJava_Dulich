@@ -17,8 +17,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -27,6 +29,20 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name="employee")
 public class Employee implements Serializable{
+
+    /**
+     * @return the tinTucs
+     */
+    public List<TinTuc> getTinTucs() {
+        return tinTucs;
+    }
+
+    /**
+     * @param tinTucs the tinTucs to set
+     */
+    public void setTinTucs(List<TinTuc> tinTucs) {
+        this.tinTucs = tinTucs;
+    }
 
     /**
      * @return the id
@@ -45,6 +61,7 @@ public class Employee implements Serializable{
     /**
      * @return the idStaff
      */
+   
     public User getIdStaff() {
         return idStaff;
     }
@@ -59,13 +76,12 @@ public class Employee implements Serializable{
 
     @Id
     private int id;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "id")
     @MapsId
     private User idStaff;
     
     @OneToMany(mappedBy = "employee")
-    @LazyCollection(LazyCollectionOption.FALSE)
     private List<TinTuc> tinTucs;
     
     @OneToMany(mappedBy = "employeeId")

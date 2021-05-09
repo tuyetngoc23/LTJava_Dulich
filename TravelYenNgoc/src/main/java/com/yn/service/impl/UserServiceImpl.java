@@ -22,64 +22,54 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Huynh Thi Tuyet Ngoc
- */
-@Service
+
+@Service("userDetailsService")
+@Transactional
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public List<Customer> getCustormer() {
-       return userRepository.getCustormer();
+        return userRepository.getCustormer();
     }
-
-//    @Override
-//    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Autowired
-//    private UserRepository userRepository;
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
-//
-//    @Override
-//    @Transactional
-//    public boolean addUser(User user) {
-//        user.setPassWord(this.passwordEncoder.encode(user.getPassWord()));
-//        return userRepository.addUser(user);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public List<User> getUsers(String username) {
-//        return userRepository.getUsers(username);
-//    }
-//
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        List<User> users = this.getUsers(username);
-//        if (users.isEmpty()) {
-//            throw new UsernameNotFoundException("KhÃ´ng tÃ¬m tháº¥y user");
-//        }
-//        User u = users.get(0);
-//
-//        Set<GrantedAuthority> authorities = new HashSet<>();
-//        authorities.add(new SimpleGrantedAuthority(u.getUserRole()));
-//        
-//        return new org.springframework.security.core.userdetails.User(
-//                u.getUsername(), u.getPassWord(), authorities);
-//    }
-
     @Override
     public boolean checkUsername(String string) {
         return userRepository.checkUsername(string);
     }
+
     @Override
     public void addUser(User user) {
         userRepository.addUser(user);
     }
-}
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("======================");
+        System.out.println(username);
+        List<User> users = this.getUsers(username);
+        if (users.isEmpty()) {
+            throw new UsernameNotFoundException("Không tìm thấy user");
+        }
+        User u = users.get(0);
+        System.out.println(u.getUserrole().name());
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority(u.getUserrole().name()));
+
+        return new org.springframework.security.core.userdetails.User(
+                u.getUsername(), u.getPassWord(), authorities);
+    }
+
+    @Override
+    public List<User> getUsers(String username) {
+        return this.userRepository.getUsers(username);
+    }
+
+    @Override
+    public User getUsersAuth() {
+        return this.userRepository.getUsersAuth();
+    }
+
+
+}

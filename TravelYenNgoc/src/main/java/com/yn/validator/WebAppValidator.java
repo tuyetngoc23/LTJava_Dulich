@@ -5,6 +5,7 @@
  */
 package com.yn.validator;
 
+import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import java.util.HashSet;
 import java.util.Set;

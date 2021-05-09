@@ -56,7 +56,7 @@ public class DangKiController {
         }
         System.out.println("hello");
         userService.addUser(user);
-        return "redirect:/index";
+        return "redirect:/login";
        
     }
 }
