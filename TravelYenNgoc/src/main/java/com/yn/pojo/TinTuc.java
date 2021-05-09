@@ -228,18 +228,6 @@ public class TinTuc implements Serializable{
         this.employee = employee;
     }
 
-    /**
-     * @return the binhLuans
-     */
-    public List<BinhLuan> getBinhLuans() {
-        return binhLuans;
-    }
-
-    /**
-     * @param binhLuans the binhLuans to set
-     */
-    public void setBinhLuans(List<BinhLuan> binhLuans) {
-        this.binhLuans = binhLuans;
-    }
+    
 
 }
