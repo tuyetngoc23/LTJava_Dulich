@@ -45,7 +45,7 @@ public class CustormerReponsitoryImpl implements CustormerRepository {
     @Transactional
     public List<Customer> getCustormers() {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("From Custormer");
+        Query q = session.createQuery("From Customer");
         return q.getResultList();
     }
 

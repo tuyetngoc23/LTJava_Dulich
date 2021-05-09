@@ -3,11 +3,13 @@ C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\validator
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\impl\TinTucRepositoryImpl.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\controller\QuanLyTinTucController.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\LoaiTourRepository.java
+C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\CustormerSevice.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\TinTucService.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\BookingRepository.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\impl\TinTucServiceImpl.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\BinhLuan.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\impl\BookingRepositoryImpl.java
+C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\CustormerRepository.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\controller\LoginController.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\Booking.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\TinhThanh.java
@@ -16,6 +18,7 @@ C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\Thic
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\controller\ChartController.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\TinTuc.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\controller\ApiTinTucController1.java
+C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\impl\CustormerServiceImpl.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\impl\TourServiceImpl.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\TinhThanhService.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\validator\WebAppValidator.java
@@ -30,6 +33,7 @@ C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\U
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\Employee.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\MyFile.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\Tour.java
+C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\controller\QuanlyNhanVienController.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\impl\UserServiceImpl.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\config\SecurityWebApplicationInitializer.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\config\SecurityConfig.java
@@ -43,6 +47,7 @@ C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\service\T
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\config\HibernateConfig.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\UserRepository.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\pojo\LoaiTour.java
+C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\impl\CustormerReponsitoryImpl.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\TinTucRepository.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\controller\QuanlyTourController.java
 C:\Users\ASUS\Desktop\travelyenngoc\TravelYenNgoc\src\main\java\com\yn\repository\impl\TinhThanhResponsitoryImpl.java

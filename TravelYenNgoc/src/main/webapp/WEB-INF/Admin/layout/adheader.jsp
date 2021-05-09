@@ -8,11 +8,6 @@
 <!DOCTYPE html>
 
 <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
-    <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-      Tip 2: you can also add an image using data-image tag
-    -->
     <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
            Hi! ${pageContext.request.userPrincipal.name}
         </a></div>
@@ -43,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<c:url value="/admin/quanlykhachhang" />">
                     <i class="material-icons">content_paste</i>
                     <p>Quản lý khách hàng</p>
                 </a>

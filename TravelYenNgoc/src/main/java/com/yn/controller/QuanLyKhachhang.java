@@ -6,6 +6,7 @@
 package com.yn.controller;
 
 
+import com.yn.service.CustormerSevice;
 import com.yn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class QuanLyKhachhang {
     @Autowired
-    private UserService userService;
+    private CustormerSevice custormerSevice;
     @RequestMapping("/admin/quanlykhachhang")
     public String quanLyKhangHang(Model model) {
-        model.addAttribute("customer", this.userService.getCustormer());
+        model.addAttribute("customer", this.custormerSevice.getCustormers());
         return "quanlykhachhang";
     }
 
