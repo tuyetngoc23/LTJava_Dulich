@@ -1,8 +1,10 @@
 com\yn\repository\BookingRepository.class
 com\yn\repository\impl\TinhThanhResponsitoryImpl.class
+com\yn\repository\impl\UserRepositoryImpl.class
 com\yn\service\TinTucService.class
 com\yn\service\TourSevice.class
 com\yn\controller\QuanlyTourController.class
+com\yn\repository\impl\TourReponsitoryImpl.class
 com\yn\repository\UserRepository.class
 com\yn\controller\QuanLyKhachhang.class
 com\yn\service\impl\TinhThanhServiceImpl.class

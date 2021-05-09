@@ -68,9 +68,9 @@ public class TinTuc implements Serializable{
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Thich> thichs;
     
-    
     @Transient
     private MultipartFile imgUploadFile;
+    
 
     public MultipartFile getImgUploadFile() {
         return imgUploadFile;
@@ -179,6 +179,5 @@ public class TinTuc implements Serializable{
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-
 
 }

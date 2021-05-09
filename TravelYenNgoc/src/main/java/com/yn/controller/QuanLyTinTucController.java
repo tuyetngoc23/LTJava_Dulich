@@ -94,4 +94,6 @@ public class QuanLyTinTucController {
 
         return "xemtintuc";
     }
+    
+    
 }
