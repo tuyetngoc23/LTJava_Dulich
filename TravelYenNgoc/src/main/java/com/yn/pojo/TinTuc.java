@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
@@ -76,7 +77,9 @@ public class TinTuc implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotEmpty(message = "{tintuc.err.motangan}")
     private String moTaNgan;
+    @NotEmpty(message = "{tintuc.err.motadai}")
     private String moTaDai;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayDang;
