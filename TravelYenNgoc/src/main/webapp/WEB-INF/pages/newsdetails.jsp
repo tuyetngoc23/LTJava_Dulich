@@ -32,12 +32,12 @@
                     <p>${b.noiDung}</p>
                 </c:forEach>
             </div>
-            <div class="form-group">
-                <label for="noiDung">Tên khách hàng</label>
+<!--            <div class="form-group">
+                <label>Nội dung:</label>
                 <div>
-                    <form:input type="text" id="noiDung" path="noiDung"/>
+                    <%--<form:input type="text" id="noiDung" path="noiDung"/>--%>
                 </div>
-            </div>
+            </div>-->
         </div>
 
     </section>

@@ -5,6 +5,7 @@
  */
 package com.yn.controller;
 
+import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Booking;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
@@ -92,6 +93,7 @@ public class HomeController {
     
     @GetMapping("/news/newsdetails")
     public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
+//        model.addAttribute("binhluan", new BinhLuan());
         if (tintucId > 0) // cập nhật
         {
             model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));

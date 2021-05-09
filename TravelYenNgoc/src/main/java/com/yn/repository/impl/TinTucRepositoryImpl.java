@@ -13,7 +13,10 @@ import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.TinTucRepository;
 import com.yn.repository.UserRepository;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -101,13 +104,20 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 //        CriteriaQuery<BinhLuan> query = builder.createQuery(BinhLuan.class);
 //        Root root = query.from(BinhLuan.class);
 //        query.select(root);
-//        //Predicate p = builder.equal(root.get("tintucId").as(Integer.class),
-//             //  i);
-//        //query = query.where(p);
+//        Predicate p = builder.equal(root.get("tintucId").as(Integer.class),
+//               i);
+//        query = query.where(p);
 //        Query q = session.createQuery(query);
-        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
-        
+         Query q = session.createStoredProcedureCall("getTinTucId");
+//        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
         return q.getResultList();
+        
+        
+//        Set<BinhLuan> binhLuan = new HashSet<>();
+//        binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
+//        List<BinhLuan> b = new ArrayList<>();
+//        b.addAll(binhLuan);
+//        return b;
     }
 
 //    @Override
