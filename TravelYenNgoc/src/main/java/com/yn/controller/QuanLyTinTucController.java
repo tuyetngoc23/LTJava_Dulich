@@ -5,8 +5,10 @@
  */
 package com.yn.controller;
 
+import com.yn.pojo.Employee;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.Tour;
+import com.yn.pojo.User;
 import com.yn.service.TinTucService;
 import com.yn.service.UserService;
 import java.io.File;
@@ -14,6 +16,9 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +37,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class QuanLyTinTucController {
     @Autowired
     private TinTucService tinhTinTucService;
+
     @RequestMapping("/admin/quanlytintuc")
     public String quanLyTinTuc(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("tintuc", this.tinhTinTucService.getTinTucs(kw));
@@ -55,7 +61,6 @@ public class QuanLyTinTucController {
     public String themtour(Model model,
             @ModelAttribute(value = "tintuc") @Valid TinTuc tinTuc,
             BindingResult err, HttpServletRequest request) throws IOException {
-        System.out.println(tinTuc.getId());
         if (err.hasErrors()) {
             return "themtintuc";
         }
@@ -73,8 +78,8 @@ public class QuanLyTinTucController {
             } else {
                 tinTuc.setAnh(this.tinhTinTucService.getTinTucById(tinTuc.getId()).getAnh());
             }
-        //xet ngươi dang
-        tinTuc.setEmployee(tinTuc.getEmployee());
+            
+
         if (!this.tinhTinTucService.addOrUpdateTour(tinTuc)) {
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
             return "themtintuc";

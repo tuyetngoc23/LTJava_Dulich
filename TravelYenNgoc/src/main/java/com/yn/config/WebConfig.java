@@ -6,7 +6,7 @@
 package com.yn.config;
 
 import com.yn.validator.UserPassValidator;
-import com.yn.validator.UserUserNameValidator;
+
 import com.yn.validator.WebAppValidator;
 import java.util.HashSet;
 import java.util.Set;
@@ -58,7 +58,7 @@ public class WebConfig implements WebMvcConfigurer {
     public MessageSource messageSource() {
         ResourceBundleMessageSource resource
                 = new ResourceBundleMessageSource();
-        resource.setBasenames("messagetour", "messbooking","messageuser");
+        resource.setBasenames("messagetour", "messbooking","messageuser","messagetintuc");
         return resource;
     }
     @Bean
@@ -94,7 +94,7 @@ public class WebConfig implements WebMvcConfigurer {
     public WebAppValidator userValidator() {
         Set<Validator> myV = new HashSet<>();
         myV.add(new UserPassValidator());
-       // myV.add(new UserUserNameValidator());
+        //myV.add(new TourNgayBatdauValidator());
         WebAppValidator v = new WebAppValidator();
         v.setSpringValidators(myV);
         return v;

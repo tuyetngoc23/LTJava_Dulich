@@ -45,6 +45,3 @@
             </div>
         </div>
 <script src="<c:url value="/admin/jsadmin/tour.js" />"></script>
-
-
-

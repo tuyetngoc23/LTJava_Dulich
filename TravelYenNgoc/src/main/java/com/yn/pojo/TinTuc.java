@@ -33,6 +33,34 @@ import org.springframework.web.multipart.MultipartFile;
 public class TinTuc implements Serializable{
 
     /**
+     * @return the binhLuans
+     */
+    public List<BinhLuan> getBinhLuans() {
+        return binhLuans;
+    }
+
+    /**
+     * @param binhLuans the binhLuans to set
+     */
+    public void setBinhLuans(List<BinhLuan> binhLuans) {
+        this.binhLuans = binhLuans;
+    }
+
+    /**
+     * @return the thichs
+     */
+    public List<Thich> getThichs() {
+        return thichs;
+    }
+
+    /**
+     * @param thichs the thichs to set
+     */
+    public void setThichs(List<Thich> thichs) {
+        this.thichs = thichs;
+    }
+
+    /**
      * @return the soLuotThich
      */
     public int getSoLuotThich() {
@@ -55,10 +83,11 @@ public class TinTuc implements Serializable{
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean trangThai;
     private String anh;
-    private int soLuotThich;
     @ManyToOne
     @JoinColumn(name="emloyee_id")
     private Employee employee;
+    
+    private int soLuotThich;
     
     @OneToMany(mappedBy = "customerId")
     @LazyCollection(LazyCollectionOption.FALSE)
