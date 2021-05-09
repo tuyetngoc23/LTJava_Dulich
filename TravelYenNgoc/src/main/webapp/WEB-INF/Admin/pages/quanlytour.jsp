@@ -9,15 +9,6 @@
 <!DOCTYPE html>
 <div class="content">
 <div class="row">
-<!--    <form >
-    <div class="col-md-10 form-group">
-        <input type="text" name="kw" class="form-control" placeholder="Nhập từ khóa để tìm..." />
-    </div>
-    <div class="col-md-2 form-group">
-        <input type="submit" class="btn btn-info" value="Tìm kiếm" />
-    </div>
-    </div>
-    </form>-->
  <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">

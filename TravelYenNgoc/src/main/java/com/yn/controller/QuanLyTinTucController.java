@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,11 +36,13 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Controller
 public class QuanLyTinTucController {
+
     @Autowired
     private TinTucService tinhTinTucService;
 
+    
     @RequestMapping("/admin/quanlytintuc")
-    public String quanLyTinTuc(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
+    public String quanLyTinTuc(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("tintuc", this.tinhTinTucService.getTinTucs(kw));
         return "quanlytintuc";
     }
@@ -64,28 +67,29 @@ public class QuanLyTinTucController {
         if (err.hasErrors()) {
             return "themtintuc";
         }
+        TinTuc tinc = this.tinhTinTucService.getTinTucById(tinTuc.getId());
+        tinTuc.setEmployee(tinc.getEmployee());
+        tinTuc.setNgayDang(tinc.getNgayDang());
+        tinTuc.setAnh(tinc.getAnh());
         MultipartFile multipartFile = tinTuc.getImgUploadFile();
         String rootPath = request.getSession().getServletContext().getRealPath("/");
-            try {
-                multipartFile.transferTo(new File(rootPath + "resource/assets/anhtintuc/" + multipartFile.getOriginalFilename()));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println(multipartFile.getOriginalFilename());
-            if(multipartFile.getOriginalFilename()!=null){
-                String img = "/admin/anhtintuc/" + multipartFile.getOriginalFilename();
-                tinTuc.setAnh(img);
-            } else {
-                tinTuc.setAnh(this.tinhTinTucService.getTinTucById(tinTuc.getId()).getAnh());
-            }
-            
-
+        try {
+            multipartFile.transferTo(new File(rootPath + "resource/assets/anhtintuc/" + multipartFile.getOriginalFilename()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (multipartFile.getOriginalFilename() != null) {
+            String img = "/admin/anhtintuc/" + multipartFile.getOriginalFilename();
+            if(!img.equals("/admin/anhtintuc/"))
+                 tinTuc.setAnh(img);
+        } 
         if (!this.tinhTinTucService.addOrUpdateTour(tinTuc)) {
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
             return "themtintuc";
         }
         return "redirect:/admin/quanlytintuc";
     }
+
     @GetMapping("/admin/quanlytintuc/xemtintuc")
     public String xemtintuc(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
         if (tintucId > 0) // cập nhật

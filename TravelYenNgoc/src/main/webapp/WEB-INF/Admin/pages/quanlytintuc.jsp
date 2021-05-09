@@ -21,13 +21,15 @@
                     <div class="row" style="padding: 30px">
                         <c:forEach items="${tintuc}" var="u">
                             <c:if test = "${u.trangThai== 'false'}">
-                             <div class="col-sm-4">
+                             <div class="col-sm-4" style ="height:30%">
                                 <div class="card sm-4 box-shadow" > 
                                     <img class="card-img-top" src="<c:url value="${u.anh}"/> " alt="abc" width="200" height="200">
                                     <div class="card-body">
-                                        <h4> Mã bài :${u.id} - ${u.moTaNgan} </h4>
-                                        <p> Người đăng: ${u.employee.idStaff.hoTen}
-                                            <br>${u.moTaDai} </p>
+                                        <h4> Mã bài :${u.id} - ${u.tieuDe} </h4>
+                                        <p> Người đăng: ${u.employee.idStaff.hoTen} <br> Ngày đăng :${u.ngayDang}
+                                        <div class="col text-truncate">
+                                            ${u.moTaNgan}
+                                        </div>
                                             <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                  <a href="<c:url value="quanlytintuc/xemtintuc/?tintucId=${u.id}" />" class="btn btn-info">Xem thêm</a>

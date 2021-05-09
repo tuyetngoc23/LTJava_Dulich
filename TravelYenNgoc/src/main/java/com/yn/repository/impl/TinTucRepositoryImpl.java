@@ -62,7 +62,6 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     public boolean addOrUpdateTour(TinTuc tinTuc) {
         Session s = this.sessionFactory.getObject().getCurrentSession();
         if (tinTuc.getId() > 0) {
-            tinTuc.setEmployee(tinTuc.getEmployee());
             s.update(tinTuc);
             return true;
         } else {

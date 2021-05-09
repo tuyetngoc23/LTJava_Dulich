@@ -41,6 +41,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Tiêu đề</label>
+                                        <form:input id="moTaNgan" cssClass="form-control" path="tieuDe" />
+                                        <form:errors path="tieuDe" cssClass="text-danger" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Mô tả ngắn</label>
                                         <form:input id="moTaNgan" cssClass="form-control" path="moTaNgan" />
                                         <form:errors path="moTaNgan" cssClass="text-danger" />
                                     </div>
@@ -121,4 +128,10 @@
         }
     });
 </script>
-
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>

@@ -34,6 +34,20 @@ import org.springframework.web.multipart.MultipartFile;
 public class TinTuc implements Serializable{
 
     /**
+     * @return the tieuDe
+     */
+    public String getTieuDe() {
+        return tieuDe;
+    }
+
+    /**
+     * @param tieuDe the tieuDe to set
+     */
+    public void setTieuDe(String tieuDe) {
+        this.tieuDe = tieuDe;
+    }
+
+    /**
      * @return the binhLuans
      */
     public List<BinhLuan> getBinhLuans() {
@@ -79,6 +93,8 @@ public class TinTuc implements Serializable{
     private int id;
     @NotEmpty(message = "{tintuc.err.motangan}")
     private String moTaNgan;
+    @NotEmpty(message = "{tintuc.err.motangan}")
+    private String tieuDe;
     @NotEmpty(message = "{tintuc.err.motadai}")
     private String moTaDai;
     @Temporal(javax.persistence.TemporalType.DATE)
