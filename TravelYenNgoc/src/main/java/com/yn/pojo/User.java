@@ -42,6 +42,34 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class User implements Serializable{
 
+    /**
+     * @return the customer
+     */
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    /**
+     * @return the employee
+     */
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    /**
+     * @param employee the employee to set
+     */
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
      /**
      * @return the confirmPassword
      */

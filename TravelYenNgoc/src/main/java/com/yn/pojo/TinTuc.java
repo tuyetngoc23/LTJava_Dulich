@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
@@ -31,6 +32,48 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name="tintuc")
 public class TinTuc implements Serializable{
+
+    /**
+     * @return the tieuDe
+     */
+    public String getTieuDe() {
+        return tieuDe;
+    }
+
+    /**
+     * @param tieuDe the tieuDe to set
+     */
+    public void setTieuDe(String tieuDe) {
+        this.tieuDe = tieuDe;
+    }
+
+    /**
+     * @return the binhLuans
+     */
+    public List<BinhLuan> getBinhLuans() {
+        return binhLuans;
+    }
+
+    /**
+     * @param binhLuans the binhLuans to set
+     */
+    public void setBinhLuans(List<BinhLuan> binhLuans) {
+        this.binhLuans = binhLuans;
+    }
+
+    /**
+     * @return the thichs
+     */
+    public List<Thich> getThichs() {
+        return thichs;
+    }
+
+    /**
+     * @param thichs the thichs to set
+     */
+    public void setThichs(List<Thich> thichs) {
+        this.thichs = thichs;
+    }
 
     /**
      * @return the soLuotThich
@@ -48,17 +91,22 @@ public class TinTuc implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotEmpty(message = "{tintuc.err.motangan}")
     private String moTaNgan;
+    @NotEmpty(message = "{tintuc.err.motangan}")
+    private String tieuDe;
+    @NotEmpty(message = "{tintuc.err.motadai}")
     private String moTaDai;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayDang;
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private boolean trangThai;
     private String anh;
-    private int soLuotThich;
     @ManyToOne
     @JoinColumn(name="emloyee_id")
     private Employee employee;
+    
+    private int soLuotThich;
     
     @OneToMany(mappedBy = "customerId")
     @LazyCollection(LazyCollectionOption.FALSE)

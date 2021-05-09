@@ -100,7 +100,7 @@ public class Customer  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "id")
     @MapsId
     private User idCus;

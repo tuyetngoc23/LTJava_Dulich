@@ -22,5 +22,7 @@ public interface UserRepository {
     // checklogin(String username,String password);
     void addUser(User user);
     List<User> getUsers(String username);
+    //lấy user đang đăng nhập
+    User getUsersAuth();
 }
 

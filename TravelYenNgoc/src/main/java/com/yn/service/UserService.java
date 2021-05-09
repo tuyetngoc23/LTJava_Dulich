@@ -24,5 +24,6 @@ public interface UserService extends UserDetailsService {
     void addUser(User user);
    // UserDetails checklogin(String username,String password);
     List<User> getUsers(String username);
+      User getUsersAuth();
 }
 

@@ -66,7 +66,10 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.getUsers(username);
     }
 
-//    private Exception UsernameNotFoundException(String không_tìm_thấy_user) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+    @Override
+    public User getUsersAuth() {
+        return this.userRepository.getUsersAuth();
+    }
+
+
 }
