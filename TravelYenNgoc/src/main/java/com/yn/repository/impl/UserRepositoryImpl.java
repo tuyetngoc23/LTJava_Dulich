@@ -121,4 +121,20 @@ public class UserRepositoryImpl implements UserRepository {
         return u;
     }
 
+    @Override
+    @Transactional
+    public void addUserNV(User user) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        user.setPassWord(bCryptPasswordEncoder.encode(user.getPassWord()));
+        user.setStatus(false);
+        long millis = System.currentTimeMillis();
+        java.sql.Date dateCreated = new java.sql.Date(millis);
+        user.setJoin_date(dateCreated);
+        user.setUserrole(User.Role.ROLE_EMPLOYEE);
+        session.save(user);
+        Customer customer = new Customer();
+        customer.setIdCus(user);
+        session.save(customer);
+    }
+
 }

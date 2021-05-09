@@ -57,6 +57,25 @@ public class DangKiController {
         System.out.println("hello");
         userService.addUser(user);
         return "redirect:/login";
-       
+    }
+    
+    @GetMapping("/andmin/quanlynhanvien/themnv")
+    public String dangkiNvView(Model model) {
+        model.addAttribute("user", new User());
+        return "themnhanvien";
+    }
+    @PostMapping(value = "/andmin/quanlynhanvien/themnv")
+    public String registerNvProcess(Model model,
+            @ModelAttribute(name = "user") @Valid User user,
+            BindingResult result)throws IOException {
+        if (result.hasErrors()) {
+            return "themnhanvien";
+        }
+        if(userService.checkUsername(user.getUsername())){
+            model.addAttribute("mesusername","Đã tồn tại tên đăng nhập này!" );
+            return "themnhanvien";
+        }
+        userService.addUserNV(user);
+        return "redirect:/admin/quanlynhanvien";
     }
 }

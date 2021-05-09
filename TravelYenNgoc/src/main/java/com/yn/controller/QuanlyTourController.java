@@ -5,6 +5,7 @@
  */
 package com.yn.controller;
 
+import com.yn.pojo.TinTuc;
 import com.yn.pojo.Tour;
 import com.yn.service.LoaiTourService;
 import com.yn.service.TinhThanhService;
@@ -46,7 +47,7 @@ public class QuanlyTourController {
     }
 
     @RequestMapping("/admin/quanlytour")
-    public String quanLyTour(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
+    public String quanLyTour(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("", this.tourService.getTour(kw));
         model.addAttribute("sosanh", 0);
         model.addAttribute("tours", this.tourService.getTour(kw));
@@ -72,27 +73,27 @@ public class QuanlyTourController {
     public String themtour(Model model,
             @ModelAttribute(value = "tour") @Valid Tour tour,
             BindingResult err, HttpServletRequest request) throws IOException {
-        System.out.println(tour.getId());
         if (err.hasErrors()) {
             // model.addAttribute("tour", new Tour());
             model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
             model.addAttribute("loaitour", this.loaiTourService.getLoaiTour());
             return "themtour";
         }
+        Tour tourc = this.tourService.getTourById(tour.getId());
+        tour.setImage(tourc.getImage());
         MultipartFile multipartFile = tour.getImgUploadFile();
         String rootPath = request.getSession().getServletContext().getRealPath("/");
-            try {
-                multipartFile.transferTo(new File(rootPath + "resource/assets/anhadmin/" + multipartFile.getOriginalFilename()));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println(multipartFile.getOriginalFilename());
-            if(multipartFile.getOriginalFilename()!=null){
-                String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
-                tour.setImage(img);
-            } else {
-                tour.setImage(this.tourService.getTourById(tour.getId()).getImage());
-            }
+        try {
+            multipartFile.transferTo(new File(rootPath + "resource/assets/anhadmin/" + multipartFile.getOriginalFilename()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(multipartFile.getOriginalFilename());
+        if (multipartFile.getOriginalFilename() != null) {
+            String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
+            if(!img.equals("/admin/anhadmin/"))
+               tour.setImage(img);
+        } 
         if (!this.tourService.addOrUpdateTour(tour)) {
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
             return "themtour";

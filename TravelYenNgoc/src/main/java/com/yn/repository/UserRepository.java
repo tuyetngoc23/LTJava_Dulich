@@ -15,14 +15,12 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author Huynh Thi Tuyet Ngoc
  */
 public interface UserRepository {
-//    List<User> getUsers(String username);
-//    boolean addUser(User user);
+
     List<Customer> getCustormer();
     boolean checkUsername(String username);
-    // checklogin(String username,String password);
     void addUser(User user);
+    void addUserNV(User user);
     List<User> getUsers(String username);
-    //lấy user đang đăng nhập
     User getUsersAuth();
 }
 
