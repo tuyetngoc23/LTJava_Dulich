@@ -6,6 +6,7 @@
 package com.yn.repository.impl;
 
 import com.yn.pojo.Customer;
+import com.yn.pojo.Employee;
 import com.yn.pojo.Tour;
 import com.yn.repository.CustormerRepository;
 import com.yn.repository.TinhThanhReponsitory;
@@ -46,6 +47,14 @@ public class CustormerReponsitoryImpl implements CustormerRepository {
     public List<Customer> getCustormers() {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         Query q = session.createQuery("From Customer");
+        return q.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public List<Employee> getEmloEmployees() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("From Employee");
         return q.getResultList();
     }
 

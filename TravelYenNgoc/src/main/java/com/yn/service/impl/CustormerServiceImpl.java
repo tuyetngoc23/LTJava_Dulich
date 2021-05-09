@@ -8,6 +8,7 @@ package com.yn.service.impl;
 
 
 import com.yn.pojo.Customer;
+import com.yn.pojo.Employee;
 import com.yn.pojo.Tour;
 import com.yn.repository.CustormerRepository;
 import com.yn.repository.TourRepository;
@@ -30,6 +31,11 @@ public class CustormerServiceImpl implements CustormerSevice{
     @Override
     public List<Customer> getCustormers() {
          return this.custormerRepository.getCustormers();
+    }
+
+    @Override
+    public List<Employee> getEmloEmployees() {
+        return this.custormerRepository.getEmloEmployees();
     }
 
 }

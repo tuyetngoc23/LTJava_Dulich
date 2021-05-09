@@ -15,17 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.Cascade;
 
-/**
- *
- * @author Huynh Thi Tuyet Ngoc
- */
+
+
 @Entity
 @Table(name="employee")
 public class Employee implements Serializable{

@@ -6,6 +6,7 @@
  */
 package com.yn.service;
 import com.yn.pojo.Customer;
+import com.yn.pojo.Employee;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import java.util.Date;
@@ -17,4 +18,5 @@ import java.util.List;
  */
 public interface CustormerSevice {
      List<Customer> getCustormers();
+     List<Employee> getEmloEmployees();
 }

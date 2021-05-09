@@ -6,6 +6,7 @@
 package com.yn.repository;
 
 import com.yn.pojo.Customer;
+import com.yn.pojo.Employee;
 import java.util.List;
 
 /**
@@ -14,4 +15,5 @@ import java.util.List;
  */
 public interface CustormerRepository {
     List<Customer> getCustormers();
+    List<Employee> getEmloEmployees();
 }

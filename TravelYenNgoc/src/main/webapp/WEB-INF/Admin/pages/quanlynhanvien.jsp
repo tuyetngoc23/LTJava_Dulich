@@ -10,6 +10,7 @@
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Thông tin khách hàng</h4>
                         <p class="card-category"> www.travelyenngoc.com</p>
+                        <a href="<c:url value="/admin/quanlytintuc/themtintuc" />" > <button type="button"  class="btn btn-primary" >Thêm nhân viên</button></a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -41,39 +42,39 @@
                                 </th>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${customer}" var="u">
+                                    <c:forEach items="${nhanvien}" var="u">
                                         <tr>
                                             <td class="text-primary">
                                                 ${u.id} 
                                             </td>
                                             <td>
-                                                ${u.idCus.hoTen} 
+                                                ${u.idStaff.hoTen} 
                                             </td>
                                             <td>
-                                                ${u.idCus.ngaySinh} 
+                                                ${u.idStaff.ngaySinh} 
                                             </td>
                                             <td>
-                                                ${u.idCus.username}
+                                                ${u.idStaff.username}
                                             </td>
                                             <td>
-                                                ${u.idCus.diaChi}
+                                                ${u.idStaff.diaChi}
                                             </td>
                                             <td>
-                                                <c:if test="${u.idCus.gioiTinh==true}">
+                                                <c:if test="${u.idStaff.gioiTinh==true}">
                                                     Nam
                                                 </c:if>
-                                                <c:if test="${u.idCus.gioiTinh==false}">
+                                                <c:if test="${u.idStaff.gioiTinh==false}">
                                                     Nữ
                                                 </c:if>
                                             </td>
                                             <td>
-                                                ${u.idCus.join_date}
+                                                ${u.idStaff.join_date}
                                             </td>
                                             <td>
-                                                 <c:if test="${u.idCus.status==false}">
+                                                 <c:if test="${u.idStaff.status==false}">
                                                     Đang hoạt động
                                                 </c:if>
-                                                <c:if test="${u.idCus.status==true}">
+                                                <c:if test="${u.idStaff.status==true}">
                                                     Hết hoạt động
                                                 </c:if>
                                             </td>
