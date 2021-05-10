@@ -98,6 +98,7 @@
                                     <span class="text-uppercase">${tour.ngayKhoiHanh}</span>
                                     <h5 class="mb-3">${tour.ten}</h5>
                                     <p>Giá: ${tour.gia}</p>
+                                    <!--<p>${tour.mota}</p>-->
                                     <p>Hứa hẹn sẽ mang lại nhiều thú vị cho các bạn</p>
                                     <p><a href="<c:url value="/booking"/>">Booking</a></p>
                                 </div>
