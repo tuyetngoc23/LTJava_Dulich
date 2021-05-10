@@ -6,15 +6,10 @@
 package com.yn.controller;
 
 import com.yn.pojo.Booking;
-import com.yn.pojo.TinTuc;
 import com.yn.pojo.Tour;
 import com.yn.service.BookingService;
-import com.yn.service.TinTucService;
-import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import java.math.BigDecimal;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +18,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -44,9 +38,15 @@ public class BookingController {
         model.addAttribute("booking", new Booking());
         if (tourid > 0) // cập nhật
         {
+              model.addAttribute("thanhcong", "ok");
             model.addAttribute("tour", this.tourSevice.getTourById(tourid));
         }
         return "booking";
+    }
+    @GetMapping("/booking/thanhcong")
+    public String bookingokView(){
+       
+        return "bookingoke";
     }
 
     @PostMapping("/booking")
@@ -54,6 +54,7 @@ public class BookingController {
             @ModelAttribute(value = "booking") @Valid Booking booking,
             BindingResult err, @RequestParam(name = "tourId", defaultValue = "0") int touri) {
         Tour tourdangco = this.tourSevice.getTourById(touri);
+          model.addAttribute("thanhcong", "ok");
         booking.setTour(tourdangco);
         if (err.hasErrors()) {
             model.addAttribute("tour", this.tourSevice.getTourById(touri));
@@ -76,8 +77,7 @@ public class BookingController {
         BigDecimal tong = tienguoinho.add(tienguoilon);
         booking.setTotalMoney(tong);
         this.bookingService.addBooking(booking);
-        model.addAttribute("thangcong", "thành công");
-        return "redirect:/booking";
+     
+        return "redirect:/booking/thanhcong";
     }
-
 }
