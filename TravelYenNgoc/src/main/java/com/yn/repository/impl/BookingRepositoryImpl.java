@@ -43,10 +43,19 @@ public class BookingRepositoryImpl implements BookingRepository{
         Query q = session.createQuery("SELECT sum(totalMoney) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
         q.setParameter("thang", thang);
         q.setParameter("nam", nam);
-        //(BigDecimal) q.getResultList().get(0)
         return (BigDecimal) q.getResultList().get(0);
     }
 
+    @Override
+    @Transactional
+    public Long getTourDaDat(int thang, int nam) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT COUNT(*) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
+        q.setParameter("thang", thang);
+        q.setParameter("nam", nam);
+        return (Long)q.getResultList().get(0);
+    }
+    
     @Override
     @Transactional
     public BigDecimal getPrice(Tour t, Booking b) {
