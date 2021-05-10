@@ -50,7 +50,6 @@ public class BookingRepositoryImpl implements BookingRepository{
     @Transactional
     public Long getTourDaDat(int thang, int nam) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        System.out.println("tour dat");
         Query q = session.createQuery("SELECT COUNT(*) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
         q.setParameter("thang", thang);
         q.setParameter("nam", nam);

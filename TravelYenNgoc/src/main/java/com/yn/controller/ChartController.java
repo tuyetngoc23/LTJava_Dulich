@@ -37,13 +37,14 @@ public class ChartController {
     public String adchart(Model model ,@RequestParam(name = "nam", required = false, defaultValue = "2020") int nam ){
         BigDecimal[] myNum = new BigDecimal[13];
         int i;
-        for (i = 0; i < myNum.length; i++)
+        for (i = 1; i < myNum.length; i++)
             myNum[i] = this.bookingService.getDoanhThu(i, nam);
   
         Long[] sotour = new Long[13];
-        for (i = 0; i < sotour.length; i++){
-            sotour[i] = this.bookingService.getTourDaDat(i, nam);
-            System.out.println(sotour[i]);
+        int j =1;
+        for (j = 1; j < sotour.length; j++){
+            sotour[j] = this.bookingService.getTourDaDat(j, nam);
+            System.out.println(sotour[j]);
         }
         model.addAttribute("doanhthu", myNum);
         model.addAttribute("sotour", sotour);
