@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -116,9 +115,9 @@ public class TinTuc implements Serializable{
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Thich> thichs;
     
-    
     @Transient
     private MultipartFile imgUploadFile;
+    
 
     public MultipartFile getImgUploadFile() {
         return imgUploadFile;
@@ -228,5 +227,6 @@ public class TinTuc implements Serializable{
         this.employee = employee;
     }
 
+    
 
 }

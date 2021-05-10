@@ -24,6 +24,10 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="News"/>
         <put-attribute name="content" value="/WEB-INF/pages/news.jsp"/>
     </definition>
+    <definition name="newsdetails" extends="baseLayout">
+        <put-attribute name="title" value="NewsDetails"/>
+        <put-attribute name="content" value="/WEB-INF/pages/newsdetails.jsp"/>
+    </definition>
     <definition name="admin" template="/WEB-INF/Admin/layout/adindex.jsp">
          <put-attribute name="title" value="Trang chủ Admin"/>
         <put-attribute name="header" value="/WEB-INF/Admin/layout/adheader.jsp"/>

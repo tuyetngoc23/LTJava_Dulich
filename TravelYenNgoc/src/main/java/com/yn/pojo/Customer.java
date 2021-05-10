@@ -29,7 +29,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  * @author Huynh Thi Tuyet Ngoc
  */
 @Entity
-@Table(name = "Customer")
+@Table(name = "customer")
 public class Customer  implements Serializable{
 
     /**

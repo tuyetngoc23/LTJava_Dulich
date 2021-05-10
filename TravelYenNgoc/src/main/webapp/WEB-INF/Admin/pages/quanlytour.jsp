@@ -18,7 +18,6 @@
                             <h4 class="card-title ">Quản Lý tour du lịch</h4>
                             <a href="<c:url value="/admin/quanlytour/themtour" />" > <button type="button"  class="btn btn-primary" >Thêm tour mới</button></a>
                         </div>
-
                         <div class="row" style="padding: 30px">
                             <c:forEach items="${tours}" var="u">
                                 <div class="col-sm-4">

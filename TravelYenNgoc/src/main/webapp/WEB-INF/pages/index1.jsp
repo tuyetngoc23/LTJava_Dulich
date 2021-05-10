@@ -78,7 +78,7 @@
         </div>
     </div>
 </section>
-<!-- END section -->
+
 <section class="probootstrap_section bg-light">
     <div class="container">
         <%--<form:form modelAttribute="tour">--%> 
@@ -98,8 +98,10 @@
                                     <span class="text-uppercase">${tour.ngayKhoiHanh}</span>
                                     <h5 class="mb-3">${tour.ten}</h5>
                                     <p>Giá: ${tour.gia}</p>
+                                    <!--<p>${tour.mota}</p>-->
                                     <p>Hứa hẹn sẽ mang lại nhiều thú vị cho các bạn</p>
-                                    <p><a href="<c:url value="/booking"/>">Booking</a></p>
+                                    
+                                    <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a></p>
                                 </div>
                             </div>
                         </div>

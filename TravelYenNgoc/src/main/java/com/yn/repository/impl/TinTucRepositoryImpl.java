@@ -6,15 +6,13 @@
 package com.yn.repository.impl;
 
 import com.yn.pojo.BinhLuan;
-import com.yn.pojo.Customer;
 import com.yn.pojo.Employee;
 import com.yn.pojo.TinTuc;
-import com.yn.pojo.TinhThanh;
-import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.TinTucRepository;
-import com.yn.repository.UserRepository;
+
 import com.yn.service.UserService;
+
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -25,7 +23,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -105,17 +102,34 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     @Transactional
     public List<BinhLuan> getBinhLuans(int i) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<BinhLuan> query = builder.createQuery(BinhLuan.class);
+//        Root root = query.from(BinhLuan.class);
+//        query.select(root);
+//        Predicate p = builder.equal(root.get("tintucId").as(Integer.class),
+//               i);
+//        query = query.where(p);
+//        Query q = session.createQuery(query);
 
-        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
 
+         Query q = session.createStoredProcedureCall("getTinTucId");
+//        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
         return q.getResultList();
+
+        
+//        Set<BinhLuan> binhLuan = new HashSet<>();
+//        binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
+//        List<BinhLuan> b = new ArrayList<>();
+//        b.addAll(binhLuan);
+//        return b;
     }
 
-    @Override
-    public List<TinTuc> getTinTucs() {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-
-        Query q = session.createQuery("From TinTuc");
-        return q.getResultList();
-    }
+//    @Override
+//    @Transactional
+//    public List<TinTuc> getTinTucs() {
+//        Session session = this.sessionFactory.getObject().getCurrentSession();
+//
+//        Query q = session.createQuery("From TinTuc");
+//        return q.getResultList();
+//    }
 }

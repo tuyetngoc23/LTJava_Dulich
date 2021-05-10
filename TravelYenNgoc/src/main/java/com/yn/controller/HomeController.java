@@ -5,6 +5,7 @@
  */
 package com.yn.controller;
 
+import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Booking;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
@@ -60,31 +61,28 @@ public class HomeController {
         model.addAttribute("tour", this.tourSevice.getTour(kw));
         return "tourdetails";
     }
-    @GetMapping("/booking")
-    public String bookingView(Model model){
-        model.addAttribute("tour", this.tourSevice.getTour());
-        model.addAttribute("booking", new Booking());
-        return "booking";
-    }
    
-    @PostMapping("/booking")
-    public String booking(Model model, @ModelAttribute(value = "booking")
-    @Valid Booking booking, BindingResult err){
-        if(err.hasErrors()){
-            model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
-        }else{
-            
-            bookingService.addBooking(booking);
-        }
-        return "booking";
-    }
-    
     
     @RequestMapping("/news")
-    public String news(Model model){
-        model.addAttribute("news", this.tinTucService.getTinTucs());
+    public String news(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
+        //alu viết lại hàm lấy tín đr á tức hả 
+        model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
         return "news";
     }
-
     
+    @GetMapping("/news/newsdetails")
+    public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
+//        model.addAttribute("binhluan", new BinhLuan());
+        if (tintucId > 0) // cập nhật
+        {
+            model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
+            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
+        } else // thêm
+        {
+//            model.addAttribute("tintuc", new TinTuc());
+        }
+
+        return "newsdetails";
+    }
+
 }
