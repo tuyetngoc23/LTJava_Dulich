@@ -25,6 +25,7 @@ com\yn\controller\ChartController.class
 com\yn\config\SecurityWebApplicationInitializer.class
 com\yn\pojo\TinhThanh.class
 com\yn\repository\TinTucRepository.class
+com\yn\controller\TintucUserController.class
 com\yn\repository\TourRepository.class
 com\yn\controller\ApiTinTucController1.class
 com\yn\controller\DangKiController.class

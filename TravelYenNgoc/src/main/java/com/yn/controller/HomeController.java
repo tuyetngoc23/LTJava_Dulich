@@ -93,13 +93,11 @@ public class HomeController {
         model.addAttribute("tour", this.tourSevice.getTour());
         return "dstour";
     }
-
-<<<<<<< .mine
-    @RequestMapping("/news")
-    public String news(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
-        model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
-        return "news";
-    }
+//    @RequestMapping("/news")
+//    public String news(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
+//        model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
+//        return "news";
+//    }
 
     @GetMapping("/news/newsdetails")
     public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
@@ -114,27 +112,4 @@ public class HomeController {
         return "newsdetails";
     }
     
-
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
 }

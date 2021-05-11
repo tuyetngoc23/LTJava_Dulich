@@ -105,8 +105,8 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     @Override
     @Transactional
     public List<BinhLuan> getBinhLuans(int i) {
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-<<<<<<< .mine
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
 //        CriteriaBuilder builder = session.getCriteriaBuilder();
 //        CriteriaQuery<BinhLuan> query = builder.createQuery(BinhLuan.class);
 //        Root root = query.from(BinhLuan.class);
@@ -119,37 +119,19 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 
 //         Query q = session.createStoredProcedureCall("getTinTucId");
 //        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
-=======
+
         Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
         q.setParameter("tintuc", i);
 
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
 //        return q.getResultList();
 
-<<<<<<< .mine
         
         Set<BinhLuan> binhLuan = new HashSet<>();
         binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
         List<BinhLuan> b = new ArrayList<>();
         b.addAll(binhLuan);
         return b;
-=======
 
-
-
-
-
-
->>>>>>> .theirs
     }
     
     

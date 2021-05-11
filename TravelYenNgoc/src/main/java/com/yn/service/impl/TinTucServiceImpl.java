@@ -54,17 +54,10 @@ public class TinTucServiceImpl implements TinTucService {
     }
 
 
-<<<<<<< .mine
-   
-
-
-
-=======
     @Override
     public void addBinhLuan(BinhLuan bl) {
       this.tintTucRepository.addBinhLuan(bl);
     }
->>>>>>> .theirs
 
 }
 
