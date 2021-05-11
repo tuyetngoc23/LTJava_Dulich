@@ -25,5 +25,6 @@ public interface TinTucService {
     TinTuc getTinTucById(int tourId);
     boolean deleteTinTuc(int tourId);
      List<BinhLuan> getBinhLuans(int tinTucID);
+    void addBinhLuan(BinhLuan binhLuan);
 }
 

@@ -17,13 +17,11 @@ import java.util.List;
  * @author Huynh Thi Tuyet Ngoc
  */
 public interface TinTucRepository {
-//    List<User> getUsers(String username);
-//    boolean addUser(User user);
     List<TinTuc> getTinTucs(String kw);
-    //List<TinTuc> getTinTucs();
     boolean addOrUpdateTour(TinTuc tinTuc);
     TinTuc getTinTucById(int tourId);
     boolean deleteTinTuc(int tourId);
     List<BinhLuan> getBinhLuans(int tinTucID);
+    void addBinhLuan(BinhLuan binhLuan);
 }
 
