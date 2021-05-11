@@ -149,7 +149,7 @@
                                 <p>Hứa hẹn sẽ mang lại nhiều thú vị cho các bạn</p>
 
                                 <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a> <br>
-                                    <a href="<c:url value="tour/?tourId=${tour.id}"/>">Xem thêm</a></p>
+                                    <a href="<c:url value="tourdetails/?tourId=${tour.id}"/>">Xem thêm</a></p>
                             </div>
                         </div>
                     </div>

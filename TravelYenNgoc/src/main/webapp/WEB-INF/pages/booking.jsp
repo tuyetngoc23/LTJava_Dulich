@@ -20,31 +20,6 @@
                 </p>
             </div> 
             <div class="col-md probootstrap-animate">
-<<<<<<< .mine
-                <form:form action="" class="probootstrap-form" modelAttribute="booking" method="post">
-                    <div class="form-group">
-                        <div class="row mb-3">
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="id_label_single">tour</label>
-                                    <label for="id_label_single" style="width: 100%;">
-                                        <form:select path="tourId.id" onchange="getprice(this)" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
-                                            <c:forEach items="${tour}" var="t">
-                                                <option value="${t.id}">${t.ten}</option>
-                                            </c:forEach>
-                                        </form:select>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="id_label_single">Người lớn</label>
-
-                                    <label for="id_label_single" style="width: 100%;">
-                                        <form:select path="soNguoiLonDi" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">                         
-=======
                 <c:if test="${tour.id>0}">
                     <form:form action="" class="probootstrap-form" modelAttribute="booking" method="post">
                         <div class="form-group">
@@ -64,63 +39,13 @@
                                         <label for="id_label_single">Người lớn</label>
                                         <label for="id_label_single" style="width: 100%;">
                                             <form:select onchange='customJavascriptfuntion2(this)' path="soNguoiLonDi" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">                         
-
-
-
-
->>>>>>> .theirs
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-<<<<<<< .mine
-                                        </form:select>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="id_label_single2">Trẻ em</label>
-                                    <div class="probootstrap_select-wrap">
-                                        <label for="id_label_single2" style="width: 100%;">
-                                            <form:select path="soNguoiNhoDi" class="js-example-basic-single js-states form-control" id="id_label_single2" style="width: 100%;">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
                                             </form:select>
                                         </label>
                                     </div>
                                 </div>
-<<<<<<< .mine
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="tenKH" class="sr-only sr-only-focusable">Tên Khách Hàng</label>
-                                    <form:input type="text" id="ten" class="form-control" path="tenKH" placeholder="Tên Khách Hàng"/>
-                                    <form:errors path="tenKH" cssClass="text-danger" />
-
-
-
-
-
-
-=======
                                 <div class="col-md">
                                     <div class="form-group">
                                         <label for="id_label_single2">Trẻ em</label>
@@ -135,21 +60,8 @@
                                             </label>
                                         </div>
                                     </div>
->>>>>>> .theirs
                                 </div>
                             </div>
-<<<<<<< .mine
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="sdt" class="sr-only sr-only-focusable">Số điện thoại</label>
-                                     <form:input type="text" class="form-control" id="sdt" path="sdt" placeholder="Số điện thoại"/>
-                                     <form:errors path="sdt" cssClass="text-danger" />
-
-
-
-
-
-=======
                             <!-- END row -->
                             <div class="row mb-5">
                                 <div class="col-md">
@@ -160,7 +72,6 @@
                                             <form:input type="text" id="ten" path="tenKH"/>
                                         </div>
                                     </div>
->>>>>>> .theirs
                                 </div>
                                 <div class="col-md">
                                     <div class="form-group">
@@ -172,18 +83,6 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< .mine
-                        </div>
-                        <div class="row">
-                            <div class="col-md">
-                                <label for="totalMoney" class="sr-only sr-only-focusable">Tổng tiền:</label>
-                                <form:input type="text" path="totalMoney" id="totalMoney" class="form-control" placeholder="Tổng Tiền"/>
-
-
-
-
-
-=======
                             <div class="row">
                                 <div class="col-md">
 
@@ -194,7 +93,6 @@
                                 <div class="col-md">
                                     <input type="submit" value="Đặt tour" class="btn btn-primary btn-block">
                                 </div>
->>>>>>> .theirs
                             </div>
                         </div>
                     </div>
@@ -204,7 +102,7 @@
     </c:if>
     <c:if test="${thanhcong==null}">
         <h2 class="heading mb-2 display-4 font-light probootstrap-animate">Nhiều tour du lịch ngon đang đợi bạn tại </h2>
-        <a class="nav-link" href="<c:url value="/tourdetails"/>">Đây</a>
+        <a class="nav-link" href="<c:url value="/dstour"/>">Đây</a>
     </c:if>
 </section>
 <script>
@@ -215,44 +113,34 @@
     var tongtienchobe = 0;
     var tongtiencholon = tongtien;
     function customJavascriptfuntion(obj) {
-
         if (obj.value == "0") {
             tongtienchobe = 0;
-
         }
         if (obj.value == "1") {
             tongtienchobe = tongtien * 0.5;
-
         }
         if (obj.value == "2") {
             tongtienchobe = tongtien * 0.5 * 2;
-
         }
         if (obj.value == "3") {
             tongtienchobe = tongtien * 0.5 * 3;
-
         }
         var x = tongtienchobe + tongtiencholon;
         x = x.toLocaleString('vi', {style: 'currency', currency: 'VND'});
         document.getElementById("tien").innerHTML = x;
-
     }
     function customJavascriptfuntion2(obj) {
         if (obj.value == "1") {
             tongtiencholon = tongtien * 1;
-
         }
         if (obj.value == "2") {
             tongtiencholon = tongtien * 2;
-
         }
         if (obj.value == "4") {
             tongtiencholon = tongtien * 3;
-
         }
         var x = tongtienchobe + tongtiencholon;
         x = x.toLocaleString('vi', {style: 'currency', currency: 'VND'});
         document.getElementById("tien").innerHTML = x;
     }
-
 </script>

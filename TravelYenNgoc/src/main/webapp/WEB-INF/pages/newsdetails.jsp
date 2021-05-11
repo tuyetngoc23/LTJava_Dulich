@@ -19,7 +19,6 @@
     </div>
 </section>
 <c:if test = "${tintuc.trangThai== 'false'}">
-<<<<<<< .mine
     <section class="probootstrap-section-half" id="section-about">
         <div class="container">
             <h2 class="heading text-center">${tintuc.tieuDe}</h2>
@@ -45,33 +44,6 @@
                     </div>
                 </div>
             </form>
-=======
-    <section class="probootstrap-section-half d-md-flex" id="section-about">
-        <div class="probootstrap-image probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url(assets_ui/images/img_1.jpg)"></div>
-        <div class="probootstrap-text">
-            <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInRight">
-                <h2 class="heading mb-4">${tintuc.moTaNgan}</h2>
-                <p>${tintuc.moTaDai}</p>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                <h2 class="heading mb-4 text-center text-danger">Comments:</h2>
-                <c:forEach items="${binhluan}" var="b">
-                    <p>${b.noiDung}</p>
-                </c:forEach>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
         </div>
     </section>
 </c:if>

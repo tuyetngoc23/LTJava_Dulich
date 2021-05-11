@@ -50,38 +50,7 @@ public class HomeController {
     private TinTucService tinTucService;
 
     @RequestMapping("/")
-<<<<<<< .mine
-    public String index(Model model, @RequestParam(name = "tt",required = false) String t,
-            @RequestParam(name = "n",required = false) String n){
-        List<Tour> tours;
-        tours = t == null || t.length() == 0 ? tourSevice.getTour():tourSevice.findTour(Integer.parseInt(t));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-    public String index(Model model, @RequestParam(name = "ditu", required = false, defaultValue = "0") String ditu,
+     public String index(Model model, @RequestParam(name = "ditu", required = false, defaultValue = "0") String ditu,
             @RequestParam(name = "diden", required = false, defaultValue = "0") String diden, @RequestParam(name = "ngaydi", required = false, defaultValue = "2000-1-1") String ngaydi,
             @RequestParam(name = "ngayve", required = false, defaultValue = "2000-1-1") String ngayve,
             @RequestParam(name = "timgiatu", required = false, defaultValue = "0") int giatu, @RequestParam(name = "timgiaden", required = false, defaultValue = "0") int giaden)
@@ -110,21 +79,21 @@ public class HomeController {
             model.addAttribute("tour", this.tourSevice.getTour());
         }
      
->>>>>>> .theirs
         model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
-<<<<<<< .mine
-        model.addAttribute("tour", tours);
-=======
-
->>>>>>> .theirs
         return "index";
     }
 
     @RequestMapping("/tourdetails")
     public String tourDetails(Model model,
-            @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
-        model.addAttribute("tour", this.tourSevice.getTour(kw));
+           @RequestParam(name = "tourId", defaultValue = "0") int tourId) {
+        model.addAttribute("tour", this.tourSevice.getTourById(tourId));
         return "tourdetails";
+    }
+    
+    @RequestMapping("/dstour")
+    public String tourDs(Model model) {
+        model.addAttribute("tour", this.tourSevice.getTour());
+        return "dstour";
     }
 
     @RequestMapping("/news")

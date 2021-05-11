@@ -21,7 +21,6 @@ public interface TinTucService {
     List<TinTuc> getTinTucs(String kw);
    // List<TinTuc> getTinTucs();
     boolean addOrUpdateTour(TinTuc tinTuc);
-    boolean addOrUpdateTinTuc(TinTuc tintuc);
     TinTuc getTinTucById(int tourId);
     boolean deleteTinTuc(int tourId);
      List<BinhLuan> getBinhLuans(int tinTucID);
