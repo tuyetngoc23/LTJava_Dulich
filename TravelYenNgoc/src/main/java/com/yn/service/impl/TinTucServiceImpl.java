@@ -59,6 +59,11 @@ public class TinTucServiceImpl implements TinTucService {
 //        return this.tintTucRepository.getTinTucs();
 //    }
 
+    @Override
+    public boolean addOrUpdateTinTuc(TinTuc tintuc) {
+        return this.tintTucRepository.addOrUpdateTinTuc(tintuc);
+    }
+
     
 
 

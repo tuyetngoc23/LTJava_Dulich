@@ -7,6 +7,7 @@ package com.yn.controller;
 
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Booking;
+import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.BookingRepository;
@@ -45,14 +46,9 @@ public class HomeController {
     public String index(Model model, @RequestParam(name = "tt",required = false) String t,
             @RequestParam(name = "n",required = false) String n){
         List<Tour> tours;
-//        List<Tour> tours1;
         tours = t == null || t.length() == 0 ? tourSevice.getTour():tourSevice.findTour(Integer.parseInt(t));
-//        tours1 = n == null || n.length() == 0 ? tourSevice.getTour():tourSevice.findTourForDate(n);
-
-//        System.out.println("kw: " + t);
         model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
-        model.addAttribute("tour", tours);//chỗ này get all hả alo
-//        model.addAttribute("tour", tours1);
+        model.addAttribute("tour", tours);
         return "index";
     }
     @RequestMapping("/tourdetails") 
@@ -90,11 +86,10 @@ public class HomeController {
     
     @GetMapping("/news/newsdetails")
     public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
-//        model.addAttribute("binhluan", new BinhLuan());
         if (tintucId > 0) // cập nhật
         {
             model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
-            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
+//            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
         } else // thêm
         {
 //            model.addAttribute("tintuc", new TinTuc());
@@ -102,5 +97,6 @@ public class HomeController {
 
         return "newsdetails";
     }
+    
 
 }

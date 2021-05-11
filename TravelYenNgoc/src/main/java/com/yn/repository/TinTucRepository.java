@@ -22,6 +22,7 @@ public interface TinTucRepository {
     List<TinTuc> getTinTucs(String kw);
     //List<TinTuc> getTinTucs();
     boolean addOrUpdateTour(TinTuc tinTuc);
+    TinTuc UpdateSoLuotThich(int sl);
     TinTuc getTinTucById(int tourId);
     boolean deleteTinTuc(int tourId);
     List<BinhLuan> getBinhLuans(int tinTucID);

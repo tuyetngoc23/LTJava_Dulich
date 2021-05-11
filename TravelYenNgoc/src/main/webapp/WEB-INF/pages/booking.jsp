@@ -34,22 +34,6 @@
                                     </label>
                                 </div>
                             </div>
-<!--                            <div class="col-md">
-                                <div class="form-group">
-                                    <label for="id_label_single2">Số người đi</label>
-                                    <div class="probootstrap_select-wrap">
-                                        <label for="id_label_single2" style="width: 100%;">
-                                            <select class="js-example-basic-single js-states form-control" id="id_label_single2" style="width: 100%;">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>-->
                         </div>
                         <div class="row mb-3">
                             <div class="col-md">
@@ -58,9 +42,9 @@
 
                                     <label for="id_label_single" style="width: 100%;">
                                         <form:select path="soNguoiLonDi" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">                         
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                         </form:select>
                                     </label>
                                 </div>
@@ -71,42 +55,35 @@
                                     <div class="probootstrap_select-wrap">
                                         <label for="id_label_single2" style="width: 100%;">
                                             <form:select path="soNguoiNhoDi" class="js-example-basic-single js-states form-control" id="id_label_single2" style="width: 100%;">
-                                                  <option value="1">1</option>
-                                                  <option value="2">2</option>
-                                                  <option value="3">3</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
                                             </form:select>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- END row -->
-                        <div class="row mb-5">
-                            <div class="col-md">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="ten">Tên khách hàng</label>
-                                    <div>
-                                        <form:input type="text" id="ten" path="tenKH"/>
-                                        <form:errors path="tenKH" cssClass="text-danger" />
-                                    </div>
+                                    <label for="tenKH" class="sr-only sr-only-focusable">Tên Khách Hàng</label>
+                                    <form:input type="text" id="ten" class="form-control" path="tenKH" placeholder="Tên Khách Hàng"/>
+                                    <form:errors path="tenKH" cssClass="text-danger" />
                                 </div>
                             </div>
-                            <div class="col-md">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="sdt" style="width: 100%;">Số điện thoại</label>
-                                    <div>
-                                        <form:input type="text" id="sdt" path="sdt"/>
-                                        <form:errors path="sdt" cssClass="text-danger" />
-                                    </div>
+                                    <label for="sdt" class="sr-only sr-only-focusable">Số điện thoại</label>
+                                     <form:input type="text" class="form-control" id="sdt" path="sdt" placeholder="Số điện thoại"/>
+                                     <form:errors path="sdt" cssClass="text-danger" />
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- END row -->
                         <div class="row">
                             <div class="col-md">
-                                <label>Tổng tiền:</label>
-                                <form:input type="text" path="totalMoney" id="totalMoney"/>
+                                <label for="totalMoney" class="sr-only sr-only-focusable">Tổng tiền:</label>
+                                <form:input type="text" path="totalMoney" id="totalMoney" class="form-control" placeholder="Tổng Tiền"/>
                             </div>
                             <div class="col-md">
                                 <input type="submit" value="Book" class="btn btn-primary btn-block">

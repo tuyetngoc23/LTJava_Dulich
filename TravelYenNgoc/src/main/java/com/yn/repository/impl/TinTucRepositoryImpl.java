@@ -12,8 +12,11 @@ import com.yn.pojo.User;
 import com.yn.repository.TinTucRepository;
 
 import com.yn.service.UserService;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -101,7 +104,7 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     @Override
     @Transactional
     public List<BinhLuan> getBinhLuans(int i) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
+//        Session session = this.sessionFactory.getObject().getCurrentSession();
 //        CriteriaBuilder builder = session.getCriteriaBuilder();
 //        CriteriaQuery<BinhLuan> query = builder.createQuery(BinhLuan.class);
 //        Root root = query.from(BinhLuan.class);
@@ -112,17 +115,19 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 //        Query q = session.createQuery(query);
 
 
-         Query q = session.createStoredProcedureCall("getTinTucId");
+//         Query q = session.createStoredProcedureCall("getTinTucId");
 //        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
-        return q.getResultList();
+//        return q.getResultList();
 
         
-//        Set<BinhLuan> binhLuan = new HashSet<>();
-//        binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
-//        List<BinhLuan> b = new ArrayList<>();
-//        b.addAll(binhLuan);
-//        return b;
+        Set<BinhLuan> binhLuan = new HashSet<>();
+        binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
+        List<BinhLuan> b = new ArrayList<>();
+        b.addAll(binhLuan);
+        return b;
     }
+    
+    
 
 //    @Override
 //    @Transactional
@@ -132,4 +137,14 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 //        Query q = session.createQuery("From TinTuc");
 //        return q.getResultList();
 //    }
+
+    @Override
+    @Transactional
+    public TinTuc UpdateSoLuotThich(int i) {
+        TinTuc t = new TinTuc();
+        t.setSoLuotThich(i);
+        return t;
+    }
+
+   
 }
