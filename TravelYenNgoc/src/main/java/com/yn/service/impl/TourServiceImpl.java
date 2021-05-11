@@ -46,14 +46,11 @@ public class TourServiceImpl implements TourSevice{
         return this.tourRepository.getTour();
     }
 
-    @Override
-    public List<Tour> findTour(int i) {
-        return this.tourRepository.findTour(i);
-    }
+
 
     @Override
-    public List<Tour> findTourForDate(String date) {
-        return this.tourRepository.findTourForDate(date);
+     public List<Tour> findTour(int ditu,int diden,Date ngaydiDate,Date ngayve) {
+        return this.tourRepository.findTour(ditu,diden,ngaydiDate,ngayve);
     }
 
 }

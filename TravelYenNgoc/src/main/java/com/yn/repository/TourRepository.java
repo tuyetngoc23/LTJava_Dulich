@@ -18,9 +18,8 @@ import java.util.List;
 public interface TourRepository {
     List<Tour> getTour();
     List<Tour> getTour(String kw);
-    
-    List<Tour> findTour(int id);
-    List<Tour> findTourForDate(String d);
+
+    List<Tour> findTour(int ditu,int diden,Date ngaydiDate,Date ngayve);
 
     boolean addOrUpdateTour(Tour tour);
 

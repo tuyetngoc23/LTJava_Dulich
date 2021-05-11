@@ -14,6 +14,12 @@ import com.yn.service.BookingService;
 import com.yn.service.TinTucService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class HomeController {
+
     @Autowired
     private TourSevice tourSevice;
     @Autowired
@@ -40,46 +47,51 @@ public class HomeController {
     private BookingService bookingService;
     @Autowired
     private TinTucService tinTucService;
-    
-    @RequestMapping("/")
-    public String index(Model model, @RequestParam(name = "tt",required = false) String t,
-            @RequestParam(name = "n",required = false) String n){
-        List<Tour> tours;
-//        List<Tour> tours1;
-        tours = t == null || t.length() == 0 ? tourSevice.getTour():tourSevice.findTour(Integer.parseInt(t));
-//        tours1 = n == null || n.length() == 0 ? tourSevice.getTour():tourSevice.findTourForDate(n);
 
-//        System.out.println("kw: " + t);
+    @RequestMapping("/")
+    public String index(Model model, @RequestParam(name = "ditu", required = false, defaultValue = "0") String ditu,
+            @RequestParam(name = "diden", required = false, defaultValue = "0") String diden, @RequestParam(name = "ngaydi", required = false, defaultValue = "") String ngaydi,
+            @RequestParam(name = "ngayve", required = false, defaultValue = "") String ngayve) throws ParseException {
+        SimpleDateFormat format1 = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format1.parse("05/01/1999");
+        if (!diden.equals("0")) {
+            int dituid = Integer.parseInt(ditu);
+            int didenid = Integer.parseInt(diden);
+            if (!ngaydi.equals("") || !ngayve.equals("")) {
+                Date ngaydiDate = format1.parse(ngaydi);
+                Date ngayveDate = format1.parse(ngayve);
+                model.addAttribute("tour", this.tourSevice.findTour(dituid, didenid, ngaydiDate, ngayveDate));
+            }
+             model.addAttribute("tour", this.tourSevice.findTour(dituid, didenid, date, date));
+        } else {
+            model.addAttribute("tour", this.tourSevice.getTour());
+        }
         model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
-        model.addAttribute("tour", tours);//chỗ này get all hả alo
-//        model.addAttribute("tour", tours1);
         return "index";
     }
-    @RequestMapping("/tourdetails") 
+
+    @RequestMapping("/tourdetails")
     public String tourDetails(Model model,
-            @RequestParam(name = "kw", required = false, defaultValue = "") String kw){
+            @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("tour", this.tourSevice.getTour(kw));
         return "tourdetails";
     }
-   
-    
+
     @RequestMapping("/news")
-    public String news(Model model,@RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
-        //alu viết lại hàm lấy tín đr á tức hả 
+    public String news(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
         return "news";
     }
-    
+
     @GetMapping("/news/newsdetails")
     public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
-//        model.addAttribute("binhluan", new BinhLuan());
         if (tintucId > 0) // cập nhật
         {
             model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
             model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
-        } else // thêm
-        {
-//            model.addAttribute("tintuc", new TinTuc());
+        } else {
+
         }
 
         return "newsdetails";

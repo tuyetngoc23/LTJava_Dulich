@@ -17,8 +17,7 @@ import java.util.List;
 public interface TourSevice {
     List<Tour> getTour(String kw);
     List<Tour> getTour();
-    List<Tour> findTour(int id);
-    List<Tour> findTourForDate(String date);
+    List<Tour> findTour(int ditu,int diden,Date ngaydiDate,Date ngayve);
     boolean addOrUpdateTour(Tour tour);
     Tour getTourById(int tourId);
    boolean deleteTour(int tourId);

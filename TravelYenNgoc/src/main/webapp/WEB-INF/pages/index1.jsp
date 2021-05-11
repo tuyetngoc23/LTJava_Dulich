@@ -22,7 +22,7 @@
                                 <label for="id_label_single">Đi từ</label>
                                   <div class="probootstrap_select-wrap">
                                 <label for="id_label_single" style="width: 100%;">
-                                    <select name="tt" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
+                                    <select name="ditu" class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
                                         <c:forEach items="${tinhthanhs}" var="t">
                                             <option value="${t.id}">${t.ten}</option>
                                         </c:forEach>
@@ -36,7 +36,7 @@
                                 <label for="id_label_single2">Đến</label>
                                 <div class="probootstrap_select-wrap">
                                     <label for="id_label_single2" style="width: 100%;">
-                                        <select class="js-example-basic-single js-states form-control" id="id_label_single2" style="width: 100%;">
+                                        <select name ="diden" class="js-example-basic-single js-states form-control" id="id_label_single2" style="width: 100%;">
                                             <c:forEach items="${tinhthanhs}" var="t">
                                                 <option value="${t.id}">${t.ten}</option>
                                             </c:forEach>
@@ -53,7 +53,7 @@
                                 <label for="probootstrap-date-departure">Ngày khởi hành</label>
                                 <div class="probootstrap-date-wrap">
                                     <span class="icon ion-calendar"></span> 
-                                    <input type="text" id="probootstrap-date-departure" class="form-control" placeholder="">
+                                    <input type="text" id="probootstrap-date-departure" class="form-control" placeholder="" name ="ngaydi">
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                 <label for="probootstrap-date-arrival">Ngày kết thúc</label>
                                 <div class="probootstrap-date-wrap">
                                     <span class="icon ion-calendar"></span> 
-                                    <input type="text" id="probootstrap-date-arrival" class="form-control" placeholder="">
+                                    <input type="text" id="probootstrap-date-arrival" class="form-control" placeholder="" name ="ngayve">
                                 </div>
                             </div>
                         </div>
@@ -92,16 +92,19 @@
                     <c:forEach items="${tour}" var="tour">
                         <div class="col-md-6">
                             <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-                                <div class="probootstrap-media-image" style="background-image: url(assets_ui/images/img_1.jpg)">
+                                <div class="probootstrap-media-image" style="background-image: url(<c:url value="${tour.image}"/>)">
                                 </div>
                                 <div class="media-body">
-                                    <span class="text-uppercase">${tour.ngayKhoiHanh}</span>
+                                    <span class="text-uppercase">${tour.ngayKhoiHanh}-${tour.ngayKetThuc}</span>
                                     <h5 class="mb-3">${tour.ten}</h5>
                                     <p>Giá: ${tour.gia}</p>
-                                    <!--<p>${tour.mota}</p>-->
+                                    <p>Từ: ${tour.diemDenID.ten}</p>
+                                    
+                                    <p> Đến: ${tour.diemDiID.ten}</p>
                                     <p>Hứa hẹn sẽ mang lại nhiều thú vị cho các bạn</p>
                                     
-                                    <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a></p>
+                                    <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a> <br>
+                                   <a href="<c:url value="tour/?tourId=${tour.id}"/>">Xem thêm</a></p>
                                 </div>
                             </div>
                         </div>

@@ -43,7 +43,7 @@ public class TourReponsitoryImpl implements TourRepository {
 
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-    
+
     @Autowired
     private TinhThanhReponsitory tinhThanhResponsitory;
 
@@ -104,7 +104,6 @@ public class TourReponsitoryImpl implements TourRepository {
         return false;
     }
 
-
     @Override
     @Transactional
     public List<Tour> getTour() {
@@ -116,27 +115,14 @@ public class TourReponsitoryImpl implements TourRepository {
 
     @Override
     @Transactional
-    public List<Tour> findTour(int id) {
-        Set<Tour> tour = new HashSet<>();
-        tour.addAll(tinhThanhResponsitory.getbyId(id).getTours_den());
-        tour.addAll(tinhThanhResponsitory.getbyId(id).getTours_di());
-        List<Tour> t = new ArrayList<>();
-        t.addAll(tour);
-        return t;
-    }
-
-    @Override
-    @Transactional
-    public List<Tour> findTourForDate(String date) {
+    public List<Tour> findTour(int ditu, int diden, Date ngaydiDate, Date ngayve) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Tour> query = builder.createQuery(Tour.class);
-        Root root = query.from(Tour.class);
-        query.select(root);
-        Predicate p = builder.like(root.get("ngayKhoiHanh").as(String.class), date);
-        query = query.where(p);
-        Query q = session.createQuery(query);
-
+        Query q = session.createQuery("FROM Tour where (diemDenID.id = :ditusql and "
+                + "diemDiID.id= :didensql) or (ngayKhoiHanh = :ngaydi and ngayKetThuc =:ngayve)");
+        q.setParameter("ditusql", ditu);
+        q.setParameter("didensql", diden);
+        q.setParameter("ngaydi", ngaydiDate);
+        q.setParameter("ngayve", ngayve);
         return q.getResultList();
     }
 
