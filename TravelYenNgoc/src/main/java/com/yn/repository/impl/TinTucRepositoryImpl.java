@@ -155,9 +155,11 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         Query q = session.createQuery(" FROM Thich where tintuc_id = :tintucid and customerId = :cusId");
         q.setParameter("tintucid", i);
         q.setParameter("cusId", cus.getIdCus().getId());
-        if(q.getResultList().get(0)== null)
-            return null;
-        return (Thich)q.getResultList().get(0);
+        Thich thich = new Thich();
+      if(q.getResultList().isEmpty())
+            thich = null;
+        else{ thich = (Thich)q.getResultList().get(0);}
+        return thich;
     }
 
     @Override
@@ -165,7 +167,25 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     public void khongthich(int i, int i1) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         Thich thich = session.get(Thich.class, i1);
-        
+        thich.setTrangThai(false);
+        TinTuc tinTuc = this.getTinTucById(i);
+        int sl = tinTuc.getSoLuotThich();
+        tinTuc.setSoLuotThich(sl-1);
+        session.save(thich);
+        session.update(tinTuc);
     }
 
+
+    @Override
+    @Transactional
+    public void thich(int i, int i1) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Thich thich = session.get(Thich.class, i1);
+        thich.setTrangThai(true);
+        TinTuc tinTuc = this.getTinTucById(i);
+        int sl = tinTuc.getSoLuotThich();
+        tinTuc.setSoLuotThich(sl+1);
+        session.save(thich);
+        session.update(tinTuc);
+    }
 }

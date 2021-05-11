@@ -8,6 +8,7 @@ package com.yn.controller;
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Booking;
 import com.yn.pojo.Customer;
+import com.yn.pojo.Thich;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
@@ -60,7 +61,12 @@ public class TintucUserController {
         {
             model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
             model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
-            model.addAttribute("thich", this.tinTucService.getthich(tintucId));
+            Thich thich = this.tinTucService.getthich(tintucId);
+            if (thich == null) {
+                model.addAttribute("thich", null);
+            } else {
+                model.addAttribute("thich", thich);
+            }
             model.addAttribute("binhluanuser", new BinhLuan());
         } else // thêm
         {
@@ -78,7 +84,13 @@ public class TintucUserController {
 
             return "newsdetails";
         }
-
+        Thich thich = this.tinTucService.getthich(tintucId);
+        if (thich == null) {
+            model.addAttribute("thich", null);
+        } else {
+            model.addAttribute("thich", thich);
+        }
+        model.addAttribute("binhluanuser", new BinhLuan());
         TinTuc tindangco = this.tinTucService.getTinTucById(tintucId);
         binhLuan.setTintuc(tindangco);
         this.tinTucService.addBinhLuan(binhLuan);

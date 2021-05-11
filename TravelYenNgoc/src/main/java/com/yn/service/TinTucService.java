@@ -29,5 +29,7 @@ public interface TinTucService {
     void addBinhLuan(BinhLuan binhLuan);
      void addthich(int id);
      Thich getthich(int i);
+     void khongthich(int i, int i1);
+     void thich(int i, int i1);
 }
 

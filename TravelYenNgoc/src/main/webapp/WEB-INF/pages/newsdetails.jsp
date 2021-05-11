@@ -8,9 +8,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
-
-
-
     .card {
         position: relative;
         display: flex;
@@ -54,18 +51,23 @@
             <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInRight">
                 <h2 class="heading mb-4">${tintuc.tieuDe}</h2>
                 <p>Tác giả: ${tintuc.employee.idStaff.hoTen}</p>
-                 <p>Ngày đăng: ${tintuc.ngayDang}</p>
+                <p>Ngày đăng: ${tintuc.ngayDang}</p>
                 <input value="${tintuc.soLuotThich}" type="pass" id="demo" style="display:none">
                     <h2 id ="demo2"class="heading mb-4" >Số tim: ${tintuc.soLuotThich}</h2>
-                    <c:if test = "${thich.trangThai== 'false'}">
-                    <a id="chuatim" style ="color:black" href="javascript:;"onclick="thich1(${tintuc.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                      </svg></a>
-                    </c:if>
-                     <c:if test = "${thich.trangThai== 'true'}">
-                       <a id="datim" style ="color:red" href="javascript:;"onclick="thich1(${tintuc.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                      </svg></a>
+                    <c:if test = "${thich.id!= null}">
+                        <h3>Button with counter - active/inactive</h3>
+                        <c:if test = "${thich.trangThai== 'false'}">
+                            <a type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                </svg></a>
+                            <p>Clicks: <a id="clicks">0</a></p>
+                        </c:if>
+                        <c:if test = "${thich.trangThai== 'true'}">
+                            <a type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                </svg></a>
+                            <p>Clicks: <a id="clicks">0</a></p>
+                        </c:if>
                     </c:if>
                     <p>${tintuc.moTaDai}</p>
                     <div class="container mb-5 mt-5">
@@ -107,4 +109,4 @@
 
                     </section>
                 </c:if>
-<script src="<c:url value="/js/tour.js" />"></script>
+                <script src="<c:url value="/js/tour.js" />"></script>

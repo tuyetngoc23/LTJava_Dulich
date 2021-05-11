@@ -35,21 +35,21 @@ public class ApiTourController {
     @DeleteMapping("/admin/quanlytour/{tourId}")
     @ResponseStatus(HttpStatus.OK)
     public void deleleProduct(@PathVariable(name = "tourId") int tourId) {
-        //this.tourService.deleteTour(tourId);
+        this.tourService.deleteTour(tourId);
         System.out.println("oke");
     }
     
     
-    @GetMapping("/user/news/{tintucId}")
+    @GetMapping("/user/news/{tintucId}/{thich}")
     @ResponseStatus(HttpStatus.OK)
-    public void thich(@PathVariable(name = "tintucId") int tintucid) {
-        tinTucService.addthich(tintucid);
+    public void thich(@PathVariable(name = "tintucId") int tintucid,@PathVariable(name = "thich") int thichid) {
+        tinTucService.thich(tintucid,thichid);
         System.out.println("hello");
     }
     @GetMapping("/user/news/unlike/{tintucId}/{thich}")
     @ResponseStatus(HttpStatus.OK)
-    public void khongthich(@PathVariable(name = "tintucId") int tintucid) {
-        //tinTucService.addthich(tintucid);
+    public void khongthich(@PathVariable(name = "tintucId") int tintucid,@PathVariable(name = "thich") int thichid) {
+        tinTucService.khongthich(tintucid, thichid);
         System.out.println("hello");
     }
 }

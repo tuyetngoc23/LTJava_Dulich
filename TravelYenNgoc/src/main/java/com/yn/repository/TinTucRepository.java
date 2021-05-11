@@ -26,6 +26,7 @@ public interface TinTucRepository {
     void addBinhLuan(BinhLuan binhLuan);
     void addthich(int tintuc);
     void khongthich(int idtintuc,int idthich);
+    void thich(int idtintuc,int idthich);
     Thich getthich(int i);
 }
 
