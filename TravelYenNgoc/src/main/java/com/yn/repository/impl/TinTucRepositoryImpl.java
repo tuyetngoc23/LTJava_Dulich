@@ -160,4 +160,12 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         return (Thich)q.getResultList().get(0);
     }
 
+    @Override
+    @Transactional
+    public void khongthich(int i, int i1) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Thich thich = session.get(Thich.class, i1);
+        
+    }
+
 }

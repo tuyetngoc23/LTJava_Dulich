@@ -70,5 +70,10 @@ public class TinTucServiceImpl implements TinTucService {
         return this.tintTucRepository.getthich(i);
     }
 
+    @Override
+    public void khongthich(int i, int i1) {
+        this.tintTucRepository.khongthich(i, i1);
+    }
+
 }
 

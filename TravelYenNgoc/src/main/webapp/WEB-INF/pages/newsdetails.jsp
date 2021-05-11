@@ -62,9 +62,11 @@
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                       </svg></a>
                     </c:if>
+                     <c:if test = "${thich.trangThai== 'true'}">
                        <a id="datim" style ="color:red" href="javascript:;"onclick="thich1(${tintuc.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                       </svg></a>
+                    </c:if>
                     <p>${tintuc.moTaDai}</p>
                     <div class="container mb-5 mt-5">
                         <div class="card">
