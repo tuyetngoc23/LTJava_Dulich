@@ -21,16 +21,16 @@
                         <div class="card-body">
                             <form>
                                 <div class="row">
-                                     <c:if test="${tour.id>0}">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating" >Mã tour</label>
-                                            <form:input id="id" cssClass="form-control" path="id" readonly="true" style ="  background-color: #202940;
-  opacity: 1;"/>
-                                            <form:errors path="id" cssClass="text-danger" />
+                                    <c:if test="${tour.id>0}">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating" >Mã tour</label>
+                                                <form:input id="id" cssClass="form-control" path="id" readonly="true" style ="  background-color: #202940;
+                                                            opacity: 1;"/>
+                                                <form:errors path="id" cssClass="text-danger" />
+                                            </div>
                                         </div>
-                                    </div>
-                                     </c:if>
+                                    </c:if>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Tên Tour</label>
@@ -50,7 +50,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label  for="inputState" class="bmd-label-floating">Địa điểm đến</label>
+                                            <label  for="inputState" class="bmd-label-floating">Từ</label>
                                             <form:select cssClass="form-control" id="diemDenID.id" path="diemDenID.id">
                                                 <c:forEach items="${tinhthanh}" var="cat">
                                                     <c:if test="${cat.id == tour.diemDenID.id}">
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label  for="inputState" class="bmd-label-floating">Địa điểm đi</label>
+                                            <label  for="inputState" class="bmd-label-floating">Đến</label>
                                             <form:select cssClass="form-control" id="diemDiID.id" path="diemDiID.id">
                                                 <c:forEach items="${tinhthanh}" var="cat">
                                                     <c:if test="${cat.id == tour.diemDiID.id}">
@@ -108,7 +108,7 @@
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Ngày bắt đầu</label>
                                             <form:input type="date" value="${tour.ngayKhoiHanh}" cssClass="form-control" id="ngayKhoiHanh" path="ngayKhoiHanh"/>
-                                             <form:errors path="ngayKhoiHanh" cssClass="text-danger" />
+                                            <form:errors path="ngayKhoiHanh" cssClass="text-danger" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -142,21 +142,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary pull-right">Thêm tour</button>
-                                <div class="clearfix"></div>
-                            </form>
-                        </form:form>
+                                <c:if test="${tour.id>0}">
+                                    <div class="container mt-4 mb-4">
+                                        <button type="submit" class="btn btn-primary pull-right">Cập nhập bài viết </button>
+                                        <div class="clearfix"></div>
+                                    </c:if>
+                                    <c:if test="${tour.id<=0}">
+                                        <div class="container mt-4 mb-4">
+                                            <button type="submit" class="btn btn-primary pull-right">Thêm bài viết </button>
+                                            <div class="clearfix"></div>
+                                        </c:if>
+                                        </form>
+                                    </form:form>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            // Add the following code if you want the name of the file appear on select
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>

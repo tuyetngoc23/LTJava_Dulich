@@ -16,5 +16,7 @@ import java.math.BigDecimal;
 public interface BookingService {
     void addBooking(Booking b);
     BigDecimal getDoanhThu(int thang, int nam);
+    Long getTourDaDat(int thang, int nam);
     BigDecimal getPrice(Tour t, Booking b);
+    Long getSoLuongTourDatDat(int i);
 }

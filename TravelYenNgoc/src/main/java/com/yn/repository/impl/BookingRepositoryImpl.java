@@ -6,8 +6,11 @@
 package com.yn.repository.impl;
 
 import com.yn.pojo.Booking;
+import com.yn.pojo.Customer;
 import com.yn.pojo.Tour;
+import com.yn.pojo.User;
 import com.yn.repository.BookingRepository;
+import com.yn.service.UserService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.Query;
@@ -22,17 +25,28 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Huynh Thi Tuyet Ngoc
  */
 @Repository
-public class BookingRepositoryImpl implements BookingRepository{
-    
+public class BookingRepositoryImpl implements BookingRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-
+    
+    @Autowired
+    private UserService userService;
+    
+    
     @Override
     @Transactional
     public void addBooking(Booking b) {
         Session s = this.sessionFactory.getObject().getCurrentSession();
-        LocalDate d = LocalDate.now();
-        b.setBookingDay(d);
+        long millis = System.currentTimeMillis();
+        java.sql.Date dateCreated = new java.sql.Date(millis);
+        b.setBookingDay(dateCreated);
+        //set nguoi nao đat
+        Customer cus = new Customer();
+        User ua = this.userService.getUsersAuth();
+        cus =  s.get(Customer.class, ua.getId());
+        System.out.println(cus);
+        b.setCustomerId(cus);
         s.save(b);
     }
 
@@ -43,8 +57,17 @@ public class BookingRepositoryImpl implements BookingRepository{
         Query q = session.createQuery("SELECT sum(totalMoney) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
         q.setParameter("thang", thang);
         q.setParameter("nam", nam);
-        //(BigDecimal) q.getResultList().get(0)
         return (BigDecimal) q.getResultList().get(0);
+    }
+
+    @Override
+    @Transactional
+    public Long getTourDaDat(int thang, int nam) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT COUNT(*) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
+        q.setParameter("thang", thang);
+        q.setParameter("nam", nam);
+        return (Long) q.getResultList().get(0);
     }
 
     @Override
@@ -53,5 +76,20 @@ public class BookingRepositoryImpl implements BookingRepository{
         return t.getGia().multiply(new BigDecimal(b.getSoNguoiLonDi()))
                 .add(t.getGia().multiply(new BigDecimal(b.getSoNguoiNhoDi())).multiply(new BigDecimal(0.5)));
     }
-    
+
+    @Override
+    @Transactional
+    public Long getSoLuongTourDatDat(int i) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT sum(soNguoiLonDi) FROM Booking where tour_id =:idtour");
+        q.setParameter("idtour", i);
+        if(q.getResultList().get(0)== null)
+            return new Long(0);
+        Long tong1 = (Long) q.getResultList().get(0);
+        Query q2 = session.createQuery("SELECT sum(soNguoiLonDi) FROM Booking where tour_id =:idtour");
+        q2.setParameter("idtour", i);
+        Long tong2 = (Long) q.getResultList().get(0);
+        return tong1 + tong2;
+    }
+
 }

@@ -20,6 +20,10 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Booking Tour"/>
         <put-attribute name="content" value="/WEB-INF/pages/booking.jsp"/>
     </definition>
+    <definition name="bookingoke" extends="baseLayout">
+        <put-attribute name="title" value="Booking Tour"/>
+        <put-attribute name="content" value="/WEB-INF/pages/bookingoke.jsp"/>
+    </definition>
     <definition name="news" extends="baseLayout">
         <put-attribute name="title" value="News"/>
         <put-attribute name="content" value="/WEB-INF/pages/news.jsp"/>
@@ -51,28 +55,36 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytour.jsp"/>
     </definition>
     <definition name="themtour" extends="admin">
-         <put-attribute name="title" value="Quản lý tour du lịch"/>
+         <put-attribute name="title" value="Thêm tour du lịch"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/themtour.jsp"/>
     </definition>
     <definition name="quanlykhachhang" extends="admin">
-         <put-attribute name="title" value="Quản lý tour du lịch"/>
+         <put-attribute name="title" value="Quản lý khách hàng"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlykhachhang.jsp"/>
     </definition>
     <definition name="quanlytintuc" extends="admin">
-         <put-attribute name="title" value="Quản lý tour du lịch"/>
+         <put-attribute name="title" value="Quản lý tin tức"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlytintuc.jsp"/>
     </definition>
     <definition name="themtintuc" extends="admin">
-         <put-attribute name="title" value="Quản lý tour du lịch"/>
+         <put-attribute name="title" value="thêm tin tức"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/themtintuc.jsp"/>
     </definition>
     <definition name="xemtintuc" extends="admin">
-         <put-attribute name="title" value="Quản lý tour du lịch"/>
+         <put-attribute name="title" value="xem tin tức"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/xemtintuc.jsp"/>
     </definition>
     <definition name="chart" extends="admin">
-         <put-attribute name="title" value="Quản lý tour du lịch"/>
+         <put-attribute name="title" value="thông kê"/>
         <put-attribute name="content" value="/WEB-INF/Admin/pages/chart.jsp"/>
+    </definition>
+    <definition name="quanlynhanvien" extends="admin">
+         <put-attribute name="title" value="Quản lý nhân viên"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlynhanvien.jsp"/>
+    </definition>
+    <definition name="themnhanvien" extends="admin">
+         <put-attribute name="title" value="Quản lý nhân viên"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/themnhanvien.jsp"/>
     </definition>
     <definition name="dangki" template="/WEB-INF/pages/dangki.jsp">
     </definition>

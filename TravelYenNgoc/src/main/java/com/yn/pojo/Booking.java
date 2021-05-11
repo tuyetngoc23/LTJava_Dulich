@@ -7,7 +7,6 @@ package com.yn.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -26,15 +27,47 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 @Table(name="booking")
 public class Booking implements Serializable{
+
+    /**
+     * @return the tour
+     */
+    public Tour getTour() {
+        return tour;
+    }
+
+    /**
+     * @param tour the tour to set
+     */
+    public void setTour(Tour tour) {
+        this.tour = tour;
+    }
+
+    /**
+     * @return the bookingDay
+     */
+    public Date getBookingDay() {
+        return bookingDay;
+    }
+
+    /**
+     * @param bookingDay the bookingDay to set
+     */
+    public void setBookingDay(Date bookingDay) {
+        this.bookingDay = bookingDay;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date bookingDay;
     private BigDecimal totalMoney;
     private int soNguoiLonDi;
     private int soNguoiNhoDi;
+    @NotEmpty(message = "{booking.hoten.err}")
     private String tenKH;
-    @Pattern(regexp = "[0-9]{10}", message = "{booking.sdt.err}")
+    @Pattern(regexp = "\\d{10}",
+    message = "{user.phone.error.invalidMsg}")
     private String sdt;
     
     @ManyToOne
@@ -47,7 +80,7 @@ public class Booking implements Serializable{
     
     @ManyToOne
     @JoinColumn(name="tour_id")
-    private Tour tourId;
+    private Tour tour;
 
     /**
      * @return the id
@@ -66,16 +99,11 @@ public class Booking implements Serializable{
     /**
      * @return the bookingDay
      */
-    public Date getBookingDay() {
-        return bookingDay;
-    }
+
 
     /**
      * @param bookingDay the bookingDay to set
      */
-    public void setBookingDay(Date bookingDay) {
-        this.bookingDay = bookingDay;
-    }
 
     /**
      * @return the totalMoney
@@ -147,19 +175,7 @@ public class Booking implements Serializable{
         this.employeeId = employeeId;
     }
 
-    /**
-     * @return the tourId
-     */
-    public Tour getTourId() {
-        return tourId;
-    }
 
-    /**
-     * @param tourId the tourId to set
-     */
-    public void setTourId(Tour tourId) {
-        this.tourId = tourId;
-    }
 
     /**
      * @return the tenKH
@@ -189,7 +205,4 @@ public class Booking implements Serializable{
         this.sdt = sdt;
     }
 
-    public void setBookingDay(LocalDate d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

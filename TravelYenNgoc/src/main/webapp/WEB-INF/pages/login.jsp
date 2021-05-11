@@ -16,6 +16,7 @@
                 Chương trình đang xảy ra lỗi! Vui lòng quay lại sau!
             </div>
         </c:if>
+
         <c:if test="${param.accessDenied != null}">
             <div class="alert alert-danger">
                 Bạn không có quyền truy cập trang web
@@ -47,7 +48,7 @@
                 <li></li>
             </ul>
         </div>
-<!--        <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+        <!--        <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
     </body>
 </html>
