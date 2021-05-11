@@ -107,7 +107,7 @@ public class TinTuc implements Serializable{
     
     private int soLuotThich;
     
-    @OneToMany(mappedBy = "customerId")
+    @OneToMany(mappedBy = "tintuc")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<BinhLuan> binhLuans;
     

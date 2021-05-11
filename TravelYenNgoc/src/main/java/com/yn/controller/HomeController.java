@@ -74,8 +74,6 @@ public class HomeController {
             BigDecimal giadensql = new BigDecimal(giaden);
             model.addAttribute("tour", this.tourSevice.getTourBygias(giatusql, giadensql));
         
-        }else{
-            model.addAttribute("tour", this.tourSevice.getTour());
         }
      
         model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
@@ -87,25 +85,6 @@ public class HomeController {
             @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("tour", this.tourSevice.getTour(kw));
         return "tourdetails";
-    }
-
-    @RequestMapping("/news")
-    public String news(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
-        model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
-        return "news";
-    }
-
-    @GetMapping("/news/newsdetails")
-    public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
-        if (tintucId > 0) // cập nhật
-        {
-            model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
-            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
-        } else {
-
-        }
-
-        return "newsdetails";
     }
 
 }

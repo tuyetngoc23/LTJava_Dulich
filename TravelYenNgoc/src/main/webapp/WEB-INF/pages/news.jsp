@@ -28,19 +28,5 @@
 </section>
         </c:if>
 
-        
-<!--<section class="probootstrap-section-half d-md-flex">
-    <div class="probootstrap-image order-2 probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url(assets_ui/images/img_3.jpg)"></div>
-    <div class="probootstrap-text order-1">
-        <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInLeft">
-            <h2 class="heading mb-4">Payment Options</h2>
-            <p>ê từ từu</p>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-            <p><a href="#" class="btn btn-primary">Learn More</a></p>
-        </div>
-    </div>
-</section>-->
-<!-- END section -->
     </c:forEach>
 
