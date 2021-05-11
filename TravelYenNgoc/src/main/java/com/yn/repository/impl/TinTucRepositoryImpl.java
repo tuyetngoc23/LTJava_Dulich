@@ -6,6 +6,7 @@
 package com.yn.repository.impl;
 
 import com.yn.pojo.BinhLuan;
+import com.yn.pojo.Customer;
 import com.yn.pojo.Employee;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.User;
@@ -41,7 +42,7 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 
     @Autowired
     private UserService userService;
-    
+
     @Override
     @Transactional
     public List<TinTuc> getTinTucs(String kw) {
@@ -65,13 +66,13 @@ public class TinTucRepositoryImpl implements TinTucRepository {
             s.update(tinTuc);
             return true;
         } else {
-            
+
             long millis = System.currentTimeMillis();
             java.sql.Date dateCreated = new java.sql.Date(millis);
             tinTuc.setNgayDang(dateCreated);
             Employee ePost = new Employee();
             User ua = this.userService.getUsersAuth();
-            ePost =  s.get(Employee.class, ua.getId());
+            ePost = s.get(Employee.class, ua.getId());
             tinTuc.setEmployee(ePost);
             s.save(tinTuc);
             return true;
@@ -105,6 +106,7 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     @Transactional
     public List<BinhLuan> getBinhLuans(int i) {
 //        Session session = this.sessionFactory.getObject().getCurrentSession();
+<<<<<<< .mine
 //        CriteriaBuilder builder = session.getCriteriaBuilder();
 //        CriteriaQuery<BinhLuan> query = builder.createQuery(BinhLuan.class);
 //        Root root = query.from(BinhLuan.class);
@@ -117,26 +119,56 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 
 //         Query q = session.createStoredProcedureCall("getTinTucId");
 //        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
+=======
+        Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
+        q.setParameter("tintuc", i);
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
 //        return q.getResultList();
 
+<<<<<<< .mine
         
         Set<BinhLuan> binhLuan = new HashSet<>();
         binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
         List<BinhLuan> b = new ArrayList<>();
         b.addAll(binhLuan);
         return b;
+=======
+
+
+
+
+
+
+>>>>>>> .theirs
     }
     
     
 
-//    @Override
-//    @Transactional
-//    public List<TinTuc> getTinTucs() {
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//
-//        Query q = session.createQuery("From TinTuc");
-//        return q.getResultList();
-//    }
+    @Override
+    @Transactional
+    public void addBinhLuan(BinhLuan binhLuan) {
+        Session s = this.sessionFactory.getObject().getCurrentSession();
+        long millis = System.currentTimeMillis();
+        java.sql.Date dateCreated = new java.sql.Date(millis);
+        binhLuan.setNgayBinhLuan(dateCreated);
+        Customer cus = new Customer();
+        User ua = this.userService.getUsersAuth();
+        cus = s.get(Customer.class, ua.getId());
+        System.out.println(cus);
+        binhLuan.setCustomerId(cus);
+        s.save(binhLuan);
+    }
+
 
     @Override
     @Transactional

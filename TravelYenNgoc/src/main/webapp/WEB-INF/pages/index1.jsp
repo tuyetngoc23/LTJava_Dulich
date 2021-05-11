@@ -137,10 +137,10 @@
                     <div class="col-6">
                         <div class="media probootstrap-media d-flex align-items-stretch mb-2 probootstrap-animate" style="height:400px;">
                             <div class="probootstrap-media-image" style="background-image: url(<c:url value="${tour.image}"/>)" >
-                                  
+                         
                             </div>
                             <div class="media-body" >
-                              
+                            
                                 <h5>${tour.ten}</h5>
                                 <p><span style="color:red">Giá: <fmt:formatNumber type = "number" maxFractionDigits = "3"  value = "${tour.gia}" /> VNĐ </span><br>
                                 Từ: ${tour.diemDenID.ten}<br>

@@ -53,13 +53,18 @@ public class TinTucServiceImpl implements TinTucService {
        return this.tintTucRepository.getBinhLuans(tinTucID);
     }
 
-//    @Override
-//    @Transactional
-//    public List<TinTuc> getTinTucs() {
-//        return this.tintTucRepository.getTinTucs();
-//    }
 
+<<<<<<< .mine
    
+
+
+
+=======
+    @Override
+    public void addBinhLuan(BinhLuan bl) {
+      this.tintTucRepository.addBinhLuan(bl);
+    }
+>>>>>>> .theirs
 
 }
 

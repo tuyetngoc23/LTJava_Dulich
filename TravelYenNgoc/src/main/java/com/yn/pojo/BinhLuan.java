@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -21,6 +22,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name="binhluan")
 public class BinhLuan {
+
+    /**
+     * @return the tintuc
+     */
+    public TinTuc getTintuc() {
+        return tintuc;
+    }
+
+    /**
+     * @param tintuc the tintuc to set
+     */
+    public void setTintuc(TinTuc tintuc) {
+        this.tintuc = tintuc;
+    }
 
     /**
      * @return the id
@@ -78,22 +93,11 @@ public class BinhLuan {
         this.customerId = customerId;
     }
 
-    /**
-     * @return the tintucId
-     */
-    public TinTuc getTintucId() {
-        return tintucId;
-    }
 
-    /**
-     * @param tintucId the tintucId to set
-     */
-    public void setTintucId(TinTuc tintucId) {
-        this.tintucId = tintucId;
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date ngayBinhLuan;
     private String noiDung;
     
@@ -101,7 +105,7 @@ public class BinhLuan {
     
     @ManyToOne
     @JoinColumn(name = "tintuc_id")
-    private TinTuc tintucId;
+    private TinTuc tintuc;
     
     @ManyToOne
     @JoinColumn(name = "customer_id")
