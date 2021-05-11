@@ -54,7 +54,6 @@ public class DangKiController {
             model.addAttribute("mesusername","Đã tồn tại tên đăng nhập này!" );
             return "dangki";
         }
-        System.out.println("hello");
         userService.addUser(user);
         return "redirect:/login";
     }
