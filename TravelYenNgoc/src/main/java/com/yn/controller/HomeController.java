@@ -74,8 +74,6 @@ public class HomeController {
             BigDecimal giadensql = new BigDecimal(giaden);
             model.addAttribute("tour", this.tourSevice.getTourBygias(giatusql, giadensql));
         
-        }else{
-            model.addAttribute("tour", this.tourSevice.getTour());
         }
      
         model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
