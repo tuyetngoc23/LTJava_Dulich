@@ -10,6 +10,7 @@ import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.TourRepository;
 import com.yn.service.TourSevice;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +47,16 @@ public class TourServiceImpl implements TourSevice{
         return this.tourRepository.getTour();
     }
 
+
+
     @Override
-    public List<Tour> findTour(int i) {
-        return this.tourRepository.findTour(i);
+     public List<Tour> findTour(int ditu, int diden, String ngaydiDate, String ngayve) {
+        return this.tourRepository.findTour(ditu,diden,ngaydiDate,ngayve);
     }
 
     @Override
-    public List<Tour> findTourForDate(String date) {
-        return this.tourRepository.findTourForDate(date);
+    public List<Tour> getTourBygias(BigDecimal bd, BigDecimal bd1) {
+        return this.tourRepository.getTourBygias(bd, bd1);
     }
 
 }

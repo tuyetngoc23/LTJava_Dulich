@@ -20,9 +20,17 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Booking Tour"/>
         <put-attribute name="content" value="/WEB-INF/pages/booking.jsp"/>
     </definition>
+    <definition name="bookingoke" extends="baseLayout">
+        <put-attribute name="title" value="Booking Tour"/>
+        <put-attribute name="content" value="/WEB-INF/pages/bookingoke.jsp"/>
+    </definition>
     <definition name="news" extends="baseLayout">
         <put-attribute name="title" value="News"/>
         <put-attribute name="content" value="/WEB-INF/pages/news.jsp"/>
+    </definition>
+    <definition name="newsdetails" extends="baseLayout">
+        <put-attribute name="title" value="NewsDetails"/>
+        <put-attribute name="content" value="/WEB-INF/pages/newsdetails.jsp"/>
     </definition>
     <definition name="admin" template="/WEB-INF/Admin/layout/adindex.jsp">
          <put-attribute name="title" value="Trang chủ Admin"/>

@@ -53,11 +53,11 @@ public class TinTucServiceImpl implements TinTucService {
        return this.tintTucRepository.getBinhLuans(tinTucID);
     }
 
-    @Override
-    @Transactional
-    public List<TinTuc> getTinTucs() {
-        return this.tintTucRepository.getTinTucs();
-    }
+//    @Override
+//    @Transactional
+//    public List<TinTuc> getTinTucs() {
+//        return this.tintTucRepository.getTinTucs();
+//    }
 
     
 

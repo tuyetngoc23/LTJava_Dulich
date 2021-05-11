@@ -72,7 +72,7 @@ public class Tour implements Serializable {
     @Transient
     private MultipartFile imgUploadFile;
     
-    @OneToMany(mappedBy = "tourId")
+    @OneToMany(mappedBy = "tour")
     private List<Booking> bookingT;
 
     public MultipartFile getImgUploadFile() {

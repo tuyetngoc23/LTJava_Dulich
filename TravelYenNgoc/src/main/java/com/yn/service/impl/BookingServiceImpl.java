@@ -51,6 +51,12 @@ public class BookingServiceImpl implements BookingService{
     public Long getTourDaDat(int i, int i1) {
         return this.bookingRepository.getTourDaDat(i, i1);
     }
+
+    @Override
+    @Transactional
+    public Long getSoLuongTourDatDat(int i) {
+        return this.bookingRepository.getSoLuongTourDatDat(i);
+    }
     
     
  

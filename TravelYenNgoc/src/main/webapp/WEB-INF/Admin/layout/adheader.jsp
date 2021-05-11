@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<c:url value="/admin/quanlynhanvien" />">
                     <i class="material-icons">content_paste</i>
                     <p>Quản lý nhân viên</p>
                 </a>

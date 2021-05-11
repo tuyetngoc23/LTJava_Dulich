@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-          System.out.println(auth.userDetailsService(userDetailsService));
+        System.out.println(auth.userDetailsService(userDetailsService));
     }
 
     @Override
@@ -50,17 +50,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("passWord");
-        http.formLogin().defaultSuccessUrl("/");
-                
-        System.out.println("com.yn.config.SecurityConfig.configure()");
+        
+        http.formLogin().defaultSuccessUrl("/")
+                .failureUrl("/login?error");
         http.logout().logoutSuccessUrl("/login");
         http.exceptionHandling()
                 .accessDeniedPage("/login?accessDenied");
-       http.authorizeRequests().antMatchers("/").permitAll()
-                    .antMatchers("/admin/**")
-                    .access("hasAnyRole('"+User.Role.ROLE_ADMIN.name()+"','"+User.Role.ROLE_EMPLOYEE.name()+"')")
-                    .antMatchers("/admin/chart").access("hasAnyRole('"+User.Role.ROLE_EMPLOYEE.name()+"')");
-       http.csrf().disable();
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/admin/**")
+                .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                .antMatchers("/admin/chart").access("hasAnyRole('" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                .antMatchers("/booking/**").access("hasAnyRole('" + User.Role.ROLE_CUSTORMER.name() + "')");
+        http.csrf().disable();
     }
 
 }

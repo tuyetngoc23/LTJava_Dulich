@@ -18,4 +18,5 @@ public interface BookingService {
     BigDecimal getDoanhThu(int thang, int nam);
     Long getTourDaDat(int thang, int nam);
     BigDecimal getPrice(Tour t, Booking b);
+    Long getSoLuongTourDatDat(int i);
 }

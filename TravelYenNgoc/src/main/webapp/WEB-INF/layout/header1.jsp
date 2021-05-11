@@ -17,10 +17,9 @@
         <div class="collapse navbar-collapse" id="probootstrap-menu">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a class="nav-link" href="<c:url value="/"/>">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="/tourdetails"/>">Tour Details</a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="/booking"/>">Booking</a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="/news"/>">News</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/tourdetails"/>">Chi tiết Tour</a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/booking"/>">Đặt Tour</a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/news"/>">Tin Tức</a></li>
                    <c:choose>
                         <c:when test="${pageContext.request.userPrincipal.name == null}">
                         <li  class="nav-item">

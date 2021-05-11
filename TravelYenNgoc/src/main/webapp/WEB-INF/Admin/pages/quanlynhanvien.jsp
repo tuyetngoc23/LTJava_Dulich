@@ -10,7 +10,7 @@
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Thông tin khách hàng</h4>
                         <p class="card-category"> www.travelyenngoc.com</p>
-                        <a href="<c:url value="/admin/quanlytintuc/themtintuc" />" > <button type="button"  class="btn btn-primary" >Thêm nhân viên</button></a>
+                        <a href="<c:url value="/andmin/quanlynhanvien/themnv" />" > <button type="button"  class="btn btn-primary" >Thêm nhân viên</button></a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
