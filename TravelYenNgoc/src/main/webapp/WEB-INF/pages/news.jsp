@@ -21,12 +21,7 @@
             <div class="probootstrap-text">
                 <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInRight">
                     <h2 class="heading mb-4">${u.tieuDe}</h2>
-                  <input value="${u.soLuotThich}" type="pass" id="demo" style="display:none">
-                     <h2 id ="demo2"class="heading mb-4" >Số tim: ${u.soLuotThich}</h2>
-                    <p>${u.moTaNgan}</p>
-                    <a style ="color:black" href="javascript:;"onclick="thich1(${u.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg></a>
+                                        <p>${u.moTaNgan}</p>
                     <p><a href="<c:url value="/news/newsdetails/?tintucId=${u.id}"/>" class="btn btn-primary">Xem thêm</a></p>
                 </div>
             </div>

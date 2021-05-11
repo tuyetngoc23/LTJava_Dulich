@@ -147,11 +147,14 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 
     @Override
     @Transactional
-    public Thich addthich(int i, int i1) {
+    public Thich getthich(int i) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
+        Customer cus = new Customer();
+        User ua = this.userService.getUsersAuth();
+        cus = session.get(Customer.class, ua.getId());
         Query q = session.createQuery(" FROM Thich where tintuc_id = :tintucid and customerId = :cusId");
         q.setParameter("tintucid", i);
-        q.setParameter("cusId", i1);
+        q.setParameter("cusId", cus.getIdCus().getId());
         if(q.getResultList().get(0)== null)
             return null;
         return (Thich)q.getResultList().get(0);

@@ -54,43 +54,55 @@
             <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInRight">
                 <h2 class="heading mb-4">${tintuc.tieuDe}</h2>
                 <p>Tác giả: ${tintuc.employee.idStaff.hoTen}</p>
-                <p>Ngày đăng: ${tintuc.ngayDang}</p>
-                <p>${tintuc.moTaDai}</p>
-                <div class="container mb-5 mt-5">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="text-center mb-5"> Thánh bình luận </h3>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <c:forEach items="${binhluan}" var="b">
-                                            <div class="media"> <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
-                                                <div class="media-body">
+                 <p>Ngày đăng: ${tintuc.ngayDang}</p>
+                <input value="${tintuc.soLuotThich}" type="pass" id="demo" style="display:none">
+                    <h2 id ="demo2"class="heading mb-4" >Số tim: ${tintuc.soLuotThich}</h2>
+                    <c:if test = "${thich.trangThai== 'false'}">
+                    <a id="chuatim" style ="color:black" href="javascript:;"onclick="thich1(${tintuc.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                      </svg></a>
+                    </c:if>
+                       <a id="datim" style ="color:red" href="javascript:;"onclick="thich1(${tintuc.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                      </svg></a>
+                    <p>${tintuc.moTaDai}</p>
+                    <div class="container mb-5 mt-5">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="text-center mb-5"> Thánh bình luận </h3>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <c:forEach items="${binhluan}" var="b">
+                                                <div class="media"> <img class="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
+                                                    <div class="media-body">
 
-                                                    <div class="row">
-                                                        <div class="col-12 d-flex">
-                                                            <h5 style="padding: 3px">${b.customerId.idCus.hoTen}</h5>
-                                                            <span> - ${b.ngayBinhLuan}</span>
-                                                        </div>                                   
-                                                    </div>                                  
-                                                    <p>${b.noiDung}</p>
-                                                </div>
-                                            </div> 
-                                        </c:forEach>
+                                                        <div class="row">
+                                                            <div class="col-12 d-flex">
+                                                                <h5 style="padding: 3px">${b.customerId.idCus.hoTen}</h5>
+                                                                <span> - ${b.ngayBinhLuan}</span>
+                                                            </div>                                   
+                                                        </div>                                  
+                                                        <p>${b.noiDung}</p>
+                                                    </div>
+                                                </div> 
+                                            </c:forEach>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> 
-                          <form:form method="post" modelAttribute="binhluanuser" enctype="multipart/form-data" >
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Đẻ lại cảm nhập của bạn</label>
-                                <form:input id="noiDung" cssClass="form-control" path="noiDung" />
-                                <small id="emailHelp" class="form-text text-muted">cảm ơn bạn!!</small>
-                            </div>
-                             <button type="submit" class="btn btn-primary my-1">Gửi</button>
-                          </form:form >
+                            </div> 
+                            <form:form method="post" modelAttribute="binhluanuser" enctype="multipart/form-data" >
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Đẻ lại cảm nhập của bạn</label>
+                                    <form:input id="noiDung" cssClass="form-control" path="noiDung" />
+                                    <small id="emailHelp" class="form-text text-muted">cảm ơn bạn!!</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary my-1">Gửi</button>
+                            </form:form >
+                        </div>
+
                     </div>
 
-                </div>
-                </section>
-            </c:if>
+                    </section>
+                </c:if>
+<script src="<c:url value="/js/tour.js" />"></script>

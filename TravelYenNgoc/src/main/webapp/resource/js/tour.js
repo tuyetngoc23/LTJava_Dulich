@@ -6,7 +6,6 @@
 //thich ne
 function thich1(u) {
     var d = document.getElementById("demo").value;
-  
         fetch(`/TravelYenNgoc/api/user/news/${u}`, {
             method: "get",
             headers: {
@@ -16,6 +15,8 @@ function thich1(u) {
             if (res.status == 200) {
                 var kq = Number(d)+1;
               document.getElementById("demo2").innerHTML = "Số tim: "+kq;
+              document.getElementById("chuatim").style.display = 'none';
+               document.getElementById("datim").style.display = 'block';
             } else 
                 alert("Something wrong!!!");
         });

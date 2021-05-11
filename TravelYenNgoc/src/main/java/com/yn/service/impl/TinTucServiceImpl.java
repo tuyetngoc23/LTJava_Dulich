@@ -7,6 +7,7 @@ package com.yn.service.impl;
 
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
+import com.yn.pojo.Thich;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.User;
 import com.yn.repository.TinTucRepository;
@@ -62,6 +63,11 @@ public class TinTucServiceImpl implements TinTucService {
     @Override
     public void addthich(int i) {
          this.tintTucRepository.addthich(i);
+    }
+
+    @Override
+    public Thich getthich(int i ) {
+        return this.tintTucRepository.getthich(i);
     }
 
 }

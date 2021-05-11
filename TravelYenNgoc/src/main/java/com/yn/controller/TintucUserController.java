@@ -7,14 +7,17 @@ package com.yn.controller;
 
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Booking;
+import com.yn.pojo.Customer;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
+import com.yn.pojo.User;
 import com.yn.repository.BookingRepository;
 import com.yn.service.BookingService;
 import com.yn.service.TinTucService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
+import com.yn.service.UserService;
 import java.io.File;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
@@ -41,17 +44,23 @@ public class TintucUserController {
     @Autowired
     private TinTucService tinTucService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/news")
     public String news(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
+
         return "news";
     }
+
     @GetMapping("/news/newsdetails/")
     public String index(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
         if (tintucId > 0) // cập nhật
         {
             model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
             model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
+            model.addAttribute("thich", this.tinTucService.getthich(tintucId));
             model.addAttribute("binhluanuser", new BinhLuan());
         } else // thêm
         {
@@ -66,8 +75,8 @@ public class TintucUserController {
             @ModelAttribute(value = "binhluanuser") @Valid BinhLuan binhLuan,
             BindingResult err, HttpServletRequest request, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) throws IOException {
         if (err.hasErrors()) {
-            System.out.println(err);
-            return "index";
+
+            return "newsdetails";
         }
 
         TinTuc tindangco = this.tinTucService.getTinTucById(tintucId);

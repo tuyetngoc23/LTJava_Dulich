@@ -25,6 +25,6 @@ public interface TinTucRepository {
     List<BinhLuan> getBinhLuans(int tinTucID);
     void addBinhLuan(BinhLuan binhLuan);
     void addthich(int tintuc);
-    Thich addthich(int tintucid, int khid);
+    Thich getthich(int i);
 }
 
