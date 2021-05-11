@@ -14,6 +14,7 @@ import com.yn.service.BookingService;
 import com.yn.service.TinTucService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -43,30 +44,40 @@ public class HomeController {
     private TourSevice tourSevice;
     @Autowired
     private TinhThanhService tinhThanhService;
-    @Autowired
-    private BookingService bookingService;
+
     @Autowired
     private TinTucService tinTucService;
 
     @RequestMapping("/")
     public String index(Model model, @RequestParam(name = "ditu", required = false, defaultValue = "0") String ditu,
-            @RequestParam(name = "diden", required = false, defaultValue = "0") String diden, @RequestParam(name = "ngaydi", required = false, defaultValue = "") String ngaydi,
-            @RequestParam(name = "ngayve", required = false, defaultValue = "") String ngayve) throws ParseException {
+            @RequestParam(name = "diden", required = false, defaultValue = "0") String diden, @RequestParam(name = "ngaydi", required = false, defaultValue = "2000-1-1") String ngaydi,
+            @RequestParam(name = "ngayve", required = false, defaultValue = "2000-1-1") String ngayve,
+            @RequestParam(name = "timgiatu", required = false, defaultValue = "0") int giatu, @RequestParam(name = "timgiaden", required = false, defaultValue = "0") int giaden)
+             throws ParseException {
         SimpleDateFormat format1 = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format1.parse("05/01/1999");
         if (!diden.equals("0")) {
             int dituid = Integer.parseInt(ditu);
             int didenid = Integer.parseInt(diden);
-            if (!ngaydi.equals("") || !ngayve.equals("")) {
-                Date ngaydiDate = format1.parse(ngaydi);
-                Date ngayveDate = format1.parse(ngayve);
+            if (!ngaydi.equals("2000-1-1") || !ngayve.equals("2000-1-1")) {
+                String ngaydiDate = format2.format(format1.parse(ngaydi));
+                String ngayveDate = format2.format(format1.parse(ngayve));
                 model.addAttribute("tour", this.tourSevice.findTour(dituid, didenid, ngaydiDate, ngayveDate));
             }
-             model.addAttribute("tour", this.tourSevice.findTour(dituid, didenid, date, date));
-        } else {
+             model.addAttribute("tour", this.tourSevice.findTour(dituid, didenid, ngaydi, ngayve));
+        }else{
+           model.addAttribute("tour", this.tourSevice.getTour());
+        }
+       
+        if(giatu!=0||giaden!=0){
+            BigDecimal giatusql = new BigDecimal(giatu);
+            BigDecimal giadensql = new BigDecimal(giaden);
+            model.addAttribute("tour", this.tourSevice.getTourBygias(giatusql, giadensql));
+        
+        }else{
             model.addAttribute("tour", this.tourSevice.getTour());
         }
+     
         model.addAttribute("tinhthanhs", this.tinhThanhService.getTinhThanh());
         return "index";
     }

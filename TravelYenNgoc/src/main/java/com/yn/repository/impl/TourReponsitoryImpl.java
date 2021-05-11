@@ -12,11 +12,16 @@ import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.TinhThanhReponsitory;
 import com.yn.repository.TourRepository;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -115,15 +120,35 @@ public class TourReponsitoryImpl implements TourRepository {
 
     @Override
     @Transactional
-    public List<Tour> findTour(int ditu, int diden, Date ngaydiDate, Date ngayve) {
+    public List<Tour> findTour(int ditu, int diden, String ngaydiDate, String ngayve) {
+        Date ngaydidate = null;
+        Date ngayvedate = null;
+        try {
+            ngaydidate = new SimpleDateFormat("yyyy-MM-dd").parse(ngaydiDate);
+            ngayvedate = new SimpleDateFormat("yyyy-MM-dd").parse(ngayve);
+        } catch (ParseException ex) {
+            Logger.getLogger(TourReponsitoryImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Session session = this.sessionFactory.getObject().getCurrentSession();
         Query q = session.createQuery("FROM Tour where (diemDenID.id = :ditusql and "
-                + "diemDiID.id= :didensql) or (ngayKhoiHanh = :ngaydi and ngayKetThuc =:ngayve)");
+                + "diemDiID.id= :didensql) or (ngayKhoiHanh = :ngaydisql and ngayKetThuc = :ngayvesql)");
         q.setParameter("ditusql", ditu);
         q.setParameter("didensql", diden);
-        q.setParameter("ngaydi", ngaydiDate);
-        q.setParameter("ngayve", ngayve);
+        q.setParameter("ngaydisql", ngaydidate);
+        q.setParameter("ngayvesql", ngayvedate);
         return q.getResultList();
+
+    }
+
+    @Override
+    @Transactional
+    public List<Tour> getTourBygias(BigDecimal bd, BigDecimal bd1) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("FROM Tour where gia >= :giatu and gia<= :giaden");          
+        q.setParameter("giatu", bd);
+        q.setParameter("giaden", bd1);
+        return q.getResultList();
+
     }
 
 }

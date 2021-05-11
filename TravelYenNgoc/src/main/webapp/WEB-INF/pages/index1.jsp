@@ -3,7 +3,7 @@
     Created on : Apr 28, 2021, 4:03:49 PM
     Author     : Huynh Thi Tuyet Ngoc
 --%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -137,14 +137,15 @@
                     <div class="col-6">
                         <div class="media probootstrap-media d-flex align-items-stretch mb-2 probootstrap-animate" style="height:400px;">
                             <div class="probootstrap-media-image" style="background-image: url(<c:url value="${tour.image}"/>)" >
+                                  
                             </div>
                             <div class="media-body" >
                               
                                 <h5>${tour.ten}</h5>
-                                <p>Giá: ${tour.gia}
-                                Từ: ${tour.diemDenID.ten}
-                                 Đến: ${tour.diemDiID.ten}</p>
-                                  <span >Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}</span>
+                                <p><span style="color:red">Giá: <fmt:formatNumber type = "number" maxFractionDigits = "3"  value = "${tour.gia}" /> VNĐ </span><br>
+                                Từ: ${tour.diemDenID.ten}<br>
+                                 Đến: ${tour.diemDiID.ten}<br>
+                                  Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}</p>
                                 <p>Hứa hẹn sẽ mang lại nhiều thú vị cho các bạn</p>
 
                                 <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a> <br>

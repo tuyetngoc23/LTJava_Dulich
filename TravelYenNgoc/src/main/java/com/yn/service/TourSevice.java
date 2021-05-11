@@ -7,6 +7,7 @@
 package com.yn.service;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -17,8 +18,9 @@ import java.util.List;
 public interface TourSevice {
     List<Tour> getTour(String kw);
     List<Tour> getTour();
-    List<Tour> findTour(int ditu,int diden,Date ngaydiDate,Date ngayve);
+    List<Tour> findTour(int ditu, int diden, String ngaydiDate, String ngayve);
     boolean addOrUpdateTour(Tour tour);
     Tour getTourById(int tourId);
    boolean deleteTour(int tourId);
+   List<Tour> getTourBygias(BigDecimal bd, BigDecimal bd1);
 }
