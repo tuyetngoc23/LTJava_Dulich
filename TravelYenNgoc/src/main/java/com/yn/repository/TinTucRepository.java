@@ -7,6 +7,7 @@ package com.yn.repository;
 
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
+import com.yn.pojo.Thich;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
@@ -23,5 +24,7 @@ public interface TinTucRepository {
     boolean deleteTinTuc(int tourId);
     List<BinhLuan> getBinhLuans(int tinTucID);
     void addBinhLuan(BinhLuan binhLuan);
+    void addthich(int tintuc);
+    Thich addthich(int tintucid, int khid);
 }
 

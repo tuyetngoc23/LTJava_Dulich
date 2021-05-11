@@ -59,5 +59,10 @@ public class TinTucServiceImpl implements TinTucService {
       this.tintTucRepository.addBinhLuan(bl);
     }
 
+    @Override
+    public void addthich(int i) {
+         this.tintTucRepository.addthich(i);
+    }
+
 }
 

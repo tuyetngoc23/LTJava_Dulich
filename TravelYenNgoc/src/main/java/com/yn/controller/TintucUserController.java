@@ -17,18 +17,9 @@ import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import java.io.File;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,11 +39,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class TintucUserController {
 
     @Autowired
-    private TourSevice tourSevice;
-    @Autowired
-    private TinhThanhService tinhThanhService;
-
-    @Autowired
     private TinTucService tinTucService;
 
     @RequestMapping("/news")
@@ -60,24 +46,6 @@ public class TintucUserController {
         model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
         return "news";
     }
-
-//    @ResponseStatus(HttpStatus.OK)
-//    @RequestMapping("/news/newsdetails/")
-//    public String thembinhluan(Model model, @RequestParam(name = "tintucId", required = false, defaultValue = "0") int tintucId,
-//            @RequestParam(name = "nd", required = false, defaultValue = "") String noidung) {
-//        if (tintucId > 0) // cập nhật
-//        {
-//            model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
-//            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
-//            BinhLuan binhLuan = new BinhLuan();
-//            binhLuan.setNoiDung(noidung);
-//            TinTuc tindangco = this.tinTucService.getTinTucById(tintucId);
-//            binhLuan.setTintucId(tindangco);
-//            this.tinTucService.addBinhLuan(binhLuan);
-//
-//        }
-//        return "newsdetails";
-//    }
     @GetMapping("/news/newsdetails/")
     public String index(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
         if (tintucId > 0) // cập nhật

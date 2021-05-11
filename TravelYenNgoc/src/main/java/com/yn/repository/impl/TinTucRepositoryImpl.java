@@ -8,6 +8,7 @@ package com.yn.repository.impl;
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
 import com.yn.pojo.Employee;
+import com.yn.pojo.Thich;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.User;
 import com.yn.repository.TinTucRepository;
@@ -122,6 +123,38 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         System.out.println(cus);
         binhLuan.setCustomerId(cus);
         s.save(binhLuan);
+    }
+
+    @Override
+    @Transactional
+    public void addthich(int id) {
+         Session s = this.sessionFactory.getObject().getCurrentSession();
+         Thich thich = new Thich();
+         Customer cus = new Customer();
+        User ua = this.userService.getUsersAuth();
+        cus = s.get(Customer.class, ua.getId());
+        System.out.println(cus);
+        thich.setCustomerIdThich(cus);
+        thich.setTintucIdThich(this.getTinTucById(id));
+        thich.setTrangThai(true);
+        TinTuc tinTuc = this.getTinTucById(id);
+        int sl = tinTuc.getSoLuotThich();
+        tinTuc.setSoLuotThich(sl+1);
+        s.save(thich);
+        s.update(tinTuc);
+        
+    }
+
+    @Override
+    @Transactional
+    public Thich addthich(int i, int i1) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery(" FROM Thich where tintuc_id = :tintucid and customerId = :cusId");
+        q.setParameter("tintucid", i);
+        q.setParameter("cusId", i1);
+        if(q.getResultList().get(0)== null)
+            return null;
+        return (Thich)q.getResultList().get(0);
     }
 
 }

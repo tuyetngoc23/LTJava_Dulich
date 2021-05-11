@@ -37,4 +37,21 @@ function deleteTinTuc(tintucId) {
         })
     }
 }
+function thich1(u) {
+    if (confirm(u) == true) { 
+        fetch(`/TravelYenNgoc/api/user/news/${u}`, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            if (res.status == 200) {
+
+            } else 
+                alert("Something wrong!!!");
+        })
+    }
+}
+
+
 

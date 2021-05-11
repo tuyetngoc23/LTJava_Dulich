@@ -8,6 +8,7 @@ package com.yn.controller;
 
 
 import com.yn.pojo.Tour;
+import com.yn.service.TinTucService;
 import com.yn.service.TourSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiTourController {
     @Autowired
      private TourSevice tourService;
+    @Autowired
+     private TinTucService tinTucService;
+    
     @DeleteMapping("/admin/quanlytour/{tourId}")
     @ResponseStatus(HttpStatus.OK)
     public void deleleProduct(@PathVariable(name = "tourId") int tourId) {
-        this.tourService.deleteTour(tourId);
+        //this.tourService.deleteTour(tourId);
+        System.out.println("oke");
+    }
+    
+    
+    @GetMapping("/user/news/{tintucId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void thich(@PathVariable(name = "tintucId") int tintucid) {
+        tinTucService.addthich(tintucid);
+        System.out.println("hello");
+    }
+    @GetMapping("/user/news/unlike/{tintucId}/{thich}")
+    @ResponseStatus(HttpStatus.OK)
+    public void khongthich(@PathVariable(name = "tintucId") int tintucid) {
+        //tinTucService.addthich(tintucid);
+        System.out.println("hello");
     }
 }
