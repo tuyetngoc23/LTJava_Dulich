@@ -77,12 +77,12 @@
                             </div>
                              <c:if test="${tintuc.id>0}">
                                 <div class="container mt-4 mb-4">
-                                <button type="submit" class="btn btn-primary pull-right">Cập nhập tour </button>
+                                <button type="submit" class="btn btn-primary pull-right">Cập nhập  </button>
                                 <div class="clearfix"></div>
                                 </c:if>
                                <c:if test="${tintuc.id<=0}">
                                 <div class="container mt-4 mb-4">
-                                <button type="submit" class="btn btn-primary pull-right">Thêm tour  </button>
+                                <button type="submit" class="btn btn-primary pull-right">Thêm tin tức  </button>
                                 <div class="clearfix"></div>
                                 </c:if>
                             </form:form>
