@@ -79,8 +79,6 @@ public class QuanlyTourController {
             model.addAttribute("loaitour", this.loaiTourService.getLoaiTour());
             return "themtour";
         }
-        Tour tourc = this.tourService.getTourById(tour.getId());
-        tour.setImage(tourc.getImage());
         MultipartFile multipartFile = tour.getImgUploadFile();
         String rootPath = request.getSession().getServletContext().getRealPath("/");
         try {
@@ -88,12 +86,18 @@ public class QuanlyTourController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(multipartFile.getOriginalFilename());
+        Tour tourc = this.tourService.getTourById(tour.getId());
+        if(tourc!=null){
+        tour.setImage(tourc.getImage());
         if (multipartFile.getOriginalFilename() != null) {
             String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
             if(!img.equals("/admin/anhadmin/"))
                tour.setImage(img);
         } 
+        }else {
+            String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
+            tour.setImage(img);
+        }
         if (!this.tourService.addOrUpdateTour(tour)) {
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
             return "themtour";
