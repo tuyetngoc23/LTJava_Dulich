@@ -31,10 +31,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Huynh Thi Tuyet Ngoc
- */
+
 @Repository
 public class TinTucRepositoryImpl implements TinTucRepository {
 

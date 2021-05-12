@@ -49,6 +49,12 @@
                     <p>Quản lý trang tin tức</p>
                 </a>
             </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="<c:url value="/admin/quanlybooking" />">
+                    <i class="material-icons">library_books</i>
+                    <p>Quản lý booking</p>
+                </a>
+            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="<c:url value="/admin/chart" />">
                     <i class="material-icons">bubble_chart</i>

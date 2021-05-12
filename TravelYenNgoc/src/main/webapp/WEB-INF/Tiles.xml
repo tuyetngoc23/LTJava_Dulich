@@ -92,5 +92,9 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     </definition>
     <definition name="dangki" template="/WEB-INF/pages/dangki.jsp">
     </definition>
+    <definition name="quanlybooking" extends="admin">
+         <put-attribute name="title" value="Quản lý nhân viên"/>
+        <put-attribute name="content" value="/WEB-INF/Admin/pages/quanlybooking.jsp"/>
+    </definition>
 </tiles-definitions>
 

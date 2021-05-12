@@ -23,10 +23,12 @@
         -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
         box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
     }
+
     .media img {
         width: 60px;
         height: 60px
     }
+
     .reply a {
         text-decoration: none
     }
@@ -63,7 +65,7 @@
                             <a id="doimau" style="color:red"  type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                 </svg></a>
-                            <p style="display: none;">Clicks: <a id="clicks">0</a></p>
+                            <p style="display: none;"git>Clicks: <a id="clicks">0</a></p>
                         </c:if>
                     </c:if>
                     <p>${tintuc.moTaDai}</p>
@@ -103,26 +105,7 @@
                         </div>
 
                     </div>
-<<<<<<< HEAD
 
                     </section>
                 </c:if>
                 <script src="<c:url value="/js/jsusser.js" />"></script>
-=======
-               
-        </div>
-                </section>
-            </c:if>
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> de7828d8e5aa2ba3be38f739e0fed1da4728fc50

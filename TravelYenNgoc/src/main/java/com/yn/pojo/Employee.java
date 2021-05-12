@@ -77,7 +77,7 @@ public class Employee implements Serializable{
     @OneToMany(mappedBy = "employee")
     private List<TinTuc> tinTucs;
     
-    @OneToMany(mappedBy = "employeeId")
+    @OneToMany(mappedBy = "nhanvien")
     private List<Booking> bookingE;
 
     /**
