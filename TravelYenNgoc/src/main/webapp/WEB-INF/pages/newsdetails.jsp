@@ -85,7 +85,6 @@
                              <button type="submit" class="btn btn-primary my-1">Gửi</button>
                           </form:form >
                     </div>
-               
         </div>
                 </section>
             </c:if>
