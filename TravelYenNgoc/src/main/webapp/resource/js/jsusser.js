@@ -16,7 +16,7 @@ function thich1(u, t) {
         if (res.status == 200) {
             var kq = Number(d) + 1;
             document.getElementById("demo2").innerHTML = "Số tim: " + kq;
-                   document.getElementById("doimau").style.color= "red !important";
+                   document.getElementById("doimau").style.color= "red";
 //            document.getElementById("chuatim").style.display = 'none';
 //            document.getElementById("thay").insertAdjacentHTML("beforeend", "");
         } else
@@ -35,7 +35,7 @@ function khongthich(u, t) {
         if (res.status == 200) {
             var kq = Number(d) + 1 - 1;
                 document.getElementById("demo2").innerHTML = "Số tim: " + kq;
-              document.getElementById("doimau").style.color = "black !important" ;
+              document.getElementById("doimau").style.color = "black" ;
 
         } else
             alert("Something wrong!!!");

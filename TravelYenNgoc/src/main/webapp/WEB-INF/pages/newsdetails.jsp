@@ -55,15 +55,14 @@
                 <input value="${tintuc.soLuotThich}" type="pass" id="demo" style="display:none">
                     <h2 id ="demo2"class="heading mb-4" >Số tim: ${tintuc.soLuotThich}</h2>
                     <c:if test = "${thich.id!= null}">
-                        <h3>Button with counter - active/inactive</h3>
                         <c:if test = "${thich.trangThai== 'false'}">
-                            <a type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <a id="doimau" style="color:black" type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                 </svg></a>
-                            <p>Clicks: <a id="clicks">0</a></p>
+                                    <p style="display: none;">Clicks: <a id="clicks">0</a></p>
                         </c:if>
                         <c:if test = "${thich.trangThai== 'true'}">
-                            <a type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <a id="doimau"  type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                 </svg></a>
                             <p>Clicks: <a id="clicks">0</a></p>
@@ -109,4 +108,4 @@
 
                     </section>
                 </c:if>
-                <script src="<c:url value="/js/tour.js" />"></script>
+                <script src="<c:url value="/js/jsusser.js" />"></script>

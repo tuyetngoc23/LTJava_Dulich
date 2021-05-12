@@ -62,11 +62,7 @@ public class TintucUserController {
             model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
             model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
             Thich thich = this.tinTucService.getthich(tintucId);
-            if (thich == null) {
-                model.addAttribute("thich", null);
-            } else {
-                model.addAttribute("thich", thich);
-            }
+            model.addAttribute("thich", thich);
             model.addAttribute("binhluanuser", new BinhLuan());
         } else // thêm
         {
@@ -85,11 +81,7 @@ public class TintucUserController {
             return "newsdetails";
         }
         Thich thich = this.tinTucService.getthich(tintucId);
-        if (thich == null) {
-            model.addAttribute("thich", null);
-        } else {
-            model.addAttribute("thich", thich);
-        }
+        model.addAttribute("thich", thich);
         model.addAttribute("binhluanuser", new BinhLuan());
         TinTuc tindangco = this.tinTucService.getTinTucById(tintucId);
         binhLuan.setTintuc(tindangco);

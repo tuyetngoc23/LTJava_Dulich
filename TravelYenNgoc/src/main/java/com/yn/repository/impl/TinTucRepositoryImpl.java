@@ -136,12 +136,9 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         System.out.println(cus);
         thich.setCustomerIdThich(cus);
         thich.setTintucIdThich(this.getTinTucById(id));
-        thich.setTrangThai(true);
-        TinTuc tinTuc = this.getTinTucById(id);
-        int sl = tinTuc.getSoLuotThich();
-        tinTuc.setSoLuotThich(sl+1);
+        thich.setTrangThai(false);
         s.save(thich);
-        s.update(tinTuc);
+
         
     }
 
@@ -156,8 +153,10 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         q.setParameter("tintucid", i);
         q.setParameter("cusId", cus.getIdCus().getId());
         Thich thich = new Thich();
-      if(q.getResultList().isEmpty())
-            thich = null;
+      if(q.getResultList().isEmpty()){
+          addthich(i);
+          thich = this.getthich(i);
+        }
         else{ thich = (Thich)q.getResultList().get(0);}
         return thich;
     }
