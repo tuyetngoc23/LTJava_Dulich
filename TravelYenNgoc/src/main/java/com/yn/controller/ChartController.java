@@ -27,24 +27,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ChartController {
 
     @Autowired
-    private TourSevice tourService;
-    @Autowired
-    private TinhThanhService tinhThanhService;
-    @Autowired
     private BookingService bookingService;
 
     @RequestMapping("/admin/chart")
     public String adchart(Model model ,@RequestParam(name = "nam", required = false, defaultValue = "2020") int nam ){
         BigDecimal[] myNum = new BigDecimal[13];
         int i;
-        for (i = 1; i < myNum.length; i++)
+        for (i = 1; i < myNum.length; i++){
             myNum[i] = this.bookingService.getDoanhThu(i, nam);
+             System.out.println("hello"+myNum[i]);
+        }
   
         Long[] sotour = new Long[13];
         int j =1;
         for (j = 1; j < sotour.length; j++){
             sotour[j] = this.bookingService.getTourDaDat(j, nam);
-            System.out.println(sotour[j]);
+            System.out.println(j);
         }
         model.addAttribute("doanhthu", myNum);
         model.addAttribute("sotour", sotour);

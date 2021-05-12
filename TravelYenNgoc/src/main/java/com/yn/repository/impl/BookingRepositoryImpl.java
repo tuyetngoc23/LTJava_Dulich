@@ -60,6 +60,7 @@ public class BookingRepositoryImpl implements BookingRepository {
         Query q = session.createQuery("SELECT sum(totalMoney) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
         q.setParameter("thang", thang);
         q.setParameter("nam", nam);
+        System.out.println((BigDecimal) q.getResultList().get(0));
         return (BigDecimal) q.getResultList().get(0);
     }
 
