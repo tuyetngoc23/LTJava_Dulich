@@ -23,12 +23,10 @@
         -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
         box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
     }
-
     .media img {
         width: 60px;
         height: 60px
     }
-
     .reply a {
         text-decoration: none
     }
@@ -105,7 +103,26 @@
                         </div>
 
                     </div>
+<<<<<<< HEAD
 
                     </section>
                 </c:if>
                 <script src="<c:url value="/js/jsusser.js" />"></script>
+=======
+               
+        </div>
+                </section>
+            </c:if>
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> de7828d8e5aa2ba3be38f739e0fed1da4728fc50

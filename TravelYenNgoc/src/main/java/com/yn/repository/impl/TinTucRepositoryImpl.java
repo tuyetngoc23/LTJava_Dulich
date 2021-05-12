@@ -14,8 +14,11 @@ import com.yn.pojo.User;
 import com.yn.repository.TinTucRepository;
 
 import com.yn.service.UserService;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -104,11 +107,17 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     @Transactional
     public List<BinhLuan> getBinhLuans(int i) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
+      Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
         q.setParameter("tintuc", i);
-        return q.getResultList();
+        Set<BinhLuan> binhLuan = new HashSet<>();
+        binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
+        List<BinhLuan> b = new ArrayList<>();
+        b.addAll(binhLuan);
+        return b;
 
     }
+    
+    
 
     @Override
     @Transactional
@@ -124,6 +133,7 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         binhLuan.setCustomerId(cus);
         s.save(binhLuan);
     }
+
 
     @Override
     @Transactional
@@ -186,5 +196,14 @@ public class TinTucRepositoryImpl implements TinTucRepository {
         tinTuc.setSoLuotThich(sl+1);
         session.save(thich);
         session.update(tinTuc);
+    }
+
+
+    @Override
+    @Transactional
+    public TinTuc UpdateSoLuotThich(int i) {
+        TinTuc t = new TinTuc();
+        t.setSoLuotThich(i);
+        return t;
     }
 }

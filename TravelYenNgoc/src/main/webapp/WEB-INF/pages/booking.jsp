@@ -102,7 +102,7 @@
     </c:if>
     <c:if test="${thanhcong==null}">
         <h2 class="heading mb-2 display-4 font-light probootstrap-animate">Nhiều tour du lịch ngon đang đợi bạn tại </h2>
-        <a class="nav-link" href="<c:url value="/tourdetails"/>">Đây</a>
+        <a class="nav-link" href="<c:url value="/dstour"/>">Đây</a>
     </c:if>
 </section>
 <script>
@@ -113,44 +113,34 @@
     var tongtienchobe = 0;
     var tongtiencholon = tongtien;
     function customJavascriptfuntion(obj) {
-
         if (obj.value == "0") {
             tongtienchobe = 0;
-
         }
         if (obj.value == "1") {
             tongtienchobe = tongtien * 0.5;
-
         }
         if (obj.value == "2") {
             tongtienchobe = tongtien * 0.5 * 2;
-
         }
         if (obj.value == "3") {
             tongtienchobe = tongtien * 0.5 * 3;
-
         }
         var x = tongtienchobe + tongtiencholon;
         x = x.toLocaleString('vi', {style: 'currency', currency: 'VND'});
         document.getElementById("tien").innerHTML = x;
-
     }
     function customJavascriptfuntion2(obj) {
         if (obj.value == "1") {
             tongtiencholon = tongtien * 1;
-
         }
         if (obj.value == "2") {
             tongtiencholon = tongtien * 2;
-
         }
         if (obj.value == "4") {
             tongtiencholon = tongtien * 3;
-
         }
         var x = tongtienchobe + tongtiencholon;
         x = x.toLocaleString('vi', {style: 'currency', currency: 'VND'});
         document.getElementById("tien").innerHTML = x;
     }
-
 </script>

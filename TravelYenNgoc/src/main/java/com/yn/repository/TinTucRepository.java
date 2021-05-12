@@ -20,6 +20,7 @@ import java.util.List;
 public interface TinTucRepository {
     List<TinTuc> getTinTucs(String kw);
     boolean addOrUpdateTour(TinTuc tinTuc);
+    TinTuc UpdateSoLuotThich(int sl);
     TinTuc getTinTucById(int tourId);
     boolean deleteTinTuc(int tourId);
     List<BinhLuan> getBinhLuans(int tinTucID);

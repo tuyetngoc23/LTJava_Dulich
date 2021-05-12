@@ -7,6 +7,7 @@ package com.yn.controller;
 
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Booking;
+import com.yn.pojo.TinTuc;
 import com.yn.pojo.TinhThanh;
 import com.yn.pojo.Tour;
 import com.yn.repository.BookingRepository;
@@ -49,7 +50,7 @@ public class HomeController {
     private TinTucService tinTucService;
 
     @RequestMapping("/")
-    public String index(Model model, @RequestParam(name = "ditu", required = false, defaultValue = "0") String ditu,
+     public String index(Model model, @RequestParam(name = "ditu", required = false, defaultValue = "0") String ditu,
             @RequestParam(name = "diden", required = false, defaultValue = "0") String diden, @RequestParam(name = "ngaydi", required = false, defaultValue = "2000-1-1") String ngaydi,
             @RequestParam(name = "ngayve", required = false, defaultValue = "2000-1-1") String ngayve,
             @RequestParam(name = "timgiatu", required = false, defaultValue = "0") int giatu, @RequestParam(name = "timgiaden", required = false, defaultValue = "0") int giaden)
@@ -82,9 +83,33 @@ public class HomeController {
 
     @RequestMapping("/tourdetails")
     public String tourDetails(Model model,
-            @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
-        model.addAttribute("tour", this.tourSevice.getTour(kw));
+           @RequestParam(name = "tourId", defaultValue = "0") int tourId) {
+        model.addAttribute("tour", this.tourSevice.getTourById(tourId));
         return "tourdetails";
     }
+    
+    @RequestMapping("/dstour")
+    public String tourDs(Model model) {
+        model.addAttribute("tour", this.tourSevice.getTour());
+        return "dstour";
+    }
+//    @RequestMapping("/news")
+//    public String news(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
+//        model.addAttribute("tintuc", this.tinTucService.getTinTucs(kw));
+//        return "news";
+//    }
 
+    @GetMapping("/news/newsdetails")
+    public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
+        if (tintucId > 0) // c?p nh?t
+        {
+            model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
+//            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
+        } else {
+
+        }
+
+        return "newsdetails";
+    }
+    
 }

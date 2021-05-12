@@ -1,5 +1,6 @@
 com\yn\repository\BookingRepository.class
 com\yn\repository\impl\TinhThanhResponsitoryImpl.class
+com\yn\repository\impl\CustormerReponsitoryImpl.class
 com\yn\repository\impl\UserRepositoryImpl.class
 com\yn\service\TinTucService.class
 com\yn\service\TourSevice.class
@@ -10,7 +11,10 @@ com\yn\controller\QuanLyKhachhang.class
 com\yn\service\impl\TinhThanhServiceImpl.class
 com\yn\config\DispatcherInit.class
 com\yn\pojo\Booking.class
+com\yn\repository\CustormerRepository.class
 com\yn\service\LoaiTourService.class
+com\yn\controller\BookingController.class
+com\yn\controller\QuanlyNhanVienController.class
 com\yn\service\impl\TinTucServiceImpl.class
 com\yn\service\TinhThanhService.class
 com\yn\repository\TinhThanhReponsitory.class
@@ -21,6 +25,7 @@ com\yn\controller\ChartController.class
 com\yn\config\SecurityWebApplicationInitializer.class
 com\yn\pojo\TinhThanh.class
 com\yn\repository\TinTucRepository.class
+com\yn\controller\TintucUserController.class
 com\yn\repository\TourRepository.class
 com\yn\controller\ApiTinTucController1.class
 com\yn\controller\DangKiController.class
@@ -41,6 +46,7 @@ com\yn\pojo\BinhLuan.class
 com\yn\controller\HomeController.class
 com\yn\pojo\Thich.class
 com\yn\repository\impl\LoaiTourResponsitoryImpl.class
+com\yn\service\impl\CustormerServiceImpl.class
 com\yn\service\impl\UserServiceImpl.class
 com\yn\controller\ApiTourController.class
 com\yn\pojo\Customer.class
@@ -51,3 +57,4 @@ com\yn\pojo\User$Role.class
 com\yn\service\impl\BookingServiceImpl.class
 com\yn\config\HibernateConfig.class
 com\yn\config\SecurityConfig.class
+com\yn\service\CustormerSevice.class

@@ -3,71 +3,35 @@
     Created on : Apr 28, 2021, 7:51:36 PM
     Author     : Huynh Thi Tuyet Ngoc
 --%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
-<form:form modelAttribute="tour">
-<section class="probootstrap_section bg-light">
+<section class="probootstrap-cover overflow-hidden relative"  style="background-image: url('assets_ui/images/bg_1.jpg');" data-stellar-background-ratio="0.5" id="section-home">
+    <div class="overlay"></div>
     <div class="container">
-        <div class="row text-center mb-5 probootstrap-animate">
-            <div class="col-md-12">
-                <h2 class="display-4 border-bottom probootstrap-section-heading"><spring:message code="tour.title"/></h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-                    <div class="probootstrap-media-image" style="background-image: url(assets_ui/images/img_1.jpg)">
-                    </div>
-                    <div class="media-body">
-                        <span class="text-uppercase">January 1st 2018</span>
-                        <h5 class="mb-3">Travel To United States Without Visa</h5>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-                        <p><a href="#">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-                    <div class="probootstrap-media-image" style="background-image: url(assets_ui/images/img_2.jpg)">
-                    </div>
-                    <div class="media-body">
-                        <span class="text-uppercase">January 1st 2018</span>
-                        <h5 class="mb-3">Travel To United States Without Visa</h5>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-                        <p><a href="#">Read More</a></p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-6">
-
-                <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-                    <div class="probootstrap-media-image" style="background-image: url(assets_ui/images/img_4.jpg)">
-                    </div>
-                    <div class="media-body">
-                        <span class="text-uppercase">January 1st 2018</span>
-                        <h5 class="mb-3">Travel To United States Without Visa</h5>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-                        <p><a href="#">Read More</a></p>
-                    </div>
-                </div>
-
-                <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-                    <div class="probootstrap-media-image" style="background-image: url(assets_ui/images/img_5.jpg)">
-                    </div>
-                    <div class="media-body">
-                        <span class="text-uppercase">January 1st 2018</span>
-                        <h5 class="mb-3">Travel To United States Without Visa</h5>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-                        <p><a href="#">Read More</a></p>
-                    </div>
-                </div>
-            </div>
+        <div class="row align-items-center text-center">
+            <div class="col-md">
+                <h2 class="heading mb-2 display-4 font-light probootstrap-animate">Chi tiết Tour</h2>
+                <p class="lead mb-5 probootstrap-animate">
+            </div> 
         </div>
     </div>
 </section>
-</form:form>
-<!-- END section -->
+<section class="probootstrap-section-half d-md-flex">
+    <div class="probootstrap-image order-2 probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url(${tour.image})"></div>
+    <div class="probootstrap-text order-1">
+        <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInLeft">
+            <h2 class="heading mb-4">${tour.ten}</h2>
+            <p><span style="color:blue">Giá: <fmt:formatNumber type = "number" maxFractionDigits = "3"  value = "${tour.gia}" /> VNĐ </span><br>
+                                Từ: ${tour.diemDenID.ten}<br>
+                                 Đến: ${tour.diemDiID.ten}<br>
+                                  Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}</p>
+            <p>${tour.mota}</p>
+            <p><a href="<c:url value="/booking"/>" class="btn btn-primary">Đặt Tour</a></p>
+        </div>
+    </div>
+</section>
+ 
