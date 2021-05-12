@@ -11,6 +11,7 @@ import com.yn.repository.BookingRepository;
 import com.yn.repository.LoaiTourRepository;
 import com.yn.service.BookingService;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,6 +57,11 @@ public class BookingServiceImpl implements BookingService{
     @Transactional
     public Long getSoLuongTourDatDat(int i) {
         return this.bookingRepository.getSoLuongTourDatDat(i);
+    }
+
+    @Override
+    public List<Booking> getBooking() {
+        return this.bookingRepository.getBooking();
     }
     
     

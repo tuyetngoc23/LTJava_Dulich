@@ -13,6 +13,7 @@ import com.yn.repository.BookingRepository;
 import com.yn.service.UserService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +91,14 @@ public class BookingRepositoryImpl implements BookingRepository {
         q2.setParameter("idtour", i);
         Long tong2 = (Long) q.getResultList().get(0);
         return tong1 + tong2;
+    }
+
+    @Override
+    @Transactional
+    public List<Booking> getBooking() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+         Query q = session.createQuery("FROM Booking");
+         return q.getResultList();
     }
 
 }
