@@ -35,7 +35,6 @@
                                     <div class="card-body">
                                         <h4> Mã bài :${u.id} - ${u.moTaNgan} </h4>
                                         <p> Người đăng: ${u.employee.idStaff.hoTen}
-                                            <br>${u.moTaDai} </p>
                                             <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                  <a href="<c:url value="quanlytintuc/xemtintuc/?tintucId=${u.id}" />" class="btn btn-info">Xem thêm</a>

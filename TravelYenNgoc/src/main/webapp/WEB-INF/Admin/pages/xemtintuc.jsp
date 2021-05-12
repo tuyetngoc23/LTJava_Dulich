@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title ">Quản Lý Tin Tức</h4>
-                        <a href="<c:url value="/admin/quanlytour/themtour" />" > <button type="button"  class="btn btn-primary" >Đăng bài</button></a>
+                        <a href="<c:url value="/admin/quanlytintuc/themtintuc" />" > <button type="button"  class="btn btn-primary" >Đăng bài</button></a>
                     </div>
                     <div class="row" style="padding: 30px">
                         <c:if test = "${tintuc.trangThai== 'false'}">
@@ -36,10 +36,9 @@
                                         <p> Người đăng: ${tintuc.employee.idStaff.hoTen}
                                             <br>${tintuc.moTaDai} </p>
                                        </div> 
-                                </div>
-                                       
+                                </div>       
                         <c:forEach items="${binhluan}" var="b">
-                            <h1>${b.id}</h1>
+                            <p>${b.noiDung}</p>
                          </c:forEach>
                             </div>
                          </c:if>
