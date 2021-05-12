@@ -146,7 +146,7 @@
                                 Từ: ${tour.diemDenID.ten}<br>
                                  Đến: ${tour.diemDiID.ten}<br>
                                  Bắt đầu:${tour.ngayKhoiHanh}<br> 
-                                 Đến: ${tour.ngayKetThuc}<br> Số ngày: ${tour.soNgay}</p>
+                                 Đến: ${tour.ngayKetThuc}<br> Số ngày: ${tour.soNgay}<br> Loại tour:${tour.loaiTourID.content}</p>
                                 <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a> <br>
                                     <a href="<c:url value="tourdetails/?tourId=${tour.id}"/>">Xem thêm</a></p>
                             </div>

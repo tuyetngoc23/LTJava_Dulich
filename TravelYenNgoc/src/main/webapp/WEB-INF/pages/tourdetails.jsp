@@ -4,6 +4,7 @@
     Author     : Huynh Thi Tuyet Ngoc
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -28,9 +29,9 @@
             <p><span style="color:blue">Giá: <fmt:formatNumber type = "number" maxFractionDigits = "3"  value = "${tour.gia}" /> VNĐ </span><br>
                                 Từ: ${tour.diemDenID.ten}<br>
                                  Đến: ${tour.diemDiID.ten}<br>
-                                 Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}<br> Số ngày: ${tour.soNgay}</p>
+                                 Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}<br> Số ngày: ${tour.soNgay} <br> Loại tour:${tour.loaiTourID.content}</p>
             <p>${tour.mota}</p>
-              <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a> <br>
+              <p><a href="<c:url value="http://localhost:8080/TravelYenNgoc/booking/?tourId=4"/>">Booking</a> <br>
         </div>
     </div>
 </section>
