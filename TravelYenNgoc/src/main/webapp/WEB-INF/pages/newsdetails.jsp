@@ -62,10 +62,10 @@
                                     <p style="display: none;">Clicks: <a id="clicks">0</a></p>
                         </c:if>
                         <c:if test = "${thich.trangThai== 'true'}">
-                            <a id="doimau"  type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <a id="doimau" style="color:red"  type="button" onClick="onClick(${tintuc.id},${thich.id})"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="46" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                 </svg></a>
-                            <p>Clicks: <a id="clicks">0</a></p>
+                            <p style="display: none;">Clicks: <a id="clicks">0</a></p>
                         </c:if>
                     </c:if>
                     <p>${tintuc.moTaDai}</p>
@@ -96,11 +96,11 @@
                             </div> 
                             <form:form method="post" modelAttribute="binhluanuser" enctype="multipart/form-data" >
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Đẻ lại cảm nhập của bạn</label>
-                                    <form:input id="noiDung" cssClass="form-control" path="noiDung" />
+                                    <label for="exampleInputEmail1">Để lại cảm nhập của bạn</label>
+                                    <form:input id="noiDung" cssClass="form-control" path="noiDung" required="true"/>
                                     <small id="emailHelp" class="form-text text-muted">cảm ơn bạn!!</small>
                                 </div>
-                                <button type="submit" class="btn btn-primary my-1">Gửi</button>
+                                <button type="submit" class="btn btn-primary">Gửi</button>
                             </form:form >
                         </div>
 
