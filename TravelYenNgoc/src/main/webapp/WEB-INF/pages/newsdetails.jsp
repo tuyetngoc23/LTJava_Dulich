@@ -103,18 +103,7 @@
                                 <button type="submit" class="btn btn-primary">Gửi</button>
                             </form:form >
                         </div>
-
                     </div>
-<<<<<<< .mine
-        </div>
-                </section>
-            </c:if>
-=======
-
-
-
->>>>>>> .theirs
-
                     </section>
                 </c:if>
                 <script src="<c:url value="/js/jsusser.js" />"></script>
