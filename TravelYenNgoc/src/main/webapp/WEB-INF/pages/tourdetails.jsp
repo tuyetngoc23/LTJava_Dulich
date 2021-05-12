@@ -28,7 +28,7 @@
             <p><span style="color:blue">Giá: <fmt:formatNumber type = "number" maxFractionDigits = "3"  value = "${tour.gia}" /> VNĐ </span><br>
                                 Từ: ${tour.diemDenID.ten}<br>
                                  Đến: ${tour.diemDiID.ten}<br>
-                                  Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}</p>
+                                 Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}<br> Số ngày: ${tour.soNgay}</p>
             <p>${tour.mota}</p>
             <p><a href="<c:url value="/booking"/>" class="btn btn-primary">Đặt Tour</a></p>
         </div>

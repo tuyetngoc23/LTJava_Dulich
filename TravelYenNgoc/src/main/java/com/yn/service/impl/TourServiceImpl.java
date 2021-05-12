@@ -29,7 +29,10 @@ public class TourServiceImpl implements TourSevice{
          return this.tourRepository.getTour(kw);
     }
     public boolean addOrUpdateTour(Tour tour) {
-         return this.tourRepository.addOrUpdateTour(tour);
+        if(tour.getSoNgay() >= 0)
+             return this.tourRepository.addOrUpdateTour(tour);
+        else
+            return false;
     }
 
     @Override
