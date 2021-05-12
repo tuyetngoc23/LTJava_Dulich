@@ -37,4 +37,22 @@ function deleteTinTuc(tintucId) {
         })
     }
 }
+function nhantour(bookingid) {
+    if (confirm("Bạn nhận tour nhé?") == true) { 
+        fetch(`/TravelYenNgoc/api/admin/nhantour/${bookingid}`, {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            if (res.status == 200) {
+                 location.reload();
+            } else 
+                alert("Something wrong!!!");
+        })
+    }
+}
+
+
+
 

@@ -3,7 +3,7 @@
     Created on : Apr 28, 2021, 7:51:36 PM
     Author     : Huynh Thi Tuyet Ngoc
 --%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -30,8 +30,7 @@
                                  Đến: ${tour.diemDiID.ten}<br>
                                  Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}<br> Số ngày: ${tour.soNgay}</p>
             <p>${tour.mota}</p>
-            <p><a href="<c:url value="/booking"/>" class="btn btn-primary">Đặt Tour</a></p>
+              <p><a href="<c:url value="booking/?tourId=${tour.id}"/>">Booking</a> <br>
         </div>
     </div>
 </section>
- 

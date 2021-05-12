@@ -8,6 +8,8 @@ package com.yn.controller;
 
 
 import com.yn.pojo.Tour;
+import com.yn.service.BookingService;
+import com.yn.service.TinTucService;
 import com.yn.service.TourSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,9 +30,38 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiTourController {
     @Autowired
      private TourSevice tourService;
+    @Autowired
+     private TinTucService tinTucService;
+    @Autowired
+     private BookingService bookingService;
+    
     @DeleteMapping("/admin/quanlytour/{tourId}")
     @ResponseStatus(HttpStatus.OK)
     public void deleleProduct(@PathVariable(name = "tourId") int tourId) {
         this.tourService.deleteTour(tourId);
+ 
+    }
+    
+    
+    @GetMapping("/user/news/{tintucId}/{thich}")
+    @ResponseStatus(HttpStatus.OK)
+    public void thich(@PathVariable(name = "tintucId") int tintucid,@PathVariable(name = "thich") int thichid) {
+        tinTucService.thich(tintucid,thichid);
+    
+    }
+    
+    @GetMapping("/user/news/unlike/{tintucId}/{thich}")
+    @ResponseStatus(HttpStatus.OK)
+    public void khongthich(@PathVariable(name = "tintucId") int tintucid,@PathVariable(name = "thich") int thichid) {
+        tinTucService.khongthich(tintucid, thichid);
+
+    }
+    
+    
+    @GetMapping("/admin/nhantour/{bookingid}")
+    @ResponseStatus(HttpStatus.OK)
+    public void nhantour(@PathVariable(name = "bookingid") int bookingid) {
+        bookingService.nhantour(bookingid);
+ 
     }
 }

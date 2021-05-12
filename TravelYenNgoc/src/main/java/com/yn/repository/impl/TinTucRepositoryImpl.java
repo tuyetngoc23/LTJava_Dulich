@@ -8,6 +8,7 @@ package com.yn.repository.impl;
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
 import com.yn.pojo.Employee;
+import com.yn.pojo.Thich;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.User;
 import com.yn.repository.TinTucRepository;
@@ -30,10 +31,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Huynh Thi Tuyet Ngoc
- */
+
 @Repository
 public class TinTucRepositoryImpl implements TinTucRepository {
 
@@ -106,26 +104,8 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     @Transactional
     public List<BinhLuan> getBinhLuans(int i) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//        CriteriaQuery<BinhLuan> query = builder.createQuery(BinhLuan.class);
-//        Root root = query.from(BinhLuan.class);
-//        query.select(root);
-//        Predicate p = builder.equal(root.get("tintucId").as(Integer.class),
-//               i);
-//        query = query.where(p);
-//        Query q = session.createQuery(query);
-
-
-//         Query q = session.createStoredProcedureCall("getTinTucId");
-//        Query q = session.createQuery("FROM BinhLuan where tintuc_id =2");
-
-        Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
+      Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
         q.setParameter("tintuc", i);
-
-//        return q.getResultList();
-
-        
         Set<BinhLuan> binhLuan = new HashSet<>();
         binhLuan.addAll(this.getTinTucById(i).getBinhLuans());
         List<BinhLuan> b = new ArrayList<>();
@@ -154,11 +134,73 @@ public class TinTucRepositoryImpl implements TinTucRepository {
 
     @Override
     @Transactional
+    public void addthich(int id) {
+         Session s = this.sessionFactory.getObject().getCurrentSession();
+         Thich thich = new Thich();
+         Customer cus = new Customer();
+        User ua = this.userService.getUsersAuth();
+        cus = s.get(Customer.class, ua.getId());
+        System.out.println(cus);
+        thich.setCustomerIdThich(cus);
+        thich.setTintucIdThich(this.getTinTucById(id));
+        thich.setTrangThai(false);
+        s.save(thich);
+
+        
+    }
+
+    @Override
+    @Transactional
+    public Thich getthich(int i) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Customer cus = new Customer();
+        User ua = this.userService.getUsersAuth();
+        cus = session.get(Customer.class, ua.getId());
+        Query q = session.createQuery(" FROM Thich where tintuc_id = :tintucid and customerId = :cusId");
+        q.setParameter("tintucid", i);
+        q.setParameter("cusId", cus.getIdCus().getId());
+        Thich thich = new Thich();
+      if(q.getResultList().isEmpty()){
+          addthich(i);
+          thich = this.getthich(i);
+        }
+        else{ thich = (Thich)q.getResultList().get(0);}
+        return thich;
+    }
+
+    @Override
+    @Transactional
+    public void khongthich(int i, int i1) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Thich thich = session.get(Thich.class, i1);
+        thich.setTrangThai(false);
+        TinTuc tinTuc = this.getTinTucById(i);
+        int sl = tinTuc.getSoLuotThich();
+        tinTuc.setSoLuotThich(sl-1);
+        session.save(thich);
+        session.update(tinTuc);
+    }
+
+
+    @Override
+    @Transactional
+    public void thich(int i, int i1) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Thich thich = session.get(Thich.class, i1);
+        thich.setTrangThai(true);
+        TinTuc tinTuc = this.getTinTucById(i);
+        int sl = tinTuc.getSoLuotThich();
+        tinTuc.setSoLuotThich(sl+1);
+        session.save(thich);
+        session.update(tinTuc);
+    }
+
+
+    @Override
+    @Transactional
     public TinTuc UpdateSoLuotThich(int i) {
         TinTuc t = new TinTuc();
         t.setSoLuotThich(i);
         return t;
     }
-
-   
 }

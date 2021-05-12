@@ -8,6 +8,7 @@ package com.yn.service;
 import com.yn.pojo.Booking;
 import com.yn.pojo.Tour;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
@@ -19,4 +20,6 @@ public interface BookingService {
     Long getTourDaDat(int thang, int nam);
     BigDecimal getPrice(Tour t, Booking b);
     Long getSoLuongTourDatDat(int i);
+    List<Booking> getBooking();
+    void nhantour(int tour);
 }

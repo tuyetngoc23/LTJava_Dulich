@@ -7,12 +7,15 @@ package com.yn.repository.impl;
 
 import com.yn.pojo.Booking;
 import com.yn.pojo.Customer;
+import com.yn.pojo.Employee;
+import com.yn.pojo.TinTuc;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.BookingRepository;
 import com.yn.service.UserService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +93,27 @@ public class BookingRepositoryImpl implements BookingRepository {
         q2.setParameter("idtour", i);
         Long tong2 = (Long) q.getResultList().get(0);
         return tong1 + tong2;
+    }
+
+    @Override
+    @Transactional
+    public List<Booking> getBooking() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+         Query q = session.createQuery("FROM Booking");
+         return q.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void nhantour(int tour) {
+        //tim booking
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Booking booking= session.get(Booking.class, tour);
+        Employee eloy = new Employee();
+        User ua = this.userService.getUsersAuth();
+        eloy =  session.get(Employee.class, ua.getId());
+        booking.setNhanvien(eloy);
+        session.update(booking);
     }
 
 }

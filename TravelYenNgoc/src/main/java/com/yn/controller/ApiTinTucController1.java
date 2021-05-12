@@ -39,8 +39,8 @@ public class ApiTinTucController1 {
     @DeleteMapping("/admin/quanlytintuc/{tintucId}")
     @ResponseStatus(HttpStatus.OK)
     public void deleleProduct(@PathVariable(name = "tintucId") int tintucId) {
-        System.out.println(tintucId);
-        this.tinTucService.deleteTinTuc(tintucId);
+        //System.out.println(tintucId);
+        //his.tinTucService.deleteTinTuc(tintucId);
     }
 
    
