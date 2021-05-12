@@ -40,7 +40,7 @@
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
                                                     <a href="<c:url value="quanlytour/themtour/?tourId=${u.id}" />" class="btn btn-info">Cập nhật</a>
-                                                    <a href="javascript:;" class="btn btn-danger" onclick="thich1(${u.id})">Xóa</a>
+                                                    <a href="javascript:;" class="btn btn-danger" onclick="deleteTinTuc(${u.id})">Xóa</a>
                                                 </div>
                                                 <small class="text-muted">9 mins</small>
                                             </div>

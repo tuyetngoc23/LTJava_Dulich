@@ -43,6 +43,15 @@ public class BookingController {
         }
         return "booking";
     }
+    
+    @GetMapping("/admin/quanlybooking")
+    public String bookingquanlyView(Model model){
+       model.addAttribute("booking", this.bookingService.getBooking());
+        return "quanlybooking";
+    }
+    
+    
+    
     @GetMapping("/booking/thanhcong")
     public String bookingokView(){
        

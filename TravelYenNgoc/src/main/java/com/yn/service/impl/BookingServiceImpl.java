@@ -63,8 +63,10 @@ public class BookingServiceImpl implements BookingService{
     public List<Booking> getBooking() {
         return this.bookingRepository.getBooking();
     }
-    
-    
- 
+
+    @Override
+    public void nhantour(int i) {
+        this.bookingRepository.nhantour(i);
+    }
     
 }

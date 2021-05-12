@@ -7,6 +7,8 @@ package com.yn.repository.impl;
 
 import com.yn.pojo.Booking;
 import com.yn.pojo.Customer;
+import com.yn.pojo.Employee;
+import com.yn.pojo.TinTuc;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.BookingRepository;
@@ -99,6 +101,19 @@ public class BookingRepositoryImpl implements BookingRepository {
         Session session = this.sessionFactory.getObject().getCurrentSession();
          Query q = session.createQuery("FROM Booking");
          return q.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void nhantour(int tour) {
+        //tim booking
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Booking booking= session.get(Booking.class, tour);
+        Employee eloy = new Employee();
+        User ua = this.userService.getUsersAuth();
+        eloy =  session.get(Employee.class, ua.getId());
+        booking.setNhanvien(eloy);
+        session.update(booking);
     }
 
 }

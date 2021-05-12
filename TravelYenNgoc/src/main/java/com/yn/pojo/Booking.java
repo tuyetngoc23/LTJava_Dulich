@@ -20,13 +20,24 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- *
- * @author Huynh Thi Tuyet Ngoc
- */
+
 @Entity
 @Table(name="booking")
 public class Booking implements Serializable{
+
+    /**
+     * @return the nhanvien
+     */
+    public Employee getNhanvien() {
+        return nhanvien;
+    }
+
+    /**
+     * @param nhanvien the nhanvien to set
+     */
+    public void setNhanvien(Employee nhanvien) {
+        this.nhanvien = nhanvien;
+    }
 
     /**
      * @return the tour
@@ -76,7 +87,7 @@ public class Booking implements Serializable{
     
     @ManyToOne
     @JoinColumn(name="employee_id")
-    private Employee employeeId;
+    private Employee nhanvien;
     
     @ManyToOne
     @JoinColumn(name="tour_id")
@@ -161,19 +172,7 @@ public class Booking implements Serializable{
         this.customerId = customerId;
     }
 
-    /**
-     * @return the employeeId
-     */
-    public Employee getEmployeeId() {
-        return employeeId;
-    }
 
-    /**
-     * @param employeeId the employeeId to set
-     */
-    public void setEmployeeId(Employee employeeId) {
-        this.employeeId = employeeId;
-    }
 
 
 
