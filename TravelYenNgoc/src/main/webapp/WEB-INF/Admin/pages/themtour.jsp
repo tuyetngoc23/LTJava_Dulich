@@ -9,6 +9,16 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <div class="content">
+    
+<c:if test="${errMsg != null}">
+    <div class="alert alert-danger  alert-dismissible  fade show text-center"
+         style="position: absolute; right:0px; width: 30% ; z-index: 4" role="alert">
+            ${errMsg}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</c:if>
     <form:form method="post" modelAttribute="tour" enctype="multipart/form-data" >
         <div class="container-fluid">
             <div class="row">
