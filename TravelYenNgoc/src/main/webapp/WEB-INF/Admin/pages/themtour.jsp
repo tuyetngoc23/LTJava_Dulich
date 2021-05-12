@@ -154,20 +154,12 @@
                                 </div>
                                 <c:if test="${tour.id>0}">
                                     <div class="container mt-4 mb-4">
-<<<<<<< .mine
-                                        <button type="submit" class="btn btn-primary pull-right">Cập nhập Tour </button>
-=======
                                         <button type="submit" class="btn btn-primary pull-right">Cập nhập tour </button>
->>>>>>> .theirs
                                         <div class="clearfix"></div>
                                     </c:if>
                                     <c:if test="${tour.id<=0}">
                                         <div class="container mt-4 mb-4">
-<<<<<<< .mine
-                                            <button type="submit" class="btn btn-primary pull-right">Thêm Tour </button>
-=======
                                             <button type="submit" class="btn btn-primary pull-right">Thêm tour </button>
->>>>>>> .theirs
                                             <div class="clearfix"></div>
                                         </c:if>
                                         </form>
