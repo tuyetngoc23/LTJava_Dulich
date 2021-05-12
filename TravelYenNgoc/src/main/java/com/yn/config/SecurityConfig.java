@@ -60,7 +60,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**")
                 .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
                 .antMatchers("/admin/chart").access("hasAnyRole('" + User.Role.ROLE_EMPLOYEE.name() + "')")
-                .antMatchers("/booking/**").access("hasAnyRole('" + User.Role.ROLE_CUSTORMER.name() + "')");
+                .antMatchers("/booking/**").access("hasAnyRole('" + User.Role.ROLE_CUSTORMER.name() + "')")
+                .antMatchers("/news/newsdetails/**").access("hasAnyRole('" + User.Role.ROLE_CUSTORMER.name() + "')");
         http.csrf().disable();
     }
 

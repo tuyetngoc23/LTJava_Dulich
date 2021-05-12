@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -21,6 +22,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name="thich")
 public class Thich {
+
+    /**
+     * @return the trangThai
+     */
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    /**
+     * @param trangThai the trangThai to set
+     */
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
 
     /**
      * @return the customerIdThich
@@ -66,10 +81,13 @@ public class Thich {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+   
     @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customerIdThich;
     @ManyToOne
     @JoinColumn(name = "tintuc_id")
     private TinTuc tintucIdThich;
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean trangThai;
 }

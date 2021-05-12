@@ -7,6 +7,7 @@ package com.yn.service;
 
 import com.yn.pojo.BinhLuan;
 import com.yn.pojo.Customer;
+import com.yn.pojo.Thich;
 import com.yn.pojo.TinTuc;
 import com.yn.pojo.User;
 import java.util.List;
@@ -25,5 +26,9 @@ public interface TinTucService {
     boolean deleteTinTuc(int tourId);
      List<BinhLuan> getBinhLuans(int tinTucID);
     void addBinhLuan(BinhLuan binhLuan);
+     void addthich(int id);
+     Thich getthich(int i);
+     void khongthich(int i, int i1);
+     void thich(int i, int i1);
 }
 
