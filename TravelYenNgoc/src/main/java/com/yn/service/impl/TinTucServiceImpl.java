@@ -66,6 +66,7 @@ public class TinTucServiceImpl implements TinTucService {
     }
 
     @Override
+    @Transactional
     public Thich getthich(int i ) {
         return this.tintTucRepository.getthich(i);
     }
