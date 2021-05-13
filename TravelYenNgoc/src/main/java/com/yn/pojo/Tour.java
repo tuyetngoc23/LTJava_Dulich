@@ -72,6 +72,9 @@ public class Tour implements Serializable {
     @Transient
     private MultipartFile imgUploadFile;
     
+    @Transient
+    private long soNgay;
+    
     @OneToMany(mappedBy = "tour")
     private List<Booking> bookingT;
 
@@ -257,6 +260,21 @@ public class Tour implements Serializable {
     @Override
     public String toString() {
         return "Tour{tourid: "+this.id+", ten: "+ten+", gia: "+gia+"}"; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the soNgay
+     */
+    public long getSoNgay() {
+        return Math.round((this.ngayKetThuc.getTime() - this.ngayKhoiHanh.getTime()) / (double) 86400000);
+    }
+
+    /**
+     * @param soNgay the soNgay to set
+     */
+    public void setSoNgay(long soNgay) {
+        
+        this.soNgay = soNgay;
     }
     
     

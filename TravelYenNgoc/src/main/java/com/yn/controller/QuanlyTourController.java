@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -66,7 +67,7 @@ public class QuanlyTourController {
     @PostMapping("/admin/quanlytour/themtour")
     public String themtour(Model model,
             @ModelAttribute(value = "tour") @Valid Tour tour,
-            BindingResult err, HttpServletRequest request) throws IOException {
+            BindingResult err, HttpServletRequest request, RedirectAttributes attribute) throws IOException {
         if (err.hasErrors()) {
             // model.addAttribute("tour", new Tour());
             model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
@@ -92,11 +93,18 @@ public class QuanlyTourController {
             String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
             tour.setImage(img);
         }
-        if (!this.tourService.addOrUpdateTour(tour)) {
-            model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
-            return "themtour";
+        
+        if(tour.getSoNgay() >= 0){
+            if (this.tourService.addOrUpdateTour(tour)) 
+                return "redirect:/admin/quanlytour";
+            else{
+                model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
+            } 
+        }else{
+            model.addAttribute("errMsg", "Ngày khởi hành phải trước ngày kết thúc");
+      
         }
-        return "redirect:/admin/quanlytour";
+         return "themtour";
     }
 
 }
