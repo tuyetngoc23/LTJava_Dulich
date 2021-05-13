@@ -17,6 +17,7 @@ com\yn\controller\BookingController.class
 com\yn\controller\QuanlyNhanVienController.class
 com\yn\service\impl\TinTucServiceImpl.class
 com\yn\service\TinhThanhService.class
+com\yn\controller\HomeAdminController.class
 com\yn\repository\TinhThanhReponsitory.class
 com\yn\validator\WebAppValidator.class
 com\yn\pojo\Employee.class
