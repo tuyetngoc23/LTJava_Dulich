@@ -27,7 +27,7 @@
                                             <h4> Mã:${u.id} - ${u.ten}</h4>
                                             <p>Giá: <fmt:formatNumber type = "number" maxFractionDigits = "3"  value = "${u.gia}" /> VNĐ <br>
                                                 Từ:  
-                                                ${u.diemDiID.ten} - Đến: ${u.diemDenID.ten} 
+                                                ${u.diemDenID.ten} - Đến: ${u.diemDiID.ten} 
                                                 <br>
                                                 giới hạn:
                                                 ${u.gioiHanNDi} người<br>

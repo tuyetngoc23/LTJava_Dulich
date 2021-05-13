@@ -85,7 +85,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md">
-
+                                    <label style="font-size: 15px; color:red">${loitourhethan}</label>
                                     <label style="font-size: 15px; color:red">${loisoluong}</label>
                                     <label style="font-size: 15px; color:red">Tổng tiền:</label>
                                     <label id ="tien" style="font-size: 15px; color:red">${tour.gia}</label>

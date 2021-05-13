@@ -70,6 +70,14 @@ public class BookingController {
             System.out.println(err);
             return "booking";
         }
+        //kiem tra xem tou đó còn hoạt động không
+        long millis = System.currentTimeMillis();
+        java.sql.Date ngayhientai = new java.sql.Date(millis);
+        if(tourdangco.getNgayKetThuc().compareTo(ngayhientai)<0){
+             model.addAttribute("loitourhethan", "Xin lỗi chúng tôi đã hết tour này!!");
+             return "booking";
+        
+        }
         int tongsonguoidi = booking.getSoNguoiLonDi() + booking.getSoNguoiNhoDi();
         long songuoidukiendat = (long) tongsonguoidi + this.bookingService.getSoLuongTourDatDat(touri);
         
@@ -85,6 +93,7 @@ public class BookingController {
         BigDecimal tienguoilon = tourdangco.getGia().multiply(songuoilon);
         BigDecimal tong = tienguoinho.add(tienguoilon);
         booking.setTotalMoney(tong);
+        
         this.bookingService.addBooking(booking);
      
         return "redirect:/booking/thanhcong";

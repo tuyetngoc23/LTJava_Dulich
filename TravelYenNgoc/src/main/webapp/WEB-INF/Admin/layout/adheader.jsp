@@ -56,7 +56,7 @@
                 </a>
             </li>
          <li class="nav-item  ">
-                  <a class="nav-link" href="href="<c:url value="/logout" />">
+                  <a class="nav-link" href="href="<c:url value="/admin/logout" />">
                       <i class="material-icons">logout</i>
                       <p>Logout</p>   
                   </a>
