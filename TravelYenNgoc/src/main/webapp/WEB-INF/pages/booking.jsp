@@ -69,7 +69,7 @@
                                         <label for="ten">Tên khách hàng</label>
                                         <div>
                                             <form:errors path="tenKH" cssClass="text-danger" style="font-family: 'Roboto', sans-serif;important "/>
-                                            <form:input type="text" id="ten" path="tenKH"/>
+                                            <form:input type="text" id="ten" path="tenKH" cssClass="form-group"/>
                                         </div>
                                     </div>
                                 </div>
