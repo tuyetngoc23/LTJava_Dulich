@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <div class="content">
     <div class="container-fluid">
@@ -34,6 +35,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Khách hàng truy cập</h4>
                         <p class="card-category">đang cập nhật</p>
+              
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -141,46 +143,30 @@
                             <th>ID</th>
                             <th>Tên</th>
                             <th>Ngày tham gia</th>
-                            <th>Đại chỉ</th>
+                            <th>Địa chỉ</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-         
-              
-                            </div>
+                                <c:forEach items="${customer}" var="u">
+                                    <tr> 
+                                            <td>${u.id} allo</td>
+                                            <td>${u.idCus.hoTen}</td>
+                                            <td>${u.idCus.join_date}</td>
+                                            <td>${u.idCus.diaChi}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 

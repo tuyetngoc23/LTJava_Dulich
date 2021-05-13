@@ -40,12 +40,6 @@ public class QuanlyTourController {
     @Autowired
     private LoaiTourService loaiTourService;
 
-    @RequestMapping("/admin")
-    public String adindex(Model model) {
-        //model.addAttribute("user", this.userService.getUser());
-        return "admin";
-    }
-
     @RequestMapping("/admin/quanlytour")
     public String quanLyTour(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("", this.tourService.getTour(kw));
