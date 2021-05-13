@@ -74,6 +74,7 @@ public class BookingController {
         long millis = System.currentTimeMillis();
         java.sql.Date ngayhientai = new java.sql.Date(millis);
         if(tourdangco.getNgayKetThuc().compareTo(ngayhientai)<0){
+            model.addAttribute("tour", this.tourSevice.getTourById(touri));
              model.addAttribute("loitourhethan", "Xin lỗi chúng tôi đã hết tour này!!");
              return "booking";
         
@@ -82,6 +83,7 @@ public class BookingController {
         long songuoidukiendat = (long) tongsonguoidi + this.bookingService.getSoLuongTourDatDat(touri);
         
         if (songuoidukiendat >= (long) tourdangco.getGioiHanNDi()) {
+            model.addAttribute("tour", this.tourSevice.getTourById(touri));
             model.addAttribute("loisoluong", "Xin lỗi bạn đã đặt quá số lượng ngườ!!");
              return "booking";
         }
