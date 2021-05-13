@@ -45,15 +45,15 @@
 
 </div>
 <script>
-    var ctx = document.getElementById("myChart");
+    var ctx1 = document.getElementById("myChart");
     var chart1 = [];
-    <c:forEach items="${doanhthu}" var="u">
-    chart1.push(${u});
+    <c:forEach items="${doanhthu}" var="a">
+        chart1.push(${a});
     </c:forEach>
-    var myChart1 = new Chart(ctx, {
+    var myChart1 = new Chart(ctx1, {
         type: 'bar',
         data: {
-            labels: ["tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6", "tháng7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12"],
+            labels:  ["tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6", "tháng7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12"],
             datasets: [
                 {label: '# doanh thu',
                     data: chart1,
