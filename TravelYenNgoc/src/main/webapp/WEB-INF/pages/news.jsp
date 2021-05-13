@@ -17,11 +17,11 @@
 <c:forEach items="${tintuc}" var="u">
     <c:if test = "${u.trangThai== 'false'}">
         <section class="probootstrap-section-half d-md-flex" id="section-about">
-            <div class="probootstrap-image probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url(assets_ui/images/img_2.jpg)"></div>
+            <div class="probootstrap-image probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url(http://localhost:8080/TravelYenNgoc${u.anh})"></div>
             <div class="probootstrap-text">
                 <div class="probootstrap-inner probootstrap-animate" data-animate-effect="fadeInRight">
                     <h2 class="heading mb-4">${u.tieuDe}</h2>
-                                        <p>${u.moTaNgan}</p>
+                    <p>${u.moTaNgan} <br>Ngày đăng: ${u.ngayDang} <br> số lượt thích: ${u.soLuotThich} <br>Tác giả: ${u.employee.idStaff.hoTen} </p>
                     <p><a href="<c:url value="/news/newsdetails/?tintucId=${u.id}"/>" class="btn btn-primary">Xem thêm</a></p>
                 </div>
             </div>
