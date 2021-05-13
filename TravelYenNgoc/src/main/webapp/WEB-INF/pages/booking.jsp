@@ -11,7 +11,7 @@
 
 <section class="probootstrap-cover overflow-hidden relative"  style="background-image: url(http://localhost:8080/TravelYenNgoc/assets_ui/images/bg_1.jpg)" data-stellar-background-ratio="0.5"  id="section-home">
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container" style="font-family: 'Roboto', sans-serif;">
         <div class="row align-items-center">
             <div class="col-md">
 
@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label for="ten">Tên khách hàng</label>
                                         <div>
-                                            <form:errors path="tenKH" cssClass="text-danger" />
+                                            <form:errors path="tenKH" cssClass="text-danger" style="font-family: 'Roboto', sans-serif;important "/>
                                             <form:input type="text" id="ten" path="tenKH"/>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
     tongtien = ${tour.gia}
     </c:if>
     var tongtienchobe = 0;
-    var tongtiencholon = tongtien;
+    var tongtiencholon = 0;
     function customJavascriptfuntion(obj) {
         if (obj.value == "0") {
             tongtienchobe = 0;
@@ -136,7 +136,7 @@
         if (obj.value == "2") {
             tongtiencholon = tongtien * 2;
         }
-        if (obj.value == "4") {
+        if (obj.value == "3") {
             tongtiencholon = tongtien * 3;
         }
         var x = tongtienchobe + tongtiencholon;

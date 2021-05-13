@@ -6,6 +6,7 @@
 package com.yn.repository.impl;
 
 import com.yn.pojo.Customer;
+import com.yn.pojo.Employee;
 import com.yn.pojo.User;
 import com.yn.repository.UserRepository;
 import java.util.HashSet;
@@ -16,17 +17,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -132,9 +127,9 @@ public class UserRepositoryImpl implements UserRepository {
         user.setJoin_date(dateCreated);
         user.setUserrole(User.Role.ROLE_EMPLOYEE);
         session.save(user);
-        Customer customer = new Customer();
-        customer.setIdCus(user);
-        session.save(customer);
+        Employee emlEmployee = new Employee();
+        emlEmployee.setIdStaff(user);
+        session.save(emlEmployee);
     }
 
 }
