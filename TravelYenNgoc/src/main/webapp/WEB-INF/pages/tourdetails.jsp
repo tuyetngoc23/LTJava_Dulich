@@ -31,7 +31,7 @@
                                  Đến: ${tour.diemDiID.ten}<br>
                                  Bắt đầu:${tour.ngayKhoiHanh}<br> Đến: ${tour.ngayKetThuc}<br> Số ngày: ${tour.soNgay} <br> Loại tour:${tour.loaiTourID.content}</p>
             <p>${tour.mota}</p>
-              <p><a href="<c:url value="http://localhost:8080/TravelYenNgoc/booking/?tourId=4"/>">Booking</a> <br>
+              <p><a href="<c:url value="http://localhost:8080/TravelYenNgoc/booking/?tourId=4"/>">Đặt Tour</a> <br>
         </div>
     </div>
 </section>
