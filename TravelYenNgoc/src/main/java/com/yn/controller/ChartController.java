@@ -34,10 +34,13 @@ public class ChartController {
         BigDecimal[] myNum = new BigDecimal[13];
         int i;
         for (i = 1; i < myNum.length; i++){
-            myNum[i] = this.bookingService.getDoanhThu(i, nam);
-             System.out.println("hello"+myNum[i]);
+            if(this.bookingService.getDoanhThu(i, nam)==null)
+                myNum[i] =  new BigDecimal(0);
+            else {
+            myNum[i] = this.bookingService.getDoanhThu(i, nam);}
+             
         }
-  
+
         Long[] sotour = new Long[13];
         int j =1;
         for (j = 1; j < sotour.length; j++){

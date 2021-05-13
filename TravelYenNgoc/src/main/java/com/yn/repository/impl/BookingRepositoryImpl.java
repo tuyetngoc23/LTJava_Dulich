@@ -8,13 +8,11 @@ package com.yn.repository.impl;
 import com.yn.pojo.Booking;
 import com.yn.pojo.Customer;
 import com.yn.pojo.Employee;
-import com.yn.pojo.TinTuc;
 import com.yn.pojo.Tour;
 import com.yn.pojo.User;
 import com.yn.repository.BookingRepository;
 import com.yn.service.UserService;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -60,7 +58,6 @@ public class BookingRepositoryImpl implements BookingRepository {
         Query q = session.createQuery("SELECT sum(totalMoney) FROM Booking where month(bookingDay) = :thang and year(bookingDay) = :nam");
         q.setParameter("thang", thang);
         q.setParameter("nam", nam);
-        System.out.println((BigDecimal) q.getResultList().get(0));
         return (BigDecimal) q.getResultList().get(0);
     }
 

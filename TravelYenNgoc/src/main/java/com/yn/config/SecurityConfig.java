@@ -50,16 +50,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("passWord");
-        
+
         http.formLogin().defaultSuccessUrl("/")
                 .failureUrl("/login?error");
         http.logout().logoutSuccessUrl("/login");
         http.exceptionHandling()
                 .accessDeniedPage("/login?accessDenied");
         http.authorizeRequests().antMatchers("/").permitAll()
-                .antMatchers("/admin/**")
+                .antMatchers("/admin/quanlynhanvien")
                 .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
-                .antMatchers("/admin/chart").access("hasAnyRole('" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                .antMatchers("/admin/quanlytour/**")
+                .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                .antMatchers("/admin/quanlytintuc/**")
+                .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                .antMatchers("/admin/quanlybooking")
+                .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                .antMatchers("/admin")
+                .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                 .antMatchers("/admin/quanlykhachang")
+                .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
+                .antMatchers("/admin/chart").access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "')")
                 .antMatchers("/booking/**").access("hasAnyRole('" + User.Role.ROLE_CUSTORMER.name() + "')")
                 .antMatchers("/news/newsdetails/**").access("hasAnyRole('" + User.Role.ROLE_CUSTORMER.name() + "')");
         http.csrf().disable();

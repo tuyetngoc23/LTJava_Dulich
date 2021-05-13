@@ -20,12 +20,6 @@
                 </a>
             </li>
             <li class="nav-item ">
-               <a href="<c:url value="/admin" />" class="nav-link">
-                    <i class="material-icons">person</i>
-                    <p>Trang cá nhân</p>
-                </a>
-            </li>
-            <li class="nav-item ">
                 <a class="nav-link" href="<c:url value="/admin/quanlynhanvien" />">
                     <i class="material-icons">content_paste</i>
                     <p>Quản lý nhân viên</p>
@@ -62,7 +56,7 @@
                 </a>
             </li>
          <li class="nav-item  ">
-                  <a class="nav-link" href="href="<c:url value="/logout" />">
+                  <a class="nav-link" href="href="<c:url value="/admin/logout" />">
                       <i class="material-icons">logout</i>
                       <p>Logout</p>   
                   </a>
