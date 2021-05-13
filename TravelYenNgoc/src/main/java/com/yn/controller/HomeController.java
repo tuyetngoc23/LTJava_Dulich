@@ -5,32 +5,14 @@
  */
 package com.yn.controller;
 
-import com.yn.pojo.BinhLuan;
-import com.yn.pojo.Booking;
-import com.yn.pojo.TinTuc;
-import com.yn.pojo.TinhThanh;
-import com.yn.pojo.Tour;
-import com.yn.repository.BookingRepository;
-import com.yn.service.BookingService;
-import com.yn.service.TinTucService;
 import com.yn.service.TinhThanhService;
 import com.yn.service.TourSevice;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,8 +28,8 @@ public class HomeController {
     @Autowired
     private TinhThanhService tinhThanhService;
 
-    @Autowired
-    private TinTucService tinTucService;
+//    @Autowired
+//    private TinTucService tinTucService;
 
     @RequestMapping("/")
      public String index(Model model, @RequestParam(name = "ditu", required = false, defaultValue = "0") String ditu,
@@ -99,17 +81,17 @@ public class HomeController {
 //        return "news";
 //    }
 
-    @GetMapping("/news/newsdetails")
-    public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
-        if (tintucId > 0) // c?p nh?t
-        {
-            model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
-//            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
-        } else {
-
-        }
-
-        return "newsdetails";
-    }
+//    @GetMapping("/news/newsdetails")
+//    public String newDetails(Model model, @RequestParam(name = "tintucId", defaultValue = "0") int tintucId) {
+//        if (tintucId > 0) // c?p nh?t
+//        {
+//            model.addAttribute("tintuc", this.tinTucService.getTinTucById(tintucId));
+////            model.addAttribute("binhluan", this.tinTucService.getBinhLuans(tintucId));
+//        } else {
+//
+//        }
+//
+//        return "newsdetails";
+//    }
     
 }
