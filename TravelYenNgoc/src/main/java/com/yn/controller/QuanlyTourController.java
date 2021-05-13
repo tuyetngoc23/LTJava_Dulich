@@ -41,12 +41,6 @@ public class QuanlyTourController {
     @Autowired
     private LoaiTourService loaiTourService;
 
-    @RequestMapping("/admin")
-    public String adindex(Model model) {
-        //model.addAttribute("user", this.userService.getUser());
-        return "admin";
-    }
-
     @RequestMapping("/admin/quanlytour")
     public String quanLyTour(Model model, @RequestParam(name = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("", this.tourService.getTour(kw));
@@ -74,10 +68,14 @@ public class QuanlyTourController {
     public String themtour(Model model,
             @ModelAttribute(value = "tour") @Valid Tour tour,
             BindingResult err, HttpServletRequest request, RedirectAttributes attribute) throws IOException {
+
+        model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
+        model.addAttribute("loaitour", this.loaiTourService.getLoaiTour());
+        
+        
         if (err.hasErrors()) {
-            // model.addAttribute("tour", new Tour());
-            model.addAttribute("tinhthanh", this.tinhThanhService.getTinhThanh());
-            model.addAttribute("loaitour", this.loaiTourService.getLoaiTour());
+
+            System.out.println(err);
             return "themtour";
         }
         MultipartFile multipartFile = tour.getImgUploadFile();
@@ -88,29 +86,31 @@ public class QuanlyTourController {
             e.printStackTrace();
         }
         Tour tourc = this.tourService.getTourById(tour.getId());
-        if(tourc!=null){
-        tour.setImage(tourc.getImage());
-        if (multipartFile.getOriginalFilename() != null) {
-            String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
-            if(!img.equals("/admin/anhadmin/"))
-               tour.setImage(img);
-        } 
-        }else {
+        if (tourc != null) {
+            tour.setImage(tourc.getImage());
+            if (multipartFile.getOriginalFilename() != null) {
+                String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
+                if (!img.equals("/admin/anhadmin/")) {
+                    tour.setImage(img);
+                }
+            }
+        } else {
             String img = "/admin/anhadmin/" + multipartFile.getOriginalFilename();
             tour.setImage(img);
         }
-        
-        if(tour.getSoNgay() >= 0){
-            if (this.tourService.addOrUpdateTour(tour)) 
+
+        if (tour.getSoNgay() >= 0) {
+            if (this.tourService.addOrUpdateTour(tour)) {
                 return "redirect:/admin/quanlytour";
-            else{
+            } else {
                 model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
-            } 
-        }else{
+            }
+        } else {
+
             model.addAttribute("errMsg", "Ngày khởi hành phải trước ngày kết thúc");
-      
+
         }
-         return "themtour";
+        return "themtour";
     }
 
 }

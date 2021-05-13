@@ -116,9 +116,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <form:errors path="ngayKhoiHanh" cssClass="text-danger" />
                                             <label class="bmd-label-floating">Ngày bắt đầu</label>
                                             <form:input type="date" value="${tour.ngayKhoiHanh}" cssClass="form-control" id="ngayKhoiHanh" path="ngayKhoiHanh"/>
-                                            <form:errors path="ngayKhoiHanh" cssClass="text-danger" />
+                                            
                                         </div>
                                     </div>
                                     <div class="col-md-6">

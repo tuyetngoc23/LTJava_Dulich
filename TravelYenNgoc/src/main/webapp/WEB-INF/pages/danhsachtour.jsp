@@ -16,17 +16,6 @@
           </div>
         </div>
         <div class="row">
-            <!--            <div class="col-md-2">
-                                       <form class"form-group">
-                                <div class="slidecontainer">
-                                    <input type="range" min="1000000" max="10000000" value="1000000" class="slider" id="myRange" name ="timgiatu">
-                                    <p>Giá từ: <span id="demo"></span></p>
-                                    <input type="range" min="1000000" max="10000000" value="1000000" class="slider" id="myRange2" name ="timgiaden">
-                                    <p>Giá đến: <span id="demo2"></span></p>
-                                    <input type="submit" value="Tra" class="btn btn-primary btn-block" id="timkiem">
-                                </div>
-                            </form>
-                        </div>-->
             <div class="col">
                 <c:if test="${tour.size() > 0}">
                     <div class="row">

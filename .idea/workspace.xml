@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c3171489-30e4-48dd-a316-3bee247ad3c8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/TravelYenNgoc/src/main/java/com/yn/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TravelYenNgoc/src/main/java/com/yn/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TravelYenNgoc/src/main/webapp/WEB-INF/Admin/pages/chart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/TravelYenNgoc/src/main/webapp/WEB-INF/Admin/pages/chart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TravelYenNgoc/src/main/webapp/WEB-INF/Admin/pages/themtintuc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/TravelYenNgoc/src/main/webapp/WEB-INF/Admin/pages/themtintuc.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="c3171489-30e4-48dd-a316-3bee247ad3c8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

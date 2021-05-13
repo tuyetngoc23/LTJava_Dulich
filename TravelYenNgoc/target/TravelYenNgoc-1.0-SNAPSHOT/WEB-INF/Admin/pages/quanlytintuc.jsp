@@ -33,8 +33,9 @@
                                 <div class="card sm-4 box-shadow" > 
                                     <img class="card-img-top" src="<c:url value="${u.anh}"/> " alt="abc" width="200" height="200">
                                     <div class="card-body">
-                                        <h4> Mã bài :${u.id} - ${u.moTaNgan} </h4>
+                                        <h4> Mã bài :${u.id} - ${u.tieuDe} </h4>
                                         <p> Người đăng: ${u.employee.idStaff.hoTen}
+                                            <br>${u.ngayDang} 
                                             <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
                                                  <a href="<c:url value="quanlytintuc/xemtintuc/?tintucId=${u.id}" />" class="btn btn-info">Xem thêm</a>
