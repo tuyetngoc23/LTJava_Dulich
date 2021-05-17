@@ -104,7 +104,7 @@ public class TinTucRepositoryImpl implements TinTucRepository {
     @Transactional
     public List<BinhLuan> getBinhLuans(int i) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-      Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
+        Query q = session.createQuery("From BinhLuan where tintuc_id = :tintuc");
         q.setParameter("tintuc", i);
         Set<BinhLuan> binhLuan = new HashSet<>();
         binhLuan.addAll(this.getTinTucById(i).getBinhLuans());

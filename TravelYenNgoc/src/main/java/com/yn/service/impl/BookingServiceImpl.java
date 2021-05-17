@@ -43,8 +43,6 @@ public class BookingServiceImpl implements BookingService{
     @Transactional
     public BigDecimal getPrice(Tour tour, Booking bkng) {
         return this.bookingRepository.getPrice(tour, bkng); 
-//??? viết gì đây sao lạp gọi lặp lại;ok chưa//sorry, hơi ngáo
-//để chạy thử coi soakook
     }
 
     @Override
@@ -68,5 +66,5 @@ public class BookingServiceImpl implements BookingService{
     public void nhantour(int i) {
         this.bookingRepository.nhantour(i);
     }
-    
+
 }

@@ -16,4 +16,5 @@ import java.util.List;
 public interface CustormerRepository {
     List<Customer> getCustormers();
     List<Employee> getEmloEmployees();
+   
 }
