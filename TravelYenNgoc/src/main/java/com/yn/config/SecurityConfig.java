@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling()
                 .accessDeniedPage("/login?accessDenied");
         http.authorizeRequests().antMatchers("/").permitAll()
-                .antMatchers("/admin/quanlynhanvien")
+                .antMatchers("/admin/quanlynhanvien/**")
                 .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
                 .antMatchers("/admin/quanlytour/**")
                 .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
                 .antMatchers("/admin")
                 .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
-                 .antMatchers("/admin/quanlykhachang")
+                 .antMatchers("/admin/quanlykhachhang")
                 .access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "','" + User.Role.ROLE_EMPLOYEE.name() + "')")
                 .antMatchers("/admin/chart").access("hasAnyRole('" + User.Role.ROLE_ADMIN.name() + "')")
                 .antMatchers("/booking/**").access("hasAnyRole('" + User.Role.ROLE_CUSTORMER.name() + "')")

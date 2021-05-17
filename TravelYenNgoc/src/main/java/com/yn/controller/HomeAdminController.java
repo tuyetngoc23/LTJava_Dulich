@@ -5,6 +5,7 @@
  */
 package com.yn.controller;
 
+import com.yn.service.BookingService;
 import com.yn.service.CustormerSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class HomeAdminController {
 
     @Autowired
     private CustormerSevice custormerSevice;
+    
+    @Autowired
+    private BookingService bookingService;
 
     @GetMapping("/admin")
     public String adindex(Model model) {

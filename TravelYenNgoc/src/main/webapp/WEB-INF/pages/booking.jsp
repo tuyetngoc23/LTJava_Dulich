@@ -11,7 +11,7 @@
 
 <section class="probootstrap-cover overflow-hidden relative"  style="background-image: url(http://localhost:8080/TravelYenNgoc/assets_ui/images/bg_1.jpg)" data-stellar-background-ratio="0.5"  id="section-home">
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container" style="font-family: 'Roboto', sans-serif;">
         <div class="row align-items-center">
             <div class="col-md">
 
@@ -68,8 +68,8 @@
                                     <div class="form-group">
                                         <label for="ten">Tên khách hàng</label>
                                         <div>
-                                            <form:errors path="tenKH" cssClass="text-danger" />
-                                            <form:input type="text" id="ten" path="tenKH"/>
+                                            <form:errors path="tenKH" cssClass="text-danger" style="font-family: 'Roboto', sans-serif;important "/>
+                                            <form:input type="text" id="ten" path="tenKH" cssClass="form-group"/>
                                         </div>
                                     </div>
                                 </div>
@@ -101,9 +101,9 @@
         </form:form>
     </c:if>
     <c:if test="${thanhcong==null}">
-        <h2 class="heading mb-2 display-4 font-light probootstrap-animate">Nhiều tour du lịch ngon đang đợi bạn tại </h2>
-        <a class="nav-link" href="<c:url value="/dstour"/>">Đây</a>
-    </c:if>
+    <h2 class="heading mb-2 display-4 font-light probootstrap-animate">Nhiều tour du lịch ngon đang đợi bạn tại </h2>
+    <a class="nav-link" href="<c:url value="/dstour"/>">Đây</a>
+</c:if>
 </section>
 <script>
     var tongtien;
@@ -125,18 +125,19 @@
         if (obj.value == "3") {
             tongtienchobe = tongtien * 0.5 * 3;
         }
+        
         var x = tongtienchobe + tongtiencholon;
         x = x.toLocaleString('vi', {style: 'currency', currency: 'VND'});
         document.getElementById("tien").innerHTML = x;
     }
     function customJavascriptfuntion2(obj) {
         if (obj.value == "1") {
-            tongtiencholon = tongtien * 1;
+            tongtiencholon = tongtien;
         }
         if (obj.value == "2") {
             tongtiencholon = tongtien * 2;
         }
-        if (obj.value == "4") {
+        if (obj.value == "3") {
             tongtiencholon = tongtien * 3;
         }
         var x = tongtienchobe + tongtiencholon;

@@ -16,7 +16,7 @@ function deleteTour(tourId) {
                 let d = document.getElementById(`tourId${tourId}`);
                 d.style.display = "none";
             } else 
-                alert("Something wrong!!!");
+                alert("Đang xảy ra lỗi!!!");
         })
     }
 }
@@ -33,7 +33,7 @@ function deleteTinTuc(tintucId) {
                 let d = document.getElementById(`tourId${tourId}`);
                 d.style.display = "none";
             } else 
-                alert("Something wrong!!!");
+                alert("Đang xảy ra lỗi!!!");
         })
     }
 }
@@ -48,7 +48,7 @@ function nhantour(bookingid) {
             if (res.status == 200) {
                  location.reload();
             } else 
-                alert("Something wrong!!!");
+                alert("Đang xảy ra lỗi!!!");
         })
     }
 }

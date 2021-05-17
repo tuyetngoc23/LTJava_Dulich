@@ -17,14 +17,13 @@
 
 
 <div class="container">
-    <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
     <hr>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <header class="card-header">
                     <a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
-                    <h4 class="card-title mt-2">Sign up</h4>
+                    <h4 class="card-title mt-2">Đăng kí</h4>
                 </header>
                 <article class="card-body">
                     <form:form method="post" modelAttribute="user" enctype="multipart/form-data" >
@@ -84,7 +83,7 @@
                         <small class="text-muted">Bằng cách nhấp vào nút 'Đăng ký', bạn xác nhận rằng bạn chấp nhận <br> Điều khoản sử dụng và chính sách quyền riêng tư.</small>                                          
                         </form:form>
                 </article> <!-- card-body end .// -->
-                <div class="border-top card-body text-center">Bạn có tài khoản? <a href="">Log In</a></div>
+                <div class="border-top card-body text-center">Bạn có tài khoản? <a href="<c:url value="/login" />">Đăng nhập</a></div>
             </div> <!-- card.// -->
         </div> <!-- col.//-->
 
@@ -95,13 +94,3 @@
 <!--container end.//-->
 
 <br><br>
-<article class="bg-secondary mb-3">  
-    <div class="card-body text-center">
-        <h3 class="text-white mt-3">Bootstrap 4 UI KIT</h3>
-        <p class="h5 text-white">Components and templates  <br> for Ecommerce, marketplace, booking websites 
-            and product landing pages</p>   <br>
-        <p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com  
-                <i class="fa fa-window-restore "></i></a></p>
-    </div>
-    <br><br>
-</article>

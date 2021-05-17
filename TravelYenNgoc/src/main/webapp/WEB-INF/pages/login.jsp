@@ -10,7 +10,7 @@
         <script src="<c:url value="/assets_ui/js/login.js"/>"></script>
         <title>Login</title>
     </head>
-    <body>
+    <body style="font-family: 'Roboto', sans-serif;">
         <c:if test="${param.error != null}">
             <div class="alert alert-danger">
                 Chương trình đang xảy ra lỗi! Vui lòng quay lại sau!
@@ -24,7 +24,7 @@
         </c:if>
         <div class="wrapper">
             <div class="container">
-                <h1>LOGIN</h1>
+                <h1>Đăng nhập</h1>
                 <c:url value="/login" var="action"/>
                 <form:form class="form" action="${action}" method="post" modelAttribute="user">
                     <form:errors path="*" element="div" /> 
@@ -32,8 +32,9 @@
                     <form:errors path="username" cssClass="text-danger" />
                     <input type="password" placeholder="Password" name="passWord">
                     <form:errors path="passWord" cssClass="text-danger" />
-                    <button type="submit" id="login-button">Login</button>
+                    <button type="submit" id="login-button">đăng nhập</button>
                 </form:form>
+                                      <div class="border-top card-body text-center">Bạn chưa có tài khoản? <a href="<c:url value="/dangki" />">Đăng kí tại đây</a></div>
             </div>
             <ul class="bg-bubbles">
                 <li></li>

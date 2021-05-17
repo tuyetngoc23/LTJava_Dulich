@@ -6,12 +6,12 @@
 [ FONT ]*/
 
 @font-face {
-  font-family: Ubuntu-Regular;
+  font-family: 'Roboto', sans-serif;;
   src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
 }
 
 @font-face {
-  font-family: Ubuntu-Bold;
+  font-family: 'Roboto', sans-serif;;
   src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
@@ -29,12 +29,12 @@
 
 body, html {
 	height: 100%;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Roboto', sans-serif;;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Linearicons-Free;
+	font-family: 'Roboto', sans-serif;;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -60,7 +60,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Roboto', sans-serif;;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;

@@ -12,13 +12,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -43,7 +41,7 @@ public class Tour implements Serializable {
     private int id;
     @NotEmpty(message = "{tour.err.ten}")
     private String ten;
-    @Min(value = 1999999, message = "{tour.err.gia}")
+    @Min(value = 999999, message = "{tour.err.gia}")
     @Max(value = 10000000, message = "{tour.err.gia}")
     private BigDecimal gia;
     @ManyToOne

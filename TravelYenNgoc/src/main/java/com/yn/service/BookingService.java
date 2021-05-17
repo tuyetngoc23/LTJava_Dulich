@@ -22,4 +22,5 @@ public interface BookingService {
     Long getSoLuongTourDatDat(int i);
     List<Booking> getBooking();
     void nhantour(int tour);
+   
 }

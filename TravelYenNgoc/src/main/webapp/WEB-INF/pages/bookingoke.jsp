@@ -16,7 +16,7 @@
             <div class="col-md">
                 <p class="lead mb-5 probootstrap-animate">
                 <h2 class="heading mb-2 display-4 font-light probootstrap-animate">Cảm ơn bạn đã đặt, chúng tôi sẻ liên hệ sớm với bạn </h2>
-                <a class="nav-link" href="<c:url value="/tourdetails"/>">Xem thêm tại đây</a>
+                <a class="nav-link" href="<c:url value="/dstour"/>">Xem thêm tại đây</a>
                 </p>
             </div> 
         </div>
